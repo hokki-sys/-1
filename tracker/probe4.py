@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""KATI 수입조회(HS코드 지정) 결과 구조 정찰 v4 (임시)."""
+"""KATI 수입 전체테이블 원문 분석 + 품목트리 BFS 정찰 v5 (임시)."""
+import json
 import re
 import sys
 import urllib.request
@@ -9,7 +10,6 @@ import track_price as tp
 
 BASE = "https://www.kati.net"
 PAGE = "/statistics/monthlyPerformanceByProduct.do"
-HS = ["0301920000", "0303260000", "1604170000"]
 
 
 def post(path: str, data: dict) -> str:
@@ -22,36 +22,58 @@ def post(path: str, data: dict) -> str:
         return resp.read().decode("utf-8", "replace")
 
 
-BASE_DATA = {
-    "ieStandard": "I", "basisYear": "2026", "basisMonth": "06",
-    "basisYearMonth": "202606", "period": "2", "unit": "Kg",
-    "nations": "CN", "nationSearchType": "4", "productType": "P",
-    "classification": "0", "productRowEnabled": "true",
-    "showComparisonBasisMonth": "true", "showComparisonMonthTotal": "true",
-}
+print("########## 1) 품목트리 BFS로 장어 AG코드 찾기")
+eel_nodes = []
+try:
+    roots = json.loads(post("/stat/search/item/tree.do",
+                            {"ssi_see_together": "N", "ssi_digits": "2"})).get("tree", [])
+    print("  roots:", [(r.get("name"), r.get("agcd")) for r in roots])
+    queue = [r for r in roots if r.get("name") in ("수산물", "농산물")]
+    depth = 0
+    while queue and depth < 3 and len(eel_nodes) < 12:
+        nxt = []
+        for node in queue[:40]:
+            try:
+                body = post("/stat/search/item/sub.do",
+                            {"high_agcd": node.get("agcd", ""), "ssi_see_together": "N"})
+                children = json.loads(body).get("list") or json.loads(body).get("tree") or []
+            except Exception as e:
+                print(f"   sub({node.get('name')}) FAIL {e}")
+                continue
+            for c in children:
+                nm = c.get("name") or ""
+                if "장어" in nm:
+                    eel_nodes.append(c)
+                    print(f"   EEL: name={nm} agcd={c.get('agcd')} hscd={c.get('hscd')} "
+                          f"high={c.get('high_agcd')}")
+                nxt.append(c)
+        queue = nxt
+        depth += 1
+    print(f"  BFS 종료 depth={depth}, eel {len(eel_nodes)}건")
+except Exception as e:
+    print("  트리 실패:", e)
 
-for code_type in ("HS", "2", "1", "AG", ""):
-    data = dict(BASE_DATA)
-    data["codeType"] = code_type
-    data["products"] = HS
-    try:
-        body = post(PAGE, data)
-    except Exception as e:
-        print(f"codeType={code_type!r} FAIL {e}")
-        continue
-    text = tp.strip_tags(body)
-    basis = re.search(r"수출입기준\s*:\s*(\S+)", text)
-    sel = re.search(r"선택 품목\s*:\s*(.{0,80}?)\s*\*", text)
-    eel = text.count("장어")
-    print(f"codeType={code_type!r} -> {len(body)}b 기준={basis.group(1) if basis else '?'} "
-          f"품목=[{sel.group(1) if sel else '?'}] 장어 {eel}회")
-    if eel:
-        for p in [m.start() for m in re.finditer("장어", text)][:6]:
-            print("   ctx:", re.sub(r"\s+", " ", text[max(0, p - 150):p + 350]))
-        print("\n--- 테이블 헤더 부근 ---")
-        p = text.find("품목명")
-        if p < 0:
-            p = text.find("합계")
-        print(re.sub(r"\s+", " ", text[max(0, p - 100):p + 600]))
-        break
+print("\n########## 2) 수입 전체테이블 원문 분석")
+data = {"ieStandard": "I", "basisYear": "2026", "basisMonth": "06",
+        "basisYearMonth": "202606", "period": "2", "unit": "Kg",
+        "nations": "CN", "nationSearchType": "4", "productType": "P",
+        "classification": "0", "productRowEnabled": "true"}
+body = post(PAGE, data)
+print(f"  raw={len(body)}b strip={len(tp.strip_tags(body))}b tr={body.count('<tr')} 장어(raw)={body.count('장어')}")
+for p in [m.start() for m in re.finditer("장어", body)][:4]:
+    print("   raw-ctx:", re.sub(r"\s+", " ", body[max(0, p - 350):p + 250]))
+
+print("\n########## 3) 장어 AG코드로 품목 지정 수입조회")
+if eel_nodes:
+    agcds = [n.get("agcd") for n in eel_nodes if n.get("agcd")][:4]
+    data2 = dict(data)
+    data2["products"] = agcds
+    data2["selectedAgcd"] = ",".join(agcds)
+    body2 = post(PAGE, data2)
+    text2 = tp.strip_tags(body2)
+    sel = re.search(r"선택 품목\s*:\s*(.{0,100}?)\s*\*", text2)
+    print(f"  agcds={agcds} -> {len(body2)}b 품목=[{sel.group(1) if sel else '?'}] "
+          f"장어(strip)={text2.count('장어')}")
+    for p in [m.start() for m in re.finditer("장어", text2)][:8]:
+        print("   ctx:", re.sub(r"\s+", " ", text2[max(0, p - 120):p + 400]))
 sys.exit(0)
