@@ -1,2 +1,3 @@
 .debug/
 .change_note.md
+__pycache__/
