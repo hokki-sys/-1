@@ -12,49 +12,29 @@
 | `track_price.py` | 지정 상품 정밀 추적 (푸드엔 등 개별 상품 페이지) |
 | `products.csv` | 정밀 추적할 상품 목록 (URL 추가/삭제) |
 | `price_history.csv` | 지정 상품 일별 가격 이력 |
-| `market_price.py` | 네이버쇼핑 시장시세 수집 (키워드 검색 → kg당 가격 통계) |
-| `market_keywords.csv` | 시세를 볼 품목 키워드 목록 |
-| `market_history.csv` | 품목별 일별 시세 통계 (최저/중앙값/평균, kg당) |
-| `market_listings.csv` | 당일 상위 판매글 스냅샷 (판매처·가격·중량) |
 | `wonmul_price.py` | 원물 도매시세 수집 (전국 도매시장 장어 경매가) |
 | `wonmul_history.csv` | 경매 건별 누적 이력 (뱀장어·수입장어, kg당 환산가 포함) |
-| `import_price.py` | 중국산 장어 수입단가 수집 (관세청 월간 수출입실적) |
-| `import_history.csv` | HS코드별 월간 수입량·금액·USD/kg 단가 누적 이력 |
+| `kati_import.py` | 중국산 장어 수입실적 수집 (KATI, 관세청 통관자료 기반, 키 불필요) |
+| `import_history.csv` | 품목(HS)별 월간 수입량·금액·USD/kg 단가 누적 이력 |
+| `market_price.py` | (비활성) 네이버쇼핑 시장시세 — 네이버가 쇼핑 검색 API를 종료해 사용 불가 |
+| `import_price.py` | (대기) 관세청 공공 API 수집기 — 게이트웨이가 해외 IP를 차단해 국내 실행 시에만 유효 |
 
-## 네이버 API 키 등록 (시장시세 수집에 필요, 5분)
+## 시장(소매) 시세에 관하여
 
-시장시세 모듈은 네이버 쇼핑 검색 API를 사용합니다. 키를 등록하기 전에는
-해당 단계만 건너뛰고 나머지는 정상 동작합니다.
+네이버가 쇼핑 검색 API를 서비스 종료(SE05)하여 키워드 기반 소매시세 수집은
+현재 불가능합니다. 등록하신 `NAVER_CLIENT_ID`/`NAVER_CLIENT_SECRET`는 사용되지
+않으며 삭제하셔도 됩니다. 소매가격대는 `products.csv`에 판매처별 상품 URL을
+추가하는 방식(정밀 추적)으로 보완할 수 있습니다.
 
-1. https://developers.naver.com 로그인 → 우측 상단 **Application → 애플리케이션 등록**
-2. 애플리케이션 이름: 아무거나 (예: `price-tracker`)
-   사용 API: **검색** 선택
-   환경: **WEB 설정** 선택, 웹 서비스 URL에 `https://github.com` 입력 → 등록
-3. 발급된 **Client ID**와 **Client Secret** 두 값을 복사
-4. GitHub 저장소 → **Settings → Secrets and variables → Actions → New repository secret**
-   - Name: `NAVER_CLIENT_ID`, Secret: (Client ID 값)
-   - Name: `NAVER_CLIENT_SECRET`, Secret: (Client Secret 값)
+## 중국산 수입실적 (키 불필요)
 
-등록 후 다음 실행부터 시장시세가 수집됩니다. 무료이며 일 25,000회 한도 중
-하루 2회만 사용합니다.
-
-## 관세청 API 키 등록 (중국산 수입가격 수집에 필요, 10분)
-
-수입단가 모듈은 공공데이터포털의 관세청 수출입실적 API를 사용합니다.
-키를 등록하기 전에는 해당 단계만 건너뜁니다.
-
-1. https://www.data.go.kr 회원가입 → 로그인
-2. "**관세청_품목별 국가별 수출입실적**" 검색 → **활용신청** (자동 승인, 무료)
-3. 마이페이지 → 해당 API의 **일반 인증키(Encoding)** 복사
-4. GitHub 저장소 → Settings → Secrets and variables → Actions →
-   Name: `DATA_GO_KR_KEY`, Secret: (인증키 값)
-
-수집 품목(HS코드): 활뱀장어 0301.92, 냉동뱀장어 0303.26, 조제 장어
-(양념구이류) 1604.17 — 모두 중국(CN) 기준 월간 수입량·금액에서 kg당
-USD 단가를 계산해 36개월 소급 수집합니다. 관세청 월간 확정치라
-전월 데이터는 보통 15일 전후에 반영됩니다. 참고: 비조제 냉동 필렛은
-'기타 어류 필레'(0304.89)에 섞여 HS 6단위로는 분리 집계가 어렵습니다 —
-조제(1604.17)와 냉동 원어(0303.26) 단가가 대리 지표 역할을 합니다.
+KATI(농수산식품수출지원정보)의 월별품목별 실적을 통해 관세청 통관 기준
+중국산 장어 수입 중량(kg)·금액($, CIF)을 매일 수집합니다. 뱀장어(활/기타),
+실장어, 조제 장어(1604.17) 등 장어 전 품목이 대상이며 바다장어류는
+제외합니다. 첫 실행에서 18개월 소급, 이후 최근 3개월을 갱신합니다(전월
+확정치는 통상 익월 중순 반영). 등록하신 `DATA_GO_KR_KEY`는 현재 사용되지
+않습니다 — 관세청 API 게이트웨이가 해외 IP를 차단해 GitHub 러너에서 접근
+불가함을 확인했고, 같은 통관 데이터를 KATI로 대체했습니다.
 
 ## 시장시세 산출 방식
 

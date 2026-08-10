@@ -30,23 +30,13 @@ jobs:
           TRACKER_VERBOSE: "1"
         run: python3 tracker/track_price.py
 
-      - name: Run market price collector
-        id: market
-        if: always()
-        env:
-          NAVER_CLIENT_ID: ${{ secrets.NAVER_CLIENT_ID }}
-          NAVER_CLIENT_SECRET: ${{ secrets.NAVER_CLIENT_SECRET }}
-        run: python3 tracker/market_price.py
-
       - name: Run wholesale (wonmul) collector
         if: always()
         run: python3 tracker/wonmul_price.py
 
-      - name: Run import price collector
+      - name: Run import price collector (KATI)
         if: always()
-        env:
-          DATA_GO_KR_KEY: ${{ secrets.DATA_GO_KR_KEY }}
-        run: python3 tracker/import_price.py
+        run: python3 tracker/kati_import.py
 
 
       - name: Commit price history
@@ -72,7 +62,7 @@ jobs:
           include-hidden-files: true
 
       - name: Open issue on price change
-        if: always() && (steps.track.outputs.changed == 'true' || steps.market.outputs.changed == 'true')
+        if: always() && steps.track.outputs.changed == 'true'
         uses: actions/github-script@v7
         with:
           script: |
