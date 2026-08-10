@@ -132,6 +132,10 @@ def extract_candidates(html: str, text: str) -> list[tuple]:
         if price is not None:
             cands.append((prio, price, source, re.sub(r"\s+", " ", ctx)[:160], pos))
 
+    # 푸드엔(fooden.com): 실판매가가 id="realPrc" 엘리먼트에 렌더링된다
+    for m in re.finditer(r'id\s*=\s*["\']realPrc["\'][^>]*>\s*([0-9,\.]+)', html, re.I):
+        add(1, m.group(1), "id:realPrc", m.group(0), m.start())
+
     meta_names = r"(?:og:price:amount|product:price:amount|product:sale_price:amount)"
     for m in re.finditer(
         rf'<meta[^>]+(?:property|name)=["\']{meta_names}["\'][^>]*content=["\']([0-9,\.]+)["\']',
