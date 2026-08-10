@@ -1,0 +1,4 @@
+.debug/
+.change_note.md
+.market_note.md
+__pycache__/
