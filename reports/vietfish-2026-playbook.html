@@ -1,4 +1,4 @@
-<title>VIETFISH 2026 실행 플레이북</title>
+<title>강해무역 VIETFISH 2026 플레이북</title>
 <style>
   /* Toss Design System (TDS) tokens — light */
   :root {
@@ -74,7 +74,16 @@
     font-size: 13px; font-weight: 700; padding: 5px 12px; border-radius: 999px; margin-bottom: 18px;
   }
   h1 { font-size: clamp(30px, 5.4vw, 44px); line-height: 1.22; margin: 0 0 12px; font-weight: 800; letter-spacing: -0.028em; text-wrap: balance; }
-  .subtitle { color: var(--text-3); font-size: 17px; margin: 0 0 28px; font-weight: 500; max-width: 44em; }
+  .subtitle { color: var(--text-3); font-size: 17px; margin: 0 0 28px; font-weight: 500; max-width: 46em; }
+
+  .premise {
+    background: var(--fill); border-radius: 16px; padding: 18px 22px; margin-bottom: 16px;
+    font-size: 15px; color: var(--text-2);
+  }
+  .premise .nt { display: block; font-size: 12.5px; font-weight: 800; color: var(--blue-deep); margin-bottom: 6px; letter-spacing: .02em; }
+  .premise strong { color: var(--text); }
+  .premise ul { margin: 0; padding-left: 20px; }
+  .premise li { margin-bottom: 4px; }
 
   .alert {
     background: var(--danger-tint); border-radius: 16px; padding: 20px 22px; margin-bottom: 16px;
@@ -86,7 +95,9 @@
 
   .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 44px; }
   .stat { background: var(--fill); border-radius: 16px; padding: 18px 18px 15px; }
-  .stat b { display: block; font-size: 24px; font-weight: 800; color: var(--blue); font-variant-numeric: tabular-nums; letter-spacing: -0.02em; margin-bottom: 2px; }
+  .stat b { display: block; font-size: 23px; font-weight: 800; color: var(--blue); font-variant-numeric: tabular-nums; letter-spacing: -0.02em; margin-bottom: 2px; }
+  .stat b.down { color: var(--danger); }
+  .stat b.up { color: var(--gold); }
   .stat span { font-size: 13px; color: var(--text-3); font-weight: 500; }
 
   nav.toc { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 56px; }
@@ -114,16 +125,17 @@
   a { color: var(--blue); text-decoration: none; font-weight: 600; }
   a:hover, a:focus-visible { text-decoration: underline; text-underline-offset: 3px; }
 
-  .mission { display: grid; gap: 12px; margin-bottom: 8px; }
-  .mission-card { background: var(--fill); border-radius: 16px; padding: 18px 22px; }
-  .mission-card h4 { margin: 0 0 8px; font-size: 16.5px; font-weight: 800; letter-spacing: -0.015em; }
-  .mission-card h4 .tag { display: inline-block; font-size: 12px; font-weight: 800; padding: 2px 9px; border-radius: 999px; margin-left: 8px; vertical-align: 2px; }
-  .tag.hot { background: var(--gold-tint); color: var(--gold); }
-  .tag.core { background: var(--blue-tint); color: var(--blue-deep); }
-  .tag.ref { background: var(--fill-2); color: var(--text-3); }
-  .mission-card p, .mission-card ul { color: var(--text-2); font-size: 15px; margin-bottom: 0; }
-  .mission-card p strong, .mission-card ul strong { color: var(--text); }
-  .mission-card ul { margin-top: 6px; }
+  .summary { counter-reset: sm; list-style: none; padding: 0; display: grid; gap: 10px; }
+  .summary li {
+    counter-increment: sm; background: var(--fill); border-radius: 16px;
+    padding: 16px 20px 16px 58px; position: relative; margin: 0;
+  }
+  .summary li::before {
+    content: counter(sm); position: absolute; left: 18px; top: 17px;
+    width: 26px; height: 26px; border-radius: 50%;
+    background: var(--blue); color: var(--on-accent); font-size: 13.5px; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+  }
 
   .tbl { overflow-x: auto; background: var(--fill); border-radius: 16px; margin-bottom: 20px; }
   table { border-collapse: collapse; width: 100%; font-size: 14px; min-width: 600px; }
@@ -150,6 +162,15 @@
   .day h4 small { color: var(--text-4); font-weight: 600; margin-left: 8px; font-size: 13px; }
   .day ul { margin-bottom: 0; color: var(--text-2); }
 
+  .phase { position: relative; padding: 0 0 26px 30px; }
+  .phase::before { content: ""; position: absolute; left: 7px; top: 9px; bottom: -3px; width: 2px; background: var(--line); }
+  .phase:last-of-type::before { display: none; }
+  .phase::after { content: ""; position: absolute; left: 2px; top: 7px; width: 12px; height: 12px; border-radius: 50%; background: var(--blue); }
+  .phase.now::after { background: var(--danger); }
+  .phase h4 { margin: 0 0 8px; font-size: 16.5px; font-weight: 800; letter-spacing: -0.015em; }
+  .phase h4 small { color: var(--text-4); font-weight: 600; margin-left: 8px; font-size: 13px; }
+  .phase ul { margin-bottom: 0; color: var(--text-2); }
+
   footer { border-top: 1px solid var(--line); padding-top: 22px; color: var(--text-4); font-size: 13.5px; }
   footer p { margin-bottom: 8px; }
   footer strong { color: var(--text-3); }
@@ -160,311 +181,324 @@
 
 <div class="wrap">
   <header>
-    <div class="chip">실행 플레이북 · 2026. 08. 10 작성</div>
-    <h1>VIETFISH 2026<br>실행 플레이북</h1>
-    <p class="subtitle">호치민 수산물 박람회 완전 정복 — 준비, 3일 동선, 타깃 업체, 미팅 스크립트, 가격 앵커, 계약 체크리스트까지 이 문서 하나로.</p>
+    <div class="chip">강해무역 · 실행 플레이북 · 2026. 08. 10</div>
+    <h1>VIETFISH 2026 &amp;<br>베트남 가공 진출</h1>
+    <p class="subtitle">중국산 민물장어 수입상의 베트남 확장 — 박람회 활용, 위탁가공, 자체 공장, 한국 수입 관세·원산지까지 이 문서 하나로.</p>
+
+    <div class="premise">
+      <span class="nt">전제 (고정)</span>
+      <ul>
+        <li><strong>강해무역</strong>: 중국산 민물장어 전문 무역회사 — <strong>로스트라타 주력 + 자포니카</strong>. 한국산 장어 취급 없음.</li>
+        <li>현재: 중국산 필렛 수입 → <strong>양산도 등 국내 거래처 공급</strong></li>
+        <li>계획: <strong>베트남 가공 라인</strong> → 중국산 활장어 반입·가공 → ① 베트남 내수 ② 한국 수입·유통 ③ 양산도 베트남 진출 시 현지 공급</li>
+      </ul>
+    </div>
 
     <div class="alert">
       <span class="d9">D-9</span>
-      <p><strong>8월 19일(수)~21일(금) · SECC(7군 푸미흥) · Hall A+B1+로비.</strong> 오늘 사전등록(vietfish.com.vn/en/register-event)과 B2B 매칭 신청, 항공·호텔 예약을 끝내야 합니다.</p>
+      <p><strong>VIETFISH 2026 — 8/19(수)~21(금), SECC(7군).</strong> 사전등록·B2B 매칭과 함께, <strong>관세사 확인(가바야키 협정세율)</strong>을 지금 발주해야 박람회 협상에 쓸 수 있습니다.</p>
     </div>
 
     <div class="stats">
-      <div class="stat"><b>335개사</b><span>참가기업</span></div>
-      <div class="stat"><b>568부스</b><span>17개국 · 한국 포함</span></div>
-      <div class="stat"><b>+3,754%</b><span>베트남 냉동장어 수입 증가율</span></div>
-      <div class="stat"><b>¥1,919</b><span>중국 가바야키 kg당 (-20%)</span></div>
+      <div class="stat"><b class="down">-44%</b><span>자포니카 일본 도매가 (폭락)</span></div>
+      <div class="stat"><b class="up">+24.5%</b><span>로스트라타 산지가 (강세)</span></div>
+      <div class="stat"><b>$26M</b><span>중국→베트남 활만 수출 (기존재)</span></div>
+      <div class="stat"><b>0%</b><span>중국 활장어 베트남 반입 관세 (ACFTA)</span></div>
     </div>
 
     <nav class="toc" aria-label="목차">
-      <a href="#info"><span class="n">0</span>핵심 정보</a>
-      <a href="#mission"><span class="n">1</span>미션 정의</a>
-      <a href="#prep"><span class="n">2</span>사전 준비</a>
-      <a href="#targets"><span class="n">3</span>타깃 업체</a>
-      <a href="#opp"><span class="n">4</span>기회 평가표</a>
-      <a href="#days"><span class="n">5</span>3일 동선·SOP</a>
-      <a href="#contract"><span class="n">6</span>계약 체크</a>
-      <a href="#local"><span class="n">7</span>현지 실무</a>
+      <a href="#summary"><span class="n">0</span>결론 요약</a>
+      <a href="#expo"><span class="n">1</span>박람회 정보</a>
+      <a href="#market"><span class="n">2</span>원료 시장</a>
+      <a href="#vn"><span class="n">3</span>베트남 가공</a>
+      <a href="#tariff"><span class="n">4</span>관세·원산지</a>
+      <a href="#action"><span class="n">5</span>현장 실행</a>
+      <a href="#roadmap"><span class="n">6</span>로드맵</a>
       <a href="#anchor"><span class="n">＋</span>가격 앵커</a>
     </nav>
   </header>
 
-  <section id="info">
+  <section id="summary">
     <div class="chapter">0</div>
-    <h2>핵심 정보 카드</h2>
-    <div class="tbl"><table>
-      <tr><td>일시</td><td><strong>8/19(수)~21(금)</strong> · 19~20일 09:00–17:00, 21일 09:00–16:00 <span class="muted">※일부 소스 10–18시 — 첫날 8:30 도착으로 리스크 제거</span></td></tr>
-      <tr><td>장소</td><td>SECC — 799 Nguyen Van Linh, 7군 푸미흥 · Hall A + Hall B1 + 로비(14,000㎡ 역대 최대)</td></tr>
-      <tr><td>주최</td><td>VASEP · 27회차 · 주제 "Innovation – Sustainability" · 올해 키워드: 딥프로세싱(RTE)·그린 전환</td></tr>
-      <tr><td>등록</td><td><a href="https://vietfish.com.vn/en/register-event">vietfish.com.vn/en/register-event</a> → 이메일 QR → 사전등록 우선 카운터에서 배지</td></tr>
-      <tr><td>B2B</td><td>Business Matching Form+명함 제출 → 심사 → 스케줄 확정. <strong>Hosted Buyer 프로그램 올해 최초 도입</strong> — 신청 가치 큼</td></tr>
-      <tr><td>연락처</td><td>Ms. Lam Xuan Dao · +84-28-6281 0434 · xuandao@vasep.com.vn</td></tr>
-      <tr><td>개막식</td><td>8/19(수) 오전 — 9시 전후 [추정]. VASEP·정부 인사 네트워킹 기회</td></tr>
-      <tr><td>전년 실적</td><td>2025년: 280개사·526부스·16,000명(14개국) → 2026년 기업 수 +20%</td></tr>
-    </table></div>
+    <h2>결론 요약</h2>
+    <ol class="summary">
+      <li><strong>박람회 최우선 미션 = 위탁가공 파트너 발굴.</strong> 자체 공장 전에 베트남 공장 위탁가공(E21 무관세 반입→E52 수출)은 지금 바로 실행 가능한 제도. 파트너 조건은 <strong>"NAFIQPM 한국 등재 + HACCP + 가공 능력"</strong> 3개 교집합.</li>
+      <li><strong>원료 시장은 종별로 반대로 움직입니다.</strong> 자포니카는 실뱀장어 2년 연속 풍어로 폭락(일본 도매 -44%), <strong>주력 로스트라타는 치어 수급 불안으로 +24.5% 강세</strong> — 종 배분·조달 타이밍이 올해 수익을 좌우.</li>
+      <li><strong>베트남 가공→한국 수입의 관세 이득은 가바야키에서만 열릴 수 있고, 필렛은 닫혀 있습니다.</strong> 필렛(0304)은 완전생산(WO) 요구로 중국산 원료 특혜 불가(10% 유지). 가바야키(1604.17)는 류변경(CC)으로 베트남산 인정 가능성이 높으나 <span class="hl">한국의 FTA 양허 여부가 미확인 — 사업성 최대 변수, 관세사 확인이 투자 결정보다 먼저</span>.</li>
+      <li><strong>베트남 쪽 제도는 우호적</strong>: 중국산 활장어 ACFTA 0%(Form E) + 미가공 수산물 수입 VAT 비과세 + 수출용 원재료 관세 면제. 내수 판매분만 용도변경 과세.</li>
+      <li><strong>원산지 표시는 보수적으로.</strong> 가바야키 "베트남산" 가능성 높음[추정], 필렛은 "중국산" 유지. 뱀장어는 음식점 표시 의무 품목 + 2026.1월 해수부 기획단속 — 집행 최상위 품목이라 표시·마케팅 설계에 신중.</li>
+    </ol>
   </section>
 
-  <section id="mission">
+  <section id="expo">
     <div class="chapter">1</div>
-    <h2>미션 정의 — 이번 참관에서 가져올 것</h2>
-    <p>리서치 결과, 당초 가정("베트남에서 장어를 소싱한다")은 <strong>수정이 필요</strong>합니다. 미션을 4개로 재정의합니다.</p>
-    <div class="mission">
-      <div class="mission-card">
-        <h4>미션 A. 장어 "바이어" 발굴 — 한국산 장어 역수출<span class="tag hot">★ 최우선 기회</span></h4>
-        <ul>
-          <li>베트남 구운장어 수입 폭증: 냉동장어 수입 선적 <strong>+3,754%</strong>(2024.4~2025.3), 세계 roasted eel 물동량의 16%가 베트남향</li>
-          <li>한국 산지가 폭락(31,475→<strong>16,433원/kg</strong>, 2026.3)으로 수출 원가 경쟁력 역대급 + <strong>한국산 장어의 베트남 수출 사례 부재 = 선점 가능</strong></li>
-          <li>가공·소포장 완제품은 베트남 공장등재 의무 예외(USDA FAIRS) → 냉동 RMR 진입장벽 낮음 [추정]</li>
-          <li>만날 대상: 호치민 우나기 수입·유통상 10여 곳(3-1) — 사전 이메일로 박람회 기간 별도 미팅</li>
-        </ul>
-      </div>
-      <div class="mission-card">
-        <h4>미션 B. 유망 상품 공급자 — 객단가·경쟁강도 기준<span class="tag hot">★ 확장 기회</span></h4>
-        <p>한국이 이미 대량 수입하는 품목(주꾸미·수리미·새우 원물)은 레드오션. 저경쟁·고마진 순위: <strong>① 패류(MSC 백합) ② RTE 완제품 OEM ③ 소프트쉘크랩·꽃게살 ④ Non-CO 참치 사쿠</strong> (4장 평가표)</p>
-      </div>
-      <div class="mission-card">
-        <h4>미션 C. 새우 공급자 — 메뉴 확장·RMR용<span class="tag core">필수 방문</span></h4>
-        <p>원물은 커머디티지만 <strong>가공품(스시에비·노바시)·유기농(맹그로브)·인증 스택</strong> 3개 축에서 베트남이 세계 최강. 15개사 프로필 확보(3-3)</p>
-      </div>
-      <div class="mission-card">
-        <h4>미션 D. 장어 소싱 — 기대치 조정<span class="tag ref">참고 미션</span></h4>
-        <ul>
-          <li><strong>베트남은 가바야키 소싱처가 아님</strong>: 몸통은 lươn(드렁허리 — 다른 종), 진짜 뱀장어(cá chình)는 활어 대중국 수출 구조로 산지가 <strong>$20~24/kg = 중국 완제품보다 비쌈</strong></li>
-          <li>대신 <strong>중국관·인도네시아관</strong>에서 가바야키 공급선 확인 — 중국 가바야키 대일 도매가 <strong>¥1,919/kg(-20%)</strong> 폭락 국면 = 바이어 우위 협상 적기</li>
-        </ul>
-      </div>
-    </div>
+    <h2>핵심 정보 카드 — VIETFISH 2026</h2>
+    <div class="tbl"><table>
+      <tr><td>일시</td><td><strong>8/19(수)~21(금)</strong> · 09:00–17:00(21일 ~16:00) ※일부 소스 10–18시 — 첫날 8:30 도착 권장</td></tr>
+      <tr><td>장소</td><td>SECC — 799 Nguyen Van Linh, 7군 푸미흥 · Hall A + B1 + 로비(14,000㎡ 역대 최대)</td></tr>
+      <tr><td>규모</td><td>335개사 · 568부스 · 17개국(중국·일본·한국 등) · 주최 VASEP</td></tr>
+      <tr><td>등록</td><td><a href="https://vietfish.com.vn/en/register-event">vietfish.com.vn/en/register-event</a> → 이메일 QR → 사전등록 우선 카운터</td></tr>
+      <tr><td>B2B</td><td>Matching Form+명함 → 심사 → 확정. <strong>Hosted Buyer 올해 최초</strong> — 신청 가치 큼</td></tr>
+      <tr><td>연락처</td><td>Ms. Lam Xuan Dao · +84-28-6281 0434 · xuandao@vasep.com.vn</td></tr>
+      <tr><td>중국관</td><td>최대 국제 전시단(~40개사) — 설비·양식·콜드체인·포장·첨가물 위주. 활어 무역상 출품 [현장확인]</td></tr>
+      <tr><td>한국관</td><td>참가기업 명단은 aT 수산사업단 문의 (cgj@at.or.kr · 061-931-0855)</td></tr>
+    </table></div>
   </section>
 
-  <section id="prep">
+  <section id="market">
     <div class="chapter">2</div>
-    <h2>사전 준비 (지금 즉시 ~ 출발 전)</h2>
-    <div class="check-group">
-      <h4>오늘 처리</h4>
-      <ul class="check">
-        <li><strong>방문자 사전등록</strong> → QR 수신 확인</li>
-        <li><strong>B2B Matching Form 제출</strong>(명함 첨부) + Hosted Buyer 신청 문의(xuandao@vasep.com.vn)</li>
-        <li>항공권(인천→SGN 직항 ~5시간) + 호텔: ibis Saigon South(SECC 1.4km) / Novotel Living / MerPerle / Capri by Fraser</li>
-        <li><strong>aT 수산사업단에 한국관 명단·위치 문의</strong>: cgj@at.or.kr · 061-931-0855</li>
-        <li>현지 우나기 수입상(3-1)에 영문 소개 메일 + 미팅 제안 발송</li>
-      </ul>
-    </div>
-    <div class="check-group">
-      <h4>준비물</h4>
-      <ul class="check">
-        <li><strong>영문 명함 100장+</strong>, 영문 회사소개서 1p(연혁 1956~, 매장 수, <strong>연간 장어 사용량 kg — 협상력의 핵심 수치</strong>, 확장 계획)</li>
-        <li>역수출 자료: RMR 영문 스펙시트·사진·소매가 (샘플 반입은 통관 확인 [추정])</li>
-        <li>소싱 스펙시트 빈 양식(품목/규격/글레이즈/포장/MOQ/인코텀즈/결제) — 부스에서 바로 기입 요청</li>
-        <li>미팅 기록지 30부(5-2 양식) + 명함 파일 + 보조배터리 + Grab 앱 + VND 소액 현금</li>
-        <li>출국 전 <strong>vietfish.com.vn/en/producers</strong>에서 출품사 명단·부스번호 확인해 타깃 리스트에 기입(한국에서 접속 가능)</li>
-      </ul>
-    </div>
+    <h2>원료 시장 인텔 — 중국 장어 2026</h2>
+
+    <h3>산지 구조</h3>
+    <p><strong>푸젠 = 로스트라타(미주만) / 광둥 = 자포니카(일본만)</strong> — 2개 성이 전국 생산의 84.5%(2022년 281,557톤). 광둥 타이산시가 최대 단일 산지(연 5만 톤). 성장 기간: 자포니카 ~2.5년, 로스트라타 ~3년.</p>
+
+    <h3>가격 — 종별 반대 사이클 (핵심)</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>지표</th><th>수치</th><th>시점</th></tr></thead>
+      <tbody>
+        <tr><td>일본 국산 활만 도매가</td><td class="num">¥5,307 → <span class="hl">¥2,983/kg (-44%)</span></td><td>2025.4→2026.4</td></tr>
+        <tr><td>중국산 가바야키 대일 수입단가</td><td class="num">¥2,225/kg (-10%), 소매 -30%</td><td>2026 Q1</td></tr>
+        <tr><td>중국 가바야키 수출단가(평균)</td><td class="num">$15/kg (-6.5%) · 4.0만톤/$6.1억</td><td>2025 1~9월</td></tr>
+        <tr><td>톈마과기(푸젠) 활만 출하가</td><td class="num">RMB 37~96/kg — 하단 하락 중</td><td>2026.5</td></tr>
+        <tr><td><strong>로스트라타 산지가</strong></td><td class="num"><span class="gold">1.5P 6.6만 위안/톤 (+24.5%)</span></td><td>2025.2→8</td></tr>
+        <tr><td>생필렛 수출가</td><td class="num">$11~13/kg [추정]</td><td>가바야키 -10~20%</td></tr>
+        <tr><td>중국산 냉동장어 한국 도착가</td><td class="num">약 18,000원/kg</td><td>최근</td></tr>
+      </tbody>
+    </table></div>
+    <ul>
+      <li><strong>자포니카</strong>: 풍어 물량이 2026~27년 성만 출하로 이어져 <strong>약세 지속 전망 [추정]</strong> — 저가 매수 기회.</li>
+      <li><strong>로스트라타(주력)</strong>: 치어가 도미니카·아이티 의존. 도미니카 CITES 부속서 III 등재를 발효 직전 철회(2026.1)해 무역 중단은 회피했으나 <strong>재규제·수급 변동성 상존</strong> — 자포니카 병행 등 포트폴리오 관리.</li>
+      <li><strong>CITES CoP20(2025.11)</strong>: 뱀장어속 전종 부속서 II 등재안 <strong>부결</strong>(35:100) — 당분간 거래 자유, 재상정 모니터링.</li>
+    </ul>
+
+    <h3>중국 공급사 리스트</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>업체</th><th>소재지</th><th>제품</th><th>한국 관련</th></tr></thead>
+      <tbody>
+        <tr><td>Xulong Group / Eelpro</td><td>닝보·푸젠</td><td>일관체제 — 활만·냉동 생만·가바야키</td><td><strong>한국 등록</strong>, 48개국</td></tr>
+        <tr><td>톈마과기(天马科技)</td><td>푸젠</td><td>활만+가바야키, 상장사(월별 출하가 공시)</td><td>수출처에 한국 포함</td></tr>
+        <tr><td>광둥 위안훙 / 타이산 공영식품</td><td>타이산</td><td>양식 12,000무 · 활만+가바야키</td><td><strong>활만 대한 수출 + 한국 등록</strong></td></tr>
+        <tr><td>Sinofrost</td><td>칭다오[추정]</td><td>가바야키 + <strong>냉동 생만(raw)</strong> — 생필렛 후보</td><td>ISO/HACCP/BRC/HALAL</td></tr>
+        <tr><td>Jiangxi Wan Cun Quan</td><td>장시</td><td>가바야키 연 3,000톤</td><td><strong>한국·베트남 수출 이력</strong></td></tr>
+        <tr><td>Jiangxi Huchen</td><td>장시</td><td>가바야키 연 2,000톤</td><td>한국 포함</td></tr>
+        <tr><td>Ningbo Wholechance · Foshan Donglong</td><td>닝보/순더</td><td>가바야키</td><td>—</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>중국→베트남 활어 반입 (검증된 루트)</h3>
+    <ul>
+      <li>중국은 <strong>이미 베트남에 활만 연 $26M 수출 중</strong>(2023). 2024년 중국 활만 총수출 15,011톤/$2.76억(세계 56.7%).</li>
+      <li>운송: 산소백(생존 80%+) / 빙수 마취 40시간+(95%+) / 활어차(99%+) / 항공. <strong>광저우→호치민 항공이 남부 공장 기준 최적 [추정]</strong>, 육로(둥싱-몽까이·우의관-랑선)는 북부 반입용.</li>
+      <li><span class="hl">밀수 만연 루트</span>(1조 동 규모 적발 사례) → 합법 경로 필수: 중국 시설의 <strong>베트남 수의국 승인 리스트 등재 + 검역증명서 + Form E</strong>. 야생 장어 금지 — 양식장 출처 증빙.</li>
+      <li>베트남 활수산물 허용 목록(Decree 26/2019 부록 VIII)의 <strong>Anguilla 등재 여부 원문 확인 필수 [미확인]</strong>.</li>
+    </ul>
+
+    <h3>한국 수입 환경</h3>
+    <ul>
+      <li>활뱀장어 수입 급증: 2026년 1~5월 1,729톤 → <strong>연 7,200톤+ 페이스</strong>. 국산 산지가 1.9만 원/kg으로 폭락.</li>
+      <li><span class="hl">규제 리스크</span>: 양만업계 반발 + 해수부 실뱀장어 입식 쿼터제 검토 — 조정관세 강화·수입규제 요구 가능성 [추정]. 정책 모니터링 필수.</li>
+      <li>중국산 장어는 위생증명서 약정 + MFDS 검사명령제 대상. 둔갑 사건 빈발 → <strong>정상 수입업자에게는 추적성이 차별화 무기</strong>.</li>
+    </ul>
   </section>
 
-  <section id="targets">
+  <section id="vn">
     <div class="chapter">3</div>
-    <h2>타깃 업체 총람</h2>
+    <h2>베트남 가공 사업 설계</h2>
 
-    <h3>3-1. 미션 A — 호치민 우나기 수입·유통상 (한국산 장어 잠재 바이어)</h3>
-    <p class="muted">박람회 출품 여부 미확인 — 사전 컨택 후 박람회 기간 별도 미팅 권장.</p>
+    <h3>Phase 1 — 위탁가공 (즉시 실행 가능)</h3>
+    <ul>
+      <li><strong>제도</strong>: Decree 69/2018(위탁가공) + 134/2016(원재료 관세 면제). 세관 코드 <strong>E21 반입 → E52 수출</strong>, 가공계약 세관 등록. 소스·포장재도 면세 반입 가능.</li>
+      <li><strong>파트너 3조건</strong>: ① NAFIQPM 한국 등재(미등재면 한국 수출 불가) ② HACCP ③ 가공 능력(할복·필렛·IQF; 구이 라인은 드묾 → <strong>필렛부터 시작, 구이 설비는 강해무역 투자 하이브리드 검토 [추정]</strong>)</li>
+      <li><strong>수수료 [추정]</strong>: 필렛 $0.4~1.0/kg · 가바야키 $1.5~3.0/kg(완제품 기준). 활어→가바야키 수율 55~65% → <strong>수율 보증 조항이 계약 핵심</strong>.</li>
+      <li><strong>IP 방어</strong>: 타레 배합·구이 프로파일이 노하우 — 소스는 완제품 공급 + NDA·IP 조항.</li>
+      <li><strong>내수 병행</strong>: 용도변경 신고 후 과세(활장어 ACFTA 0%라 실부담은 VAT 중심 [추정]). 수출/내수 원재료 수불부 구분 + 연 1회 세관 정산.</li>
+    </ul>
+
+    <h3>Phase 2 — 자체 공장</h3>
+    <ul>
+      <li><strong>설립</strong>: 100% 한국 자본 가공 FDI 가능. IRC→ERC 2~3개월 → ATTP + <strong>환경허가(장어 폐수 — 공단 집중폐수처리장 입주 사실상 필수)</strong> + 소방. 임차·개조 시 가동까지 <strong>8~12개월</strong>, 신축 15~24개월 [추정]. 행정비용 $3만~8만 [추정].</li>
+      <li><strong>CAPEX [추정]</strong>: 소형 장어 전용(축양수조+할복/필렛+구이 3단+IQF+냉동창고, 연 1,000~2,000톤급) <strong>총 $4~8M</strong>. 벤치마크: 교쿠요 $12.65M/연 5,000톤(롱안 득호아).</li>
+      <li><strong>인센티브</strong>: ⚠️2025.10부터 '공단 입지'만으로는 CIT 우대 소멸. <strong>농수산가공 업종 우대(15%, 낙후지역 10%)를 IRC 업종 코드로 설계</strong>하는 것이 절세 핵심 [추정]. 설비 수입관세 면제(우대 프로젝트).</li>
+    </ul>
     <div class="tbl"><table>
-      <thead><tr><th>업체</th><th>성격</th><th>비고</th></tr></thead>
+      <thead><tr><th>입지 후보</th><th>장점</th><th>단점</th></tr></thead>
       <tbody>
-        <tr><td>New Fresh Foods</td><td>수입 냉동식품 유통</td><td>우나기 가바야키 취급 확인</td></tr>
-        <tr><td>Gofood</td><td>일본식품·수입육 유통</td><td>우나기 상품 페이지 보유</td></tr>
-        <tr><td>Nguyên Hà Food</td><td>HORECA 식자재</td><td>우나동 원료 취급</td></tr>
-        <tr><td>Homefarm</td><td>수입식품 소매 체인</td><td>우나기 200~230g 소매</td></tr>
-        <tr><td>Foodpatik · Greengood · Gold Seafood · Gold Food · Donfood · Japan-U</td><td>수입 수산·일식자재</td><td>우나기 리스팅 확인</td></tr>
-        <tr><td>CoopMart(온라인)</td><td>대형 유통</td><td>우나기 온라인 판매</td></tr>
-        <tr><td><strong>Dashi Lab</strong></td><td>베트남 내 일본식 장어 가공(연 1,000톤+ 일본 수출 주장)</td><td>OEM 파트너/경쟁자 양면 — 위탁가공 타진</td></tr>
-        <tr><td>Unagista · Yuugatei Mutsumian</td><td>우나기 전문식당</td><td>1군 레탄톤 — 시장 벤치마크 방문</td></tr>
+        <tr><td>구 롱안 — Long Hau IP</td><td>히엡프억항 3km · 식품·수산 특화 · 폐수처리 5,000㎥/일 · 임대 $4~5/㎡/월</td><td>2026년부터 최저임금 1지역(월 531만 동)</td></tr>
+        <tr><td>구 롱안 — Duc Hoa</td><td>교쿠요 검증 입지 · 떤선녓공항 30~40km(활어 항공 반입 유리)</td><td>동일 임금 이슈</td></tr>
+        <tr><td>메콩(껀터 등)</td><td>최저임금 3~4지역(370만~414만 동) · 노동력 풍부</td><td>HCMC 170km+ · 활어 항공 반입 불리</td></tr>
       </tbody>
     </table></div>
-    <p><strong>상담 포인트</strong>: ① 현 조달처·단가·월 물량 ② 한국산(자포니카, 밀양 직송) 프리미엄 관심도 ③ 냉동 RMR 소매 유통 가능성 ④ 수입 통관 요구서류.</p>
+    <p class="muted">판단 기준: 활어 반입 물류(공항) vs 인건비. 항공 반입이면 구 롱안, 육로(북부 국경) 반입이면 북부 입지(하이퐁권) 대안도 검토 가치 [추정].</p>
 
-    <h3>3-2. 미션 D — 장어 관련 (박람회 내+주변)</h3>
-    <div class="tbl"><table>
-      <thead><tr><th>대상</th><th>접근</th><th>확인할 것</th></tr></thead>
-      <tbody>
-        <tr><td><strong>중국관</strong></td><td>국제관 구역 [현장확인]</td><td>가바야키 제조사 출품 여부. 앵커: 대일 ¥1,919/kg, 실무 $14~20/kg [추정]</td></tr>
-        <tr><td><strong>인도네시아관</strong></td><td>국제관 구역 [현장확인]</td><td>A. bicolor: PT Suri Tani Pemuka(JAPFA, 연 150톤), PT Jireh 등</td></tr>
-        <tr><td>VAFCO</td><td>VASEP 회원 — 출품 가능성 높음 [추정]</td><td>냉동 lươn(히츠마부시용 아님) · 현지 매장용 유통 파트너 후보</td></tr>
-        <tr><td>중국 업체 리스트</td><td>부스 없으면 이메일</td><td>Eelpro · Ningbo Wholechance · Jiangxi Wan Cun Quan · Jiangxi Huchen · Sinofrost — 전부 대한국 수출 실적</td></tr>
-      </tbody>
-    </table></div>
-    <p><strong>계약 주의</strong>: ① 유럽뱀장어(A. anguilla)=CITES II — <strong>종명 계약 명기+DNA 검증 조항</strong> ② CoP20(2025.11)에서 전종 등재안 부결 → 현재 거래 자유, 재상정 리스크 상존 ③ <strong>타레 비율·글레이즈·순중량(NW) 기준 단가</strong> 명기 ④ 표준 10kg/CTN, 사이즈 20P~120P, 유통기한 24개월.</p>
+    <h3>한국 수출용 시설 등록 (리드타임 주의)</h3>
+    <ol>
+      <li><strong>베트남</strong>: NAFIQPM 시설 심사(A/B등급) → 한국 수품원(NFQS) 통보·승인 등재 — <strong>3~6개월 [추정]</strong>. 등재 후에도 로트별 심사 + 위생증명서.</li>
+      <li><strong>한국</strong>: 수입식품정보마루 <strong>해외제조업소 등록</strong>(수입신고 7일 전까지, 유효 2년, 실제 제조시설만).</li>
+      <li>위탁가공 파트너가 <strong>이미 한국 등재 공장이면 이 리드타임을 통째로 건너뜀</strong> — 파트너 조건 1순위인 이유.</li>
+    </ol>
 
-    <h3>3-3. 미션 C — 새우 공급자 15개사</h3>
-    <p class="muted">2024 수출 Top 5: Stapimex · Minh Phu · Minh Phu Hau Giang · Sao Ta · CASES. 부스번호는 현장확인.</p>
-    <div class="tbl"><table>
-      <thead><tr><th>업체 (소재지)</th><th>규모</th><th>주력</th><th>인증</th><th>상담 포인트</th></tr></thead>
-      <tbody>
-        <tr><td>Stapimex (속짱)</td><td class="num"><strong>$3.1억 · 1위</strong></td><td>노바시·템푸라·브레디드</td><td>BRC·ASC·<strong>BAP4성</strong>·IFS</td><td>노바시 견적, BAP 그룹인증 스토리</td></tr>
-        <tr><td>Minh Phu (까마우·허우장)</td><td class="num">그룹 ~$5.4억 [추정]</td><td>전 라인, 일본향 VA 특화</td><td>ASC·BAP·BRC·IFS</td><td><strong>유기농 블랙타이거</strong>·스시에비</td></tr>
-        <tr><td>Sao Ta/FIMEX (속짱)</td><td class="num">$1.94억</td><td><strong>노바시 원조</strong>·스팀·템푸라</td><td>일본 스펙</td><td>대일 품질기준 견적</td></tr>
-        <tr><td>CASES (까마우)</td><td class="num">Top 5</td><td>HOSO/PDTO/PD raw&amp;cooked</td><td>BRC·BAP·<strong>Halal</strong>·ASC·Organic</td><td><strong>한국 명시 시장</strong> — 기존 수입상 확인</td></tr>
-        <tr><td>Camimex (까마우)</td><td class="num">$1억+</td><td><strong>유기농 원조</strong>(2000~)</td><td>Naturland·EU Organic</td><td>유기농 RMR 라벨 스토리 (과거 한국 연 $910만)</td></tr>
-        <tr><td>UTXI (속짱)</td><td class="num">연산 2만톤</td><td><strong>꼬치</strong>·노바시·브레디드</td><td>BRC·IFS·BAP4성·MSC</td><td>꼬치·안주형 제품</td></tr>
-        <tr><td>Thuan Phuoc (다낭)</td><td class="num">Top 20</td><td>IQF 전반</td><td>일·미·EU 거래</td><td>신공장 캐파·가격 공격성</td></tr>
-        <tr><td>TAIKA (속짱)</td><td class="num">$1.29억</td><td>노바시·스시새우</td><td>—</td><td>신흥 급성장 — 가격 경쟁력</td></tr>
-        <tr><td>Anh Khoa (까마우)</td><td class="num">2026 출품 확인</td><td>블랙타이거</td><td>BRC·Halal</td><td>대하급 HOSO</td></tr>
-        <tr><td>Viet Uc / BIM / Seaprimexco / Vina Cleanfood / Quoc Viet / Cuu Long</td><td class="num">중견</td><td>원료·대안 견적</td><td>—</td><td>종묘 스토리·소량 유연성·시세 비교</td></tr>
-      </tbody>
-    </table></div>
-    <div class="check-group">
-      <h4>한국 수입 실무 (협상 전 숙지)</h4>
-      <ul class="check">
-        <li><strong>VKFTA 무관세 쿼터(TRQ) 연 15,000톤 — 초과분 20% 관세</strong>. 실수요는 5만톤+ → 수입권 공매 프리미엄 <strong>수입액의 14~16%</strong>(kfta.net·aT 경유)</li>
-        <li>소량 바이어는 <strong>한국 수입상 경유 3자 구조</strong>(공장→수입상→양산도)가 현실적 — 동림수산·오션스글로벌·비비수산·원씨푸드 등 베트남 새우 취급 확인</li>
-        <li>단가 앵커: 대한국 <strong>$7.1~8.2/kg</strong>(일본향 $9.5) · 산지가(2026.7) size30=147,000 VND/kg</li>
-        <li>결제 표준 <strong>T/T 30/70</strong> 또는 L/C · 리드타임 7~14영업일 · 호치민→부산 리퍼 5~7일</li>
-      </ul>
-    </div>
-
-    <h3>3-4. 미션 B — 유망 상품 공급자</h3>
-    <div class="tbl"><table>
-      <thead><tr><th>카테고리</th><th>확인된 업체</th><th>비고</th></tr></thead>
-      <tbody>
-        <tr><td>패류(백합)</td><td>[현장확인 — 패류 부스 전수]</td><td>Ben Tre 백합=<strong>MSC 인증</strong> · $0.4~2.5/kg · <span class="gold">저경쟁 1순위</span></td></tr>
-        <tr><td>RTE·수리미</td><td><strong>Meksea</strong>(2026 확정)·Sai Thanh·Interfish·CASES</td><td>원료는 레드오션 — <strong>브레디드·꼬치·스킨팩 완제품 OEM</strong>으로</td></tr>
-        <tr><td>게</td><td>[현장확인] 소프트쉘(까마우)·살균 꽃게살</td><td>공급자 적음 · $8~15/kg [추정] · 메뉴 차별화</td></tr>
-        <tr><td>참치</td><td>Trang Thuy(2025 Hall A 201-202)·Bidifisco 등 [추정]</td><td>사쿠 AAA $11.5/kg · <span class="hl">Non-CO 필수</span>(한국 CO 수입 불가 [추정])</td></tr>
-        <tr><td>두족류</td><td>Hai Nam(HANAFISH)·Thaimex·Kisimex 등 [추정]</td><td>한국이 1위 수입국 — 원물 대신 <strong>양념·자숙 반제품 OEM</strong></td></tr>
-        <tr><td>팡가시우스</td><td>Vinh Hoan·Navico(2026 확인)·Godaco·Fatifish</td><td>필렛 $1.68~3.2/kg — 급식·가공용</td></tr>
-        <tr><td>설비·물류</td><td>OctoFrost(IQF)·Volta Belting(2026 확정)·Vinh Nam</td><td>현지 콜드체인은 ABA Cooltrans 별도 컨택</td></tr>
-      </tbody>
-    </table></div>
+    <h3>베트남 내수 판로 (가공품 판매처)</h3>
+    <ul>
+      <li><strong>호치민 우나기 수입·유통상 = 강해무역의 1차 영업 대상</strong> (베트남 가공품 전에도 중국산 직공급 트레이딩 가능): New Fresh Foods · Gofood · Nguyên Hà Food · Homefarm · Foodpatik · Greengood · Gold Seafood · Gold Food · Donfood · Japan-U · CoopMart</li>
+      <li>베트남 냉동장어 수입 폭증(+3,754%) — 일식당(호치민 900개+)·마트 수요 성장.</li>
+      <li>HORECA·물류: VAFCO · Meksea · ABA Cooltrans(냉동트럭 300대).</li>
+      <li><strong>벤치마크·경쟁: UNAVI</strong>(베트남 장어 일관체제 — 일본/한국/유럽 수출 주장) — 위탁가공 후보이자 경쟁자, 양면 검토. ※Dashi Lab은 재검증 결과 <strong>소스 제조사</strong>(장어 가공 미확인) — 가바야키 소스 B2B로만 접촉 가치.</li>
+    </ul>
   </section>
 
-  <section id="opp">
+  <section id="tariff">
     <div class="chapter">4</div>
-    <h2>상품 기회 평가표 — 객단가 × 경쟁강도</h2>
+    <h2>한국 수입 관세·원산지 ★사업성 결정 변수</h2>
+
+    <h3>현재 구조 (중국산 직수입)</h3>
     <div class="tbl"><table>
-      <thead><tr><th>순위</th><th>카테고리</th><th>단가</th><th>경쟁강도</th><th>한국 수입</th><th>판단</th></tr></thead>
+      <thead><tr><th>HS</th><th>품목</th><th>세율</th><th>비고</th></tr></thead>
       <tbody>
-        <tr><td>★1</td><td>패류 — MSC 백합</td><td class="num">$0.4~2.5/kg</td><td><span class="gold">낮음</span></td><td>미미</td><td>인증 스토리+최저 원가</td></tr>
-        <tr><td>★2</td><td>RTE 완제품 OEM</td><td>가공 마진</td><td><span class="gold">중하</span></td><td>성장 초기</td><td>올해 전시 핵심 테마</td></tr>
-        <tr><td>★3</td><td>소프트쉘크랩·꽃게살</td><td class="num">$8~15/kg [추정]</td><td><span class="gold">중하</span></td><td>소규모</td><td>공급자 적음·차별화</td></tr>
-        <tr><td>★4</td><td>참치 사쿠(Non-CO)</td><td class="num">AAA $11.5/kg</td><td>중</td><td>중</td><td>회·포케 — CO 규제만 주의</td></tr>
-        <tr><td>5</td><td>새우 가공품</td><td class="num">$7~9.5/kg</td><td>중상</td><td>1위 공급국</td><td>필수 견적 — TRQ 구조 숙지</td></tr>
-        <tr><td>6</td><td>주꾸미·문어 원물</td><td>시세</td><td><span class="hl">높음</span></td><td>1위 수입국</td><td>반제품 OEM으로만</td></tr>
-        <tr><td>7</td><td>수리미 원료</td><td>저가</td><td><span class="hl">높음</span></td><td>1위 공급($83M)</td><td>완제품으로만</td></tr>
-        <tr><td>8</td><td>팡가시우스</td><td class="num">$1.7~3.2/kg</td><td><span class="hl">높음</span></td><td>B2B</td><td>급식·가공용 한정</td></tr>
-        <tr><td>참고</td><td>베트남 장어(활어)</td><td class="num">$20~24/kg</td><td>—</td><td>—</td><td><span class="hl">소싱 부적합</span> — 중국 완제품보다 비쌈</td></tr>
+        <tr><td>0301.92</td><td>활뱀장어</td><td class="num"><span class="hl">조정관세 20%</span></td><td>2026년 유지 확정 · 한중FTA/RCEP 혜택 없음</td></tr>
+        <tr><td>0303.26</td><td>냉동 뱀장어</td><td class="num">10%</td><td>조정관세 비대상 [추정]</td></tr>
+        <tr><td>0304</td><td>냉동 필렛 (현 주력)</td><td class="num">10% 수준</td><td>세번별 확인 [추정]</td></tr>
+        <tr><td>1604.17</td><td>가바야키(조제)</td><td class="num">20%</td><td>16류 조제품 일반</td></tr>
       </tbody>
     </table></div>
+
+    <h3>베트남 가공 시나리오 — 열리는 것과 닫힌 것</h3>
+    <ul>
+      <li><strong>필렛(0304): 닫힘.</strong> FTA 어류(3류)는 완전생산(WO) 요구 → 중국산 원어로는 특혜 불가, <strong>10% 유지 + 원산지 표시 "중국산" 유지 [추정-강]</strong> (활어→냉동·절단은 단순가공).</li>
+      <li><strong>가바야키(1604.17): 조건부 열림.</strong> 한-아세안 PSR "<strong>CC or RVC40</strong>" [확인] · RCEP "CC" [확인](중국 재료 역내 누적 가능) → 03류→16류 가공으로 <strong>베트남 원산지 인정 가능성 높음 [추정-강]</strong>.</li>
+      <li><span class="hl">관건은 세율</span>: 한국이 1604.17을 AKFTA/VKFTA/RCEP에서 실제 양허(20%↓)했는지 <strong>[미확인]</strong> — 양허제외라면 원산지 충족해도 20% 그대로. <strong>이 한 가지가 관세 측면 성패를 결정 → 관세사 확인이 투자 결정보다 먼저.</strong></li>
+      <li><strong>원산지 표시</strong>: 가바야키 "베트남산" 가능성 높음[추정] → 관세청 <strong>원산지표시 사전확인 제도</strong>로 확정. 뱀장어는 음식점 표시 의무 + 2026.1 기획단속 + 둔갑 사건 빈발 — 표시·마케팅은 보수적으로("베트남 가공(중국산 원료)" 병기 검토).</li>
+      <li><strong>대안 카드 [추정]</strong>: 베트남 양식 장어(무태장어 중심) 원료 → WO 충족으로 필렛까지 특혜 가능 — 단 종·품질의 히츠마부시 적합성 별도 검증.</li>
+    </ul>
+
+    <h3>베트남 측 세제 (우호적)</h3>
+    <p>중국산 활장어 <strong>ACFTA(Form E) 0%</strong> + 미가공 수산물 수입 VAT 비과세 + 수출용 원재료 관세 면제(SXXK/가공무역). 내수 판매분만 용도변경 과세.</p>
+
+    <div class="check-group">
+      <h4>관세사 확인 체크리스트 (투자 결정 전 필수 · 우선순위순)</h4>
+      <ul class="check">
+        <li><strong>한국의 1604.17 협정세율</strong> — AKFTA·VKFTA·RCEP 양허 여부 + 2026 실행세율 (UNI-PASS/FTA포털) — <span class="hl">사업성 결정 변수</span></li>
+        <li>VKFTA 1604.17 PSR 원문 (CC 단독 vs "3류 완전생산" 단서)</li>
+        <li>RCEP 한국 관세차등 부록의 1604.17 포함 여부 (포함 시 베트남 내 부가가치 20% 설계)</li>
+        <li>품목분류 사전심사 — 실제 제품의 세번 확정 (1604.17 vs 0304 경계)</li>
+        <li>원산지표시 사전확인 — 가바야키 "베트남산" / 필렛 "중국산" 확정</li>
+        <li>음식점·온라인 표시 문구 적법성 (수품원/농관원 질의)</li>
+        <li>2026 조정관세 별표 원문 (활 20% · 냉동/조제품 비포함 확인)</li>
+      </ul>
+    </div>
   </section>
 
-  <section id="days">
+  <section id="action">
     <div class="chapter">5</div>
-    <h2>현장 실행 — 3일 동선 + 미팅 SOP</h2>
+    <h2>VIETFISH 2026 현장 실행</h2>
 
-    <div class="day">
-      <h4>Day 1 — 8/19(수)<small>전체 파악 + 우선 타깃</small></h4>
-      <ul>
-        <li>08:30 배지 수령(QR) → <strong>현장 디렉토리·플로어플랜 확보</strong>(전 부스 매핑) → 09:00 개막식(주빈 네트워킹)</li>
-        <li>오전: <strong>한국관</strong>(참가기업·수출지원 정보) → <strong>중국관·인도네시아관</strong>(가바야키 — 미션 D)</li>
-        <li>오후: 새우 1차 — Stapimex·Minh Phu·Sao Ta·CASES (소개·스펙시트 전달·미팅 예약)</li>
-        <li>저녁: 푸미흥 상권 실사 + 우나기 수입상 미팅①(사전 약속분)</li>
-      </ul>
-    </div>
-    <div class="day">
-      <h4>Day 2 — 8/20(목)<small>심층 상담의 날</small></h4>
-      <ul>
-        <li>오전: B2B 확정 미팅 + 새우 2차(Camimex·UTXI·TAIKA·Anh Khoa)</li>
-        <li>오후: 유망상품 — <strong>패류 부스 전수</strong> → RTE(Meksea·Sai Thanh) → 게 → 참치(Non-CO 확인)</li>
-        <li>세미나 1개(무역장벽·수입규제 세션 — TRQ·검역 질의)</li>
-        <li>저녁: 1군 레탄톤 우나기 취급점 벤치마크(Unagista 등)</li>
-      </ul>
-    </div>
-    <div class="day">
-      <h4>Day 3 — 8/21(금)<small>보완 + 마무리 (~16시)</small></h4>
-      <ul>
-        <li>오전: 설비·포장·콜드체인(OctoFrost·Volta) + 재방문 2차 상담(가격 재협상)</li>
-        <li>오후: 자료 정리·사진 백업 → VASEP 사무국 인사(연락 채널) → 15:00 철수</li>
-        <li>저녁: 4군 빈칸 quán ốc 문화 체험 / Crescent Mall 한국 F&amp;B 임장</li>
+    <div class="check-group">
+      <h4>사전 준비 (지금 즉시)</h4>
+      <ul class="check">
+        <li>방문자 사전등록 + B2B Matching Form + Hosted Buyer 신청 문의</li>
+        <li>항공(인천→SGN)·호텔(7군: ibis Saigon South 등)</li>
+        <li><strong>영문 회사소개서(무역회사 버전)</strong>: 취급 품목(중국산 로스트라타·자포니카 필렛), 연간 취급량(톤), 국내 거래처(외식 체인), <strong>베트남 가공 계획 1페이지</strong></li>
+        <li>위탁가공 RFQ 양식: 원료/공정/규격/월 물량/수율 보증/한국 등재 확인란</li>
+        <li><strong>관세사에게 4장 체크리스트 발주</strong> — 결과에 따라 협상 스탠스가 달라짐</li>
+        <li>VASEP 회원 디렉토리에서 "민물어 가공+한국 등재" 교집합 공장 사전 리스트업 + aT에 한국관 명단 문의</li>
+        <li>호치민 우나기 유통상 미팅 제안 메일</li>
       </ul>
     </div>
 
-    <h3>부스 미팅 SOP (부스당 15~20분)</h3>
-    <ol>
-      <li>명함 교환 → 소개서 전달: "Korean eel-rice-bowl franchise, ~40 stores, annual eel usage OO톤"</li>
-      <li>공통 질문: <em>"Do you export to Korea? Which importers?"</em> · <em>"MOQ? LCL possible?"</em> · <em>"Price indication CIF Busan?"</em> · <em>"Certifications?"</em> · <em>"Lead time?"</em></li>
-      <li>카테고리별: 새우 <em>"Glaze %? NW-based pricing?"</em> · 장어 <em>"Species? Tare ratio?"</em> · 참치 <em>"CO-treated or non-CO?"</em> · 패류 <em>"MSC? Purging process?"</em></li>
-      <li>샘플 시식 + 샘플 발송 요청(한국 본사 주소)</li>
-      <li><strong>부스에서 나온 직후 미팅 기록지 작성</strong>: 업체/담당자/품목/가격/MOQ/인증/등급(A·B·C)/후속 액션 — 부스·제품·가격표 사진을 명함과 세트로</li>
-    </ol>
-    <p><strong>등급 기준</strong> — A(계약 검토): 한국 수출 실적+인증+가격+소량 유연성 → 귀국 2주 내 샘플·견적 확정 / B(관계 유지): 분기별 시세 요청 / C(정보용).</p>
+    <h3>타깃 부스 (우선순위순)</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>순위</th><th>대상</th><th>확인 포인트</th></tr></thead>
+      <tbody>
+        <tr><td>①</td><td><strong>위탁가공 후보</strong> — Vinh Hoan·Navico·Godaco·Fatifish(팡가시우스 대형사) · CASES(한국 수출 최다) · UNAVI(장어, 출품 미확인) · Meksea·Sai Thanh(OEM)</td><td>gia công 수주 여부 · <strong>NAFIQPM 한국 등재</strong> · 민물어 할복/필렛/IQF 라인 · 수수료·수율</td></tr>
+        <tr><td>②</td><td><strong>중국관(~40개사)</strong></td><td>활어 무역·가바야키 업체 출품 여부, 에이전트 확보. 미출품 시 2장 리스트와 이메일 병행</td></tr>
+        <tr><td>③</td><td>설비 — OctoFrost(IQF)·Volta Belting(2026 확정)·Vinh Nam(냉동)·포장</td><td>Phase 2 견적. 구이 라인은 중국·일본 설비 [현장확인]</td></tr>
+        <tr><td>④</td><td>내수 판로 — Meksea·VAFCO + 장외 우나기 수입상 미팅</td><td>현 조달처·단가·월 물량 · 강해무역 공급 관심도</td></tr>
+        <tr><td>⑤</td><td>포트폴리오(보조) — 새우 가공품(Stapimex·Sao Ta·Minh Phu·Camimex·UTXI) · 패류(MSC 백합) · RTE OEM</td><td>수입상 역량 활용 추가 아이템</td></tr>
+      </tbody>
+    </table></div>
+    <p><strong>질문 스크립트(위탁가공)</strong>: <em>"Do you do contract processing (gia công) for foreign clients?"</em> · <em>"Is this factory on the NAFIQPM export list to Korea?"</em> · <em>"Can you process freshwater eel — gutting, fillet, IQF? Roasting line?"</em> · <em>"Toll fee per kg and yield guarantee?"</em></p>
+
+    <div class="day">
+      <h4>Day 1 — 8/19(수)<small>전체 파악 + 위탁가공 타진</small></h4>
+      <ul>
+        <li>08:30 배지·디렉토리·플로어플랜 → 개막식 → <strong>한국관</strong> → <strong>중국관 전수 확인</strong></li>
+        <li>오후: 팡가시우스 대형사(Vinh Hoan·Navico·Godaco) 위탁가공 타진 → 저녁: 우나기 유통상 미팅①</li>
+      </ul>
+    </div>
+    <div class="day">
+      <h4>Day 2 — 8/20(목)<small>심층 상담</small></h4>
+      <ul>
+        <li>B2B 확정 미팅 + CASES·Meksea·Sai Thanh(OEM·한국 등재) → 설비존(OctoFrost·Volta·포장)</li>
+        <li>세미나 1개(무역장벽·수입규제 — 한국행 등재 절차 질의) → 저녁: 1군 레탄톤 일식당 상권 벤치마크</li>
+      </ul>
+    </div>
+    <div class="day">
+      <h4>Day 3 — 8/21(금)<small>재협상 + 마무리 (~16시)</small></h4>
+      <ul>
+        <li>재방문 2차 상담(수수료·수율) → 새우·패류·RTE 순회 → VASEP 사무국(NAFIQPM 문의 채널) → 15:00 철수</li>
+        <li>저녁: 푸미흥 한인상권·Crescent Mall 임장(양산도 진출 시 공급 동선)</li>
+      </ul>
+    </div>
+    <p><strong>등급 기준</strong> — A: 한국 등재+위탁가공 의향+민물어 라인 → 귀국 2주 내 공장 실사 / B: 일부 충족 → RFQ 발송 / C: 정보용. 계약 전: 공장 실사(폐수·위생·축양 공간)·NAFIQPM 등재번호 원본·HACCP 유효기간·제3자 검품 합의.</p>
   </section>
 
-  <section id="contract">
+  <section id="roadmap">
     <div class="chapter">6</div>
-    <h2>계약 전 검증 체크리스트 (귀국 후)</h2>
-    <ul class="check" style="max-width:48em">
-      <li>공장 실사 또는 제3자 검사(SGS·Intertek) — 대량 계약 전 필수</li>
-      <li>인증서 원본·유효기간 확인 (HACCP·BRC·ASC·BAP·Halal)</li>
-      <li><strong>장어: 종명 계약 명기 + DNA 검증 조항 + 유럽종(A. anguilla) 배제</strong></li>
-      <li>참치: Non-CO 확약서 (한국 CO 처리 수입 불가 [추정 — 식약처 최종 확인])</li>
-      <li>글레이즈·타레 비율·순중량(NW) 기준 단가 명기</li>
-      <li>새우: TRQ(15,000톤/20% 관세/공매 프리미엄 14~16%) 반영 실질 원가 vs 한국 수입상 3자 견적 비교</li>
-      <li>역수출: 베트남 수입요건(NAFIQPM·완제품 예외) 현지 법무 확인 + 베트남어 라벨링</li>
-      <li>첫 거래는 소액 T/T 30/70 또는 L/C · 견적은 CIF 기준 통일 · 리퍼 물류 견적 2개사+</li>
-    </ul>
-  </section>
-
-  <section id="local">
-    <div class="chapter">7</div>
-    <h2>현지 실무 정보</h2>
-    <ul>
-      <li><strong>이동</strong>: 1군→SECC Grab 100,000~150,000 VND(20~35분) · 푸미흥 호텔→SECC ~10분 · 공항→SECC ~30분 · 버스 139번 저가 대안</li>
-      <li><strong>현장</strong>: 푸드코트(Culinary Fair Area)·카페·ATM·충전소·의무실 운영</li>
-      <li><strong>8월 = 우기</strong>: 오후 스콜 대비 우산·자료 방수 커버 · 실내 냉방 강함(얇은 겉옷)</li>
-      <li><strong>통역</strong>: 대형사는 영어 가능. 세부 협상용 베트남어 통역 1명 고용 고려 [추정]</li>
-      <li><strong>연락처</strong>: VASEP Ms. Lam Xuan Dao(+84-28-6281 0434) · aT 수산사업단(cgj@at.or.kr, 061-931-0855) · 호치민 K-seafood 수출지원센터(k-seafoodtrade.kr)</li>
-    </ul>
-    <h3>현장에서 반드시 확인 (미확인 7)</h3>
-    <ol>
-      <li>개장시간(9시 vs 10시) — 첫날 8:30 도착으로 해소</li>
-      <li>전체 출품사 명단·부스번호(현장 디렉토리 / 출국 전 vietfish.com.vn/en/producers)</li>
-      <li>홀별 품목 배치(Hall A 수산 / B1 설비·해외 [추정])</li>
-      <li>한국관 참가기업·위치(aT 사전 문의)</li>
-      <li>중국관 내 가바야키 제조사 여부</li>
-      <li>세미나 세부 시간표(현장 게시·VASEP Facebook)</li>
-      <li>Hosted Buyer 라운지 이용 자격</li>
-    </ol>
-    <h3>사후 팔로업</h3>
-    <ul>
-      <li>귀국 1주: A등급 업체 감사 메일+견적·샘플 확정 · 2주: TRQ·물류비 포함 원가 시뮬레이션 + 역수출 사업성 초안</li>
-      <li><strong>11/11~14 Vietnam Foodexpo(SECC, aT 한국관)</strong>: RMR 리테일 본격 상담 — 이번에 만난 유통상 재회 약속</li>
-      <li>분기별: 중국 가바야키 시세·베트남 새우 산지가 모니터링</li>
-    </ul>
+    <h2>실행 로드맵</h2>
+    <div class="phase now">
+      <h4>Phase 0 — 지금~8월<small>D-9</small></h4>
+      <ul>
+        <li>박람회 등록·미팅 세팅 + <strong>관세사 확인 발주(1604.17 양허세율이 1순위)</strong></li>
+        <li>중국 공급사에 활만 대베트남 수출 경험·Form E·베트남 수의국 등재 질의</li>
+      </ul>
+    </div>
+    <div class="phase">
+      <h4>Phase 1 — 2026 Q4~2027 상반기<small>위탁가공 파일럿</small></h4>
+      <ul>
+        <li>A등급 공장 실사 → 소량 파일럿: 중국산 원료(냉동 생만부터) → 베트남 가공 → 한국 시험 수입(관세·통관·표시 실증) + 베트남 내수 시험 판매(유통상 2~3곳)</li>
+        <li>활어 검역 요건(부록 VIII) 확정 · NAFIQPM 절차 실측</li>
+        <li><strong>판단 게이트</strong>: 협정세율 확인 결과 + 파일럿 원가 → 자체 공장 투자 결정</li>
+      </ul>
+    </div>
+    <div class="phase">
+      <h4>Phase 2 — 2027~2028<small>자체 공장 (게이트 통과 시)</small></h4>
+      <ul>
+        <li>법인 설립(업종코드 '수산물 가공'으로 CIT 15% 설계) → 입지 확정 → 인허가·설비(CAPEX $4~8M급) → NAFIQPM/식약처 등재</li>
+        <li><strong>양산도 베트남 진출 시점과 동기화</strong> — 현지 매장 공급 + 한국 수출 병행</li>
+      </ul>
+    </div>
+    <div class="phase">
+      <h4>상시</h4>
+      <ul>
+        <li>로스트라타/자포니카 가격 사이클(톈마 월별 공시·중국만어망 주간 시세) · CITES · 한국 수입규제(입식 쿼터제) 모니터링</li>
+        <li>11/11~14 Vietnam Foodexpo(SECC, aT 한국관): 내수 유통·리테일 2차전</li>
+      </ul>
+    </div>
   </section>
 
   <section id="anchor">
     <div class="chapter">부록</div>
-    <h2>가격 앵커 카드 (협상 테이블용)</h2>
+    <h2>가격 앵커 카드 (2026.8)</h2>
     <div class="tbl"><table>
-      <thead><tr><th>품목</th><th>벤치마크</th><th>시점</th></tr></thead>
+      <thead><tr><th>항목</th><th>수치</th><th>비고</th></tr></thead>
       <tbody>
-        <tr><td>중국 가바야키(대일 도매)</td><td class="num"><strong>¥1,919/kg (-20% YoY)</strong></td><td>2026</td></tr>
-        <tr><td>중국 가바야키 실무 수출가</td><td class="num">$14~20/kg [추정]</td><td>2025~26</td></tr>
+        <tr><td>중국 활만 출하가(톈마 공시)</td><td class="num">RMB 37~96/kg</td><td>2026.5 · 하단 하락 중</td></tr>
+        <tr><td>로스트라타 산지가</td><td class="num">1.5P 6.6만 위안/톤 (+24.5%)</td><td>2025.8 · 강세</td></tr>
+        <tr><td>중국 가바야키 수출단가</td><td class="num">$15/kg (-6.5%)</td><td>2025 1~9월</td></tr>
+        <tr><td>가바야키 대일 수입가</td><td class="num">¥2,225/kg (-10%)</td><td>2026 Q1</td></tr>
+        <tr><td>생필렛 수출가</td><td class="num">$11~13/kg [추정]</td><td>가바야키 -10~20%</td></tr>
         <tr><td>중국산 냉동장어 한국 도착가</td><td class="num">약 18,000원/kg</td><td>최근</td></tr>
-        <tr><td>한국 민물장어 산지가</td><td class="num">16,433원/kg(2026.3) · 도매 26,600원(7월)</td><td>2026</td></tr>
-        <tr><td>베트남 cá chình 활어</td><td class="num">50~60만 VND/kg ($20~24)</td><td>2025~26</td></tr>
-        <tr><td>흰다리새우 산지가(메콩)</td><td class="num">size30 147,000 · size50 105,000 VND/kg</td><td>2026.7</td></tr>
-        <tr><td>흰다리새우 대한국 수출가</td><td class="num">$7.1~8.2/kg (일본향 $9.5)</td><td>2025~26</td></tr>
-        <tr><td>블랙타이거 산지가</td><td class="num">30미 180,000~300,000 VND/kg</td><td>2026 Q1</td></tr>
-        <tr><td>참치 사쿠 FOB HCM</td><td class="num">AAA $11.5 · AA $10.7 · A $9.2/kg</td><td>2025~26</td></tr>
-        <tr><td>팡가시우스 필렛</td><td class="num">$1.68~3.2/kg</td><td>2026</td></tr>
-        <tr><td>패류 수출단가</td><td class="num">$0.4~2.5/kg</td><td>2025</td></tr>
+        <tr><td>한국 국산 산지가(참고)</td><td class="num">19,000원/kg</td><td>2026.7</td></tr>
+        <tr><td>위탁가공비</td><td class="num">필렛 $0.4~1.0 · 가바야키 $1.5~3.0/kg [추정]</td><td>수율 55~65%</td></tr>
+        <tr><td>공장 CAPEX</td><td class="num">$4~8M (연 1,000~2,000톤급) [추정]</td><td>교쿠요 $12.65M/5,000톤</td></tr>
+        <tr><td>베트남 최저임금</td><td class="num">1지역 531만 · 3지역 414만 · 4지역 370만 동</td><td>2026.1~</td></tr>
         <tr><td>리퍼 운임 HCMC→부산</td><td class="num">40'HC $750~950 · 5~7일 [추정]</td><td>시황</td></tr>
-        <tr><td>환율 개산</td><td class="num">1,000 VND ≈ 50원 · $1 ≈ 26,000 VND</td><td>2026.8</td></tr>
+        <tr><td>한국 관세</td><td class="num">활 20%(조정) · 냉동/필렛 10% · 가바야키 20%</td><td>FTA 인하 여부 <span class="hl">[미확인]</span></td></tr>
       </tbody>
     </table></div>
   </section>
 
   <footer>
-    <p>3개 전문 리서치(장어 공급망 / 새우 업체 / 출품사·유망상품) 종합 · 확인된 사실 외 [추정]·[현장확인] 표기 유지 · 세부 출처 URL은 저장소 <strong>reports/vietfish-2026-playbook.md</strong> 및 리서치 원자료 참조.</p>
-    <p>2026-08-10 작성 · 가격은 시황 변동 큼 — 협상 시 최신 시세 재확인 필수 · 디자인: 토스 디자인 시스템(TDS) 토큰 기반.</p>
+    <p><strong>데이터 신뢰도</strong> — 견고: 박람회 정보(VASEP), 중국 생산·수출 통계(정부·상장사 공시), 조정관세(활 20% 유지), CITES CoP20 부결, 베트남 FDI·세관 제도, ACFTA 0%. [추정]: 위탁가공비·수율·CAPEX·입지 판단. <span class="hl">[미확인 — 확인 전 투자 금지]</span>: 한국의 1604.17 협정세율(최대 변수) · VKFTA PSR 원문 · 베트남 활수산물 목록의 Anguilla 등재 · 원산지표시 사전확인.</p>
+    <p>2026-08-10 작성 · 6개 전문 리서치 종합 · 세부 출처 URL은 저장소 <strong>reports/vietfish-2026-playbook.md</strong> 참조 · 디자인: 토스 디자인 시스템(TDS) 토큰 기반.</p>
   </footer>
 </div>
