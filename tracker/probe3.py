@@ -1,42 +1,45 @@
 #!/usr/bin/env python3
-"""수입가격 무키(無key) 소스 정찰 (임시): 관세청 무역통계·수산정보포털·KATI."""
+"""KATI 월별품목별 실적 페이지의 조회 파라미터 정찰 (임시)."""
 import re
 import sys
 
 import track_price as tp
 
+URL = "https://www.kati.net/statistics/monthlyPerformanceByProduct.do"
+print(f"########## PROBE {URL}")
+try:
+    raw, final, ctype = tp.fetch(URL)
+except Exception as e:
+    print(f"  FETCH FAIL: {e}")
+    sys.exit(0)
+html = tp.decode_html(raw, ctype)
+print(f"  bytes={len(raw)}")
 
-def probe(url: str, keywords: tuple[str, ...] = ("수출입", "통계", "품목", "무역")) -> None:
-    print(f"\n########## PROBE {url}")
-    try:
-        raw, final, ctype = tp.fetch(url)
-    except Exception as e:
-        print(f"  FETCH FAIL: {e}")
-        return
-    html = tp.decode_html(raw, ctype)
-    text = tp.strip_tags(html)
-    print(f"  final={final} bytes={len(raw)} title={tp.extract_title(html)}")
-    print(f"  text[:300]= {text[:300]}")
-    seen = set()
-    n = 0
-    for m in re.finditer(r'<a[^>]+href=["\']([^"\']+)["\'][^>]*>(.*?)</a>', html, re.S | re.I):
-        href = m.group(1)
-        label = re.sub(r"\s+", " ", tp.strip_tags(m.group(2))).strip()[:35]
-        if href in seen or not label:
-            continue
-        if any(k in label for k in keywords) or any(k in href.lower() for k in ("trade", "stat", "imexport")):
-            seen.add(href)
-            print(f"  link: {href}  [{label}]")
-            n += 1
-            if n >= 30:
-                break
-    ends = sorted(set(re.findall(
-        r'["\']((?:https?://[^"\']+|/[^"\']{3,})\.(?:do|json|jsp|php)[^"\']*)', html)))[:20]
-    print("  endpoints:", ends)
+print("  --- form 블록 ---")
+for m in re.finditer(r"<form[^>]*>", html, re.I):
+    print("   ", m.group(0)[:200])
 
+print("  --- input/select 이름 ---")
+for m in re.finditer(r'<(input|select)[^>]*name=["\']([^"\']+)["\'][^>]*>', html, re.I):
+    print(f"    {m.group(1)} name={m.group(2)} :: {m.group(0)[:140]}")
 
-probe("https://tradedata.go.kr/cts/index.do")
-probe("https://www.fips.go.kr/")
-probe("https://www.kati.net/statistics/monthlyPerformanceByProduct.do")
-probe("https://www.kati.net/")
+print("  --- select 옵션 (장어 관련) ---")
+for m in re.finditer(r'<select[^>]*name=["\']([^"\']+)["\'](.*?)</select>', html, re.S | re.I):
+    opts = re.findall(r'<option[^>]*value=["\']([^"\']*)["\'][^>]*>\s*([^<]*)', m.group(2))
+    eel = [o for o in opts if "장어" in o[1]]
+    print(f"    select={m.group(1)} n={len(opts)} first={opts[:8]}")
+    if eel:
+        print(f"      EEL: {eel}")
+
+print("  --- ajax/action 흔적 ---")
+for pat in ("ajax", "action", "\\.do", "excel", "Excel"):
+    for m in list(re.finditer(pat, html))[:6]:
+        s = re.sub(r"\s+", " ", html[max(0, m.start() - 150):m.start() + 250])
+        if any(k in s for k in (".do", "url", "action")):
+            print(f"    [{pat}] …{s}…")
+            break
+
+print("  --- 품목 검색/자동완성 흔적 ---")
+for m in list(re.finditer(r'["\'](/[^"\']*(?:prod|item|hs|code|search)[^"\']*\.do[^"\']*)["\']', html, re.I))[:20]:
+    print("   ", m.group(1))
 sys.exit(0)
