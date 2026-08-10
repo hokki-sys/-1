@@ -30,12 +30,24 @@ jobs:
           TRACKER_VERBOSE: "1"
         run: python3 tracker/track_price.py
 
+      - name: Run market price collector
+        id: market
+        if: always()
+        env:
+          NAVER_CLIENT_ID: ${{ secrets.NAVER_CLIENT_ID }}
+          NAVER_CLIENT_SECRET: ${{ secrets.NAVER_CLIENT_SECRET }}
+        run: python3 tracker/market_price.py
+
+      - name: Probe wholesale price sources (temporary)
+        if: always()
+        run: python3 tracker/kmi_probe.py || true
+
       - name: Commit price history
         if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add tracker/price_history.csv
+          git add tracker/*.csv
           if ! git diff --cached --quiet; then
             git commit -m "chore(tracker): price check $(TZ=Asia/Seoul date +%F)"
             git push origin "HEAD:${GITHUB_REF_NAME}" \
@@ -53,13 +65,17 @@ jobs:
           include-hidden-files: true
 
       - name: Open issue on price change
-        if: steps.track.outputs.changed == 'true'
+        if: always() && (steps.track.outputs.changed == 'true' || steps.market.outputs.changed == 'true')
         uses: actions/github-script@v7
         with:
           script: |
             const fs = require('fs');
-            let body = '가격 변동이 감지되었습니다. tracker/price_history.csv 를 확인하세요.';
-            try { body = fs.readFileSync('tracker/.change_note.md', 'utf8'); } catch (e) {}
+            const parts = [];
+            for (const f of ['tracker/.change_note.md', 'tracker/.market_note.md']) {
+              try { parts.push(fs.readFileSync(f, 'utf8')); } catch (e) {}
+            }
+            const body = parts.join('\n\n---\n\n')
+              || '가격 변동이 감지되었습니다. tracker/ 폴더의 CSV를 확인하세요.';
             const today = new Date(Date.now() + 9 * 3600 * 1000).toISOString().slice(0, 10);
             await github.rest.issues.create({
               owner: context.repo.owner,
