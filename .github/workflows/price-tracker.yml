@@ -42,6 +42,10 @@ jobs:
         if: always()
         run: python3 tracker/wonmul_price.py
 
+      - name: Probe wholesale sources (temporary)
+        if: always()
+        run: python3 tracker/probe2.py || true
+
       - name: Commit price history
         if: always()
         run: |
