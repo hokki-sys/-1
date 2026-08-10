@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-"""KATI 품목/국가 검색 → 실조회 연쇄 정찰 (임시)."""
-import json
+"""KATI 수입기준 파라미터·장어 AG코드 정찰 v3 (임시)."""
 import re
 import sys
 import urllib.request
@@ -9,86 +8,71 @@ from urllib.parse import urlencode
 import track_price as tp
 
 BASE = "https://www.kati.net"
+PAGE = "/statistics/monthlyPerformanceByProduct.do"
 
 
-def post(path: str, data: dict) -> str:
+def post(path: str, data: dict, timeout: int = 40) -> str:
     req = urllib.request.Request(
-        BASE + path, data=urlencode(data).encode(),
+        BASE + path, data=urlencode(data, doseq=True).encode(),
         headers={"User-Agent": tp.UA, "Accept": "*/*",
                  "X-Requested-With": "XMLHttpRequest",
                  "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-                 "Referer": BASE + "/statistics/monthlyPerformanceByProduct.do"})
-    with urllib.request.urlopen(req, timeout=30) as resp:
+                 "Referer": BASE + PAGE})
+    with urllib.request.urlopen(req, timeout=timeout) as resp:
         return resp.read().decode("utf-8", "replace")
 
 
-def try_post(path: str, data: dict) -> str | None:
+print("########## 1) 기준 페이지 라디오/체크박스/히든 전수 덤프")
+raw, _, ctype = tp.fetch(BASE + PAGE)
+html = tp.decode_html(raw, ctype)
+count = 0
+for m in re.finditer(r'<input[^>]+type=["\'](?:radio|checkbox|hidden)["\'][^>]*>', html, re.I):
+    tag = re.sub(r"\s+", " ", m.group(0))
+    print("   ", tag[:180])
+    count += 1
+    if count >= 60:
+        break
+
+print("\n########## 2) 품목 트리 (digits=2) 에서 뿌리 확인")
+tree2 = None
+try:
+    tree2 = post("/stat/search/item/tree.do", {"ssi_see_together": "N", "ssi_digits": "2"})
+    print(f"  len={len(tree2)} head={re.sub(chr(10), ' ', tree2[:600])}")
+except Exception as e:
+    print("  FAIL", e)
+
+print("\n########## 3) 품목 검색 param 조합")
+for data in (
+    {"ssi_word": "장어", "ssi_digits": "6", "ssi_see_together": "N"},
+    {"ssi_word": "장어", "ssi_digits": "4", "ssi_see_together": "N"},
+    {"ssi_word": "장어", "ssi_tp": "AG", "ssi_see_together": "N"},
+    {"ssi_word": "장어", "ssi_digits": "6", "ssi_tp": "1"},
+):
     try:
-        body = post(path, data)
-        print(f"\n== POST {path} {data} -> {len(body)}b")
-        print("  head:", re.sub(r"\s+", " ", body[:500]))
-        return body
+        body = post("/stat/search/item/search.do", data)
+        n = body.count("장어")
+        print(f"  {data} -> {len(body)}b, 장어 {n}회")
+        if '"list":[]' not in body and n > 1:
+            for p in [m.start() for m in re.finditer("장어", body)][:10]:
+                print("    ctx:", re.sub(r"\s+", " ", body[max(0, p - 300):p + 60]))
+            break
     except Exception as e:
-        print(f"\n== POST {path} {data} -> FAIL {e}")
-        return None
+        print(f"  {data} FAIL {e}")
 
-
-agcd_candidates = []
-print("########## 품목 검색")
-for path, data in (
-    ("/stat/search/item/search.do", {"ssi_word": "장어"}),
-    ("/stat/search/item/search.do", {"searchWord": "장어"}),
-    ("/statistics/searchInterestProduct.do", {"ssi_word": "장어"}),
-    ("/stat/search/item/tree.do", {"ssi_see_together": "N", "ssi_digits": "6"}),
-):
-    body = try_post(path, data)
-    if not body or "장어" not in body:
-        continue
-    for p in [m.start() for m in re.finditer("장어", body)][:10]:
-        ctx = re.sub(r"\s+", " ", body[max(0, p - 260):p + 80])
-        print("   장어-ctx:", ctx)
-    for m in re.finditer(r'"?(agcd|ag_cd|agCd)"?\s*[:=]\s*"?([0-9A-Za-z]+)', body):
-        agcd_candidates.append(m.group(2))
-    if agcd_candidates:
-        break
-print("agcd 후보:", agcd_candidates[:10])
-
-nation_code = None
-print("\n########## 국가 검색")
-for path, data in (
-    ("/statistics/searchNation.do", {"ssn_word": "중국"}),
-    ("/statistics/searchNation.do", {"searchWord": "중국"}),
-    ("/statistics/searchNation.do", {"nationNm": "중국"}),
-    ("/statistics/searchNation.do", {}),
-):
-    body = try_post(path, data)
-    if not body or "중국" not in body:
-        continue
-    for p in [m.start() for m in re.finditer("중국", body)][:6]:
-        ctx = re.sub(r"\s+", " ", body[max(0, p - 260):p + 60])
-        print("   중국-ctx:", ctx)
-    m = re.search(r'"?(?:code|cd|nationCd|ssn_code)"?\s*[:=]\s*"?([0-9A-Za-z]+)"?[^{}]{0,120}중국', body)
-    if not m:
-        m = re.search(r'중국[^{}]{0,120}?"?(?:code|cd|nationCd)"?\s*[:=]\s*"?([0-9A-Za-z]+)', body)
-    if m:
-        nation_code = m.group(1)
-        break
-print("nation code:", nation_code)
-
-print("\n########## 본조회 시도")
-prods = agcd_candidates[:2] or ["0403"]
-nat = nation_code or "CN"
-for path in ("/statistics/monthlyPerformanceByProduct.do",):
-    data = {"basisYear": "2026", "basisMonth": "06",
-            "products": prods[0], "nations": nat}
+print("\n########## 4) 수입 기준 본조회 시험 (분류합계에서 수입 표기 확인)")
+for extra in ({"sch_gubun": "2"}, {"gubun": "2"}, {"expImp": "I"}, {"sch_type": "import"},
+              {"performanceType": "import"}, {"sch_gubun": "수입"}):
+    data = {"basisYear": "2026", "basisMonth": "06", "nations": "CN", **extra}
     try:
-        body = post(path, data)
-        print(f"POST {path} {data} -> {len(body)}b")
+        body = post(PAGE, data, timeout=60)
         text = tp.strip_tags(body)
-        for kw in ("장어", "중국", "수입", "합계"):
-            hits = [m.start() for m in re.finditer(kw, text)][:3]
-            for p in hits:
-                print(f"   [{kw}]", re.sub(r"\s+", " ", text[max(0, p - 120):p + 160]))
+        m = re.search(r"수출입기준\s*:\s*(\S+)", text)
+        basis = m.group(1) if m else "?"
+        print(f"  {extra} -> {len(body)}b, 수출입기준={basis}")
+        if basis.startswith("수입"):
+            p = text.find("농수산식품")
+            print("    table-ctx:", re.sub(r"\s+", " ", text[p:p + 500]))
+            break
     except Exception as e:
-        print(f"POST {path} FAIL {e}")
+        print(f"  {extra} FAIL {e}")
 sys.exit(0)
