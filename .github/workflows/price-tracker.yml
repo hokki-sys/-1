@@ -42,6 +42,16 @@ jobs:
         if: always()
         run: python3 tracker/wonmul_price.py
 
+      - name: Run import price collector
+        if: always()
+        env:
+          DATA_GO_KR_KEY: ${{ secrets.DATA_GO_KR_KEY }}
+        run: python3 tracker/import_price.py
+
+      - name: Probe import price sources (temporary)
+        if: always()
+        run: python3 tracker/probe3.py || true
+
       - name: Commit price history
         if: always()
         run: |
