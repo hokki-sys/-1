@@ -5,6 +5,7 @@
 ## 자료
 
 - [양산도 호치민 진출 사전조사 보고서](reports/yangsando-hcmc-report.md) — VIETFISH 2026 참관 가이드(8/19~21, SECC) + 호치민 시장조사 + 진출 전략 (2026-08-10 작성)
+- [VIETFISH 2026 실행 플레이북](reports/vietfish-2026-playbook.md) — 박람회 전용 상세 가이드: 장어 바이어·새우 공급자·유망 상품(객단가/경쟁강도), 3일 동선, 미팅 SOP, 가격 앵커 (2026-08-10 작성)
 
 ## 저장 확인 (Save Check)
 
