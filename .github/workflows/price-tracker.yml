@@ -38,9 +38,9 @@ jobs:
           NAVER_CLIENT_SECRET: ${{ secrets.NAVER_CLIENT_SECRET }}
         run: python3 tracker/market_price.py
 
-      - name: Probe wholesale price sources (temporary)
+      - name: Run wholesale (wonmul) collector
         if: always()
-        run: python3 tracker/kmi_probe.py || true
+        run: python3 tracker/wonmul_price.py
 
       - name: Commit price history
         if: always()
