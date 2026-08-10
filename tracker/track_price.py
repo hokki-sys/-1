@@ -123,14 +123,14 @@ def extract_title(html: str) -> str:
     return html_lib.unescape(re.sub(r"\s+", " ", m.group(1))).strip()[:120]
 
 
-def extract_candidates(html: str, text: str) -> list[tuple[int, int, str, str]]:
-    """(우선순위, 가격, 근거, 문맥) 후보 목록. 우선순위 숫자가 낮을수록 신뢰도가 높다."""
-    cands: list[tuple[int, int, str, str]] = []
+def extract_candidates(html: str, text: str) -> list[tuple]:
+    """(우선순위, 가격, 근거, 문맥, 위치) 후보 목록. 우선순위 숫자가 낮을수록 신뢰도가 높다."""
+    cands: list[tuple] = []
 
-    def add(prio: int, value: str, source: str, ctx: str) -> None:
+    def add(prio: int, value: str, source: str, ctx: str, pos: int = 0) -> None:
         price = to_price(value)
         if price is not None:
-            cands.append((prio, price, source, re.sub(r"\s+", " ", ctx)[:160]))
+            cands.append((prio, price, source, re.sub(r"\s+", " ", ctx)[:160], pos))
 
     meta_names = r"(?:og:price:amount|product:price:amount|product:sale_price:amount)"
     for m in re.finditer(
@@ -178,21 +178,36 @@ def extract_candidates(html: str, text: str) -> list[tuple[int, int, str, str]]:
         ("판매가격", 2), ("판매가", 2), ("할인가", 3), ("회원가", 3), ("공급가", 3)
     ):
         for m in re.finditer(re.escape(label) + r"[^0-9원]{0,20}(" + NUM + r")\s*원?", text):
-            add(prio, m.group(1), f"label:{label}", m.group(0))
+            add(prio, m.group(1), f"label:{label}", m.group(0), m.start())
 
+    # 본문의 "N원" 패턴. 쿠폰/배송 프로모션 문구("N원 이상 결제 시", "N원 할인",
+    # "적립") 주변의 숫자는 상품 가격이 아니므로 제외한다.
     for m in re.finditer(r"(" + NUM + r")\s*원", text):
-        add(5, m.group(1), "won-suffix", m.group(0))
+        before = text[max(0, m.start() - 25):m.start()]
+        after = text[m.end():m.end() + 15]
+        if "이상" in after or "할인" in after or "적립" in after or "적립" in before:
+            continue
+        if "쿠폰" in before or "포인트" in before:
+            continue
+        value = to_price(m.group(1))
+        if value is not None and value < 500:  # "100원 웰컴딜" 같은 미끼 배너 제외
+            continue
+        add(5, m.group(1), "won-suffix", m.group(0), m.start())
 
     return cands
 
 
-def choose_price(cands: list[tuple[int, int, str, str]]) -> tuple[int, str] | None:
+def choose_price(cands: list[tuple]) -> tuple[int, str] | None:
     if not cands:
         return None
     best_prio = min(c[0] for c in cands)
     best = [c for c in cands if c[0] == best_prio]
+    if best_prio >= 5:
+        # 약한 휴리스틱은 문서에서 가장 먼저 나오는 값(상품 영역이 상단) 채택
+        best.sort(key=lambda c: c[4])
+        return best[0][1], best[0][2]
     counts: dict[int, int] = {}
-    for _, price, _, _ in best:
+    for _, price, _, _, _ in best:
         counts[price] = counts.get(price, 0) + 1
     price = max(counts, key=lambda p: counts[p])
     source = next(c[2] for c in best if c[1] == price)
@@ -205,17 +220,33 @@ def detect_login_wall(text: str, final_url: str) -> bool:
     return any(marker in text for marker in LOGIN_MARKERS)
 
 
-def dump_debug(text: str, cands: list[tuple[int, int, str, str]]) -> None:
+def dump_debug(text: str, cands: list[tuple], html: str = "") -> None:
     log("--- 가격 후보 목록 ---")
     if not cands:
         log("  (없음)")
-    for prio, price, source, ctx in cands[:40]:
-        log(f"  [p{prio}] {price:,} via {source} :: {ctx}")
+    for prio, price, source, ctx, pos in cands[:40]:
+        log(f"  [p{prio}] {price:,} via {source} @{pos} :: {ctx}")
     positions = [m.start() for m in re.finditer("원", text)][:12]
     if positions:
         log("--- '원' 주변 문맥 ---")
         for pos in positions:
             log("  …" + text[max(0, pos - 90):pos + 30] + "…")
+    if html:
+        # 마크업 기반 선택자를 만들 수 있도록 상위 후보값 주변의 원본 HTML을 남긴다
+        seen_vals: list[int] = []
+        for _, price, _, _, _ in sorted(cands, key=lambda c: (c[0], c[4])):
+            if price not in seen_vals:
+                seen_vals.append(price)
+            if len(seen_vals) >= 3:
+                break
+        log("--- 원본 HTML 문맥 (상위 후보) ---")
+        for value in seen_vals:
+            needle = f"{value:,}"
+            for i, m in enumerate(re.finditer(re.escape(needle), html)):
+                if i >= 2:
+                    break
+                window = html[max(0, m.start() - 300):m.end() + 120]
+                log(f"  [{needle}] …{re.sub(chr(10), ' ', window)}…")
     log("--- 본문 앞부분 ---")
     log(text[:600])
 
@@ -330,7 +361,7 @@ def main() -> int:
             row["price"], row["status"], row["source"] = str(price), "ok", source
             log(f"가격: {price:,}원 (근거: {source})")
             if os.environ.get("TRACKER_VERBOSE"):
-                dump_debug(text, cands)
+                dump_debug(text, cands, html)
             prev = previous_price(history, label, today)
             if prev and prev[0] != price:
                 changes.append((label, prev[0], price, prev[1]))
@@ -339,7 +370,7 @@ def main() -> int:
             row["status"] = "login_required" if detect_login_wall(text, final_url) else "no_price"
             failures += 1
             log(f"가격을 찾지 못했습니다 (status={row['status']}).")
-            dump_debug(text, cands)
+            dump_debug(text, cands, html)
 
         today_rows.append(row)
 
