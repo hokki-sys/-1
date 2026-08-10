@@ -329,7 +329,8 @@ def main() -> int:
             price, source = picked
             row["price"], row["status"], row["source"] = str(price), "ok", source
             log(f"가격: {price:,}원 (근거: {source})")
-            dump_debug(text, cands) if os.environ.get("TRACKER_VERBOSE") else None
+            if os.environ.get("TRACKER_VERBOSE"):
+                dump_debug(text, cands)
             prev = previous_price(history, label, today)
             if prev and prev[0] != price:
                 changes.append((label, prev[0], price, prev[1]))

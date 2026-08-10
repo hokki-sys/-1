@@ -27,6 +27,7 @@ jobs:
         id: track
         env:
           FOODEN_COOKIE: ${{ secrets.FOODEN_COOKIE }}
+          TRACKER_VERBOSE: "1"
         run: python3 tracker/track_price.py
 
       - name: Commit price history
@@ -49,6 +50,7 @@ jobs:
           path: tracker/.debug/
           if-no-files-found: ignore
           retention-days: 5
+          include-hidden-files: true
 
       - name: Open issue on price change
         if: steps.track.outputs.changed == 'true'
