@@ -46,7 +46,11 @@ jobs:
         if: always()
         env:
           DATA_GO_KR_KEY: ${{ secrets.DATA_GO_KR_KEY }}
-        run: python3 tracker/import_price.py
+        run: python3 tracker/import_price.py || true
+
+      - name: Probe KATI query params (temporary)
+        if: always()
+        run: python3 tracker/probe4.py || true
 
 
       - name: Commit price history
