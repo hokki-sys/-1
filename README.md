@@ -2,6 +2,10 @@
 
 클라우드(Claude Code on the web) 세션에서 생성된 저장소입니다.
 
+## 자료
+
+- [양산도 호치민 진출 사전조사 보고서](reports/yangsando-hcmc-report.md) — VIETFISH 2026 참관 가이드(8/19~21, SECC) + 호치민 시장조사 + 진출 전략 (2026-08-10 작성)
+
 ## 저장 확인 (Save Check)
 
 - 생성일: 2026-08-10
