@@ -18,6 +18,8 @@ concurrency:
 jobs:
   track:
     runs-on: ubuntu-latest
+    env:
+      HAS_MAIL: ${{ secrets.MAIL_USERNAME != '' }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -38,6 +40,24 @@ jobs:
         if: always()
         run: python3 tracker/kati_import.py
 
+      - name: Compose daily report
+        id: report
+        if: always()
+        run: python3 tracker/daily_report.py
+
+      - name: Send daily report email
+        if: always() && env.HAS_MAIL == 'true' && github.event_name != 'push'
+        continue-on-error: true
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: ${{ secrets.MAIL_SERVER || 'smtp.gmail.com' }}
+          server_port: ${{ secrets.MAIL_PORT || 465 }}
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: ${{ steps.report.outputs.subject }}
+          to: info@khglobaltrade.com
+          from: 장어 가격 추적기 <${{ secrets.MAIL_USERNAME }}>
+          body: file://tracker/.daily_report.txt
 
       - name: Commit price history
         if: always()

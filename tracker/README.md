@@ -26,6 +26,22 @@
 않으며 삭제하셔도 됩니다. 소매가격대는 `products.csv`에 판매처별 상품 URL을
 추가하는 방식(정밀 추적)으로 보완할 수 있습니다.
 
+## 일일 리포트 메일
+
+매일 실행이 끝나면 세 층의 최신 상태와 **변동 유무를 명시한 리포트**가
+`info@khglobaltrade.com`으로 발송됩니다 (변동이 없어도 "변동 없음"으로 발송).
+발송을 켜려면 보내는 쪽 메일 계정을 시크릿으로 등록해야 합니다:
+
+- `MAIL_USERNAME`: 발신용 이메일 주소 (예: Gmail 주소)
+- `MAIL_PASSWORD`: 해당 계정의 SMTP 비밀번호
+  (Gmail은 구글 계정 → 보안 → 2단계 인증 → 앱 비밀번호에서 생성:
+  https://myaccount.google.com/apppasswords)
+- (선택) 회사 메일서버를 쓰려면 `MAIL_SERVER`, `MAIL_PORT` 추가
+  (미지정 시 smtp.gmail.com:465)
+
+수신 주소를 바꾸려면 `.github/workflows/price-tracker.yml`의 `to:` 값을
+수정하면 됩니다. 여러 명은 쉼표로 구분합니다.
+
 ## 중국산 수입실적 (키 불필요)
 
 KATI(농수산식품수출지원정보)의 월별품목별 실적을 통해 관세청 통관 기준
