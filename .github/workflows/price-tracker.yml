@@ -20,6 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       HAS_MAIL: ${{ secrets.MAIL_USERNAME != '' }}
+      HAS_SLACK: ${{ secrets.SLACK_WEBHOOK_URL != '' }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -44,6 +45,26 @@ jobs:
         id: report
         if: always()
         run: python3 tracker/daily_report.py
+
+      - name: Send daily report to Slack
+        if: always() && env.HAS_SLACK == 'true' && github.event_name != 'push'
+        continue-on-error: true
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          REPORT_SUBJECT: ${{ steps.report.outputs.subject }}
+        run: |
+          python3 - <<'PY'
+          import json, os, urllib.request
+          body = open('tracker/.daily_report.txt', encoding='utf-8').read()
+          subject = os.environ.get('REPORT_SUBJECT', '장어 가격 일일 리포트')
+          payload = {"text": f"*{subject}*\n```\n{body}\n```"}
+          req = urllib.request.Request(
+              os.environ['SLACK_WEBHOOK_URL'],
+              data=json.dumps(payload).encode('utf-8'),
+              headers={'Content-Type': 'application/json'})
+          with urllib.request.urlopen(req, timeout=30) as resp:
+              print('Slack 전송:', resp.status)
+          PY
 
       - name: Send daily report email
         if: always() && env.HAS_MAIL == 'true' && github.event_name != 'push'

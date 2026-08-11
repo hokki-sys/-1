@@ -26,11 +26,21 @@
 않으며 삭제하셔도 됩니다. 소매가격대는 `products.csv`에 판매처별 상품 URL을
 추가하는 방식(정밀 추적)으로 보완할 수 있습니다.
 
-## 일일 리포트 메일
+## 일일 리포트 발송 (슬랙 또는 메일)
 
 매일 실행이 끝나면 세 층의 최신 상태와 **변동 유무를 명시한 리포트**가
-`info@khglobaltrade.com`으로 발송됩니다 (변동이 없어도 "변동 없음"으로 발송).
-발송을 켜려면 보내는 쪽 메일 계정을 시크릿으로 등록해야 합니다:
+발송됩니다 (변동이 없어도 "변동 없음"으로 발송). 슬랙과 메일 중 시크릿이
+등록된 채널로 발송되며, 둘 다 등록하면 둘 다 발송됩니다.
+
+**슬랙 (권장, 2분)**
+
+1. https://api.slack.com/apps → Create New App → From scratch → 워크스페이스 선택
+2. 왼쪽 메뉴 **Incoming Webhooks** → 활성화(On) → **Add New Webhook to Workspace**
+   → 리포트를 받을 채널 선택 → 생성된 `https://hooks.slack.com/services/...` URL 복사
+3. GitHub 저장소 → Settings → Secrets and variables → Actions →
+   Name: `SLACK_WEBHOOK_URL`, Secret: (복사한 URL)
+
+**메일 (`info@khglobaltrade.com` 수신)**
 
 - `MAIL_USERNAME`: 발신용 이메일 주소 (예: Gmail 주소)
 - `MAIL_PASSWORD`: 해당 계정의 SMTP 비밀번호
