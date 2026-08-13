@@ -60,6 +60,14 @@
   .tags { margin-top: 5px; display: flex; flex-wrap: wrap; gap: 6px; }
   .tag { font-size: 11.5px; background: var(--main-soft); color: var(--main); border-radius: 5px; padding: 2px 8px; }
   .tag.acc { background: var(--accent-soft); color: var(--accent); font-weight: 700; }
+  .booth { display: inline-block; background: var(--main); color: #fff; border-radius: 6px; padding: 2px 10px;
+           font-size: 11.5px; font-weight: 800; letter-spacing: .02em; }
+  .card.hot .booth { background: var(--accent); }
+  .halls { margin-top: 12px; display: grid; gap: 8px; }
+  .hall { background: var(--main-soft); border: 1px solid var(--main-line); border-radius: 10px;
+          padding: 12px 16px; font-size: 13px; }
+  .hall b { color: var(--main); }
+  .hall .hb { color: var(--accent); font-weight: 700; }
   .card dl { margin-top: 12px; display: grid; grid-template-columns: 78px 1fr; row-gap: 6px; column-gap: 12px; font-size: 13.5px; }
   .card dt { color: var(--sub); font-weight: 700; }
   .card dd a { color: var(--main); }
@@ -121,10 +129,16 @@
   <div class="keyfind">
     <b>핵심 발견:</b> 참가업체 중 유일한 장어 전문 가공사 <b>푸칭 하이펑(Fuqing Haifeng)</b>이 확인됐습니다. 1992년 설립된 중국 푸젠성 장어구이 전문 공장으로,
     <b>일본·미국·한국·호주 수출 실적</b>을 보유하고 디렉터리에 냉동장어·냉동 장어구이 제품을 등록했습니다. 양산도 원료 소싱의 기준 견적을 얻을 수 있는 유일한 부스이므로 <b>1순위로 승격</b>했습니다.
+    부스 위치는 <b>Hall B 중국존 B204</b>입니다.
+  </div>
+
+  <div class="halls">
+    <div class="hall"><b>Hall A 동선</b> — 수산 Gold존: 고다코 <span class="hb">Gold 2</span> · 빈호안 <span class="hb">Gold 5</span> · 하부코 <span class="hb">Gold 8</span> · 하이남 <span class="hb">Gold 9</span> · 민푸 <span class="hb">Gold 10·12</span> · 렝거 <span class="hb">Gold 11</span> · 나비코 <span class="hb">Gold 16</span> · 멕시 <span class="hb">Platinum 1</span> │ 번호 부스: OFCO 107 · 꾸옥비엣 203~304 · 시마큐 803·804 · 시아프로덱스 903 · CASES 1003·1004 · 준판푸드 1403~1504 · 스타피멕스 1500(하단 벽면) │ 기계·설비존: 멀티박 605·606 · AJ토탈 905 · SGS 1308 · 을성오토팩 1707·1708 │ 양식존: 스노우맨 2211·2311 │ OTHERS: 까미멕스 2103·2104 · 웨이하이 준허 2602 │ 한국 부스: 목포 수산식품연구센터 1801·1802 · 모슬포수협 1902 · 서귀포수협 1901</div>
+    <div class="hall"><b>Hall B 동선</b> — <span class="hb">★ 푸칭 하이펑 B204(중국존)</span> │ Gold존: 훙허우 <span class="hb">Gold 20</span> · K-SEAFOOD 한국관 <span class="hb">Gold 22</span> · 조키친 <span class="hb">Gold 25</span> · 노르웨이관 Gold 18/Platinum 4 · 터키관 Gold 24 │ 한국존 B801~B904A: 수협 굴(통영) B804 · 대호수산 B903 · 고레미 B801 · <b>동원F&B B802</b> · 새우표·완도김 B904 · 골든윈드 B902 · SLS B804A · 해강 B904A │ 뗀짜이 B703·704 · 탄하오 B1004 · 시아스피멕스 B103 · 사가와(물류) B808 │ <b>쿠킹쇼 무대·라이브스트림 존이 Hall B 우측</b> — 셰프 시연 참관은 B홀 일정에 붙이기</div>
   </div>
 
   <h2>Ⅰ. 최우선 10부스</h2>
-  <div class="sec-sub">순서 = 방문 우선순위. 부스 번호는 개막 전 미확정 — 현장 배치도에서 위치 확인 후 기입하세요. 사진은 공식 디렉터리 등록 이미지(온라인 상태에서 표시됩니다).</div>
+  <div class="sec-sub">순서 = 방문 우선순위. 부스 위치는 주최측 배치도(Hall A·B, 2026-08 기준)를 판독해 기입 — 현장 변동 가능하니 입장 시 카탈로그로 재확인하세요. 사진은 공식 디렉터리 등록 이미지(온라인 상태에서 표시됩니다).</div>
 
   <!-- 1 -->
   <div class="card hot">
@@ -132,7 +146,7 @@
       <div class="rank">1</div>
       <div class="card-title">
         <h3>Fuqing Haifeng Food 福清海豐食品</h3>
-        <div class="tags"><span class="tag">중국 · 푸젠 푸칭</span><span class="tag acc">장어 전문 ★</span><span class="tag">가공(VAP)</span><span class="tag">HALAL · IFS · KOSHER</span></div>
+        <div class="tags"><span class="booth">Hall B · B204</span><span class="tag">중국 · 푸젠 푸칭</span><span class="tag acc">장어 전문 ★</span><span class="tag">가공(VAP)</span><span class="tag">HALAL · IFS · KOSHER</span></div>
       </div>
     </div>
     <dl>
@@ -155,7 +169,7 @@
       <div class="rank">2</div>
       <div class="card-title">
         <h3>Vinh Hoan Corporation (빈호안)</h3>
-        <div class="tags"><span class="tag">베트남 · 동탑</span><span class="tag">팡가시우스 세계 1위</span><span class="tag">콜라겐·젤라틴</span><span class="tag">BAP · ASC · BSCI · HALAL · GlobalGAP</span></div>
+        <div class="tags"><span class="booth">Hall A · Gold 5</span><span class="tag">베트남 · 동탑</span><span class="tag">팡가시우스 세계 1위</span><span class="tag">콜라겐·젤라틴</span><span class="tag">BAP · ASC · BSCI · HALAL · GlobalGAP</span></div>
       </div>
     </div>
     <dl>
@@ -178,7 +192,7 @@
       <div class="rank">3</div>
       <div class="card-title">
         <h3>Minh Phu Seafood Corp (민푸)</h3>
-        <div class="tags"><span class="tag">베트남 · 카마우</span><span class="tag">새우 세계 최대급</span></div>
+        <div class="tags"><span class="booth">Hall A · Gold 10 &amp; 12 (2개 부스)</span><span class="tag">베트남 · 카마우</span><span class="tag">새우 세계 최대급</span></div>
       </div>
     </div>
     <dl>
@@ -198,7 +212,7 @@
       <div class="rank">4</div>
       <div class="card-title">
         <h3>GODACO Seafood (고다코)</h3>
-        <div class="tags"><span class="tag">베트남 · 띠엔장 미토</span><span class="tag">조개 → 종합 수산</span><span class="tag">ASC · BAP · BRC · BSCI · HALAL</span><span class="tag acc">KR·JP 수출</span></div>
+        <div class="tags"><span class="booth">Hall A · Gold 2</span><span class="tag">베트남 · 띠엔장 미토</span><span class="tag">조개 → 종합 수산</span><span class="tag">ASC · BAP · BRC · BSCI · HALAL</span><span class="tag acc">KR·JP 수출</span></div>
       </div>
     </div>
     <dl>
@@ -220,7 +234,7 @@
       <div class="rank">5</div>
       <div class="card-title">
         <h3>Hai Nam Co., Ltd (하이남)</h3>
-        <div class="tags"><span class="tag">베트남 · 호치민</span><span class="tag">참치·오징어·VAP</span><span class="tag">MSC · ASC · BRC</span><span class="tag acc">KR·JP 수출</span></div>
+        <div class="tags"><span class="booth">Hall A · Gold 9</span><span class="tag">베트남 · 호치민</span><span class="tag">참치·오징어·VAP</span><span class="tag">MSC · ASC · BRC</span><span class="tag acc">KR·JP 수출</span></div>
       </div>
     </div>
     <dl>
@@ -242,7 +256,7 @@
       <div class="rank">6</div>
       <div class="card-title">
         <h3>Jun Fan Foods (준판푸드)</h3>
-        <div class="tags"><span class="tag acc">7군 푸미흥 소재 ★</span><span class="tag">냉동수산 수출·풀서비스</span><span class="tag">BRC · HACCP · HALAL · MSC</span><span class="tag acc">KR·JP·CN 수출</span></div>
+        <div class="tags"><span class="booth">Hall A · 1403~1504 (4부스)</span><span class="tag acc">7군 푸미흥 소재 ★</span><span class="tag">냉동수산 수출·풀서비스</span><span class="tag">BRC · HACCP · HALAL · MSC</span><span class="tag acc">KR·JP·CN 수출</span></div>
       </div>
     </div>
     <dl>
@@ -264,7 +278,7 @@
       <div class="rank">7</div>
       <div class="card-title">
         <h3>Jo Kitchen (조키친)</h3>
-        <div class="tags"><span class="tag">베트남</span><span class="tag acc">RMR OEM 1순위</span><span class="tag">BAP · BRC · HACCP · SMETA</span></div>
+        <div class="tags"><span class="booth">Hall B · Gold 25</span><span class="tag">베트남</span><span class="tag acc">RMR OEM 1순위</span><span class="tag">BAP · BRC · HACCP · SMETA</span></div>
       </div>
     </div>
     <dl>
@@ -285,7 +299,7 @@
       <div class="rank">8</div>
       <div class="card-title">
         <h3>MULTIVAC Vietnam (멀티박)</h3>
-        <div class="tags"><span class="tag">독일계 · 포장설비</span><span class="tag">열성형 포장기 세계 선도</span></div>
+        <div class="tags"><span class="booth">Hall A · 605·606</span><span class="tag">독일계 · 포장설비</span><span class="tag">열성형 포장기 세계 선도</span></div>
       </div>
     </div>
     <dl>
@@ -306,7 +320,7 @@
       <div class="rank">9</div>
       <div class="card-title">
         <h3>AJ Total Vietnam (AJ토탈)</h3>
-        <div class="tags"><span class="tag acc">한국계 콜드체인 ★</span><span class="tag">저온물류 · EU코드</span></div>
+        <div class="tags"><span class="booth">Hall A · 905</span><span class="tag acc">한국계 콜드체인 ★</span><span class="tag">저온물류 · EU코드</span></div>
       </div>
     </div>
     <dl>
@@ -328,7 +342,7 @@
       <div class="rank">10</div>
       <div class="card-title">
         <h3>K-FISH / K-SEAFOOD 한국관</h3>
-        <div class="tags"><span class="tag acc">한국 국가브랜드관 ★</span><span class="tag">수출지원 · 네트워킹</span></div>
+        <div class="tags"><span class="booth">Hall B · Gold 22</span><span class="tag acc">한국 국가브랜드관 ★</span><span class="tag">수출지원 · 네트워킹</span></div>
       </div>
     </div>
     <dl>
@@ -345,7 +359,7 @@
   <div class="grid2">
 
     <div class="mini">
-      <div class="mini-head"><div class="rank">11</div><div><h4>Quoc Viet (꾸옥비엣)</h4><div class="meta">베트남 카마우 · 새우</div></div></div>
+      <div class="mini-head"><div class="rank">11</div><div><h4>Quoc Viet (꾸옥비엣)</h4><div class="meta"><b>Hall A · 203~304 (4부스)</b> · 베트남 카마우 · 새우</div></div></div>
       <p>1996년 설립 가족기업(창업주 응오 반 응아, 새우업 20년 경력 후 창업). 2세대 승계, 카마우 기반 새우 가공·수출 선도사. <b>KR·JP·CN·US+10개국</b> 수출, BSCI·BRC·IFS·HACCP.</p>
       <div class="links">전화 +84-915-888-1xx</div>
       <div class="aim">→ 새우 견적 2차 비교(민푸 대비)</div>
@@ -353,7 +367,7 @@
     </div>
 
     <div class="mini">
-      <div class="mini-head"><div class="rank">12</div><div><h4>NAVICO (Nam Viet · 남비엣)</h4><div class="meta">베트남 안장 · 팡가시우스</div></div></div>
+      <div class="mini-head"><div class="rank">12</div><div><h4>NAVICO (Nam Viet · 남비엣)</h4><div class="meta"><b>Hall A · Gold 16</b> · 베트남 안장 · 팡가시우스</div></div></div>
       <p>2000년 설립, 팡가시우스 최상위권 수출사. 양식장 1,000ha를 포함한 완전 수직계열화 생산 라인 보유. 수출 CN·US·VN 외 25개국+, ASC·BRC·IFS·BAP·SA8000.</p>
       <div class="links"><a href="https://navicorp.com.vn/">navicorp.com.vn</a></div>
       <div class="aim">→ 바사 견적 2차 비교(빈호안 대비)</div>
@@ -361,7 +375,7 @@
     </div>
 
     <div class="mini">
-      <div class="mini-head"><div class="rank">13</div><div><h4>Camimex Group (까미멕스)</h4><div class="meta">베트남 카마우 · 유기농 새우</div></div></div>
+      <div class="mini-head"><div class="rank">13</div><div><h4>Camimex Group (까미멕스)</h4><div class="meta"><b>Hall A · 2103·2104 (OTHERS 구역)</b> · 베트남 카마우 · 유기농 새우</div></div></div>
       <p>1977년 설립 — 베트남 수산업 1세대 기업. 40년+ 새우 가공·수출 선두권을 유지하며 유기농 새우 분야 선도. <b>KR·JP 수출</b>, ASC·BAP·BRC·BSCI·HALAL.</p>
       <div class="links"><a href="https://camimex.com.vn/">camimex.com.vn</a></div>
       <div class="aim">→ 유기농 새우 = 프리미엄 메뉴 차별화 소재</div>
@@ -369,14 +383,14 @@
     </div>
 
     <div class="mini">
-      <div class="mini-head"><div class="rank">14</div><div><h4>STAPIMEX (스타피멕스)</h4><div class="meta">베트남 속짱 · 새우</div></div></div>
+      <div class="mini-head"><div class="rank">14</div><div><h4>STAPIMEX (스타피멕스)</h4><div class="meta"><b>Hall A · 1500 (하단 벽면 열)</b> · 베트남 속짱 · 새우</div></div></div>
       <p>1978년 설립된 속짱성 대표 새우 가공·수출사. 흰다리새우 VAP(노바시·스시에비·튀김) 강점으로 미국·일본 시장 비중이 큼.</p>
       <div class="links">전화 +84-299-3822-1xx</div>
       <div class="aim">→ 새우 VAP(조리용 규격) 견적 비교</div>
     </div>
 
     <div class="mini">
-      <div class="mini-head"><div class="rank">15</div><div><h4>CASES (카세스)</h4><div class="meta">베트남 카마우 · 새우·오징어</div></div></div>
+      <div class="mini-head"><div class="rank">15</div><div><h4>CASES (카세스)</h4><div class="meta"><b>Hall A · 1003·1004</b> · 베트남 카마우 · 새우·오징어</div></div></div>
       <p>카마우 수산가공수출 기업. 새우·오징어 원료와 VAP를 <b>한국 포함 12개국</b>에 수출. BAP·ASC·BRC·HACCP·HALAL 보유.</p>
       <div class="links">전화 +84-947-9373xx</div>
       <div class="aim">→ 오징어(사이드 안주류) 소싱 후보</div>
@@ -384,7 +398,7 @@
     </div>
 
     <div class="mini">
-      <div class="mini-head"><div class="rank">16</div><div><h4>Lenger Seafoods Vietnam (렝거)</h4><div class="meta">네덜란드계 · 남딘 · 조개</div></div></div>
+      <div class="mini-head"><div class="rank">16</div><div><h4>Lenger Seafoods Vietnam (렝거)</h4><div class="meta"><b>Hall A · Gold 11</b> · 네덜란드계 · 남딘 · 조개</div></div></div>
       <p>약 100년 역사의 네덜란드 이매패류(조개) 전문 그룹의 베트남 법인. 남딘 클램(바지락) ASC 인증 가공, <b>KR·JP·US+유럽</b> 수출. FSSC22000·IFS·SA8000.</p>
       <div class="links">전화 +84-903-5011xx</div>
       <div class="aim">→ 바지락·백합(사이드 메뉴) 최상급 소싱</div>
@@ -392,7 +406,7 @@
     </div>
 
     <div class="mini">
-      <div class="mini-head"><div class="rank">17</div><div><h4>Hai Vuong Group (하이브엉 · HAVUCO)</h4><div class="meta">베트남 냐짱 · 참치</div></div></div>
+      <div class="mini-head"><div class="rank">17</div><div><h4>Hai Vuong Group (하이브엉 · HAVUCO)</h4><div class="meta"><b>Hall A · Gold 8</b> · 베트남 냐짱 · 참치</div></div></div>
       <p>동남아 최대급 참치·원양어 그룹(HAVUCO·Tuna Vietnam 등 계열). 연간 약 2.8만 톤을 50여 개국에 수출. BRC·BSCI·EU코드 등 인증 풀세트.</p>
       <div class="links"><a href="https://haivuong.com/">haivuong.com</a></div>
       <div class="aim">→ 사시미급 참치 로인 견적(하이남 대비)</div>
@@ -400,7 +414,7 @@
     </div>
 
     <div class="mini">
-      <div class="mini-head"><div class="rank">18</div><div><h4>Ten Trai (뗀짜이)</h4><div class="meta">베트남 꽝응아이 · 선어·냉동어</div></div></div>
+      <div class="mini-head"><div class="rank">18</div><div><h4>Ten Trai (뗀짜이)</h4><div class="meta"><b>Hall B · B703·B704</b> · 베트남 꽝응아이 · 선어·냉동어</div></div></div>
       <p>2014년 설립. 베트남 동해 어획 수산물을 어민과 직계약으로 가공 — 병풍돔·정어리·가다랑어 등. <b>KR·JP·CN·US+5개국</b> 수출, EU코드·FDA·HACCP.</p>
       <div class="links">전화 +84-909-1864xx</div>
       <div class="aim">→ 현지 생선구이·조림용 원료 후보</div>
@@ -408,7 +422,7 @@
     </div>
 
     <div class="mini">
-      <div class="mini-head"><div class="rank">19</div><div><h4>Thanh Hao Seafood (탄하오)</h4><div class="meta">베트남 붕따우 · 문어·오징어 VAP</div></div></div>
+      <div class="mini-head"><div class="rank">19</div><div><h4>Thanh Hao Seafood (탄하오)</h4><div class="meta"><b>Hall B · B1004</b> · 베트남 붕따우 · 문어·오징어 VAP</div></div></div>
       <p>붕따우 프억하이 어촌 출신 창업자들이 세운 문어·오징어 가공사. 브레디드(튀김옷) 문어·오징어 등 조리 VAP 강점. <b>KR·JP·US+7개국</b> 수출, BRC·MSC·SMETA.</p>
       <div class="links">전화 +84-796-8445xx</div>
       <div class="aim">→ 이자카야식 사이드(가라아게류) 소재</div>
@@ -416,7 +430,7 @@
     </div>
 
     <div class="mini">
-      <div class="mini-head"><div class="rank">20</div><div><h4>Meksea (멕시)</h4><div class="meta">베트남 호치민 · 종합 수출상</div></div></div>
+      <div class="mini-head"><div class="rank">20</div><div><h4>Meksea (멕시)</h4><div class="meta"><b>Hall A · Platinum 1</b> · 베트남 호치민 · 종합 수출상</div></div></div>
       <p>16년차 수산 수출 종합상(Mekong Seafood Connection). 새우·바사·참치·오징어 등 전 품목 원스톱 공급, 블랙타이거 VAP 라인(노바시·PTO 등) 보유. ASC·BAP·BRC·MSC.</p>
       <div class="links"><a href="https://www.meksea.com/">meksea.com</a> · hoang@mekseaconnection.com</div>
       <div class="aim">→ 품목 통합 견적으로 개별사 가격 검증</div>
@@ -424,7 +438,7 @@
     </div>
 
     <div class="mini">
-      <div class="mini-head"><div class="rank">21</div><div><h4>OFCO Group (오프코)</h4><div class="meta">베트남 호치민 · 소싱·검품 대행</div></div></div>
+      <div class="mini-head"><div class="rank">21</div><div><h4>OFCO Group (오프코)</h4><div class="meta"><b>Hall A · 107</b> · 베트남 호치민 · 소싱·검품 대행</div></div></div>
       <p>20년+ 경력의 수산 소싱 에이전트. "맞는 공급자를 맞는 바이어에게" 모델로 시작, 2008년부터 자체 검품(인스펙션) 법인 운영. <b>KR·US+46개국</b> 바이어 대행 경험.</p>
       <div class="links"><a href="https://www.ofco.info/inspection/">ofco.info</a></div>
       <div class="aim">→ 현지 네트워크 없는 신규 진입자의 QC·소싱 대행 후보</div>
@@ -432,7 +446,7 @@
     </div>
 
     <div class="mini">
-      <div class="mini-head"><div class="rank">22</div><div><h4>Hung Hau Agricultural (훙허우)</h4><div class="meta">베트남 호치민 · 농수산 VAP</div></div></div>
+      <div class="mini-head"><div class="rank">22</div><div><h4>Hung Hau Agricultural (훙허우)</h4><div class="meta"><b>Hall B · Gold 20</b> · 베트남 호치민 · 농수산 VAP</div></div></div>
       <p>1976년 설립, 50년 역사의 농수산 가공 그룹. 새우 샤오마이·하가우(딤섬) 등 조리 냉동식품 라인 보유. <b>KR·JP+6개국</b> 수출, BRC·HALAL·ISO·ASC.</p>
       <div class="links"><a href="https://hunghau.vn/">hunghau.vn</a></div>
       <div class="aim">→ 딤섬류 사이드·RMR OEM 2차 후보</div>
@@ -440,14 +454,14 @@
     </div>
 
     <div class="mini">
-      <div class="mini-head"><div class="rank">23</div><div><h4>Seaspimex (시아스피멕스)</h4><div class="meta">베트남 호치민 · 통조림·레토르트</div></div></div>
+      <div class="mini-head"><div class="rank">23</div><div><h4>Seaspimex (시아스피멕스)</h4><div class="meta"><b>Hall B · B103</b> · 베트남 호치민 · 통조림·레토르트</div></div></div>
       <p>1983년 설립(국영 Seaprodex의 생산 노하우 계승). 37년+ 역사, 5대륙 50여 개국 수출. 호치민 시내에 현대식 가공장 운영. <b>KR·JP·US</b> 수출, BRC·KOSHER·HALAL.</p>
       <div class="links">전화 +84-888-7927xx</div>
       <div class="aim">→ 장어 통조림·레토르트(RMR 소스) 시험 생산 후보</div>
     </div>
 
     <div class="mini">
-      <div class="mini-head"><div class="rank">24</div><div><h4>Shimakyu (시마큐)</h4><div class="meta">일본계 · 태국 거점 · 식품 소재</div></div></div>
+      <div class="mini-head"><div class="rank">24</div><div><h4>Shimakyu (시마큐)</h4><div class="meta"><b>Hall A · 803·804</b> · 일본계 · 태국 거점 · 식품 소재</div></div></div>
       <p><b>1877년 일본 창업</b> 149년 기업. 프리믹스 가루·식품첨가물·스파이스 믹스·시즈닝 제조 — 수산·육류 가공, 소스, 베이커리 등 전방위 공급. KR·JP·CN·US·VN+11개국 수출.</p>
       <div class="links">전화 +66-34-8851xx</div>
       <div class="aim">→ 장어 타레·가라아게 분 등 조미 소재 현지 조달</div>
@@ -455,7 +469,7 @@
     </div>
 
     <div class="mini">
-      <div class="mini-head"><div class="rank">25</div><div><h4>Weihai Junhe Foods (웨이하이 준허)</h4><div class="meta">중국 산둥 웨이하이 · 조리냉동</div></div></div>
+      <div class="mini-head"><div class="rank">25</div><div><h4>Weihai Junhe Foods (웨이하이 준허)</h4><div class="meta"><b>Hall A · 2602 (OTHERS 우측 벽면)</b> · 중국 산둥 웨이하이 · 조리냉동</div></div></div>
       <p>산둥 웨이하이의 조리 냉동식품 가공사 — 조미 조개살, 새우전, 치즈 생선스틱, 게맛살 등. <b>KR·US+3개국</b> 수출, BRC·EU코드·FDA·HACCP.</p>
       <div class="links">전화 +86-156-3441-77xx</div>
       <div class="aim">→ 조미가공 OEM · 장어 외 중국 라인 교차 확인</div>
@@ -463,7 +477,7 @@
     </div>
 
     <div class="mini">
-      <div class="mini-head"><div class="rank">26</div><div><h4>Seaprodex (시아프로덱스)</h4><div class="meta">베트남 · 국영계 종합수산</div></div></div>
+      <div class="mini-head"><div class="rank">26</div><div><h4>Seaprodex (시아프로덱스)</h4><div class="meta"><b>Hall A · 903</b> · 베트남 · 국영계 종합수산</div></div></div>
       <p>1978년 설립된 수산물 수출입 총공사가 전신 — 베트남 수산 수출의 역사 그 자체인 종합 기업. 새우·오징어·참치·VAP 전 품목, ASC·BRC·Naturland·GlobalGAP.</p>
       <div class="links"><a href="https://seaprodex.com.vn/">seaprodex.com.vn</a></div>
       <div class="aim">→ 업계 동향·유통망 정보 수집 겸 방문</div>
@@ -471,7 +485,7 @@
     </div>
 
     <div class="mini">
-      <div class="mini-head"><div class="rank">27</div><div><h4>Snowman Group (스노우맨)</h4><div class="meta">중국 푸젠 · 냉동·제빙 설비</div></div></div>
+      <div class="mini-head"><div class="rank">27</div><div><h4>Snowman Group (스노우맨)</h4><div class="meta"><b>Hall A · 2211·2311 (양식존)</b> · 중국 푸젠 · 냉동·제빙 설비</div></div></div>
       <p>푸젠 기반 냉동·제빙 설비 그룹. 2단 피스톤 압축기, 아임계·초임계 CO₂ 압축기 등 친환경 냉매 라인 보유. <b>KR·JP</b> 포함 10개국 수출.</p>
       <div class="links">전화 +86-591-2870xx</div>
       <div class="aim">→ 매장·소형 가공장 냉동 설비 견적</div>
@@ -479,21 +493,21 @@
     </div>
 
     <div class="mini">
-      <div class="mini-head"><div class="rank">28</div><div><h4>Eulsung Auto Pack Vietnam (을성오토팩)</h4><div class="meta">한국계 · 포장 기계</div></div></div>
+      <div class="mini-head"><div class="rank">28</div><div><h4>Eulsung Auto Pack Vietnam (을성오토팩)</h4><div class="meta"><b>Hall A · 1707·1708</b> · 한국계 · 포장 기계</div></div></div>
       <p>한국 자동포장기계 기업의 베트남 생산 법인(럼동성). <b>KR·JP+2개국</b> 수출 실적 — 한국어로 상담 가능한 포장 설비 옵션.</p>
       <div class="links">전화 +84-971-0255xx</div>
       <div class="aim">→ 멀티박 대비 가성비 포장기 견적</div>
     </div>
 
     <div class="mini">
-      <div class="mini-head"><div class="rank">29</div><div><h4>SGS Vietnam (SGS)</h4><div class="meta">스위스계 · 시험·검사·인증</div></div></div>
+      <div class="mini-head"><div class="rank">29</div><div><h4>SGS Vietnam (SGS)</h4><div class="meta"><b>Hall A · 1308</b> · 스위스계 · 시험·검사·인증</div></div></div>
       <p>145년+ 역사의 세계 최대 시험·검사·인증(TIC) 기업. 115개국 2,500개 랩, 전문가 10만 명. 수산 분야 BAP·ASC·BRC·BSCI·KOSHER 등 인증 서비스.</p>
       <div class="links"><a href="https://www.sgs.com/">sgs.com</a> · 전화 +84-28-3935-19xx</div>
       <div class="aim">→ 한국 가공장의 베트남 수입 등록·검역 요건 상담</div>
     </div>
 
     <div class="mini">
-      <div class="mini-head"><div class="rank">30</div><div><h4>수협 Fisheries Cooperatives (통영)</h4><div class="meta">한국 · 수산물 (한국관)</div></div></div>
+      <div class="mini-head"><div class="rank">30</div><div><h4>수협 Fisheries Cooperatives (통영)</h4><div class="meta"><b>Hall B · B804 (한국존, 표기 Oyster Cooperatives)</b> · 한국 · 수산물</div></div></div>
       <p>한국 수협 계열(경남 통영) 부스 — 디렉터리 등록 제품: 훈제굴(smoked oyster). 일본 수출 실적 보유.</p>
       <div class="links"><a href="https://www.suhyup.co.kr/">suhyup.co.kr</a> · 전화 +82-10-7159-44xx</div>
       <div class="aim">→ 한국관 네트워킹 — 굴 등 한국 원물의 현지 반입 사례 청취</div>
@@ -508,7 +522,7 @@
       <li>2026-08-13 공식 참가업체 디렉터리(vietfish.com.vn/en/producers, API) 317건 전수 수집 후, 양산도 미션(장어 소싱 → 사이드 원료 → RMR OEM → 콜드체인·설비 → 한국관 네트워킹) 기준으로 30개사를 선별했습니다.</li>
       <li>연혁·소개는 각 사가 디렉터리에 등록한 공식 소개문과 공개 웹 자료를 교차 확인해 요약했습니다. 홈페이지가 확인되지 않은 업체는 링크를 싣지 않았습니다(부스에서 확인).</li>
       <li>전화번호는 수집 과정에서 뒷자리가 잘린 경우 'xx'로 표기했습니다 — 정확한 번호는 공식 디렉터리의 각 업체 페이지 및 <a href="03-expo-notes/exhibitors-2026-08-13.psv">원본 데이터(psv)</a>에서 확인하세요.</li>
-      <li>부스 번호는 개막 전 미공개 — <a href="https://vietfish.com.vn/en/static/so-do-mat-bang">공식 배치도</a>와 현장 카탈로그로 확인 후 이 문서에 기입하세요.</li>
+      <li>부스 번호는 주최측 배치도(Hall A·B) 이미지를 판독해 기입했습니다(2026-08 기준). 배치는 개막 전 변동될 수 있으므로 입장 시 <a href="https://vietfish.com.vn/en/static/so-do-mat-bang">공식 배치도</a>·현장 카탈로그로 재확인하세요. SGS(1308)·을성(1707·1708) 등 일부는 배치도 표기가 겹쳐 있어 ±1부스 오차 가능.</li>
       <li>사진은 공식 디렉터리 등록 이미지를 원본 링크로 표시합니다(오프라인에서는 미표시). 디렉터리는 개막 전까지 갱신되므로 8/18 도착 후 최신 명단과 대조 권장.</li>
     </ul>
     <h5>주요 출처</h5>

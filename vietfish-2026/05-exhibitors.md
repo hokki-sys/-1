@@ -2,7 +2,7 @@
 
 - 수집일: **2026-08-13 (D-6)** · 출처: 공식 사이트 참가업체 디렉터리 API (`api.vietfish.com.vn/api/v1/producers`)
 - **총 317건 등록** (중복 등록 약 10건·테스트 항목 1건 포함 → 실질 약 305개사). 주최측 보도 기준 335개사·568부스이므로, 디렉터리 미등재 업체가 일부 있으며 개막 전까지 계속 갱신됩니다.
-- **부스번호는 전 업체 미기재 상태** → 부스 위치는 [공식 배치도(so-do-mat-bang)](https://vietfish.com.vn/en/static/so-do-mat-bang)와 현장 카탈로그로 확인.
+- **부스 위치 확보됨**: 주최측 배치도(Hall A·B) 판독 완료 — 우선 30부스의 부스번호는 [06-priority-booths.html](06-priority-booths.html)에 기입. 원본 배치도: [공식 페이지](https://vietfish.com.vn/en/static/so-do-mat-bang).
 - 전체 원본 데이터: [`03-expo-notes/exhibitors-2026-08-13.psv`](03-expo-notes/exhibitors-2026-08-13.psv) (파이프(`|`) 구분: 업체명|국가|부스|품목코드|전화|인증|수출시장)
 
 ## 국가별 분포
@@ -23,18 +23,20 @@
 
 ### ★ 최우선 10부스 (시간이 없으면 여기만)
 
-| # | 업체 | 국가 | 분야 | 왜 만나야 하나 |
-|---|---|---|---|---|
-| 1 | **Vinh Hoan (VĨNH HOÀN)** | VN | 팡가시우스·콜라겐 | 세계 최대 바사 가공사. 화이트피시 원료+부가가치(콜라겐) 벤치마크. 디렉터리 2건 등록 |
-| 2 | **Minh Phu Seafood** | VN | 새우 | 베트남 최대 새우그룹 — 사이드메뉴 새우 소싱 기준가 확보 |
-| 3 | **GODACO** | VN | 바사·조개·가공 | KR/JP/CN/US 수출. 조개류(사이드) + 가공 OEM 겸업 |
-| 4 | **HAI NAM** | VN | 참치·오징어·가공 | KR/JP 수출 + MSC/ASC/BRC. 사시미급 원물 후보(호치민 소재) |
-| 5 | **QUOC VIET** | VN | 새우 | KR/JP/CN/US+10 수출, 인증 풀세트 — 새우 대안 견적 |
-| 6 | **JUN FAN FOODS** | VN | 새우·오징어 | **7군 푸미흥(Tân Phong) 소재** — 호텔 옆 동네 공급사, KR/JP/CN 수출. 1호점 식자재 근거리 조달 후보 |
-| 7 | **JO KITCHEN** | VN | 가공(VAP) | BAP/BRC/HACCP 보유 가공사 — **RMR(밀키트) 현지 OEM** 상담 1순위 |
-| 8 | **MULTIVAC Vietnam** | 독일계 | 포장설비 | 진공·스킨팩 — 장어 RMR 포장 견적·시연 |
-| 9 | **AJ TOTAL Vietnam** | 한국계 | 물류 | 한국계 종합물류(콜드체인) — 한국→호치민 냉동 장어 수입 리드타임·비용 상담 |
-| 10 | **K-FISH / K-SEAFOOD 한국관** | KR | 국가관 | 해수부 K·FISH 브랜드관 — 수출지원제도·현지 유통 정보, 한국 부스 순회의 시작점 |
+| # | 업체 | 부스 | 국가 | 분야 | 왜 만나야 하나 |
+|---|---|---|---|---|---|
+| 1 | **Fuqing Haifeng** ★승격 | **Hall B · B204** | CN | **장어(가바야키)** | 참가사 중 유일한 장어 전문 — 냉동장어·장어구이 등록, 對한국 수출 실적 |
+| 2 | **Vinh Hoan (VĨNH HOÀN)** | Hall A · Gold 5 | VN | 팡가시우스·콜라겐 | 세계 최대 바사 가공사. 화이트피시 원료+부가가치(콜라겐) 벤치마크 |
+| 3 | **Minh Phu Seafood** | Hall A · Gold 10·12 | VN | 새우 | 베트남 최대 새우그룹 — 사이드메뉴 새우 소싱 기준가 확보 |
+| 4 | **GODACO** | Hall A · Gold 2 | VN | 바사·조개·가공 | KR/JP/CN/US 수출. 조개류(사이드) + 가공 OEM 겸업 |
+| 5 | **HAI NAM** | Hall A · Gold 9 | VN | 참치·오징어·가공 | KR/JP 수출 + MSC/ASC/BRC. 사시미급 원물 후보(호치민 소재) |
+| 6 | **JUN FAN FOODS** | Hall A · 1403~1504 | VN | 새우·오징어 | **7군 푸미흥 소재** — 호텔 옆 동네 공급사, KR/JP/CN 수출 |
+| 7 | **JO KITCHEN** | Hall B · Gold 25 | VN | 가공(VAP) | BAP/BRC/HACCP — **RMR(밀키트) 현지 OEM** 상담 1순위 |
+| 8 | **MULTIVAC Vietnam** | Hall A · 605·606 | 독일계 | 포장설비 | 진공·스킨팩 — 장어 RMR 포장 견적·시연 |
+| 9 | **AJ TOTAL Vietnam** | Hall A · 905 | 한국계 | 물류 | 콜드체인 — 한국→호치민 냉동 장어 수입 리드타임·비용 상담 |
+| 10 | **K-FISH / K-SEAFOOD 한국관** | Hall B · Gold 22 | KR | 국가관 | 해수부 K·FISH 브랜드관 — 수출지원·유통 정보, 한국 부스 순회 시작점 |
+
+※ QUOC VIET(Hall A·203~304)은 11위로 조정. 나머지 20개 부스 위치는 [06-priority-booths.html](06-priority-booths.html) 참조. **한국 부스 클러스터**: Hall B B801~B904A(수협굴 B804·대호 B903·고레미 B801·동원F&B B802·새우표/완도김 B904 등) + Hall A 1801~1902(목포 수산식품연구센터·모슬포수협·서귀포수협) + Gold 22 한국관.
 
 ### A. 원료 소싱 — 대형 수출사·KR 수출 실적 보유 (박람회 1일차)
 
@@ -45,10 +47,10 @@
 **조개류(사이드 메뉴)**: GODACO · **Lenger Seafoods VN** (KR,JP,US — 유럽계 바지락 전문, ASC)
 **한국형 종합 대응**: SEAPRODEX · HUNG HAU (KR,JP) · Seaspimex (KR,JP,US — 통조림/레토르트)
 
-### B. 장어 관련 — 중요 특이사항 ⚠️
+### B. 장어 관련 — 확인 완료 ✅
 
-디렉터리 317건 중 **'장어(eel/unagi/lươn)'를 명시한 업체는 없습니다.** VIETFISH는 새우·바사·참치 중심이므로 장어 원료는 다음 순서로 현장 확인:
-1. **Fuqing Haifeng Food (中 푸젠 푸칭시)** — 푸칭은 **중국 가바야키(장어구이) 가공 최대 집산지**. VAP 카테고리·JP/US 수출·IFS/KOSHER 보유 → **장어 가공 취급 여부 부스에서 1순위 확인**
+업체명 기준으로는 '장어'를 명시한 곳이 없었으나, **제품 등록까지 파고든 결과 장어 공급사를 확정**했습니다:
+1. **Fuqing Haifeng Food (中 푸젠 푸칭시) — Hall B B204** ★확정: 디렉터리 등록 제품이 **Frozen eel(냉동장어)·Frozen roasted eel(냉동 장어구이)**. 1992년 설립 장어구이 전문 공장(en.fqhaifeng.com), **일본·미국·한국·호주 수출 실적**. 우선순위 1위로 승격 — [06-priority-booths.html](06-priority-booths.html) 참조
 2. 푸젠·산둥 VAP 군단 (Danyang Yihe, Weihai Junhe(KR), WEIHAI QZ-BLUESEA, WEIHAI HAINA(KR), Fujian Langui, Beihai Jiu Jia Jiu(KR,JP)) — 조미·구이 수산가공 라인 보유 여부 확인
 3. 수확 없으면: 강해무역 기존 중국 장어 라인(로스트라타) 활용 + 베트남 내 위탁가공 조합이 현실적 → [플레이북](../reports/vietfish-2026-playbook.md) 참조
 
