@@ -4,7 +4,7 @@
 
 ## 자료
 
-- **[VIETFISH 2026 출장 공간](vietfish-2026/)** — 호치민 수산물박람회 출장 자료 허브: [호텔 선정](vietfish-2026/01-hotel-selection.md)(추천: 더 스타 호텔 2) · [참가업체 317건 리스트+주요 업체 셀렉션](vietfish-2026/05-exhibitors.md) · [일정표](vietfish-2026/02-schedule.md) · 현장 수집 자료/시장조사 기록 폴더 (2026-08-11 개설)
+- **[VIETFISH 2026 출장 공간](vietfish-2026/)** — 호치민 수산물박람회 출장 자료 허브: [호텔 선정](vietfish-2026/01-hotel-selection.md)(추천: 더 스타 호텔 2) · [우선 방문 부스 30 보고서](vietfish-2026/06-priority-booths.html) · [참가업체 317건 리스트+주요 업체 셀렉션](vietfish-2026/05-exhibitors.md) · [일정표](vietfish-2026/02-schedule.md) · 현장 수집 자료/시장조사 기록 폴더 (2026-08-11 개설)
 - [양산도 호치민 진출 사전조사 보고서](reports/yangsando-hcmc-report.md) — VIETFISH 2026 참관 가이드(8/19~21, SECC) + 호치민 시장조사 + 진출 전략 (2026-08-10 작성)
 - [강해무역 VIETFISH 2026 & 베트남 가공 진출 플레이북](reports/vietfish-2026-playbook.md) — 중국산 민물장어(로스트라타·자포니카) 수입상의 베트남 확장: 박람회 활용, 위탁가공, 자체 공장, 한국 수입 관세·원산지 분석 (2026-08-10 작성)
 
