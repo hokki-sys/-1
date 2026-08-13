@@ -182,18 +182,19 @@ def japan_section(today: str) -> tuple[list[str], bool, list[str]]:
     updated = any(r.get("collected") == today and r["month"] == latest for r in rows)
     by = {(r["item"], r["month"]): r for r in rows}
     lines = [f"※ 최신 확정월 {latest}" + (" — 오늘 갱신됨" if updated else "")]
-    for item in ("활장어", "조제장어", "치어"):
+    for item in ("활 민물장어(뱀장어)", "조제 민물장어(양념구이)", "민물장어 치어(실뱀장어)"):
         cur_row = by.get((item, latest))
-        if not cur_row:
+        if not cur_row or not cur_row.get("usd_per_kg"):
             continue
-        cur = float(cur_row["jpy_per_kg"])
+        cur = float(cur_row["usd_per_kg"])
+        jpy = float(cur_row["jpy_per_kg"])
         lines.append(f"● {item} (중국→일본)")
-        lines.append(f"   {latest}: ¥{cur:,.0f}/kg, {int(cur_row['import_kg']):,}kg")
+        lines.append(f"   {latest}: ${cur:.2f}/kg (¥{jpy:,.0f}), {int(cur_row['import_kg']):,}kg")
         for name, back in MONTH_PERIODS:
             prow = by.get((item, month_shift(latest, back)))
-            if prow:
+            if prow and prow.get("usd_per_kg"):
                 lines.append(f"   {name}대비: "
-                             f"{cmp_line(cur, float(prow['jpy_per_kg']), '¥', prow['month'])}"
+                             f"{cmp_line(cur, float(prow['usd_per_kg']), '$', prow['month'])}"
                              f", {int(prow['import_kg']):,}kg")
             else:
                 lines.append(f"   {name}대비: — (해당 월 실적/데이터 없음)")
@@ -236,11 +237,12 @@ def main() -> int:
         sep,
         *i_lines,
         sep,
-        "4) 중국산 수입실적 — 일본 (월간, JPY/kg CIF, 일본 재무성)",
+        "4) 중국산 수입실적 — 일본 (월간, USD/kg 환산·CIF, 일본 재무성)",
         sep,
         *j_lines,
         f"전체 이력: {REPO_URL}",
         "※ '—'는 해당 기간의 데이터가 아직 쌓이지 않았다는 뜻입니다.",
+        "※ 일본 단가는 ECB 월중 환율로 USD 환산 (원화·엔화 원본은 CSV에 보존).",
         "  (일별 수집 2026-08-10 시작 / 경매 2022-11~ / 수입 2025-02~)",
     ])
     OUT_PATH.write_text(body, encoding="utf-8")
