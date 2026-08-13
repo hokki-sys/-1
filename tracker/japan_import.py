@@ -12,6 +12,7 @@ tracker/japan_import_history.csv 에 월별로 누적한다. 키 불필요.
 """
 from __future__ import annotations
 
+import json
 import os
 import re
 import sys
@@ -30,8 +31,32 @@ LIST_QUERY = "うなぎ（稚魚、活、調製品）"
 LIST_PAGES = 4
 MAX_DOWNLOADS = 12  # 실행당 신규 파일 다운로드 상한 (예의)
 
-FIELDS = ["month", "item", "import_kg", "jpy_thousand", "jpy_per_kg", "collected"]
-ITEMS = [("치어", 1), ("활장어", 6), ("조제장어", 11)]  # (이름, 블록 시작 컬럼)
+FIELDS = ["month", "item", "import_kg", "jpy_thousand", "jpy_per_kg",
+          "usd_per_kg", "fx_jpy_usd", "collected"]
+# 일본 통계의 うなぎ는 뱀장어속(Anguilla) = 민물장어 전용 분류 (바다장어 별도)
+ITEMS = [("민물장어 치어(실뱀장어)", 1), ("활 민물장어(뱀장어)", 6),
+         ("조제 민물장어(양념구이)", 11)]  # (이름, 블록 시작 컬럼)
+RENAME = {"치어": "민물장어 치어(실뱀장어)", "활장어": "활 민물장어(뱀장어)",
+          "조제장어": "조제 민물장어(양념구이)"}
+
+_fx_cache: dict[str, float | None] = {}
+
+
+def fx_rate(month: str) -> float | None:
+    """해당 월의 USD→JPY 환율 (ECB 기준, 월중 15일)."""
+    if month in _fx_cache:
+        return _fx_cache[month]
+    date = f"{month}-15"
+    if date >= datetime.now(tp.KST).strftime("%Y-%m-%d"):
+        date = "latest"
+    try:
+        raw, _f, _c = tp.fetch(f"https://api.frankfurter.app/{date}?from=USD&to=JPY")
+        rate = float(json.loads(raw)["rates"]["JPY"])
+    except Exception as e:
+        tp.log(f"  환율 조회 실패({month}): {e}")
+        rate = None
+    _fx_cache[month] = rate
+    return rate
 
 
 def discover_ids() -> list[str]:
@@ -114,8 +139,7 @@ def main() -> int:
 
     ids = discover_ids()
     if not ids:
-        tp.log("e-Stat 목록에서 파일 ID를 찾지 못했습니다 — 다음 실행에서 재시도")
-        return 0
+        tp.log("e-Stat 목록에서 파일 ID를 찾지 못했습니다 — 신규 수집 없이 진행")
 
     fresh: list[dict] = []
     downloads = 0
@@ -140,25 +164,44 @@ def main() -> int:
             if item in info:
                 kg, kyen = info[item]
                 per = kyen * 1000 / kg
+                rate = fx_rate(month)
+                usd = f"{per / rate:.2f}" if rate else ""
                 fresh.append({
                     "month": month, "item": item,
                     "import_kg": str(int(kg)), "jpy_thousand": str(int(kyen)),
-                    "jpy_per_kg": f"{per:.0f}", "collected": today,
+                    "jpy_per_kg": f"{per:.0f}", "usd_per_kg": usd,
+                    "fx_jpy_usd": f"{rate:.2f}" if rate else "",
+                    "collected": today,
                 })
-                tp.log(f"  {month} {item}: {int(kg):,}kg, ¥{int(kyen):,}천 → ¥{per:,.0f}/kg")
+                tp.log(f"  {month} {item}: {int(kg):,}kg → ¥{per:,.0f}/kg"
+                       + (f" (${usd}/kg)" if usd else ""))
                 got = True
         if not got:
             tp.log(f"  {sid} ({month}): 중국 실적 없음")
         have_months.add(month)
 
-    if fresh:
+    # 기존 행 마이그레이션: 옛 품목명 교체 + USD 단가 보충
+    migrated = False
+    for r in existing:
+        if r.get("item") in RENAME:
+            r["item"] = RENAME[r["item"]]
+            migrated = True
+        if not r.get("usd_per_kg") and r.get("jpy_per_kg"):
+            rate = fx_rate(r.get("month", ""))
+            if rate:
+                r["usd_per_kg"] = f"{float(r['jpy_per_kg']) / rate:.2f}"
+                r["fx_jpy_usd"] = f"{rate:.2f}"
+                migrated = True
+
+    if fresh or migrated:
         keys = {(r["month"], r["item"]) for r in fresh}
         kept = [r for r in existing
                 if (r.get("month"), r.get("item")) not in keys]
         merged = kept + fresh
         merged.sort(key=lambda r: (r.get("month", ""), r.get("item", "")))
         mp.save_csv(CSV_PATH, merged, FIELDS)
-        tp.log(f"\njapan_import_history.csv 갱신: {len(fresh)}건 추가")
+        tp.log(f"\njapan_import_history.csv 갱신: 신규 {len(fresh)}건"
+               + (", 기존 행 마이그레이션" if migrated else ""))
     else:
         tp.log("\n신규 월 없음")
     return 0
