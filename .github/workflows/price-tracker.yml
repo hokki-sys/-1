@@ -43,7 +43,9 @@ jobs:
 
       - name: Probe Japan trade stats (temporary)
         if: always()
-        run: python3 tracker/probe5.py || true
+        run: |
+          pip install -q openpyxl xlrd 2>/dev/null || true
+          python3 tracker/probe5.py || true
 
       - name: Compose daily report
         id: report
