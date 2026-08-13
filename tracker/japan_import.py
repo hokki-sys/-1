@@ -27,8 +27,8 @@ ROOT = Path(__file__).resolve().parent
 CSV_PATH = ROOT / "japan_import_history.csv"
 BASE = "https://www.e-stat.go.jp"
 LIST_QUERY = "うなぎ（稚魚、活、調製品）"
-LIST_PAGES = 3
-MAX_DOWNLOADS = 6  # 실행당 신규 파일 다운로드 상한 (예의)
+LIST_PAGES = 4
+MAX_DOWNLOADS = 12  # 실행당 신규 파일 다운로드 상한 (예의)
 
 FIELDS = ["month", "item", "import_kg", "jpy_thousand", "jpy_per_kg", "collected"]
 ITEMS = [("치어", 1), ("활장어", 6), ("조제장어", 11)]  # (이름, 블록 시작 컬럼)
