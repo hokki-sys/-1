@@ -41,6 +41,12 @@ jobs:
         if: always()
         run: python3 tracker/kati_import.py
 
+      - name: Run Japan import collector (e-Stat)
+        if: always()
+        run: |
+          pip install -q xlrd 2>/dev/null || true
+          python3 tracker/japan_import.py || true
+
       - name: Compose daily report
         id: report
         if: always()
