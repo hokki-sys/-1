@@ -50,6 +50,8 @@ def cmp_line(cur: float, prev: float | None, unit: str, when: str = "") -> str:
     when_s = f", {when}" if when else ""
     if unit == "$":
         return f"{arrow(p)} {p:+.1f}% (${prev:,.2f}{when_s})"
+    if unit == "¥":
+        return f"{arrow(p)} {p:+.1f}% (¥{prev:,.0f}{when_s})"
     return f"{arrow(p)} {p:+.1f}% ({int(prev):,}원{when_s})"
 
 
@@ -135,17 +137,18 @@ def wonmul_section(today: str) -> tuple[list[str], bool, list[str]]:
     return lines, bool(new_today), notes
 
 
+def month_shift(ym: str, back: int) -> str:
+    y, m = int(ym[:4]), int(ym[5:7])
+    idx = y * 12 + (m - 1) - back
+    return f"{idx // 12}-{idx % 12 + 1:02d}"
+
+
 def import_section(today: str) -> tuple[list[str], bool, list[str]]:
     rows = [r for r in mp.load_csv(ROOT / "import_history.csv") if r.get("usd_per_kg")]
     if not rows:
         return ["- 데이터 없음", ""], False, []
     latest_month = max(r["month"] for r in rows)
     updated = any(r.get("collected") == today and r["month"] == latest_month for r in rows)
-
-    def month_shift(ym: str, back: int) -> str:
-        y, m = int(ym[:4]), int(ym[5:7])
-        idx = y * 12 + (m - 1) - back
-        return f"{idx // 12}-{idx % 12 + 1:02d}"
 
     by_key: dict[tuple[str, str], dict] = {(r["hs"], r["month"]): r for r in rows}
     lines = [f"※ 최신 확정월 {latest_month}" + (" — 오늘 갱신됨" if updated else "")]
@@ -170,16 +173,46 @@ def import_section(today: str) -> tuple[list[str], bool, list[str]]:
     return lines, updated, notes
 
 
+def japan_section(today: str) -> tuple[list[str], bool, list[str]]:
+    rows = [r for r in mp.load_csv(ROOT / "japan_import_history.csv")
+            if r.get("jpy_per_kg")]
+    if not rows:
+        return ["- 데이터 수집 중 (일본 재무성 무역통계, 수집 시작 후 표시)", ""], False, []
+    latest = max(r["month"] for r in rows)
+    updated = any(r.get("collected") == today and r["month"] == latest for r in rows)
+    by = {(r["item"], r["month"]): r for r in rows}
+    lines = [f"※ 최신 확정월 {latest}" + (" — 오늘 갱신됨" if updated else "")]
+    for item in ("활장어", "조제장어", "치어"):
+        cur_row = by.get((item, latest))
+        if not cur_row:
+            continue
+        cur = float(cur_row["jpy_per_kg"])
+        lines.append(f"● {item} (중국→일본)")
+        lines.append(f"   {latest}: ¥{cur:,.0f}/kg, {int(cur_row['import_kg']):,}kg")
+        for name, back in MONTH_PERIODS:
+            prow = by.get((item, month_shift(latest, back)))
+            if prow:
+                lines.append(f"   {name}대비: "
+                             f"{cmp_line(cur, float(prow['jpy_per_kg']), '¥', prow['month'])}"
+                             f", {int(prow['import_kg']):,}kg")
+            else:
+                lines.append(f"   {name}대비: — (해당 월 실적/데이터 없음)")
+        lines.append("")
+    notes = ["일본 수입 갱신"] if updated else []
+    return lines, updated, notes
+
+
 def main() -> int:
     today = datetime.now(tp.KST).strftime("%Y-%m-%d")
     p_lines, p_changed, p_notes = product_section()
     w_lines, w_new, w_notes = wonmul_section(today)
     i_lines, i_new, i_notes = import_section(today)
+    j_lines, j_new, j_notes = japan_section(today)
 
-    notes = p_notes + w_notes + i_notes
+    notes = p_notes + w_notes + i_notes + j_notes
     if p_changed:
         status = "가격 변동 있음"
-    elif w_new or i_new:
+    elif w_new or i_new or j_new:
         status = "신규 데이터 있음"
     else:
         status = "변동 없음"
@@ -199,9 +232,13 @@ def main() -> int:
         sep,
         *w_lines,
         sep,
-        "3) 중국산 수입실적 (월간, USD/kg CIF, 관세청 통관)",
+        "3) 중국산 수입실적 — 한국 (월간, USD/kg CIF, 관세청 통관)",
         sep,
         *i_lines,
+        sep,
+        "4) 중국산 수입실적 — 일본 (월간, JPY/kg CIF, 일본 재무성)",
+        sep,
+        *j_lines,
         f"전체 이력: {REPO_URL}",
         "※ '—'는 해당 기간의 데이터가 아직 쌓이지 않았다는 뜻입니다.",
         "  (일별 수집 2026-08-10 시작 / 경매 2022-11~ / 수입 2025-02~)",
@@ -209,7 +246,7 @@ def main() -> int:
     OUT_PATH.write_text(body, encoding="utf-8")
     tp.log(body)
     tp.gh_output("subject", f"[장어 시세] {today} — {status}")
-    tp.gh_output("changed", "true" if (p_changed or w_new or i_new) else "false")
+    tp.gh_output("changed", "true" if (p_changed or w_new or i_new or j_new) else "false")
     return 0
 
 
