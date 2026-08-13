@@ -41,6 +41,10 @@ jobs:
         if: always()
         run: python3 tracker/kati_import.py
 
+      - name: Probe Japan trade stats (temporary)
+        if: always()
+        run: python3 tracker/probe5.py || true
+
       - name: Compose daily report
         id: report
         if: always()
