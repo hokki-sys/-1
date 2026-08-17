@@ -9,6 +9,7 @@
 
 | 파일/폴더 | 역할 |
 |---|---|
+| [`domestic-sales-report.pdf`](domestic-sales-report.pdf) | **종합 보고서(PDF, 54p)** — 잠재 거래처 170개사 전체 정보·채널 전략·시장 여건 총람 (2026-08-14) |
 | [`channels.md`](channels.md) | 국내 판매 채널 지도 — 채널별 특징, 진입 방법, 준비물, 리스크 |
 | [`leads.csv`](leads.csv) | 잠재 거래처 마스터 목록 (파이프라인 관리의 중심 파일) |
 | [`contact-log.csv`](contact-log.csv) | 업체별 접촉 이력 (전화·메일·미팅·샘플 발송 기록) |
