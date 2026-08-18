@@ -51,7 +51,8 @@
 
 업체명 기준으로는 '장어'를 명시한 곳이 없었으나, **제품 등록까지 파고든 결과 장어 공급사를 확정**했습니다:
 1. **Fuqing Haifeng Food (中 푸젠 푸칭시) — Hall B B204** ★확정: 디렉터리 등록 제품이 **Frozen eel(냉동장어)·Frozen roasted eel(냉동 장어구이)**. 1992년 설립 장어구이 전문 공장(en.fqhaifeng.com), **일본·미국·한국·호주 수출 실적**. 우선순위 1위로 승격 — [06-priority-booths.html](06-priority-booths.html) 참조
-2. 푸젠·산둥 VAP 군단 (Danyang Yihe, Weihai Junhe(KR), WEIHAI QZ-BLUESEA, WEIHAI HAINA(KR), Fujian Langui, Beihai Jiu Jia Jiu(KR,JP)) — 조미·구이 수산가공 라인 보유 여부 확인
+2. **FUJIAN HUANONG (Hall B B301)** ★2순위 확정: 식약처 수입신고 데이터에서 **장어구이 한국 수출 실적 9건(2024~)** 확인 — 한국 검역·규격 대응 검증된 참가사. 하이펑(B204) 상담 직후 방문 → [07-korea-partners.md](07-korea-partners.md)
+3. 푸젠·산둥 VAP 군단 (Danyang Yihe, Weihai Junhe(KR), WEIHAI QZ-BLUESEA, WEIHAI HAINA(KR), Fujian Langui, Beihai Jiu Jia Jiu(KR,JP)) — 조미·구이 수산가공 라인 보유 여부 확인
 3. 수확 없으면: 강해무역 기존 중국 장어 라인(로스트라타) 활용 + 베트남 내 위탁가공 조합이 현실적 → [플레이북](../reports/vietfish-2026-playbook.md) 참조
 
 ### C. RMR·가공 OEM 후보 (박람회 1~2일차)
