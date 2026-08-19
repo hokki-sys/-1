@@ -1,0 +1,436 @@
+<title>호치민 군별 상권 지도</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;800&family=Gothic+A1:wght@400;700;900&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --bg:#F1F4F3; --surface:#FFFFFF; --surface-2:#E7ECEA;
+    --ink:#131E1B; --ink-2:#3A4B47; --muted:#64756F;
+    --line:#D3DBD8; --line-2:#BCC7C3;
+    --accent:#0B6B5E; --accent-soft:#DDEBE7;
+    --glaze:#9C5716; --glaze-soft:#F4E7D8;
+    --alert:#A82318;
+    --r5:#0B6B5E; --r4:#3E9083; --r3:#8FBAB1; --r2:#C6D8D3; --r1:#E3E9E7;
+    --rt5:#FFFFFF; --rt4:#FFFFFF; --rt3:#12312B; --rt2:#2A3B37; --rt1:#5B6B67;
+    --water:#B9D3D8; --waterline:#8FB4BC;
+    --shadow:0 1px 2px rgba(19,30,27,.06), 0 8px 24px -16px rgba(19,30,27,.28);
+    --sans:"Be Vietnam Pro","IBM Plex Sans KR",system-ui,sans-serif;
+    --head:"Be Vietnam Pro","Gothic A1",system-ui,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --bg:#0E1513; --surface:#161F1D; --surface-2:#1E2926;
+      --ink:#E7EEEB; --ink-2:#BCC9C5; --muted:#8B9C97;
+      --line:#2A3735; --line-2:#3A4A46;
+      --accent:#54C3AC; --accent-soft:#12312B;
+      --glaze:#D9A05A; --glaze-soft:#2E2317;
+      --alert:#FF7A6B;
+      --r5:#4FBFA8; --r4:#2F8874; --r3:#245D53; --r2:#1D3F39; --r1:#1B2A27;
+      --rt5:#06201B; --rt4:#EAF6F3; --rt3:#CFE7E1; --rt2:#9FBDB6; --rt1:#7D9089;
+      --water:#1B3A40; --waterline:#2E5A62;
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0E1513; --surface:#161F1D; --surface-2:#1E2926;
+    --ink:#E7EEEB; --ink-2:#BCC9C5; --muted:#8B9C97;
+    --line:#2A3735; --line-2:#3A4A46;
+    --accent:#54C3AC; --accent-soft:#12312B;
+    --glaze:#D9A05A; --glaze-soft:#2E2317;
+    --alert:#FF7A6B;
+    --r5:#4FBFA8; --r4:#2F8874; --r3:#245D53; --r2:#1D3F39; --r1:#1B2A27;
+    --rt5:#06201B; --rt4:#EAF6F3; --rt3:#CFE7E1; --rt2:#9FBDB6; --rt1:#7D9089;
+    --water:#1B3A40; --waterline:#2E5A62;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 20px 90px}
+
+  header.top{border-bottom:1px solid var(--line);background:linear-gradient(180deg,var(--surface),var(--bg))}
+  .top-in{max-width:1180px;margin:0 auto;padding:40px 20px 28px;display:flex;flex-direction:column;gap:14px}
+  .eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .eyebrow .dot{width:5px;height:5px;border-radius:50%;background:var(--glaze)}
+  h1{font-family:var(--head);font-weight:800;letter-spacing:-.025em;font-size:clamp(28px,5vw,46px);line-height:1.1;margin:0;text-wrap:balance}
+  .standfirst{font-size:clamp(15px,2vw,17.5px);color:var(--ink-2);max-width:64ch;margin:0}
+
+  h2{font-family:var(--head);font-weight:800;letter-spacing:-.02em;font-size:clamp(20px,3vw,27px);margin:0 0 6px;text-wrap:balance}
+  h2 .num{font-family:var(--mono);font-size:.62em;font-weight:600;color:var(--accent);margin-right:.6em}
+  .lede{color:var(--muted);font-size:14.5px;margin:0 0 20px;max-width:72ch}
+  section{padding-top:52px;scroll-margin-top:16px}
+
+  /* map */
+  .mapcard{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px;box-shadow:var(--shadow)}
+  figure{margin:0}
+  svg.map{display:block;width:100%;max-width:100%;height:auto;color:var(--ink)}
+  .zone-shape{cursor:pointer;transition:opacity .15s}
+  .zone-shape:hover{opacity:.82}
+  .zone-shape.on rect{stroke:var(--glaze);stroke-width:3.5}
+  figcaption{margin-top:14px;font-size:12.5px;color:var(--muted);line-height:1.7}
+
+  .legend{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin-top:16px;padding-top:16px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted)}
+  .legend .grp{display:flex;gap:7px;align-items:center}
+  .sw{width:15px;height:15px;border-radius:3px;border:1px solid var(--line-2)}
+  .pin{width:17px;height:17px;border-radius:50%;background:var(--glaze);color:#fff;font-family:var(--mono);font-size:10px;display:grid;place-items:center;font-weight:600}
+
+  /* district cards */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:14px}
+  .dcard{background:var(--surface);border:1px solid var(--line);border-radius:11px;overflow:hidden;box-shadow:var(--shadow);scroll-margin-top:20px}
+  .dcard.on{border-color:var(--glaze);box-shadow:0 0 0 2px var(--glaze-soft),var(--shadow)}
+  .dhead{padding:15px 18px 13px;display:flex;flex-direction:column;gap:3px}
+  .dtop{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+  .dname{font-family:var(--head);font-weight:800;font-size:18px;letter-spacing:-.01em}
+  .dname .vn{font-weight:400;font-size:12.5px;color:var(--muted);margin-left:7px;font-family:var(--mono)}
+  .stars{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--accent);white-space:nowrap}
+  .stars .off{color:var(--line-2)}
+  .dward{font-family:var(--mono);font-size:11px;color:var(--muted)}
+  .dward b{color:var(--accent);font-weight:600}
+  .dbody{padding:0 18px 16px;display:flex;flex-direction:column;gap:12px}
+  .dnote{font-size:13.5px;color:var(--ink-2);margin:0;padding-top:12px;border-top:1px solid var(--line)}
+  .block .t{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+  .streets{display:flex;flex-wrap:wrap;gap:5px}
+  .st{font-size:12.5px;background:var(--surface-2);border:1px solid var(--line);border-radius:5px;padding:2px 8px;font-family:var(--mono)}
+  .st i{font-style:normal;color:var(--muted);font-family:var(--sans);font-size:11.5px}
+  .shops{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:5px}
+  .shops li{font-size:13px;color:var(--ink-2);display:flex;gap:8px;align-items:baseline}
+  .shops li::before{content:"";flex:0 0 auto;width:4px;height:4px;border-radius:50%;background:var(--line-2);margin-top:7px}
+  .shops li.key{color:var(--ink);font-weight:600}
+  .shops li.key::before{background:var(--glaze);width:5px;height:5px}
+  .shops .addr{font-family:var(--mono);font-size:11.5px;color:var(--muted);font-weight:400}
+
+  .tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:9px;background:var(--surface);box-shadow:var(--shadow)}
+  table{border-collapse:collapse;width:100%;min-width:640px;font-size:13.5px}
+  th,td{padding:10px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+  thead th{background:var(--surface-2);font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  tbody tr:last-child td{border-bottom:0}
+  td.n{font-family:var(--mono);font-variant-numeric:tabular-nums}
+  .new{color:var(--accent);font-weight:600}
+  .old{color:var(--muted)}
+
+  footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted)}
+  a{color:var(--accent)}
+  :focus-visible{outline:2px solid var(--glaze);outline-offset:2px}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<header class="top">
+  <div class="top-in">
+    <div class="eyebrow"><span>양산도 · Ho Chi Minh City</span><span class="dot"></span><span>District Trade-Area Map</span><span class="dot"></span><span>2026.08.19</span></div>
+    <h1>호치민 군별 상권 지도</h1>
+    <p class="standfirst">익숙한 <b>군(郡) 체계</b>로 배치한 개념도입니다. 각 군의 주요 상권 거리, 인기 매장, 양산도 적합도, 그리고 이번 출장에서 반드시 들러야 할 6개 지점을 함께 표시했습니다. 군을 누르면 아래 카드로 이동합니다.</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+<section id="map">
+  <h2><span class="num">01</span>지도</h2>
+  <p class="lede">지리적 인접 관계를 보존한 개념도이며 실제 축척이 아닙니다. 색이 진할수록 양산도 1호점 적합도가 높습니다.</p>
+  <div class="mapcard">
+    <figure>
+      <svg class="map" viewBox="0 0 880 690" role="img" aria-label="호치민시 군별 상권 개념도. 7군 푸미흥과 2군 타오디엔, 빈탄이 적합도 상위이며, 사이공강 서쪽에 1군·3군·5군·10군, 동쪽에 2군과 투득시가 배치되어 있고 남쪽에 4군과 7군이 위치한다. Unatoto 4개점, Unagi Shokudo, SECC 전시장 6개 실사 지점이 표시되어 있다.">
+        <defs>
+          <marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+          </marker>
+        </defs>
+
+        <!-- water -->
+        <path d="M710,40 C665,120 606,168 594,250 L594,566 C594,616 574,650 566,690"
+              fill="none" stroke="var(--water)" stroke-width="17" stroke-linecap="round"/>
+        <path d="M710,40 C665,120 606,168 594,250 L594,566 C594,616 574,650 566,690"
+              fill="none" stroke="var(--waterline)" stroke-width="1" stroke-linecap="round" opacity=".7"/>
+        <line x1="586" y1="478" x2="440" y2="478" stroke="var(--water)" stroke-width="8" stroke-linecap="round"/>
+        <line x1="586" y1="570" x2="330" y2="570" stroke="var(--water)" stroke-width="9" stroke-linecap="round"/>
+        <text x="610" y="530" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--waterline)" transform="rotate(-90 610 530)">Sông Sài Gòn</text>
+        <text x="336" y="592" font-family="IBM Plex Mono, monospace" font-size="10" fill="var(--waterline)">Kênh Tẻ</text>
+
+        <!-- districts: g[data-k] rendered by script -->
+        <g id="zones"></g>
+
+        <!-- pins -->
+        <g id="pins"></g>
+      </svg>
+      <figcaption><b>읽는 법</b> — 진한 칸일수록 1호점 적합도가 높습니다. 주황색 번호는 이번 출장에서 반드시 들러야 할 6개 지점(경쟁 우나기 매장 5곳 + 전시장)입니다. 파란 선은 사이공강과 껭떼(Kênh Tẻ) 운하로, 1군↔4군↔7군을 가르는 실제 이동 병목입니다.</figcaption>
+    </figure>
+    <div class="legend">
+      <span class="grp"><b style="color:var(--ink)">적합도</b></span>
+      <span class="grp"><span class="sw" style="background:var(--r5)"></span>★5</span>
+      <span class="grp"><span class="sw" style="background:var(--r4)"></span>★4</span>
+      <span class="grp"><span class="sw" style="background:var(--r3)"></span>★3</span>
+      <span class="grp"><span class="sw" style="background:var(--r2)"></span>★2</span>
+      <span class="grp"><span class="sw" style="background:var(--r1)"></span>★1</span>
+      <span class="grp" style="margin-left:6px"><span class="pin">1</span>필수 실사 지점</span>
+      <span class="grp"><span class="sw" style="background:var(--water);border-color:var(--waterline)"></span>강·운하</span>
+    </div>
+  </div>
+</section>
+
+<section id="cards">
+  <h2><span class="num">02</span>군별 상권 거리 · 인기 매장</h2>
+  <p class="lede">각 카드 상단에 <b>2025년 7월 개편 후의 신 행정동</b>을 병기했습니다. 기사에게는 군 명칭을, 중개인·관공서에는 신 행정동 명칭을 쓰십시오.</p>
+  <div class="grid" id="grid"></div>
+</section>
+
+<section id="matrix">
+  <h2><span class="num">03</span>한눈에 보는 비교표</h2>
+  <p class="lede">이동 시간은 SECC 전시장(7군) 기준 차량 개산입니다.</p>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>군</th><th>성격</th><th>대표 상권 거리</th><th class="n">적합도</th><th class="n">SECC에서</th></tr></thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </div>
+</section>
+
+<footer>
+  <p><b>같이 보기</b> — 권역별 상세·연령대별 검색 데이터·3일 동선은 <a href="https://claude.ai/code/artifact/c7051801-0fce-49a9-8511-827bd8ca5daa">호치민 권역 실사 브리프</a>에 있습니다. 원문은 저장소 <code>reports/hcmc-field-survey-2026-08.md</code>.</p>
+  <p><b>주의</b> — 2025년 7월 1일부로 군(quận) 단계는 행정적으로 폐지되었습니다. 이 지도는 <b>이해를 돕기 위해 익숙한 군 체계로 그린 것</b>이며, 계약서·인허가·등기 주소는 모두 신 행정동(phường) 명칭을 사용해야 합니다.</p>
+  <p><b>출처</b> — 상권 거리·매장 정보는 현지 매체 및 리뷰 플랫폼(Tuổi Trẻ, Thanh Niên, VnExpress, Zing/znews, Kilala, Mia.vn, Toplist, PasGo, Foody, Savills)과 시 공식 발표(ttbc-hcm.gov.vn 음식거리 지정)를 교차 확인했습니다. 가격·영업 여부는 변동되므로 현장에서 재확인하십시오.</p>
+</footer>
+
+</div>
+
+<script>
+const D = [
+  { k:"q7", name:"7군", vn:"Quận 7", r:5, secc:"5분",
+    ward:"Tân Hưng · Tân Mỹ · Tân Thuận · Phú Thuận",
+    note:"베트남 최대 한인 집주지(푸미흥 한인 7,000~11,000명). 계획도시라 도보 상권이 정돈돼 있고 임대료는 1군의 절반 이하. <b>1호점 1순위.</b> 다만 한인 전용으로 설계하면 매출 상한이 명확하므로 현지 고객 동선을 함께 설계해야 합니다.",
+    streets:[["Bùi Bằng Đoàn","한식·치킨 축"],["Phạm Văn Nghị","한인 식당가"],["Nguyễn Đức Cảnh","카페·주점"],["Hưng Gia 1~4","한인 블록"],["Hưng Phước 1~4","한인 블록"],["Nguyễn Thị Thập","로컬 간선"],["Tôn Dật Tiên","Crescent Mall 축"]],
+    shops:[
+      ["Unatoto 7군점","Nguyễn Thị Thập — 경쟁 우나기 체인",1],
+      ["Crescent Mall","101 Tôn Dật Tiên · 11.2만㎡ · 200개 점포 · 반달호수 조망",1],
+      ["SC VivoCity","대형 몰, 로컬 가족 고객",0],
+      ["Papas' Chicken","S37-1 Hưng Vượng 2, Bùi Bằng Đoàn",0],
+      ["K-Jeju Chicken","34 Hưng Gia 4",0],
+      ["SECC 전시장","799 Nguyễn Văn Linh — VIETFISH 2026 개최지",1]] },
+
+  { k:"q2", name:"2군", vn:"Quận 2 (현 투득시)", r:4, secc:"25분",
+    ward:"An Khánh <span class='old'>(Thảo Điền·Thủ Thiêm·An Lợi Đông 통합)</span>",
+    note:"서구권·일본 주재원 거주지. <b>Unatoto가 이미 들어와 있고</b>, 동시에 로컬 청년이 몰려오는 상권으로 성격이 바뀌는 중(Xôi Bắc 1시간 대기 화제). 임대는 메인스트리트 240㎡ 호가 VND 1.6억으로 비쌉니다.",
+    streets:[["Xuân Thủy","타오디엔의 심장 — 카페·레스토랑 밀집"],["Quốc Hương","다이닝"],["Nguyễn Ư Dĩ","고급 레스토랑"],["Đường số 9","Unatoto 소재"],["Thủ Thiêm","신도심 개발축"]],
+    shops:[
+      ["Unatoto 타오디엔점","Đường số 9 — 히츠마부시 약 VND 27만",1],
+      ["Xôi Bắc","2026년 TikTok 바이럴, 1시간 대기",1],
+      ["The Deck","38 Nguyễn Ư Dĩ · VND 30만~80만 · 강변",0],
+      ["An Cafe","111 Xuân Thủy",0],
+      ["The Coffee House","57 Xuân Thủy",0],
+      ["Phat's Dumpling House","Xuân Thủy",0]] },
+
+  { k:"bt", name:"빈탄", vn:"Bình Thạnh", r:4, secc:"25분",
+    ward:"Gia Định · Thạnh Mỹ Tây · Bình Lợi Trung · Bình Thạnh · Bình Quới",
+    note:"베트남 최고층 Landmark 81과 Vinhomes Central Park. <b>주차·프라이빗룸 확보가 가능한 몰</b>이라 40~50대 접대·가족 수요를 받을 수 있고, 1군보다 임대가 쌉니다. <b>신규 2순위.</b> 동시에 Ung Văn Khiêm은 호치민 최대급 나시(술자리) 거리입니다.",
+    streets:[["Nguyễn Hữu Cảnh","Landmark 81 · Vinhomes 축"],["Ung Văn Khiêm","나시(술자리) 수도"],["D1 · D2","해산물·바비큐"],["Điện Biên Phủ","간선"],["Xô Viết Nghệ Tĩnh","로컬 상권"]],
+    shops:[
+      ["Vincom Center Landmark 81","몰 F&B존 · 66~67층 스카이바",1],
+      ["Nhà Hàng Thủy 2","143 Ung Văn Khiêm (D1 교차) · 해산물",0],
+      ["Ngọc Thủy 2","Nguyễn Hữu Cảnh · 대형 홀",0],
+      ["Sườn Cọng BBQ","58A Ung Văn Khiêm",0],
+      ["Quán Gió Sông","강변 나시",0]] },
+
+  { k:"q1", name:"1군", vn:"Quận 1", r:3, secc:"15분",
+    ward:"Sài Gòn · Bến Thành · Tân Định · Cầu Ông Lãnh",
+    note:"CBD + 관광(2025년 외국인 850만 명, +39%). 프라임 노면 USD 80~150/㎡/월로 가장 비쌉니다. <b>1호점보다 벤치마크 목적이 큽니다</b> — 직접 경쟁 매장 2곳이 모두 여기 있습니다.",
+    streets:[["Lê Thánh Tôn · Thái Văn Lung","리틀도쿄 — 일식당 밀집"],["Đồng Khởi","명품·호텔"],["Nguyễn Huệ","보행자 거리"],["Bùi Viện","배낭여행자 거리 850m"],["Lê Lợi · Hàm Nghi","오피스 점심"]],
+    shops:[
+      ["Unagi Shokudo","2F, 8/5 Lê Thánh Tôn · Unadon 19만 / Unatama 36만",1],
+      ["Unatoto 벤탄점","56 Trương Định · 최우선 경쟁자",1],
+      ["Yakiuo Ishikawa Saigon","숯불 우나기 상위 포지션",1],
+      ["Michelin 1스타","Upstairs · Ănăn Saigon · CieL",0],
+      ["Vincom Center Đồng Khởi","한국 F&B 다수 입점",0],
+      ["Buffet Gánh","Palace/Bông Sen 호텔 · 3지방 뷔페",0]] },
+
+  { k:"pn", name:"푸년", vn:"Phú Nhuận", r:3, secc:"22분",
+    ward:"Đức Nhuận · Cầu Kiệu · Phú Nhuận",
+    note:"<b>로컬 베트남인 트렌드 발원지.</b> 외국인 상권이 아니라 현지 청년·직장인이 실제로 돈을 쓰는 곳. 1호점 후보는 아니지만 <b>2호점 판단 기준</b>으로 반드시 봐야 합니다. 여기서 통하면 전국 확장이 가능합니다.",
+    streets:[["Phan Xích Long","공식 음식거리 — 카페·밀크티, 니에우록 운하 뷰"],["Phan Đình Phùng","로컬 식당"],["Hoàng Văn Thụ","간선"]],
+    shops:[["신규 컨셉 매장 테스트베드","대기줄 생기는 매장 3곳을 현장에서 기록",1],
+      ["운하변 카페군","20~30대 로컬 밀집",0]] },
+
+  { k:"td", name:"투득시", vn:"TP Thủ Đức (구 9군·투득)", r:3, secc:"35분",
+    ward:"Hiệp Bình · Tam Bình · Thủ Đức · Linh Xuân · Tăng Nhơn Phú 외 12개",
+    note:"대학촌 + 신흥 주거. 20대 인구 밀도가 높지만 객단가가 낮습니다. 빈즈엉 공단 벨트로 이어지는 길목이라 <b>가맹 확장 단계에서 의미</b>가 있습니다.",
+    streets:[["Võ Văn Ngân","투득 중심 상권"],["Phạm Văn Đồng","간선·나시"],["Kha Vạn Cân","로컬"]],
+    shops:[["Gigamall","대형 몰, 한국 F&B 입점",0],["Vincom Thủ Đức","몰",0]] },
+
+  { k:"bd", name:"빈즈엉", vn:"Bình Dương (2025.7 편입)", r:3, secc:"50분~",
+    ward:"Dĩ An · Thuận An · Thủ Dầu Một 계열 36개",
+    note:"<b>숨은 기회.</b> 한국은 빈즈엉 투자국 5위(763개 프로젝트·33억 달러)로 공장별 수백~1,000명 인력이 상주하는데 <b>한식 공급이 얇습니다.</b> 회식·접대 수요(40~50대, 객단가 높음)에 임대료는 중심부의 수분의 1. 직영 1호점 대상은 아니고 <b>가맹점 후보 지역</b>으로 씁니다.",
+    streets:[["Dĩ An 공단권","한국계 제조업 밀집"],["Thuận An","공단·주거"],["Thủ Dầu Một","행정·상업 중심"]],
+    shops:[["Mr.Pokki","Charm Plaza, Dĩ An — 한식",0],["한국계 공장 구내·회식 상권","공급 부족 구간",1]] },
+
+  { k:"tb", name:"탄빈", vn:"Tân Bình", r:2, secc:"30분",
+    ward:"Tân Sơn Hòa · Tân Sơn Nhất · Tân Hòa · Bảy Hiền · Tân Bình · Tân Sơn",
+    note:"공항 배후 + 로컬 중산층 주거. <b>여기 Unatoto가 살아있는지가 이번 출장 최대의 확장성 판정입니다</b> — 일본계 장어 체인이 외국인 상권을 넘어 로컬 주거지에서도 버틴다면, 장어덮밥의 로컬 수요가 실재한다는 뜻입니다.",
+    streets:[["Nguyễn Hồng Đào","Unatoto 소재"],["Phạm Văn Hai","시장 — 06~18시 재래, 18~23시 먹자골목"],["Hoàng Văn Thụ","간선"],["Bàu Cát","주거 상권"],["K300","맛집 골목"]],
+    shops:[
+      ["Unatoto 탄빈점","248 Nguyễn Hồng Đào — 로컬 생존 검증 대상",1],
+      ["Cháo sườn Ông Tạ","302 Phạm Văn Hai",0],
+      ["Phạm Văn Hai 야시 먹자골목","반꾸온·분보·분리에우",0]] },
+
+  { k:"q10", name:"10군", vn:"Quận 10", r:2, secc:"25분",
+    ward:"Vườn Lài · Diên Hồng · Hòa Hưng 외",
+    note:"<b>20대 밀집도가 가장 높은 로컬 상권.</b> 객단가는 낮지만 한국 F&B 브랜드가 이미 다수 진입해 있어 <b>한식 수용도를 눈으로 확인하기 가장 좋은 곳</b>입니다.",
+    streets:[["Sư Vạn Hạnh","음식거리 — Ngô Gia Tự·Nguyễn Chí Thanh 아파트 구역, 반쎄오·봇찌엔"],["Nguyễn Tri Phương","맛집 간선"],["3 Tháng 2","Unatoto 소재"],["Vạn Hạnh Mall","청년 집결지"]],
+    shops:[
+      ["Unatoto 3 Tháng 2점","우나기 체인 로컬 확장 지점",1],
+      ["King BBQ · Kichi-Kichi · Tasaki BBQ","한·일 구이 체인",0],
+      ["Hanuri · Bogul Bogul · Mì Cay Haseyo","한국식 패스트푸드",0],
+      ["Hotsun Bulgogi & Buffet","Vạn Hạnh Mall 6층 · 떡볶이 호평",0],
+      ["Súp Cua Hạnh","20대 인기 로컬",0]] },
+
+  { k:"q3", name:"3군", vn:"Quận 3", r:2, secc:"20분",
+    ward:"Bàn Cờ · Xuân Hòa · Nhiêu Lộc",
+    note:"로컬 중산층 주거 + 오피스. <b>경고성 참고 사례</b> — 시가 지정한 Nguyễn Thượng Hiền 음식거리는 2025년 언론에 “손님이 줄었다”고 보도됐습니다. <b>행정이 만든 상권 지정은 성공을 보장하지 않습니다.</b>",
+    streets:[["Nguyễn Thượng Hiền","공식 음식거리 368m (Điện Biên Phủ~Nguyễn Đình Chiểu)"],["Võ Văn Tần","카페"],["Hồ Con Rùa","젊은층 집결"],["Lê Văn Sỹ","로컬 상권"]],
+    shops:[["간식·테이크아웃 밀집","패스트푸드 위주",0]] },
+
+  { k:"q5", name:"5군", vn:"Quận 5 (쩌런)", r:2, secc:"25분",
+    ward:"Chợ Quán · An Đông · Chợ Lớn",
+    note:"화교 상권. 보양·약선 식문화가 가장 강해 <b>“장어=보양” 서사의 이론적 수용성은 최고</b>지만, 가격 저항이 크고 관계 기반이라 외국 브랜드 신규 진입 난도가 높습니다. <b>보양 프리미엄의 실제 지불 상한</b>을 확인하기 좋은 곳.",
+    streets:[["An Dương Vương","쩌런 간선"],["Trần Hưng Đạo","화교 상권 축"],["An Đông 시장","도매·먹자"],["Hà Tôn Quyền <i>(인접 11군)</i>","2023.12 지정 만두(수이까오) 거리"]],
+    shops:[["약선·보양 전문점군","뱀장어·자라·약재탕 가격대 확인",1],["수이까오(만두) 노포","Hà Tôn Quyền",0]] },
+
+  { k:"gv", name:"고밥", vn:"Gò Vấp", r:1, secc:"35분",
+    ward:"Hạnh Thông · An Nhơn · Gò Vấp · Thông Tây Hội 외",
+    note:"로컬 대중 상권. 출점 후보는 아니지만 <b>Phạm Văn Đồng은 호치민 나시 문화의 표본</b>이라 야간 소비 정서를 관찰하기 좋습니다.",
+    streets:[["Phạm Văn Đồng","나시 천국 — 해산물·구이·전골"],["Quang Trung","대중 상권"],["Nguyễn Oanh","로컬"]],
+    shops:[["Quán Panda","Phạm Văn Đồng",0],["Lai Rai Quán Ốc Đêm","심야 조개",0],["Quán Nhậu Quang Trung","5년+ 운영, 학생~직장인",0]] },
+
+  { k:"q4", name:"4군", vn:"Quận 4", r:1, secc:"12분",
+    ward:"Vĩnh Hội · Khánh Hội · Xóm Chiếu",
+    note:"1군 바로 남쪽. 출점 후보가 아니라 <b>베트남인의 수산물 소비 정서와 야간 냐우 문화를 1시간에 파악하는 학습 목적</b>으로 저녁 8시 이후 1회 방문 권장.",
+    streets:[["Vĩnh Khánh","사이공 조개(ốc) 거리"],["Hoàng Diệu","로컬 식당"]],
+    shops:[["Ốc Oanh","빈칸 거리 대표",0],["Ốc Nở","빈칸 거리",0]] },
+
+  { k:"etc", name:"기타 군", vn:"6·8·11·12군, 빈떤·탄푸·냐베·빈찬", r:1, secc:"—",
+    ward:"각 군별 신 phường으로 재편",
+    note:"서민 주거·공업 지대로 객단가가 낮아 프리미엄 장어덮밥 출점 대상이 아닙니다. 단 <b>11군 Hà Tôn Quyền 만두거리</b>는 시가 공식 지정한 음식거리 운영 사례로 참고 가치가 있습니다.",
+    streets:[["Hà Tôn Quyền <i>(11군)</i>","공식 만두거리"],["Hậu Giang <i>(6군)</i>","재래 상권"]],
+    shops:[["대중 로컬 상권","가격 감각 학습용",0]] }
+];
+
+// --- map geometry, laid out to preserve real adjacency ---
+const GEO = {
+  bd:  [250, 18, 420, 52,  "빈즈엉"],
+  q12: [215, 95, 175, 66,  "12군"],
+  td:  [600, 95, 232,190,  "투득시"],
+  gv:  [215,175, 175, 82,  "고밥"],
+  bt:  [430,175, 118,185,  "빈탄"],
+  tp:  [ 55,270,  88, 90,  "탄푸"],
+  tb:  [150,270, 175, 90,  "탄빈"],
+  pn:  [333,270,  88, 90,  "푸년"],
+  q2:  [604,300, 180,132,  "2군"],
+  btn: [ 25,370,  92,130,  "빈떤"],
+  q11: [125,370,  82, 75,  "11군"],
+  q10: [215,370, 110, 75,  "10군"],
+  q3:  [333,370, 115, 75,  "3군"],
+  q1:  [455,370, 125,100,  "1군"],
+  q6:  [125,455,  82, 45,  "6군"],
+  q5:  [215,455, 110, 45,  "5군"],
+  q4:  [470,488,  88, 58,  "4군"],
+  bc:  [ 25,512, 140, 58,  "빈찬"],
+  q8:  [175,512, 230, 48,  "8군"],
+  q7:  [398,580, 180, 62,  "7군"],
+  nb:  [612,580, 130, 62,  "냐베"]
+};
+const ALIAS = { q12:"etc", tp:"etc", btn:"etc", q11:"etc", q6:"etc", bc:"etc", q8:"etc", nb:"etc" };
+
+const PINS = [
+  [480,388,"1","Unatoto 벤탄점 (1군)"],
+  [552,388,"2","Unagi Shokudo (1군)"],
+  [640,330,"3","Unatoto 타오디엔점 (2군)"],
+  [290,302,"4","Unatoto 탄빈점 (탄빈)"],
+  [440,608,"5","Unatoto 7군점 (7군)"],
+  [520,612,"6","SECC 전시장 (7군)"]
+];
+
+const byKey = Object.fromEntries(D.map(d => [d.k, d]));
+const zones = document.getElementById("zones");
+const pins  = document.getElementById("pins");
+const NS = "http://www.w3.org/2000/svg";
+const el = (t, a) => { const n = document.createElementNS(NS, t); for (const k in a) n.setAttribute(k, a[k]); return n; };
+
+for (const [gk, [x, y, w, h, label]] of Object.entries(GEO)) {
+  const key = ALIAS[gk] || gk;
+  const d = byKey[key];
+  const r = d ? d.r : 1;
+  const g = el("g", { class:"zone-shape", "data-k":key });
+  g.appendChild(el("rect", { x, y, width:w, height:h, rx:9,
+    fill:`var(--r${r})`, stroke:"var(--line-2)", "stroke-width":1 }));
+  const t = el("text", { x:x + w/2, y:y + h/2 + 1, "text-anchor":"middle",
+    "font-family":"Gothic A1, sans-serif", "font-size": w < 95 ? 12 : 14,
+    "font-weight":700, fill:`var(--rt${r})` });
+  t.textContent = label;
+  g.appendChild(t);
+  if (d && w >= 110 && h >= 58) {
+    const s = el("text", { x:x + w/2, y:y + h/2 + 17, "text-anchor":"middle",
+      "font-family":"IBM Plex Mono, monospace", "font-size":10,
+      fill:`var(--rt${r})`, opacity:.78 });
+    s.textContent = "★".repeat(d.r);
+    g.appendChild(s);
+  }
+  zones.appendChild(g);
+}
+
+for (const [x, y, n, label] of PINS) {
+  const g = el("g", null);
+  g.appendChild(el("circle", { cx:x, cy:y, r:11, fill:"var(--glaze)", stroke:"var(--surface)", "stroke-width":2 }));
+  const t = el("text", { x, y:y + 4, "text-anchor":"middle",
+    "font-family":"IBM Plex Mono, monospace", "font-size":11.5, "font-weight":600, fill:"#fff" });
+  t.textContent = n;
+  g.appendChild(t);
+  const title = el("title", null); title.textContent = label; g.appendChild(title);
+  pins.appendChild(g);
+}
+
+const stars = n => "★".repeat(n) + `<span class="off">${"★".repeat(5 - n)}</span>`;
+document.getElementById("grid").innerHTML = D.map(d => `
+  <article class="dcard" id="d-${d.k}">
+    <div class="dhead">
+      <div class="dtop">
+        <div class="dname">${d.name}<span class="vn">${d.vn}</span></div>
+        <div class="stars">${stars(d.r)}</div>
+      </div>
+      <div class="dward">신 행정동 · <b>${d.ward}</b></div>
+    </div>
+    <div class="dbody">
+      <p class="dnote">${d.note}</p>
+      <div class="block">
+        <div class="t">주요 상권 거리</div>
+        <div class="streets">${d.streets.map(([s, m]) => `<span class="st">${s}${m ? ` <i>${m}</i>` : ""}</span>`).join("")}</div>
+      </div>
+      <div class="block">
+        <div class="t">인기 매장 · 실사 대상</div>
+        <ul class="shops">${d.shops.map(([n, a, key]) => `<li class="${key ? "key" : ""}">${n}${a ? ` <span class="addr">${a}</span>` : ""}</li>`).join("")}</ul>
+      </div>
+    </div>
+  </article>`).join("");
+
+const CHAR = { q7:"한인타운 · 계획도시", q2:"외국인 주재원 · 신도심", bt:"고급 주거 · 나시 거리",
+  q1:"CBD · 관광 · 리틀도쿄", pn:"로컬 트렌드 발원지", td:"대학촌 · 신흥 주거",
+  bd:"한국계 공단 벨트", tb:"공항 배후 · 로컬 주거", q10:"20대 밀집 로컬",
+  q3:"로컬 중산층 · 오피스", q5:"화교 · 보양 식문화", gv:"로컬 대중 · 나시",
+  q4:"해산물 야간 상권", etc:"서민 주거 · 공업" };
+document.getElementById("tbody").innerHTML = [...D].sort((a, b) => b.r - a.r).map(d => `
+  <tr>
+    <td><b>${d.name}</b> <span class="old">${d.vn}</span></td>
+    <td>${CHAR[d.k] || ""}</td>
+    <td>${d.streets.slice(0, 3).map(s => s[0]).join(" · ")}</td>
+    <td class="n">${"★".repeat(d.r)}</td>
+    <td class="n">${d.secc}</td>
+  </tr>`).join("");
+
+let cur = null;
+zones.addEventListener("click", e => {
+  const g = e.target.closest(".zone-shape");
+  if (!g) return;
+  const k = g.dataset.k;
+  document.querySelectorAll(".zone-shape.on").forEach(n => n.classList.remove("on"));
+  document.querySelectorAll(`.zone-shape[data-k="${k}"]`).forEach(n => n.classList.add("on"));
+  if (cur) cur.classList.remove("on");
+  cur = document.getElementById("d-" + k);
+  if (cur) { cur.classList.add("on"); cur.scrollIntoView({ behavior:"smooth", block:"center" }); }
+});
+</script>

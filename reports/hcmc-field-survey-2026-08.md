@@ -426,3 +426,104 @@ _______________________________________________
 ---
 
 **출처 (주요)**: 국회상무위 결의 1685/NQ-UBTVQH15 및 정부·법률 포털(thuvienphapluat.vn, tphcm.chinhphu.vn, xaydungchinhsach.chinhphu.vn), Tuổi Trẻ·Thanh Niên·VnExpress·PLO·SGGP·Dân Trí·VietnamNet, iPOS.vn × Nestlé Professional 2025 시장보고서(baodautu.vn·VCCI 인용), Decision Lab Best F&B Rankings 2026, DataReportal Digital 2026 Vietnam·NapoleonCat, Statista(Cốc Cốc 점유율), Michelin Guide Vietnam 2026, cafebiz·cafef·vietnambiz(배달앱 점유율), znews·Kilala·Mia.vn·Toplist(우나기 매장 정보), YouNet Media, Savills·CBRE Vietnam.
+
+---
+
+# 부록 B. 군(郡) 기준 정리 — 주요 상권 거리 · 인기 매장
+
+> 🗺️ **지도 버전**: <https://claude.ai/code/artifact/639ac472-2e47-4aec-8d10-9b264397ede5> (원본 `reports/hcmc-district-map.html`)
+>
+> 행정적으로 군은 폐지됐지만 **현지에서는 여전히 군 명칭으로 대화합니다.** 이해와 이동 편의를 위해 익숙한 군 체계로 다시 정리했습니다. 계약·인허가 서류에는 신 행정동(phường)을 쓰십시오.
+
+## B-1. 적합도 순 요약
+
+| 적합도 | 군 | 성격 | 대표 상권 거리 | SECC에서 |
+|---|---|---|---|---|
+| ★★★★★ | **7군** | 한인타운·계획도시 | Bùi Bằng Đoàn · Phạm Văn Nghị · Hưng Gia/Hưng Phước · Tôn Dật Tiên | 5분 |
+| ★★★★ | **2군** (현 투득시 An Khánh) | 외국인 주재원·신도심 | Xuân Thủy · Quốc Hương · Nguyễn Ư Dĩ | 25분 |
+| ★★★★ | **빈탄** | 고급 주거·나시 거리 | Nguyễn Hữu Cảnh · Ung Văn Khiêm · D1/D2 | 25분 |
+| ★★★ | **1군** | CBD·관광·리틀도쿄 | Lê Thánh Tôn/Thái Văn Lung · Đồng Khởi · Nguyễn Huệ · Bùi Viện | 15분 |
+| ★★★ | **푸년** | 로컬 트렌드 발원지 | Phan Xích Long · Phan Đình Phùng | 22분 |
+| ★★★ | **투득시** (구 9군·투득) | 대학촌·신흥 주거 | Võ Văn Ngân · Phạm Văn Đồng | 35분 |
+| ★★★ | **빈즈엉** (2025.7 편입) | 한국계 공단 벨트 | Dĩ An · Thuận An · Thủ Dầu Một | 50분~ |
+| ★★ | **탄빈** | 공항 배후·로컬 주거 | Nguyễn Hồng Đào · Phạm Văn Hai · Bàu Cát · K300 | 30분 |
+| ★★ | **10군** | 20대 밀집 로컬 | Sư Vạn Hạnh · Nguyễn Tri Phương · 3 Tháng 2 | 25분 |
+| ★★ | **3군** | 로컬 중산층·오피스 | Nguyễn Thượng Hiền · Võ Văn Tần · Hồ Con Rùa | 20분 |
+| ★★ | **5군** | 화교·보양 식문화 | An Dương Vương · Trần Hưng Đạo · An Đông 시장 | 25분 |
+| ★ | **고밥** | 로컬 대중·나시 | Phạm Văn Đồng · Quang Trung | 35분 |
+| ★ | **4군** | 해산물 야간 상권 | Vĩnh Khánh | 12분 |
+| ★ | 6·8·11·12군, 빈떤·탄푸·냐베·빈찬 | 서민 주거·공업 | Hà Tôn Quyền(11군, 만두거리) 등 | — |
+
+## B-2. 군별 상세
+
+### 7군 ★★★★★ — 신 `Tân Hưng` · `Tân Mỹ` · `Tân Thuận` · `Phú Thuận`
+- **상권 거리**: Bùi Bằng Đoàn(한식·치킨 축) · Phạm Văn Nghị(한인 식당가) · Nguyễn Đức Cảnh(카페·주점) · Hưng Gia 1~4 / Hưng Phước 1~4 / Hưng Vượng(한인 블록) · Nguyễn Thị Thập(로컬 간선) · Tôn Dật Tiên(Crescent Mall 축)
+- **인기 매장**: **Unatoto 7군점**(Nguyễn Thị Thập) · **Crescent Mall**(101 Tôn Dật Tiên, 11.2만㎡·200개 점포·반달호수 조망) · SC VivoCity · Papas' Chicken(S37-1 Hưng Vượng 2) · K-Jeju Chicken(34 Hưng Gia 4) · **SECC 전시장**(799 Nguyễn Văn Linh)
+- 한인 7,000~11,000명. 임대료는 1군의 절반 이하. **1호점 1순위.**
+
+### 2군 ★★★★ — 신 `An Khánh` (Thảo Điền·Thủ Thiêm·An Lợi Đông 통합)
+- **상권 거리**: Xuân Thủy(타오디엔의 심장) · Quốc Hương · Nguyễn Ư Dĩ(고급 다이닝) · Đường số 9 · Thủ Thiêm 신도심
+- **인기 매장**: **Unatoto 타오디엔점**(Đường số 9, 히츠마부시 약 VND 27만) · **Xôi Bắc**(2026년 TikTok 바이럴, 1시간 대기) · The Deck(38 Nguyễn Ư Dĩ, VND 30만~80만) · An Cafe(111 Xuân Thủy) · The Coffee House(57 Xuân Thủy) · Phat's Dumpling House
+- 외국인 상권 → 로컬 청년 유입 상권으로 성격 변화 중. 메인스트리트 240㎡ 호가 VND 1.6억.
+
+### 빈탄 ★★★★ — 신 `Gia Định`·`Thạnh Mỹ Tây`·`Bình Lợi Trung`·`Bình Thạnh`·`Bình Quới`
+- **상권 거리**: Nguyễn Hữu Cảnh(Landmark 81·Vinhomes 축) · **Ung Văn Khiêm(나시 수도)** · D1/D2 · Điện Biên Phủ · Xô Viết Nghệ Tĩnh
+- **인기 매장**: Vincom Center Landmark 81(66~67층 스카이바) · Nhà Hàng Thủy 2(143 Ung Văn Khiêm) · Ngọc Thủy 2(Nguyễn Hữu Cảnh) · Sườn Cọng BBQ(58A Ung Văn Khiêm) · Quán Gió Sông
+- 주차·프라이빗룸 확보 가능 → 40~50대 접대·가족 수요. **신규 2순위.**
+
+### 1군 ★★★ — 신 `Sài Gòn`·`Bến Thành`·`Tân Định`·`Cầu Ông Lãnh`
+- **상권 거리**: **Lê Thánh Tôn·Thái Văn Lung(리틀도쿄)** · Đồng Khởi(명품·호텔) · Nguyễn Huệ(보행자 거리) · Bùi Viện(배낭여행자 거리 850m) · Lê Lợi·Hàm Nghi(오피스 점심)
+- **인기 매장**: **Unagi Shokudo**(2F, 8/5 Lê Thánh Tôn — Unadon 19만/Unatama 36만) · **Unatoto 벤탄점**(56 Trương Định) · Yakiuo Ishikawa Saigon · Michelin 1스타 Upstairs·Ănăn Saigon·CieL · Vincom Center Đồng Khởi · Buffet Gánh(Palace/Bông Sen)
+- 프라임 노면 USD 80~150/㎡/월. **1호점보다 벤치마크 목적.**
+
+### 푸년 ★★★ — 신 `Đức Nhuận`·`Cầu Kiệu`·`Phú Nhuận`
+- **상권 거리**: **Phan Xích Long**(공식 음식거리, 니에우록 운하 뷰 카페·밀크티) · Phan Đình Phùng · Hoàng Văn Thụ
+- 로컬 청년·직장인이 실제로 돈을 쓰는 곳. **2호점 판단 기준.**
+
+### 투득시(구 9군·투득) ★★★ — 신 `Hiệp Bình` 외 12개 phường
+- **상권 거리**: Võ Văn Ngân · Phạm Văn Đồng · Kha Vạn Cân
+- **인기 매장**: Gigamall · Vincom Thủ Đức. 대학촌이라 20대 밀도는 높으나 객단가 낮음.
+
+### 빈즈엉 ★★★ (2025.7 편입) — `Dĩ An`·`Thuận An`·`Thủ Dầu Một` 계열 36개
+- 한국 투자 763개 프로젝트·33억 달러(투자국 5위), 공장별 수백~1,000명 상주. **한식 공급이 얇은 구간** → 가맹점 후보 지역.
+- 참고 매장: Mr.Pokki(Charm Plaza, Dĩ An)
+
+### 탄빈 ★★ — 신 `Tân Sơn Hòa`·`Tân Sơn Nhất`·`Tân Hòa`·`Bảy Hiền`·`Tân Bình`·`Tân Sơn`
+- **상권 거리**: Nguyễn Hồng Đào · **Phạm Văn Hai 시장**(06~18시 재래, 18~23시 먹자골목) · Hoàng Văn Thụ · Bàu Cát · K300
+- **인기 매장**: **Unatoto 탄빈점**(248 Nguyễn Hồng Đào) · Cháo sườn Ông Tạ(302 Phạm Văn Hai)
+- **이 군의 Unatoto 생존 여부가 이번 출장 최대의 확장성 판정입니다.**
+
+### 10군 ★★ — 신 `Vườn Lài`·`Diên Hồng`·`Hòa Hưng` 외
+- **상권 거리**: **Sư Vạn Hạnh**(음식거리 — Ngô Gia Tự·Nguyễn Chí Thanh 아파트 구역, 반쎄오·봇찌엔) · Nguyễn Tri Phương · 3 Tháng 2 · Vạn Hạnh Mall
+- **인기 매장**: Unatoto 3 Tháng 2점 · King BBQ · Kichi-Kichi · Tasaki BBQ · Hanuri · Bogul Bogul · Mì Cay Haseyo · Hotsun Bulgogi & Buffet(Vạn Hạnh Mall 6층) · Súp Cua Hạnh
+- 한국 F&B가 이미 다수 진입 → **한식 수용도를 눈으로 확인하기 가장 좋은 곳.**
+
+### 3군 ★★ — 신 `Bàn Cờ`·`Xuân Hòa`·`Nhiêu Lộc`
+- **상권 거리**: **Nguyễn Thượng Hiền**(공식 음식거리 368m, Điện Biên Phủ~Nguyễn Đình Chiểu) · Võ Văn Tần · Hồ Con Rùa · Lê Văn Sỹ
+- ⚠️ **참고 사례**: 시가 지정한 이 음식거리는 2025년 언론에 "손님이 줄었다"고 보도됐습니다. **행정이 만든 상권 지정은 성공을 보장하지 않습니다.**
+
+### 5군(쩌런) ★★ — 신 `Chợ Quán`·`An Đông`·`Chợ Lớn`
+- **상권 거리**: An Dương Vương · Trần Hưng Đạo · An Đông 시장 · (인접 11군) **Hà Tôn Quyền — 2023.12 지정 만두(수이까오) 거리**
+- 보양·약선 식문화가 가장 강함 → **보양 프리미엄의 실제 지불 상한** 확인용.
+
+### 고밥 ★ — 신 `Hạnh Thông`·`An Nhơn`·`Gò Vấp`·`Thông Tây Hội` 외
+- **상권 거리**: **Phạm Văn Đồng**(나시 천국) · Quang Trung · Nguyễn Oanh
+- **인기 매장**: Quán Panda · Lai Rai Quán Ốc Đêm · Quán Nhậu Quang Trung
+
+### 4군 ★ — 신 `Vĩnh Hội`·`Khánh Hội`·`Xóm Chiếu`
+- **상권 거리**: **Vĩnh Khánh**(사이공 조개 거리) · Hoàng Diệu
+- **인기 매장**: Ốc Oanh · Ốc Nở — 야간 냐우 문화 학습용(저녁 8시 이후)
+
+### 기타 군 ★ — 6·8·11·12군, 빈떤·탄푸·냐베·빈찬
+- 서민 주거·공업 지대. 프리미엄 장어덮밥 출점 대상 아님. 단 11군 Hà Tôn Quyền 만두거리는 공식 음식거리 운영 사례로 참고 가치 있음.
+
+## B-3. 필수 실사 6개 지점 (지도 마커)
+
+| 마커 | 지점 | 군 | 목적 |
+|---|---|---|---|
+| ① | Unatoto 벤탄점 (56 Trương Định) | 1군 | 최우선 경쟁자 — 가격표·회전율·조리방식 |
+| ② | Unagi Shokudo (8/5 Lê Thánh Tôn) | 1군 | 나고야식 직접 경쟁 |
+| ③ | Unatoto 타오디엔점 (Đường số 9) | 2군 | 히츠마부시 27만, 양산도 주력과 동일 상품 |
+| ④ | Unatoto 탄빈점 (248 Nguyễn Hồng Đào) | 탄빈 | 로컬 상권 생존 = 확장성 판정 |
+| ⑤ | Unatoto 7군점 (Nguyễn Thị Thập) | 7군 | 1호점 후보지 내 경쟁 |
+| ⑥ | SECC 전시장 (799 Nguyễn Văn Linh) | 7군 | VIETFISH 2026 |
