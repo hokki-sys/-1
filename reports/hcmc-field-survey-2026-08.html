@@ -1,0 +1,657 @@
+<title>호치민 권역 실사 브리프</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;800&family=Gothic+A1:wght@400;700;900&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --bg:#F1F4F3; --surface:#FFFFFF; --surface-2:#E7ECEA;
+    --ink:#131E1B; --ink-2:#3A4B47; --muted:#64756F;
+    --line:#D3DBD8; --line-2:#BCC7C3;
+    --accent:#0B6B5E; --accent-soft:#DDEBE7;
+    --glaze:#9C5716; --glaze-soft:#F4E7D8;
+    --alert:#A82318; --alert-soft:#F7E3E0;
+    --shadow:0 1px 2px rgba(19,30,27,.06), 0 8px 24px -16px rgba(19,30,27,.28);
+    --sans:"Be Vietnam Pro","IBM Plex Sans KR",system-ui,sans-serif;
+    --head:"Be Vietnam Pro","Gothic A1",system-ui,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --bg:#0E1513; --surface:#161F1D; --surface-2:#1E2926;
+      --ink:#E7EEEB; --ink-2:#BCC9C5; --muted:#8B9C97;
+      --line:#2A3735; --line-2:#3A4A46;
+      --accent:#54C3AC; --accent-soft:#12312B;
+      --glaze:#D9A05A; --glaze-soft:#2E2317;
+      --alert:#FF7A6B; --alert-soft:#331A17;
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0E1513; --surface:#161F1D; --surface-2:#1E2926;
+    --ink:#E7EEEB; --ink-2:#BCC9C5; --muted:#8B9C97;
+    --line:#2A3735; --line-2:#3A4A46;
+    --accent:#54C3AC; --accent-soft:#12312B;
+    --glaze:#D9A05A; --glaze-soft:#2E2317;
+    --alert:#FF7A6B; --alert-soft:#331A17;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:var(--sans); font-size:16px; line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1120px; margin:0 auto; padding:0 20px 96px}
+  .prose{max-width:68ch}
+
+  /* ---- masthead ---- */
+  header.top{
+    border-bottom:1px solid var(--line);
+    background:linear-gradient(180deg,var(--surface),var(--bg));
+  }
+  .top-inner{max-width:1120px;margin:0 auto;padding:44px 20px 32px;display:flex;flex-direction:column;gap:18px}
+  .eyebrow{
+    font-family:var(--mono); font-size:11.5px; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--accent); display:flex; flex-wrap:wrap; gap:10px; align-items:center;
+  }
+  .eyebrow .dot{width:5px;height:5px;border-radius:50%;background:var(--glaze);display:inline-block}
+  h1{
+    font-family:var(--head); font-weight:800; letter-spacing:-.025em;
+    font-size:clamp(30px,5.2vw,50px); line-height:1.1; margin:0; text-wrap:balance;
+  }
+  .standfirst{font-size:clamp(15px,2vw,18px); color:var(--ink-2); max-width:62ch; margin:0}
+  .metastrip{
+    display:flex; flex-wrap:wrap; gap:0; border:1px solid var(--line); border-radius:10px;
+    overflow:hidden; background:var(--surface); box-shadow:var(--shadow);
+  }
+  .metastrip div{
+    flex:1 1 150px; padding:12px 16px; border-right:1px solid var(--line);
+  }
+  .metastrip div:last-child{border-right:0}
+  .metastrip dt{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 3px}
+  .metastrip dd{margin:0;font-size:14px;font-weight:600}
+
+  /* ---- nav ---- */
+  nav.jump{
+    position:sticky; top:0; z-index:20; background:color-mix(in srgb,var(--bg) 88%, transparent);
+    backdrop-filter:blur(10px); border-bottom:1px solid var(--line);
+  }
+  .jump-inner{max-width:1120px;margin:0 auto;padding:0 20px;display:flex;gap:4px;overflow-x:auto}
+  .jump a{
+    flex:0 0 auto; padding:12px 12px; font-size:13px; font-weight:600; color:var(--muted);
+    text-decoration:none; border-bottom:2px solid transparent; white-space:nowrap;
+  }
+  .jump a:hover,.jump a:focus-visible{color:var(--accent);border-bottom-color:var(--accent)}
+
+  /* ---- sections ---- */
+  section{padding-top:56px; scroll-margin-top:56px}
+  h2{
+    font-family:var(--head); font-weight:800; letter-spacing:-.02em;
+    font-size:clamp(21px,3.2vw,29px); line-height:1.2; margin:0 0 6px; text-wrap:balance;
+  }
+  h2 .num{font-family:var(--mono);font-size:.62em;font-weight:600;color:var(--accent);margin-right:.6em;letter-spacing:.06em}
+  .lede{color:var(--muted);font-size:14.5px;margin:0 0 22px;max-width:70ch}
+  h3{font-family:var(--head);font-weight:700;font-size:18px;letter-spacing:-.01em;margin:30px 0 8px}
+  p{margin:0 0 14px}
+  strong{font-weight:600}
+  a{color:var(--accent)}
+
+  /* ---- alerts ---- */
+  .alerts{display:flex;flex-direction:column;gap:16px}
+  .alert{
+    background:var(--surface); border:1px solid var(--line); border-left:4px solid var(--alert);
+    border-radius:8px; padding:20px 22px; box-shadow:var(--shadow);
+  }
+  .alert h3{margin:0 0 8px;font-size:17px;display:flex;gap:10px;align-items:baseline}
+  .alert h3 .mark{
+    font-family:var(--mono);font-size:12px;font-weight:600;color:var(--alert);
+    background:var(--alert-soft);border-radius:4px;padding:2px 7px;flex:0 0 auto;
+  }
+  .alert p{margin:0 0 10px;font-size:14.5px;color:var(--ink-2)}
+  .alert p:last-child{margin-bottom:0}
+
+  /* ---- tables ---- */
+  .tablewrap{overflow-x:auto; border:1px solid var(--line); border-radius:8px; background:var(--surface); box-shadow:var(--shadow)}
+  table{border-collapse:collapse; width:100%; min-width:560px; font-size:13.5px}
+  th,td{padding:11px 14px; text-align:left; vertical-align:top; border-bottom:1px solid var(--line)}
+  thead th{
+    background:var(--surface-2); font-family:var(--mono); font-size:10.5px; letter-spacing:.1em;
+    text-transform:uppercase; color:var(--muted); font-weight:600; position:sticky; top:0;
+  }
+  tbody tr:last-child td{border-bottom:0}
+  td.num,th.num{font-variant-numeric:tabular-nums;font-family:var(--mono)}
+  .old{color:var(--muted)}
+  .new{font-weight:600;color:var(--accent)}
+  .arrow{color:var(--glaze);font-family:var(--mono);padding:0 4px}
+
+  /* ---- district cards ---- */
+  .zones{display:grid;gap:14px}
+  .zone{
+    background:var(--surface); border:1px solid var(--line); border-radius:10px;
+    padding:20px 22px; box-shadow:var(--shadow);
+  }
+  .zone-head{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;justify-content:space-between;margin-bottom:4px}
+  .zone-name{font-family:var(--head);font-weight:700;font-size:17.5px;letter-spacing:-.01em}
+  .zone-name .letter{
+    font-family:var(--mono);font-size:12px;color:var(--glaze);background:var(--glaze-soft);
+    border-radius:4px;padding:2px 7px;margin-right:9px;font-weight:600;
+  }
+  .rating{font-family:var(--mono);font-size:12.5px;letter-spacing:.14em;color:var(--accent);white-space:nowrap}
+  .rating .off{color:var(--line-2)}
+  .addr{
+    font-family:var(--mono);font-size:12px;color:var(--muted);margin:0 0 12px;
+    padding-bottom:12px;border-bottom:1px dashed var(--line);
+  }
+  .addr .new{color:var(--accent)}
+  .zone p{font-size:14px;margin:0 0 10px;color:var(--ink-2)}
+  .zone p:last-child{margin-bottom:0}
+  .check{list-style:none;padding:0;margin:12px 0 0;display:flex;flex-direction:column;gap:7px}
+  .check li{
+    display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:var(--ink-2);
+  }
+  .check li::before{
+    content:"";flex:0 0 auto;width:13px;height:13px;margin-top:4px;
+    border:1.5px solid var(--line-2);border-radius:3px;
+  }
+  .check-title{
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--accent);margin:14px 0 0;
+  }
+
+  /* ---- cohorts ---- */
+  .cohorts{display:grid;gap:14px}
+  .cohort{
+    background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden;
+    box-shadow:var(--shadow);
+  }
+  .cohort > .bar{height:3px;background:var(--accent)}
+  .cohort .body{padding:18px 22px 20px}
+  .cohort h3{margin:0 0 2px;font-size:19px}
+  .cohort .gen{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+  .row{display:grid;grid-template-columns:112px 1fr;gap:10px;padding:9px 0;border-top:1px solid var(--line);font-size:13.5px}
+  .row:first-of-type{border-top:0}
+  .row .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+  .row .v{color:var(--ink-2)}
+  .kw{display:inline-block;font-family:var(--mono);font-size:12px;background:var(--surface-2);
+      border:1px solid var(--line);border-radius:4px;padding:1px 6px;margin:0 3px 4px 0}
+  .kw i{font-style:normal;color:var(--muted)}
+  .tag{font-family:var(--mono);font-size:10px;padding:1px 5px;border-radius:3px;vertical-align:2px}
+  .tag.m{background:var(--accent-soft);color:var(--accent)}
+  .tag.e{background:var(--glaze-soft);color:var(--glaze)}
+  .imp{background:var(--accent-soft);border-radius:6px;padding:11px 14px;margin-top:12px;font-size:13.5px;color:var(--ink)}
+  .imp b{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:3px}
+
+  /* ---- itinerary ---- */
+  .days{display:flex;flex-direction:column;gap:0}
+  .day{display:grid;grid-template-columns:104px 1fr;gap:20px;padding:22px 0;border-top:1px solid var(--line)}
+  .day:first-child{border-top:0}
+  .day .when{font-family:var(--mono);font-size:13px;font-weight:600;color:var(--accent)}
+  .day .when span{display:block;font-weight:400;font-size:11px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-top:2px}
+  .slots{display:flex;flex-direction:column;gap:9px}
+  .slot{display:grid;grid-template-columns:62px 1fr;gap:12px;font-size:14px;align-items:baseline}
+  .slot .t{font-family:var(--mono);font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+  .slot.key .d{font-weight:600}
+  .slot.key .t{color:var(--glaze)}
+
+  /* ---- worksheet ---- */
+  pre.sheet{
+    font-family:var(--mono);font-size:12.5px;line-height:1.9;background:var(--surface);
+    border:1px solid var(--line);border-radius:8px;padding:20px;overflow-x:auto;color:var(--ink-2);
+    box-shadow:var(--shadow);
+  }
+  footer{margin-top:64px;padding-top:22px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted)}
+  footer p{margin:0 0 8px}
+  @media (max-width:640px){
+    .row{grid-template-columns:1fr;gap:3px}
+    .day{grid-template-columns:1fr;gap:10px}
+    .slot{grid-template-columns:56px 1fr}
+    .metastrip div{flex:1 1 100%;border-right:0;border-bottom:1px solid var(--line)}
+    .metastrip div:last-child{border-bottom:0}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<header class="top">
+  <div class="top-inner">
+    <div class="eyebrow"><span>양산도 · Ho Chi Minh City</span><span class="dot"></span><span>Field Survey Brief</span><span class="dot"></span><span>2026.08.19</span></div>
+    <h1>호치민 권역 실사 브리프</h1>
+    <p class="standfirst">2025년 7월 행정구역 개편 매핑, 권역 11곳 재평가, 20~60대 검색·SNS 데이터, 경쟁 우나기 매장 실사 리스트. VIETFISH 2026 출장 중 현장에서 바로 쓰도록 구성했습니다.</p>
+    <dl class="metastrip">
+      <div><dt>행정 단위</dt><dd>군 폐지 · 168 phường/xã</dd></div>
+      <div><dt>실사 권역</dt><dd>11곳</dd></div>
+      <div><dt>1순위 경쟁자</dt><dd>Unatoto (일본계)</dd></div>
+      <div><dt>가격 수정</dt><dd>VND 39만 → 21~26만</dd></div>
+    </dl>
+  </div>
+</header>
+
+<nav class="jump">
+  <div class="jump-inner">
+    <a href="#warn">출발 전 경고</a>
+    <a href="#map">행정구역 매핑</a>
+    <a href="#zones">권역별 특성</a>
+    <a href="#age">연령대별 데이터</a>
+    <a href="#comp">경쟁점 실사</a>
+    <a href="#strategy">전략 수정</a>
+    <a href="#route">3일 동선</a>
+    <a href="#trust">신뢰도</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<section id="warn">
+  <h2><span class="num">00</span>출발 전 반드시 알아야 할 3가지</h2>
+  <p class="lede">아래 3건은 2026-08-10 사전조사 보고서의 내용을 <strong>수정</strong>합니다.</p>
+  <div class="alerts">
+    <article class="alert">
+      <h3><span class="mark">01</span>“군(quận)”은 더 이상 존재하지 않습니다</h3>
+      <p>2025년 7월 1일부로 호치민시는 빈즈엉성·바리아붕따우성을 흡수 합병하고 <strong>군·현 단계를 완전히 폐지</strong>했습니다(결의 1685/NQ-UBTVQH15). 현재는 시 → 방/사 2단계, 총 <strong>168개 단위</strong>(113 phường + 54 xã + 특별구 1). 인구 약 1,400만, GRDP 약 1,211억 달러.</p>
+      <p>현장에서는 <strong>택시·Grab 기사에게는 구 명칭(Quận 7)이 잘 통하고, 공무원·중개인·건물주에게는 신 phường 명칭</strong>을 써야 합니다. 계약서·인허가 주소는 전부 신 명칭입니다.</p>
+    </article>
+    <article class="alert">
+      <h3><span class="mark">02</span>가격 전제가 틀렸습니다</h3>
+      <p>현지 실거래 조사 결과 우나기동 시장가는 <strong>VND 17.5만~58.9만</strong>이며, 일본 본토 체인 <strong>Unatoto</strong>(전세계 약 150개점, 2018년 베트남 진출)가 <strong>호치민 4개 + 하노이 1개</strong> 점포를 VND 20만대에 운영 중입니다. 히츠마부시가 약 27만, 리틀도쿄의 Unagi Shokudo Unadon이 19만.</p>
+      <p>즉 양산도의 실질 경쟁자는 스시 오마카세가 아니라 <strong>이미 진출해 시장을 검증·선점한 일본계 장어덮밥 패스트캐주얼 체인</strong>입니다. 기존 제안가 VND 39만~49만은 “무명 한국 브랜드가 일본 원조보다 2배 비싼” 구도가 됩니다.</p>
+    </article>
+    <article class="alert">
+      <h3><span class="mark">03</span>“베트남의 네이버”는 없습니다</h3>
+      <p>검색은 <strong>Google이 97%대 사실상 독점</strong>이고, Cốc Cốc은 검색 2%대·브라우저 3.3%로 2017년 이후 계속 하락 중입니다. 실질적 발견 채널은 <strong>Facebook 맛집 그룹 + TikTok + Zalo</strong>입니다.</p>
+      <p><strong>인스타그램은 사용자 1,283만(인구 12.3%)에 불과한 니치 채널</strong>이며 최대 집단이 18~24세입니다. 한국식 인스타 중심 런칭 플랜을 그대로 옮기면 실패합니다.</p>
+    </article>
+  </div>
+</section>
+
+<section id="map">
+  <h2><span class="num">01</span>구 군 → 신 phường 매핑</h2>
+  <p class="lede">우리가 방문할 상권 기준. 좌측이 현지인·기사에게 통하는 통용 명칭, 우측이 공식 행정 명칭입니다.</p>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>구 명칭 (통용)</th><th>신 phường (공식)</th><th>우리 관심 지점</th></tr></thead>
+      <tbody>
+        <tr><td class="old">1군 (10→4)</td><td><span class="new">Sài Gòn</span> · <span class="new">Bến Thành</span> · <span class="new">Tân Định</span> · <span class="new">Cầu Ông Lãnh</span></td><td>리틀도쿄(Lê Thánh Tôn·Thái Văn Lung) <span class="arrow">→</span> <b>Sài Gòn</b><br>벤탄시장·Unatoto Trương Định <span class="arrow">→</span> <b>Bến Thành</b></td></tr>
+        <tr><td class="old">3군 (12→3)</td><td><span class="new">Bàn Cờ</span> · <span class="new">Xuân Hòa</span> · <span class="new">Nhiêu Lộc</span></td><td>로컬 중산층 주거 + F&amp;B</td></tr>
+        <tr><td class="old">4군</td><td><span class="new">Vĩnh Hội</span> · <span class="new">Khánh Hội</span> · <span class="new">Xóm Chiếu</span> <i>(현장 재확인)</i></td><td>빈칸 거리 해산물·냐우 문화</td></tr>
+        <tr><td class="old">5군 (→3)</td><td><span class="new">Chợ Quán</span>(구1·2·4방) · <span class="new">An Đông</span>(구5·7·9방) · <span class="new">Chợ Lớn</span>(구11~14방)</td><td>화교 상권 · 보양 식문화</td></tr>
+        <tr><td class="old">7군 (10→4)</td><td><span class="new">Tân Hưng</span>(구 Tân Hưng·Tân Kiểng·Tân Quy·<b>Tân Phong</b>) · <span class="new">Tân Mỹ</span> · <span class="new">Tân Thuận</span> · <span class="new">Phú Thuận</span></td><td><b>한인타운 핵심(Hưng Gia·Hưng Phước·Hưng Vượng, Crescent Mall) → Tân Hưng</b><br><b>SECC 전시장(799 Nguyễn Văn Linh) → Tân Mỹ</b></td></tr>
+        <tr><td class="old">10군</td><td><span class="new">Vườn Lài</span> · <span class="new">Diên Hồng</span> · <span class="new">Hòa Hưng</span> 등</td><td>Sư Vạn Hạnh · Vạn Hạnh Mall 청년 상권</td></tr>
+        <tr><td class="old">빈탄 (20→5)</td><td><span class="new">Gia Định</span> · <span class="new">Thạnh Mỹ Tây</span> · <span class="new">Bình Lợi Trung</span> · <span class="new">Bình Thạnh</span> · <span class="new">Bình Quới</span></td><td><b>Landmark 81 · Vinhomes Central Park → Thạnh Mỹ Tây</b></td></tr>
+        <tr><td class="old">푸년 (11→3)</td><td><span class="new">Đức Nhuận</span> · <span class="new">Cầu Kiệu</span> · <span class="new">Phú Nhuận</span></td><td><b>판식롱 — 로컬 트렌드 발원지</b></td></tr>
+        <tr><td class="old">탄빈 (15→6)</td><td><span class="new">Tân Sơn Hòa</span> · <span class="new">Tân Sơn Nhất</span> · <span class="new">Tân Hòa</span> · <span class="new">Bảy Hiền</span> · <span class="new">Tân Bình</span> · <span class="new">Tân Sơn</span></td><td>공항권 · Unatoto Nguyễn Hồng Đào</td></tr>
+        <tr><td class="old">고밥 (→6)</td><td><span class="new">Hạnh Thông</span> · <span class="new">An Nhơn</span> · <span class="new">Gò Vấp</span> · <span class="new">Thông Tây Hội</span> 등 <i>(일부 재확인)</i></td><td>로컬 대중 상권</td></tr>
+        <tr><td class="old">투득시 (34→12)</td><td><span class="new">An Khánh</span>(구 <b>Thảo Điền</b>+An Khánh+Thủ Thiêm+An Lợi Đông+An Phú 일부) · Hiệp Bình · Tam Bình · Linh Xuân · Thủ Đức · Tăng Nhơn Phú · Phước Long · Bình Trưng · Cát Lái 외</td><td><b>타오디엔·투티엠 전체 → An Khánh</b> (“구 2군” 개념 소멸)</td></tr>
+        <tr><td class="old">빈즈엉 (신규 편입)</td><td><span class="new">Dĩ An · Thuận An · Thủ Dầu Một</span> 계열 36개</td><td>한국계 공단 벨트 — 763개 프로젝트 · 33억 달러 (투자국 5위)</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="zones">
+  <h2><span class="num">02</span>권역별 특성 · 적합도</h2>
+  <p class="lede">별점은 양산도 1호점 적합도(5점 척도). 각 권역의 체크리스트는 현장에서 그대로 수행하십시오.</p>
+  <div class="zones">
+
+    <article class="zone">
+      <div class="zone-head"><div class="zone-name"><span class="letter">A</span>푸미흥 한인타운</div><div class="rating">★★★★★</div></div>
+      <p class="addr">구 7군 Tân Phong <span class="arrow">→</span> <span class="new">phường Tân Hưng</span></p>
+      <p>베트남 최대 한인 집주지. 푸미흥 내 한인 7,000~11,000명(자료별 편차). 한식당은 이미 포화이며 Bùi Bằng Đoàn·Phạm Văn Nghị 축에 한국식 치킨·고깃집 밀집. 샵하우스 170㎡ 호가 월 VND 6,000만, 소형 2,000만~.</p>
+      <p><strong>선택 근거</strong> — 장어=보양 서사를 설명 없이 이해하는 모수 확보, 실패 학습비용 최소, Crescent Mall·SC VivoCity로 2호점 확장 경로, SECC에서 차량 5~10분.<br><strong>리스크</strong> — 한인 전용 설계 시 매출 상한이 명확합니다. 현지 고객 유입 동선을 반드시 함께 설계.</p>
+      <p class="check-title">현장 확인</p>
+      <ul class="check">
+        <li>Hưng Gia 1~4 / Hưng Phước 1~4 블록 평일 12:00~13:00 좌석 점유율 실측</li>
+        <li>한식당 3곳 객단가(메뉴판 촬영) — 장어덮밥 수용 상한 추정</li>
+        <li>공실 샵하우스 카운트 + 중개인 명함 3장 (호가 vs 실거래 갭 질문)</li>
+        <li>한국 손님 vs 베트남 손님 비율 카운트 — 매출 구조 시뮬레이션의 핵심 변수</li>
+      </ul>
+    </article>
+
+    <article class="zone">
+      <div class="zone-head"><div class="zone-name"><span class="letter">B</span>리틀도쿄 <span style="font-weight:400;color:var(--muted);font-size:13px">↑ 상향</span></div><div class="rating">★★★★★</div></div>
+      <p class="addr">구 1군 Bến Nghé <span class="arrow">→</span> <span class="new">phường Sài Gòn</span></p>
+      <p>Lê Thánh Tôn ~ Thái Văn Lung ~ Ngô Văn Năm 일본인 상권. 호치민 일식당 약 900~944개의 중심.</p>
+      <p><strong>왜 최우선인가</strong> — 나고야식을 표방하는 <strong>Unagi Shokudo(Unadon VND 19만)</strong> 가 여기 있습니다. 양산도 컨셉과 정면으로 겹치는 유일한 매장이며, 이 실물을 보지 않고 가격·포맷을 결정해서는 안 됩니다.</p>
+      <p class="check-title">현장 확인 — 이번 출장 최우선</p>
+      <ul class="check">
+        <li>Unagi Shokudo (2F, 8/5 Lê Thánh Tôn) — 장어 그램수·밥량·반찬·사이드·회전율</li>
+        <li>3단 먹는 법(그대로 → 약미 → 오차즈케) 제공 여부 = 양산도 차별화 여지</li>
+        <li>점심 손님 국적 구성(일본·베트남·한국) 카운트</li>
+        <li>골목 임대 호가 촬영 — CBD 프라임 노면 USD 80~150/㎡/월 수준</li>
+      </ul>
+    </article>
+
+    <article class="zone">
+      <div class="zone-head"><div class="zone-name"><span class="letter">C</span>벤탄·응우옌후에 CBD</div><div class="rating">★★★<span class="off">★★</span></div></div>
+      <p class="addr">구 1군 <span class="arrow">→</span> <span class="new">phường Sài Gòn / Bến Thành</span></p>
+      <p>오피스 + 관광(2025년 외국인 850만~860만 명, +39%). 20~30대 점심, 관광객 저녁 구조.</p>
+      <p class="check-title">현장 확인</p>
+      <ul class="check">
+        <li><strong>Unatoto 벤탄점(56 Trương Định) 평일 점심 방문 필수</strong> — 가격표 전체 촬영, 대기줄, 좌석수, 테이블 회전 시간</li>
+        <li>장어 원물 상태(냉동 가바야키 여부)와 조리 방식(재가열 vs 현장 구이) → 양산도 “현장 숯불” 차별화 성립 여부</li>
+        <li>직원 수 세기 → 인건비 역산 (최저임금 Region 1: 2026년 1월부터 VND 531만/월)</li>
+        <li>Vincom 동커이 지하 F&amp;B존 임대 담당자 명함</li>
+      </ul>
+    </article>
+
+    <article class="zone">
+      <div class="zone-head"><div class="zone-name"><span class="letter">D</span>타오디엔</div><div class="rating">★★★★<span class="off">★</span></div></div>
+      <p class="addr">구 2군 Thảo Điền <span class="arrow">→</span> <span class="new">phường An Khánh</span></p>
+      <p>서구권·일본 주재원 거주지. <strong>Unatoto 타오디엔점</strong>(히츠마부시 약 27만)이 있고, 동시에 <strong>Xôi Bắc</strong>이 “1시간 대기”로 TikTok 바이럴 — 로컬 청년 유입 상권으로 성격이 변하고 있다는 신호입니다. 임대 중위 월 VND 4,000만, 메인스트리트 240㎡ 호가 1.6억.</p>
+      <p class="check-title">현장 확인</p>
+      <ul class="check">
+        <li>Unatoto 타오디엔점 vs 벤탄점 가격·메뉴 차이 — 같은 브랜드의 상권별 가격 정책이 우리 설계의 힌트</li>
+        <li>Xôi Bắc 대기줄 실물(주말 오전) — 로컬 청년이 이 동네까지 오는 동인</li>
+        <li>메인 도로 vs 골목 임대료 격차</li>
+      </ul>
+    </article>
+
+    <article class="zone">
+      <div class="zone-head"><div class="zone-name"><span class="letter">E</span>빈탄 랜드마크81 <span style="font-weight:400;color:var(--muted);font-size:13px">↑ 상향</span></div><div class="rating">★★★★<span class="off">★</span></div></div>
+      <p class="addr">구 Bình Thạnh 22방 <span class="arrow">→</span> <span class="new">phường Thạnh Mỹ Tây</span></p>
+      <p>Vinhomes Central Park + Landmark 81 + Vincom Center. 강변 고급 주거, 외국인 전문직 임차 수요. 1군 대비 임대료는 낮으면서 구매력은 유지되고, <strong>주차가 확보된 몰</strong>이라 40~50대 가족·접대 수요를 받을 수 있습니다(베트남 가족 외식 선택 1순위 기준이 넓은 주차장과 프라이빗 공간).</p>
+      <p class="check-title">현장 확인</p>
+      <ul class="check">
+        <li>Vincom Center Landmark 81 지하 F&amp;B존 임대 조건 — ㎡당 단가 + 매출 수수료 방식 여부</li>
+        <li>주말 저녁 일식당 대기 상황</li>
+        <li>인근 아파트 임차인 국적 구성(중개인 질문)</li>
+      </ul>
+    </article>
+
+    <article class="zone">
+      <div class="zone-head"><div class="zone-name"><span class="letter">F</span>판식롱 <span style="font-weight:400;color:var(--muted);font-size:13px">신규</span></div><div class="rating">★★★<span class="off">★★</span></div></div>
+      <p class="addr">구 푸년 <span class="arrow">→</span> <span class="new">phường Đức Nhuận / Cầu Kiệu</span></p>
+      <p>외국인 상권이 아닌 <strong>로컬 베트남인이 실제로 돈을 쓰는 트렌드 발원지</strong>. 여기서 통하면 전국 확장이 가능하고, 안 통하면 양산도는 영원히 “외국인 상권 브랜드”에 머뭅니다. 1호점 후보는 아니지만 2호점 판단 기준으로 반드시 봐야 합니다.</p>
+      <p class="check-title">현장 확인</p>
+      <ul class="check">
+        <li>저녁 20~21시 거리 도보 1회 — 대기줄 생긴 매장 3곳 이름·업종·가격대 기록</li>
+        <li>신규 매장 평균 객단가 밴드 확인 (VND 15만~25만 예상 = 우리 가격의 현실적 상한 힌트)</li>
+      </ul>
+    </article>
+
+    <article class="zone">
+      <div class="zone-head"><div class="zone-name"><span class="letter">G</span>탄빈 — 확장성 판정 지점</div><div class="rating">★★<span class="off">★★★</span></div></div>
+      <p class="addr">구 탄빈 <span class="arrow">→</span> <span class="new">phường Bảy Hiền / Tân Sơn Hòa 계열</span></p>
+      <p>공항 배후 + 로컬 중산층 주거. <strong>Unatoto Nguyễn Hồng Đào 점</strong>이 여기 있다는 것은 일본계 장어 체인이 로컬 주거지까지 내려왔다는 뜻입니다. 이 매장이 실제로 잘 돌아가는지가 <strong>장어덮밥의 로컬 수요 실재 여부</strong>를 가장 직접적으로 알려주며, 양산도 진출 규모 결정에 가장 큰 영향을 줍니다.</p>
+      <p class="check-title">현장 확인</p>
+      <ul class="check">
+        <li>평일 점심 1시간 관찰 — 좌석 점유율 실측</li>
+        <li>손님 연령대·국적 구성 카운트</li>
+      </ul>
+    </article>
+
+    <article class="zone">
+      <div class="zone-head"><div class="zone-name"><span class="letter">H</span>3군 · 10군</div><div class="rating">★★<span class="off">★★★</span></div></div>
+      <p class="addr"><span class="new">Bàn Cờ · Xuân Hòa · Nhiêu Lộc</span> / <span class="new">Vườn Lài · Diên Hồng · Hòa Hưng</span></p>
+      <p>로컬 중산층 주거 + 대학·병원 상권. 10군 Sư Vạn Hạnh 축은 20대 밀집. 1호점 후보는 아니지만 <strong>로컬 가격 감각을 체득하기에 가장 좋은 곳</strong>이라, 저녁 한 끼는 여기 로컬 식당에서 드시길 권합니다.</p>
+    </article>
+
+    <article class="zone">
+      <div class="zone-head"><div class="zone-name"><span class="letter">I</span>5군 쩌런</div><div class="rating">★★<span class="off">★★★</span></div></div>
+      <p class="addr"><span class="new">Chợ Quán · An Đông · Chợ Lớn</span></p>
+      <p>화교 상권. 보양·약선 식문화가 가장 강해 “장어=보양” 서사 수용성이 이론상 최고이나, 가격 저항이 크고 관계 기반이라 외국 브랜드 신규 진입 난도가 높습니다. 관찰 가치는 <strong>보양 프리미엄의 실제 지불 상한</strong>(뱀장어·자라·약재탕 가격대) 확인.</p>
+    </article>
+
+    <article class="zone">
+      <div class="zone-head"><div class="zone-name"><span class="letter">J</span>4군 빈칸 거리</div><div class="rating">★<span class="off">★★★★</span></div></div>
+      <p class="addr">구 4군 <span class="arrow">→</span> <span class="new">phường Vĩnh Hội 계열</span></p>
+      <p>조개·고둥(quán ốc) 노점 밀집. 출점 후보가 아니라 <strong>수산물 소비 정서와 야간 냐우 문화를 한 시간에 파악하는 학습 목적</strong>으로 저녁 8시 이후 1회 방문 권장.</p>
+    </article>
+
+    <article class="zone">
+      <div class="zone-head"><div class="zone-name"><span class="letter">K</span>투득 + 빈즈엉 <span style="font-weight:400;color:var(--muted);font-size:13px">신규 · 숨은 기회</span></div><div class="rating">★★★<span class="off">★★</span></div></div>
+      <p class="addr"><span class="new">Hiệp Bình · Linh Xuân</span> 등 / <span class="new">Dĩ An · Thuận An</span></p>
+      <p>한국계 제조업 벨트. 한국은 빈즈엉 투자국 5위(763개 프로젝트·33억 달러)로 공장별 수백~1,000명 규모 인력이 상주합니다. <strong>푸미흥은 한식 포화지만 이 벨트는 공급이 얇고</strong>, 회식·접대 수요(40~50대, 객단가 높음)에 임대료는 중심부의 수분의 1.</p>
+      <p><strong>판단</strong> — 1호점 후보는 아니지만 <strong>가맹점 후보 지역</strong>으로 매우 유효하며, 마스터 프랜차이즈 협상 카드로 씁니다. 이번 일정상 무리라면 11월 Foodexpo 재방문 때 반나절 배정.</p>
+    </article>
+
+  </div>
+</section>
+
+<section id="age">
+  <h2><span class="num">03</span>연령대별 식품 키워드 · 매장 데이터</h2>
+  <p class="lede">
+    <span class="tag m">실측</span> 출처가 있는 항목 &nbsp;·&nbsp; <span class="tag e">추정</span> 실측을 근거로 한 해석.
+    연령대별 <em>검색량 원자료</em>는 Google·Cốc Cốc·Instagram·TikTok 모두 비공개이므로, 플랫폼 사용 실측 + 소비 행태 조사에서 도출했습니다. 추정을 실측처럼 보고드리지 않습니다. 실제 연령별 수치를 얻는 방법은 <a href="#strategy">5장</a>에 실행법으로 정리했습니다.
+  </p>
+
+  <h3>플랫폼 × 연령대 지도 <span class="tag m">실측</span></h3>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>연령</th><th>1순위 채널</th><th>2순위</th><th>검색 행동</th></tr></thead>
+      <tbody>
+        <tr><td><b>20대</b></td><td>TikTok</td><td>Instagram / Google</td><td>검색창이 아니라 <b>피드에서 발견</b>. Gen Z 70%가 TikTok을 음식 추천 1순위로 지목, 84%가 SNS 음식 트렌드를 실제로 시도</td></tr>
+        <tr><td><b>30대</b></td><td>Zalo + Facebook</td><td>TikTok (사용자의 약 40%가 30~40대)</td><td>그룹·지인 추천 + 배달앱 검색 병행</td></tr>
+        <tr><td><b>40대</b></td><td>Facebook + Zalo</td><td>Google</td><td>30~49세의 <b>51%가 Facebook보다 Zalo 선호</b>. 맛집 그룹 게시물을 신뢰</td></tr>
+        <tr><td><b>50대</b></td><td>Facebook · Zalo</td><td>지인 구전</td><td>검색량 자체가 적고, <b>자녀 세대가 대신 검색</b></td></tr>
+        <tr><td><b>60대</b></td><td>Zalo (가족 대화방)</td><td>TV · 구전</td><td>외식 결정의 <b>주체가 아니라 대상</b> — 30~40대 자녀가 장소를 고름</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="margin-top:34px">연령대별 상세</h3>
+  <div class="cohorts">
+
+    <article class="cohort"><div class="bar"></div><div class="body">
+      <h3>20대</h3><div class="gen">Gen Z · 1999–2006년생</div>
+      <div class="row"><div class="k">핵심 키워드</div><div class="v">
+        <span class="kw">quán ăn ngon gần đây <i>근처 맛집</i></span><span class="kw">review quán <i>매장 리뷰</i></span><span class="kw">món hot trend</span><span class="kw">check-in</span><span class="kw">buffet giá rẻ <i>가성비 뷔페</i></span><span class="kw">ăn vặt <i>간식</i></span><span class="kw">tokbokki</span><span class="kw">gà rán Hàn Quốc</span><span class="kw">mì cay</span>
+      </div></div>
+      <div class="row"><div class="k">급상승 메뉴 <span class="tag m">실측</span></div><div class="v"><b>affogato</b>(2025년 10월 급등, 호치민·하노이 카페 손님 급증 — 코코넛 아이스크림·에그커피 변형으로 현지화) · <b>socola Dubai</b> · <b>sữa chua Hy Lạp</b>(그릭요거트) · <b>đặc sản miền Tây</b>(메콩 향토식, 특히 lạp xưởng)</div></div>
+      <div class="row"><div class="k">관련 검색 매장 <span class="tag m">실측</span></div><div class="v">GoGi House · King BBQ · Young Dabang(떡볶이 전골) · Cocodak · Papas’ Chicken(푸미흥) · Katinat · Phê La · Mixue</div></div>
+      <div class="row"><div class="k">요즘 더 검색 <span class="tag m">실측</span></div><div class="v"><b>Xôi Bắc(타오디엔)</b> 개점 전 대기·1시간 줄 · <b>Michelin Bib Gourmand 2026 호치민 신규 5곳</b>(Bánh canh cua Bà Ba, Bánh Cuốn Tây Hồ 127, Bún Riêu Yến, Chị Mơ, La Lola) · <b>nướng sân vườn</b>(정원 바비큐) 포맷</div></div>
+      <div class="row"><div class="k">소비 실태 <span class="tag m">실측</span></div><div class="v">외식 빈도 주 <b>3.2회</b>로 감소. 단 가치가 명확하면 VND 10만 초과 지출 의향 있음. 체인 레스토랑 이용층의 <b>58%가 18~26세</b></div></div>
+      <div class="imp"><b>양산도 시사점 <span class="tag e">추정</span></b>가격 저항이 가장 크면서 확산력은 가장 큰 층. 정가로는 못 잡습니다. <b>런치 세트 + “3가지 먹는 법” 영상</b>으로 TikTok 확산을 노리고, 매출은 30~50대에서 회수하는 구조가 맞습니다.</div>
+    </div></article>
+
+    <article class="cohort"><div class="bar"></div><div class="body">
+      <h3>30대</h3><div class="gen">Millennial · 1987–1996년생</div>
+      <div class="row"><div class="k">핵심 키워드</div><div class="v">
+        <span class="kw">nhà hàng gia đình <i>가족 식당</i></span><span class="kw">đặt bàn <i>예약</i></span><span class="kw">buffet lẩu nướng</span><span class="kw">cơm văn phòng <i>오피스 점심</i></span><span class="kw">combo trưa</span><span class="kw">giao đồ ăn <i>배달</i></span><span class="kw">quán có chỗ đậu xe</span>
+      </div></div>
+      <div class="row"><div class="k">관련 검색 매장 <span class="tag m">실측</span></div><div class="v">Gogi House · Kichi-Kichi · 두끼 · <b>Unatoto</b>(오피스 점심 포지션) · Jollibee · KFC</div></div>
+      <div class="row"><div class="k">요즘 더 검색 <span class="tag m">실측</span></div><div class="v"><b>Jollibee</b> 브랜드 헬스 <b>+6.3점, 전 브랜드 최대 상승</b> · <b>Xanh SM Ngon</b> 신규 배달 플랫폼이 가맹 매장 비율에서 beFood를 제치고 3위 진입 · 배달 점유율 <b>GrabFood 52.2% / ShopeeFood 39.7% / beFood 2.9%</b>(매출 기준), 주문 건수는 ShopeeFood 56%로 역전 → <b>두 앱 동시 입점 필수</b></div></div>
+      <div class="row"><div class="k">결정적 발견 <span class="tag m">실측</span></div><div class="v">오피스 점심은 <b>45~60분</b>이 한계. 20억 VND를 투자한 훠궈 뷔페가 오피스 상권에서 실패한 원인이 “점심에 훠궈는 너무 오래 걸린다”였습니다</div></div>
+      <div class="imp"><b>양산도 시사점 <span class="tag e">추정</span></b>덮밥 포맷은 이 제약을 정면으로 만족시킵니다. 5분 내 서빙이 가능한 런치 오퍼는 양산도의 최대 구조적 강점 — <b>“일본식 프리미엄인데 15분이면 먹고 나간다”</b>가 30대 핵심 메시지.</div>
+    </div></article>
+
+    <article class="cohort"><div class="bar"></div><div class="body">
+      <h3>40대</h3><div class="gen">Gen X · 1977–1986년생</div>
+      <div class="row"><div class="k">핵심 키워드</div><div class="v">
+        <span class="kw">nhà hàng tiếp khách <i>접대용</i></span><span class="kw">phòng riêng VIP <i>프라이빗 룸</i></span><span class="kw">chỗ đậu xe ô tô <i>자동차 주차</i></span><span class="kw">nhà hàng Nhật cao cấp</span><span class="kw">bổ dưỡng <i>보양</i></span><span class="kw">nhậu <i>술자리</i></span>
+      </div></div>
+      <div class="row"><div class="k">행동 특성 <span class="tag m">실측</span></div><div class="v">Facebook·Zalo 중심. <b>Zalo 선호가 Facebook을 앞서는 첫 세대(51%)</b>. TikTok 사용은 늘었으나 “일상에서 중요하지 않다”는 응답 비율이 높음</div></div>
+      <div class="row"><div class="k">관련 매장 <span class="tag e">추정</span></div><div class="v">호텔 일식당, 프라이빗룸 보유 한식·일식당, 해산물 전문점, 골프장 인근 식당</div></div>
+      <div class="imp"><b>양산도 시사점 <span class="tag e">추정</span></b>실제 객단가를 만들어 줄 <b>핵심 세그먼트</b>. 장어=정력·보양 서사가 가장 잘 통하고 주류(사케·하이볼·소주) 부착률이 높습니다. <b>프라이빗 룸 2~3실 + 주차 확보</b>가 매장 설계 요건이며, 이 층을 놓치면 매출이 나오지 않습니다.</div>
+    </div></article>
+
+    <article class="cohort"><div class="bar"></div><div class="body">
+      <h3>50대</h3><div class="gen">1967–1976년생</div>
+      <div class="row"><div class="k">핵심 키워드</div><div class="v">
+        <span class="kw">tốt cho sức khỏe <i>건강에 좋은</i></span><span class="kw">ít dầu mỡ <i>기름 적은</i></span><span class="kw">thực phẩm bổ dưỡng</span><span class="kw">nhà hàng tổ chức tiệc gia đình</span><span class="kw">mừng thọ <i>장수 축하연</i></span>
+      </div></div>
+      <div class="row"><div class="k">2026 건강식 <span class="tag m">실측</span></div><div class="v"><b>MIND 식단</b>(지중해식+DASH, 뇌·심혈관) · <b>식이섬유 집중</b>(1일 25~35g) · 저유·저당·채소 중심·원산지 명확 지향</div></div>
+      <div class="imp"><b>양산도 시사점 <span class="tag e">추정</span></b>“장어 = 고단백·저부담 보양식” 메시지가 가장 강하게 작동하는 층. 다만 <b>기름진 양념구이로 보이면 즉시 거부</b>됩니다. 국물·죽·나물 사이드로 “무겁지 않다”를 시각화해야 합니다.</div>
+    </div></article>
+
+    <article class="cohort"><div class="bar" style="background:var(--glaze)"></div><div class="body">
+      <h3>60대 이상</h3><div class="gen">1966년생 이전</div>
+      <div class="row"><div class="k">핵심 키워드</div><div class="v">
+        <span class="kw">món hầm mềm <i>부드러운 조림</i></span><span class="kw">cháo <i>죽</i></span><span class="kw">mừng thọ</span><span class="kw">thực phẩm cho người cao tuổi</span>
+      </div></div>
+      <div class="row"><div class="k">결정 구조 <span class="tag m">실측</span></div><div class="v">본인이 검색하지 않습니다. 가족 외식 장소 선택 기준은 ① 넓은 공간·프라이빗 룸 ② 주차 ③ 노인용 부드러운 조림 + 젊은층용 튀김·구이가 함께 있는 다양한 메뉴 ④ 재료 신선도</div></div>
+      <div class="row"><div class="k">⚠ 결정적 주의 <span class="tag m">실측</span></div><div class="v">베트남 로컬 장어 요리 <b>cháo lươn</b>(장어죽)·<b>miến lươn</b>(장어 당면국수)는 <b>VND 2만~5만의 저가 서민 보양식</b>이며 “아이와 노인에게 좋은 음식”으로 인식됩니다. 즉 <b>lươn이라는 단어 자체가 저가로 앵커링</b>되어 있습니다</div></div>
+      <div class="imp"><b>양산도 시사점 — 이 조사의 최대 발견 중 하나</b>간판·메뉴판에 <b>lươn</b>만 크게 쓰면 “3만 동짜리 장어죽 집이 왜 30만 동을 받나”가 됩니다. 반드시 <b>Unagi · Cơm lươn Nhật Bản · Hitsumabushi</b>라는 일본 카테고리 언어로 표기해야 가격이 성립합니다. Unatoto·Unagi Shokudo가 이미 그렇게 하고 있습니다.</div>
+    </div></article>
+
+  </div>
+
+  <h3 style="margin-top:34px">전 연령 공통 — 2026 시장 기상도 <span class="tag m">실측</span></h3>
+  <div class="prose">
+    <p>2026년 베트남 F&amp;B는 <strong>매장 33.36만 개 · 매출 760조 VND · 성장률 약 4.6%</strong> 전망으로 성장하되 둔화합니다. “2026년 외식비를 줄이겠다”는 응답이 <strong>34.5%</strong>로 상승했습니다.</p>
+    <p>Decision Lab 2026 브랜드 랭킹은 <strong>KFC 4년 연속 1위(27.1)</strong>, 이하 Jollibee·Highlands Coffee·Trung Nguyên Legend·Lotteria. <strong>상위 10개 중 7개의 브랜드 헬스가 전년보다 하락</strong>했고 1위–10위 격차는 13.9 → <strong>16.8점으로 확대</strong>. 양극화가 진행 중이며 <strong>어중간한 브랜드가 가장 위험</strong>합니다.</p>
+    <p>2026년 부상 포맷은 ① 단일 품목 전문화 ② 정원 바비큐 ③ <strong>일본식 패스트푸드 — “정갈한 플레이팅 + 도시 생활에 맞는 가격”으로 확대 전망</strong>. ③은 양산도 포맷과 정확히 일치합니다.</p>
+  </div>
+</section>
+
+<section id="comp">
+  <h2><span class="num">04</span>경쟁점 실사 리스트</h2>
+  <p class="lede">이 순서로 도십시오. 1~5번은 모두 같은 브랜드(Unatoto)의 상권별 매장으로, 가격 정책을 역산할 수 있습니다.</p>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th class="num">순위</th><th>매장</th><th>주소</th><th>신 행정동</th><th>확인 목적</th><th>시간</th></tr></thead>
+      <tbody>
+        <tr><td class="num"><b>1</b></td><td><b>Unatoto 벤탄점</b></td><td>56 Trương Định (구 1군)</td><td class="new">Bến Thành</td><td>최우선 경쟁자. 가격표·회전율·조리방식</td><td>평일 12:00</td></tr>
+        <tr><td class="num"><b>2</b></td><td><b>Unagi Shokudo</b></td><td>2F, 8/5 Lê Thánh Tôn (구 1군)</td><td class="new">Sài Gòn</td><td>나고야식 직접 경쟁. Unadon 19만 실물</td><td>저녁 18:30</td></tr>
+        <tr><td class="num"><b>3</b></td><td><b>Unatoto 타오디엔점</b></td><td>Đường số 9, Thảo Điền</td><td class="new">An Khánh</td><td>히츠마부시 27만 — 양산도 주력과 동일 상품</td><td>점심</td></tr>
+        <tr><td class="num"><b>4</b></td><td><b>Unatoto 탄빈점</b></td><td>248 Nguyễn Hồng Đào</td><td class="new">Bảy Hiền 계열</td><td>로컬 상권 생존 여부 = 확장 가능성 판단</td><td>평일 12:00</td></tr>
+        <tr><td class="num">5</td><td>Unatoto Q7점</td><td>Nguyễn Thị Thập</td><td class="new">Tân Hưng/Tân Quy 계열</td><td>1호점 후보지 내 경쟁</td><td>점심</td></tr>
+        <tr><td class="num">6</td><td>Yakiuo Ishikawa Saigon</td><td>구 1군</td><td class="new">Sài Gòn</td><td>숯불 테이블 구이 상위 포지션</td><td>저녁</td></tr>
+        <tr><td class="num">7</td><td>푸미흥 한식당 3곳</td><td>Hưng Gia · Hưng Phước</td><td class="new">Tân Hưng</td><td>한인 상권 객단가 상한</td><td>점심·저녁</td></tr>
+        <tr><td class="num">8</td><td>로컬 miến lươn 집</td><td>220 Nguyễn Xí / 188 Nguyễn Hồng Đào</td><td class="new">Bình Lợi Trung / Bảy Hiền</td><td><b>저가 앵커 실물(VND 3만~5만) 체감</b> — 네이밍 분리 이유</td><td>아침·점심</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <h3>각 매장에서 반드시 기록할 6개 숫자</h3>
+  <p class="prose" style="font-size:14.5px;color:var(--ink-2)">동일 양식으로 기록해야 비교가 됩니다 — ① 좌석 수 ② 관찰 시점 점유 좌석 수 ③ 최저가·주력가·최고가 ④ 직원 수 ⑤ 1테이블 체류시간 ⑥ 손님 연령대·국적 구성 비율.</p>
+</section>
+
+<section id="strategy">
+  <h2><span class="num">05</span>데이터 반영 후 전략 수정</h2>
+
+  <h3>가격 재설계 — 최우선</h3>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>항목</th><th>8/10 제안</th><th>수정 제안</th><th>근거</th></tr></thead>
+      <tbody>
+        <tr><td>히츠마부시(기본)</td><td class="old">VND 39만~49만</td><td class="new">VND 21만~26만</td><td>Unatoto 히츠마부시 27만, Unagi Shokudo Unadon 19만</td></tr>
+        <tr><td>특(프리미엄)</td><td class="old">VND 59만~69만</td><td class="new">VND 34만~39만</td><td>시장 상단 58.9만은 오마카세급</td></tr>
+        <tr><td>런치 세트</td><td class="old">VND 25만~29만</td><td class="new">VND 14만~17만</td><td>로컬 점심 주류 3.1만~5만, 패스트푸드 1회 13.5만</td></tr>
+        <tr><td>포지셔닝</td><td class="old">프리미엄 캐주얼</td><td class="new">“일본 원조보다 한 급 위의 맛, 비슷한 가격”</td><td>무명 한국 브랜드가 일본 원조 대비 프리미엄을 받을 근거 없음</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:14px">VND 39만 이상을 고수하려면 <strong>“3대 70년 + 밀양 자체 양식장 직송”을 매장 안에서 시각적으로 증명</strong>해야 합니다(양식장 영상, 원물 쇼케이스, 3단 먹는 법 퍼포먼스). 그 장치 없이 가격만 높이면 실패합니다.</p>
+
+  <h3>네이밍·간판 — 즉시 결정 필요</h3>
+  <div class="prose">
+    <p>❌ <code>Lươn</code>을 주 표기로 쓰지 마십시오 — VND 3만 장어죽으로 앵커링됩니다.<br>
+    ✅ 권장: <strong>YANGSANDO — Unagi Hitsumabushi</strong> + 부제 <code>Cơm lươn nướng kiểu Nhật, 70 năm từ Busan</code></p>
+    <p>한국 브랜드임은 <strong>품질 서사(밀양 양식장·씨간장)로 드러내고</strong>, 카테고리 언어는 일식으로 가져가는 이중 구조. K-푸드 호감도는 81%로 높지만 <strong>장어 카테고리의 가격 신뢰는 일식 문법에서 나옵니다.</strong></p>
+  </div>
+
+  <h3>1호점 후보 순위 (수정)</h3>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th class="num">순위</th><th>후보</th><th>이유</th><th>변경</th></tr></thead>
+      <tbody>
+        <tr><td class="num">1</td><td><b>푸미흥</b> (Tân Hưng)</td><td>한인 모수 + 실패 비용 최소 + 몰 확장 경로</td><td>유지</td></tr>
+        <tr><td class="num">2</td><td><b>랜드마크81·빈탄 몰</b> (Thạnh Mỹ Tây)</td><td>주차·프라이빗룸 확보, 40~50대 접대·가족 수요, 1군 대비 저임대</td><td class="new">신규 2순위</td></tr>
+        <tr><td class="num">3</td><td>1군 몰 (Sài Gòn·Bến Thành)</td><td>브랜드 쇼케이스·관광객</td><td>하향(임대 부담)</td></tr>
+        <tr><td class="num">4</td><td>타오디엔 (An Khánh)</td><td>Unatoto 선점 + 임대 고가</td><td>하향</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>포맷 — “런치 회전 + 디너 객단가” 이원 구조</h3>
+  <div class="prose">
+    <p><strong>런치</strong>: 덮밥 단품 위주, 주문~서빙 5분 · 체류 20분 설계. 오피스 45~60분 제약을 정면 공략.<br>
+    <strong>디너</strong>: 프라이빗 룸 + 주류 + 코스형 히츠마부시로 40~50대 접대·가족 수요.<br>
+    <strong>배달</strong>: GrabFood(매출 1위)·ShopeeFood(주문 1위) 동시 입점 필수, 신규 Xanh SM Ngon은 초기 수수료 협상 여지.<br>
+    <strong>매장 규격</strong>: 기존 3라인 중 <strong>그린(협소)</strong>을 몰 입점형으로 변형해 다점포 확장하는 편이 베트남 임대 구조에 맞습니다.</p>
+  </div>
+
+  <h3>“진짜 연령대별 데이터”를 직접 얻는 방법</h3>
+  <p class="lede" style="margin-bottom:14px">공개 웹에는 연령대별 검색량이 없지만 <strong>광고 플랫폼에서는 조회가 가능합니다.</strong> 계정만 만들면 무료이며 광고를 집행하지 않고 조회만 해도 됩니다. 귀국 후 실행 권장.</p>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>도구</th><th>얻는 것</th><th class="num">소요</th></tr></thead>
+      <tbody>
+        <tr><td><b>Meta Ads Manager</b><br><span class="old">광고 게재 없이 ‘잠재 고객 규모 추정’만 사용</span></td><td>호치민 거주 × 연령대(18-24/25-34/35-44/45-54/55-64) × 관심사(일식·한식·장어·미식)별 <b>정확한 도달 가능 인원수</b></td><td class="num">1시간</td></tr>
+        <tr><td><b>TikTok Creative Center</b><br><span class="old">무료·로그인만</span></td><td>베트남 지역 해시태그·키워드 인기 순위와 증감률, 인기 영상 소재</td><td class="num">1시간</td></tr>
+        <tr><td><b>Google Keyword Planner</b></td><td><code>cơm lươn</code>, <code>unagi</code>, <code>hitsumabushi</code>, <code>nhà hàng Nhật</code> 베트남 월간 검색량·경쟁도·입찰가</td><td class="num">1시간</td></tr>
+        <tr><td><b>ShopeeFood / GrabFood 앱</b></td><td>지역별 일식 카테고리 매장 수·가격 분포·평점·리뷰 수 = <b>가장 정직한 실거래 데이터</b></td><td class="num">2시간</td></tr>
+        <tr><td><b>YouNet Media / Buzzmetrics</b><br><span class="old">유료 소셜 리스닝</span></td><td>브랜드·메뉴 언급량 추이, 감성 분석</td><td class="num">견적</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:14px"><strong>그리고 현장에서만 얻을 수 있는 데이터</strong> — 매장별 시간대별 좌석 점유율. 이건 어떤 리포트에도 없고, 이번 출장에서만 얻을 수 있는 가장 값진 자료입니다.</p>
+</section>
+
+<section id="route">
+  <h2><span class="num">06</span>3일 현장 동선</h2>
+  <p class="lede">전시장(SECC)이 <b>phường Tân Mỹ</b>, 한인타운이 <b>phường Tân Hưng</b>으로 차량 5~10분 거리라 병행이 쉽습니다. 굵은 항목이 그날의 최우선 일정입니다.</p>
+  <div class="days">
+    <div class="day">
+      <div class="when">8/19 수<span>전시 1일차</span></div>
+      <div class="slots">
+        <div class="slot"><div class="t">09–15</div><div class="d">VIETFISH — 원료 소싱 부스 집중, 명함·견적 수집</div></div>
+        <div class="slot key"><div class="t">12:00</div><div class="d">점심은 전시장 밖에서 — Unatoto Q7점 또는 푸미흥 한식당(경쟁점 관찰 겸함)</div></div>
+        <div class="slot key"><div class="t">16–18</div><div class="d">푸미흥 도보 실사 — Hưng Gia·Hưng Phước·Hưng Vượng 블록, 공실·간판·객단가</div></div>
+        <div class="slot"><div class="t">19:00</div><div class="d">저녁: 푸미흥 한식당 — 한인 상권 저녁 활기도 관찰</div></div>
+      </div>
+    </div>
+    <div class="day">
+      <div class="when">8/20 목<span>전시 2일차 + 1군</span></div>
+      <div class="slots">
+        <div class="slot"><div class="t">09–14</div><div class="d">VIETFISH — 콜드체인·포장 설비 + 세미나</div></div>
+        <div class="slot key"><div class="t">15:30</div><div class="d">1군 이동 → Unatoto 벤탄점(56 Trương Định) 가격표·주방 관찰</div></div>
+        <div class="slot key"><div class="t">18:30</div><div class="d">Unagi Shokudo(8/5 Lê Thánh Tôn) 저녁 — 이번 출장의 최우선 일정</div></div>
+        <div class="slot"><div class="t">20:30</div><div class="d">리틀도쿄 골목 도보 + Vincom 동커이 F&amp;B존 임장</div></div>
+      </div>
+    </div>
+    <div class="day">
+      <div class="when">8/21 금<span>전시 3일차 + 상권 비교</span></div>
+      <div class="slots">
+        <div class="slot"><div class="t">09–13</div><div class="d">VIETFISH 마무리 — VASEP·한국관·유통상 미팅</div></div>
+        <div class="slot key"><div class="t">14:00</div><div class="d">타오디엔(An Khánh) — Unatoto 타오디엔점 + Xôi Bắc 대기 현황</div></div>
+        <div class="slot key"><div class="t">16:30</div><div class="d">빈탄 Landmark 81 / Vincom Center — 몰 임대 조건 문의, 저녁 활기도</div></div>
+        <div class="slot key"><div class="t">19:30</div><div class="d">판식롱(Đức Nhuận) 저녁 — 로컬 트렌드 최전선. 대기줄 생긴 매장 3곳 기록</div></div>
+      </div>
+    </div>
+    <div class="day">
+      <div class="when">8/22 토<span>여유일이 있다면</span></div>
+      <div class="slots">
+        <div class="slot key"><div class="t">오전</div><div class="d">탄빈 Unatoto Nguyễn Hồng Đào — 로컬 생존 검증, 확장성 판단의 핵심</div></div>
+        <div class="slot"><div class="t">오후</div><div class="d">로컬 miến lươn 집 1곳(저가 앵커 체감) → Crescent Mall / SC VivoCity 임대 상담</div></div>
+        <div class="slot"><div class="t">저녁</div><div class="d">4군 빈칸 거리 — 수산물 야간 소비 문화</div></div>
+      </div>
+    </div>
+  </div>
+
+  <h3>현장 기록 워크시트</h3>
+<pre class="sheet">매장명: ________________   방문일시: ____/____  __:__
+신 phường: ______________   구 명칭: ____________
+
+① 좌석 수: ______    ② 점유 좌석: ______   (점유율 ____%)
+③ 최저가 ______ / 주력가 ______ / 최고가 ______ (VND)
+④ 직원 수: 홀 ____  주방 ____
+⑤ 1팀 체류시간: ____분
+⑥ 손님 구성  베트남 ___%  한국 ___%  일본 ___%  기타 ___%
+   연령대    20대 ___%  30대 ___%  40대 ___%  50대+ ___%
+⑦ 장어 1인분 중량 추정: ____g   조리: 현장구이 / 재가열
+⑧ 특이사항: _________________________________________
+   _________________________________________________</pre>
+</section>
+
+<section id="trust">
+  <h2><span class="num">07</span>데이터 신뢰도</h2>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>등급</th><th>항목</th></tr></thead>
+      <tbody>
+        <tr><td><b>견고</b><br><span class="old">공식·법령·다수 교차</span></td><td>행정구역 개편(결의 1685/NQ-UBTVQH15, 2025.7.1), 168개 단위 구성, 1·3·5·7군·빈탄·푸년·탄빈·투득 신 phường 명칭, 인구 1,400만·GRDP 1,211억 달러, 배달앱 점유율, 최저임금 VND 531만, 2026 F&amp;B 전망(iPOS×Nestlé — 사업주 3,001명·소비자 3,045명), Michelin 2026 명단, Decision Lab 2026 랭킹(YouGov BrandIndex 2025.3–2026.2)</td></tr>
+        <tr><td><b>비교적 견고</b><br><span class="old">단일 출처 또는 편차</span></td><td>우나기 매장 개별 가격(현지 리뷰 매체 — <b>현장 재확인 필요</b>), 푸미흥 한인 수(5,200~11,000명 편차), 임대료 호가, Unatoto 베트남 지점 수(2024.1 기준 5개 — 증감 확인 필요)</td></tr>
+        <tr><td><b>확인 권장</b></td><td>4군·10군·고밥의 신 phường 전체 명단(핵심 상권이 아니라 교차검증 미완), Cốc Cốc 최신 점유율(2024년 자료가 최신)</td></tr>
+        <tr><td><b>추정</b></td><td>연령대별 키워드 매핑 — 플랫폼 사용 실측 + 소비 행태 조사에서 도출한 해석이며 연령별 검색량 원자료가 아님</td></tr>
+        <tr><td><b>조사 제약</b></td><td>coccoc.com · ipos.vn · qandme.net · datareportal.com · 위키피디아 등 <b>직접 열람이 네트워크 정책으로 차단</b>되어, 검색엔진 반환 본문과 다수 매체 교차확인으로 대체했습니다. <b>가격·지점 수 등 변동성 높은 항목은 현장에서 직접 확인해 주십시오.</b></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <footer>
+    <p><b>주요 출처</b> — 국회상무위 결의 1685/NQ-UBTVQH15 및 정부·법률 포털(thuvienphapluat.vn, tphcm.chinhphu.vn, xaydungchinhsach.chinhphu.vn), Tuổi Trẻ · Thanh Niên · VnExpress · PLO · SGGP · Dân Trí · VietnamNet, iPOS.vn × Nestlé Professional 2025 시장보고서(baodautu.vn·VCCI 인용), Decision Lab Best F&amp;B Rankings 2026, DataReportal Digital 2026 Vietnam · NapoleonCat, Statista(Cốc Cốc 점유율), Michelin Guide Vietnam 2026, cafebiz · cafef · vietnambiz(배달앱 점유율), znews · Kilala · Mia.vn · Toplist(우나기 매장), YouNet Media, Savills · CBRE Vietnam.</p>
+    <p>선행 문서 <code>reports/yangsando-hcmc-report.md</code>(2026-08-10)의 2장·4장을 이 문서가 갱신합니다. 환율은 VND 1,000 ≈ 50원 기준 개산.</p>
+  </footer>
+</section>
+
+</div>
