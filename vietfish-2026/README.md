@@ -20,6 +20,8 @@
 |---|---|---|
 | [01-hotel-selection.md](01-hotel-selection.md) | **호텔 5곳 비교·선정** — 추천: 더 스타 호텔 2 | ✅ 완료 (2026-08-11) |
 | [02-schedule.md](02-schedule.md) | 출장 일정표 (8/18~24) — 박람회 3일 + 주말 시장조사 | 📝 골격 작성, 채워가는 중 |
+| [09-mobile-checklist.html](09-mobile-checklist.html) | **현장 체크리스트 (모바일)** — 31개 부스 체크·메모(자동 저장), 핵심 질문 요약 | ✅ 완료 (2026-08-18) |
+| [08-consultation-kit.md](08-consultation-kit.md) | **영문 상담 키트** — 부스별 영문 질문지 · 사전 미팅 이메일 템플릿 · 30초 소개 피치 | ✅ 완료 (2026-08-18) |
 | [07-korea-partners.md](07-korea-partners.md) | **주요 업체별 한국 거래처** — 식약처 수입신고 공개 데이터 기반 (하이펑 0건 경고 · 후아눙 B301 발견 · 장어구이 수입시장 지도) | ✅ 완료 (2026-08-17) |
 | [06-priority-booths-report.pdf](06-priority-booths-report.pdf) | **우선 방문 부스 30 보고서 v2 (PDF, 6쪽)** — 부스 위치 + 업체별 한국 거래처·품목 태그 | ✅ v2 (2026-08-18) |
 | [06-priority-booths.html](06-priority-booths.html) | 우선 방문 부스 30 보고서 (웹판) — 전체 제품사진 + KR 거래처 태그 | ✅ v2 (2026-08-18) |
