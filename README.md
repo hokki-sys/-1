@@ -7,6 +7,7 @@
 - [양산도 호치민 진출 사전조사 보고서](reports/yangsando-hcmc-report.md) — VIETFISH 2026 참관 가이드(8/19~21, SECC) + 호치민 시장조사 + 진출 전략 (2026-08-10 작성)
 - [호치민 현장 시장조사 — 권역별 정밀 업데이트 + 연령대별 검색·SNS 데이터](reports/hcmc-field-survey-2026-08.md) — 2025.7 행정구역 개편(군 폐지) 매핑, 권역 11곳 재평가, 20~60대 식품 키워드·급상승 매장, 경쟁점(우나기) 실사 리스트, 3일 동선 (2026-08-19 작성)
 - [호치민 군별 상권 지도](reports/hcmc-district-map.html) — 군(郡) 체계 개념도 + 군별 주요 상권 거리·인기 매장·적합도·필수 실사 6개 지점 (2026-08-19 작성)
+- [호치민 장어덮밥 전문점 6개사 프로파일 (PDF)](reports/hcmc-unagi-competitors-2026-08.pdf) — Unatoto·Unagi Yosakura·Yakiuo Ishikawa·Unagi Shokudo·Dong Fan·Unagista 연혁·매출·품목·가격·영업시간·소재 군 (2026-08-19 작성)
 - [강해무역 VIETFISH 2026 & 베트남 가공 진출 플레이북](reports/vietfish-2026-playbook.md) — 중국산 민물장어(로스트라타·자포니카) 수입상의 베트남 확장: 박람회 활용, 위탁가공, 자체 공장, 한국 수입 관세·원산지 분석 (2026-08-10 작성)
 
 ## 저장 확인 (Save Check)
