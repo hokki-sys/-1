@@ -1,5 +1,5 @@
 <!doctype html><html lang="ko"><head><meta charset="utf-8">
-<title>호치민 장어 전문점 프로파일</title>
+<title>호치민 장어 전문점 심층 프로파일</title>
 <style>
 @font-face{font-family:NSK;src:url('https://cdn.jsdelivr.net/npm/@fontsource/noto-sans-kr/files/noto-sans-kr-korean-400-normal.woff2') format('woff2');font-weight:400}
 @font-face{font-family:NSK;src:url('https://cdn.jsdelivr.net/npm/@fontsource/noto-sans-kr/files/noto-sans-kr-korean-700-normal.woff2') format('woff2');font-weight:700}
@@ -77,341 +77,620 @@ li{margin-bottom:1.6mm;font-size:8.9pt}
 .avoid{page-break-inside:avoid}
 del{color:var(--alert);text-decoration:line-through;text-decoration-thickness:0.8pt}
 .arrow{color:var(--accent);font-weight:700}
+
+.chip{display:inline-flex;align-items:center;gap:2mm;font-size:8.6pt;color:var(--ink2);margin-right:4mm}
+.chip .sw{width:3.4mm;height:3.4mm;border-radius:1mm;display:inline-block}
+.figcard{border:0.5pt solid var(--line);border-radius:2mm;padding:4mm 4mm 2.5mm;margin:3mm 0;background:#fff}
+.figcard .cap{font-family:IPM,monospace;font-size:7pt;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:2mm}
+.figcard .note{font-size:8pt;color:var(--muted);margin-top:1.5mm}
+.tiles{display:flex;gap:3mm;margin:3mm 0}
+.tile{flex:1;border:0.5pt solid var(--line);border-radius:2mm;padding:3mm 3.5mm;background:#FAFBFB}
+.tile .tl{font-family:IPM,monospace;font-size:6.6pt;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.tile .tv{font-size:13pt;font-weight:700;letter-spacing:-.01em;margin-top:1mm}
+.tile .ts{font-size:7.6pt;color:var(--muted)}
+.bhead{display:flex;align-items:center;gap:3mm}
+.bhead .bsw{width:4.5mm;height:4.5mm;border-radius:1.2mm}
+.menu td{font-size:8.2pt}
+.menu td.p{font-family:IPM,monospace;text-align:right;white-space:nowrap}
 </style></head><body>
 
 <div class="cover">
   <div class="top">
     <div class="rule"></div>
-    <div class="kicker">Competitor Dossier · Ho Chi Minh City · 2026.08</div>
-    <h1>호치민 장어 전문점<br>프로파일</h1>
-    <p class="sub">호치민시에서 장어(우나기)를 간판 카테고리로 내세운 <b>전문 브랜드 5개사</b>와, 장어를 시그니처 메뉴로 취급하는 <b>인접 브랜드 2개사</b>의
-    연혁·운영 주체·지점·품목·가격·영업시간·재무·확장 신호를 항목별로 정리한 업체 정보 문서입니다.</p>
+    <div class="kicker">Competitor Dossier · Deep Edition · Ho Chi Minh City · 2026.08</div>
+    <h1>호치민 장어 전문점<br>심층 프로파일</h1>
+    <p class="sub">장어(우나기)를 간판 카테고리로 내세운 <b>전문 브랜드 5개사</b>와 장어를 시그니처로 취급하는 <b>인접 브랜드 2개사</b> —
+    연혁·법인·지점·메뉴·가격·좌석·영업시간·재무·공급망·평판·확장 신호를 인포그래픽과 함께 정리한 업체 정보 문서입니다.</p>
+    <div style="margin-top:6mm">
+      <span class="chip"><span class="sw" style="background:#2a78d6"></span>Unatoto</span>
+      <span class="chip"><span class="sw" style="background:#eb6834"></span>Unagi Shokudo</span>
+      <span class="chip"><span class="sw" style="background:#1baf7a"></span>UNAGI Station</span>
+      <span class="chip"><span class="sw" style="background:#eda100"></span>Yosakura</span>
+      <span class="chip"><span class="sw" style="background:#e87ba4"></span>Mutsumian</span>
+      <span class="chip"><span class="sw" style="background:#008300"></span>Yakiuo Ishikawa</span>
+      <span class="chip"><span class="sw" style="background:#4a3aa7"></span>Dong Fan</span>
+    </div>
   </div>
   <div class="scope">
-    <b>조사 범위</b> — 장어를 서브 메뉴로 취급하는 일반 일식당(호치민 약 1,180곳)은 제외하고, 장어가 사업의 중심인 브랜드만 수록했습니다.<br><br>
-    <b>조사 방법</b> — 브랜드별 전담 조사 에이전트와 검증 전담 에이전트의 2단 파이프라인(총 15기, 검색·도구 호출 437회).
-    베트남어·영어·일본어 3개 언어 병렬 검색으로 기업등기 DB(masothue 등)·상장사 공시·JETRO·브랜드 공식 채널·현지 리뷰 플랫폼을 교차하고,
-    세무코드 발급지 구조 분석과 SNS 게시물 타임스탬프 디코딩으로 법인 소재지·개점일을 별도 검증했습니다.<br><br>
-    <b>판정 표기</b> — 각 항목에 <span class="tag vv">확정</span>(검증 통과 또는 다중 출처+구조 검증),
-    <span class="tag v">교차</span>(복수 출처 일치), <span class="tag s">단일출처</span>,
-    <span class="tag q">미확인</span>을 부착했습니다. 확인되지 않은 항목은 수치를 만들어 넣지 않고 '미확인'으로 남겼습니다.
-    가격·영업시간·영업 여부는 변동성이 크므로 <b>현장 확인이 최종 근거</b>입니다.<br><br>
-    <b>행정구역 표기</b> — 2025년 7월 1일 개편으로 군(quận)이 폐지되었으나 가독성을 위해 구 군 명칭을 기준으로 적고 신 행정동(phường)을 병기했습니다.
+    <b>범위</b> — 장어를 서브 메뉴로 취급하는 일반 일식당(호치민 약 1,180곳)은 제외.
+    <b>표기</b> — 각 항목에 <span class="tag vv">확정</span> <span class="tag v">교차</span> <span class="tag s">단일출처</span> <span class="tag q">미확인</span> 판정 부착,
+    미확인 항목은 수치를 만들지 않고 공란. 행정구역은 구 군(quận) 명칭 기준 + 신 행정동(phường) 병기(2025.7.1 개편).
+    가격·영업시간은 변동성이 크므로 현장 확인이 최종 근거.
   </div>
   <div class="meta">
     <div><dt>작성일</dt><dd>2026년 8월 20일</dd></div>
     <div><dt>전문 브랜드</dt><dd>5개사</dd></div>
     <div><dt>인접 브랜드</dt><dd>2개사</dd></div>
     <div><dt>확인 매장</dt><dd>베트남 15곳 내외</dd></div>
-    <div><dt>재무 공개</dt><dd>1개사 (상장 모기업 연결)</dd></div>
+    <div><dt>재무 공개</dt><dd>1개사 (상장 연결)</dd></div>
   </div>
 </div>
 
 <section style="page-break-before:auto">
-  <div class="shead"><span class="n">01</span><h2>요약 비교표</h2></div>
+  <div class="shead"><span class="n">01</span><h2>시장 한눈에</h2></div>
+  <div class="tiles avoid">
+    <div class="tile"><div class="tl">브랜드</div><div class="tv">5 + 2</div><div class="ts">전문 + 인접</div></div>
+    <div class="tile"><div class="tl">확인 매장 (VN)</div><div class="tv">15곳 내외</div><div class="ts">호치민 12 + 하노이 3</div></div>
+    <div class="tile"><div class="tl">가격 스펙트럼</div><div class="tv">129k – 3.7M</div><div class="ts">VND · 1인</div></div>
+    <div class="tile"><div class="tl">신규 개점</div><div class="tv">5건+</div><div class="ts">2024.11 – 2026.6</div></div>
+    <div class="tile"><div class="tl">다점포 체인</div><div class="tv">2개사</div><div class="ts">Unatoto 6 · Shokudo 3+</div></div>
+  </div>
 
-  <h4>장어 전문 브랜드 (5)</h4>
-  <table class="avoid">
-    <thead><tr>
-      <th style="width:17%">브랜드</th><th style="width:15%">운영 주체</th><th style="width:10%">개점(VN)</th>
-      <th style="width:12%">매장 수</th><th style="width:16%">소재 (구 군)</th><th style="width:15%">메인 가격 (VND)</th><th style="width:15%">비고</th>
-    </tr></thead>
-    <tbody>
-      <tr>
-        <td><b>名代 宇奈とと</b><br><span class="vn">Izakaya Unatoto</span></td>
-        <td>GF CAPITAL (VIETNAM)<br><span class="mono">모기업 G-FACTORY (TSE 3474)</span></td>
-        <td class="num">2019.11.22 <span class="tag vv">확정</span></td>
-        <td class="num"><b>VN 6</b><br>(호치민 5 + 하노이 1)</td>
-        <td>1군·7군·10군·탄빈·푸년</td>
-        <td class="num">런치 129k~229k<br>덮밥 200k~550k</td>
-        <td>카테고리 리더 · 유일한 재무 공개(연결)</td>
-      </tr>
-      <tr>
-        <td><b>Unagi Shokudo</b></td>
-        <td>한국계 운영<br><span class="mono">hộ kinh doanh 등록</span></td>
-        <td class="num">2024 4분기 <span class="tag v">교차</span></td>
-        <td class="num"><b>3+</b><br>(타오디엔·하노이·고법<br>+서울 마포)</td>
-        <td>2군 타오디엔 본점</td>
-        <td class="num">히츠마부시 270k<br>밴드 250k~500k</td>
-        <td><b>2위 다점포 · 급확장 중</b> · 구글 4.8/683건</td>
-      </tr>
-      <tr>
-        <td><b>UNAGI Station</b><br><span class="vn">(Unagista)</span></td>
-        <td>Cty TNHH UNAGI VIETNAM<br><span class="mono">0319304771</span></td>
-        <td class="num">2026.1월경 <span class="tag v">교차</span></td>
-        <td class="num">1<br>(2호점 2027 초 계획)</td>
-        <td>1군 리틀도쿄</td>
-        <td class="num">미공개 <span class="tag q">미확인</span></td>
-        <td>활장어 수조·오픈키친 · Kanto+Kansai 병행</td>
-      </tr>
-      <tr>
-        <td><b>Unagi Yosakura</b><br><span class="mono">日本鰻世桜</span></td>
-        <td>㈜세오(오사카, 2024.3 설립)<br>직영</td>
-        <td class="num">2025.8.24 <span class="tag vv">확정</span></td>
-        <td class="num">VN 2<br>(호치민 장어 1<br>+하노이 규카츠 1)</td>
-        <td>3군</td>
-        <td class="num"><b>850k~1,200k</b></td>
-        <td>최고가 · 와규 결합 · FC 모집 중</td>
-      </tr>
-      <tr>
-        <td><b>Yuugatei Mutsumian</b><br><span class="mono">遊雅亭 睦庵</span></td>
-        <td>미확인</td>
-        <td class="num">2017~19 추정 <span class="tag s">단일출처</span></td>
-        <td class="num">2 추정<br>(호치민+하노이)</td>
-        <td>1군 리틀도쿄</td>
-        <td class="num">미확인<br><span style="color:var(--muted)">(인근 대비 저렴 평)</span></td>
-        <td>카테고리 최고참 추정 · 베트남 양식 활장어 소구</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="figcard avoid">
+    <div class="cap">Fig.1 — 진입·출점 타임라인 (2017–2027)</div>
+<svg viewBox='0 0 780 300' role='img' aria-label='2017년부터 2027년까지 브랜드별 개점 타임라인' style='width:100%;height:auto'>
+<line x1='200' y1='26' x2='200' y2='260' stroke='#D5DDDA' stroke-width='1'/>
+<text x='200' y='276' font-family='IBM Plex Mono,monospace' font-size='9.5' fill='#6B7C77' text-anchor='middle'>2018</text>
+<line x1='252' y1='26' x2='252' y2='260' stroke='#D5DDDA' stroke-width='1'/>
+<text x='252' y='276' font-family='IBM Plex Mono,monospace' font-size='9.5' fill='#6B7C77' text-anchor='middle'>2019</text>
+<line x1='304' y1='26' x2='304' y2='260' stroke='#D5DDDA' stroke-width='1'/>
+<text x='304' y='276' font-family='IBM Plex Mono,monospace' font-size='9.5' fill='#6B7C77' text-anchor='middle'>2020</text>
+<line x1='356' y1='26' x2='356' y2='260' stroke='#D5DDDA' stroke-width='1'/>
+<text x='356' y='276' font-family='IBM Plex Mono,monospace' font-size='9.5' fill='#6B7C77' text-anchor='middle'>2021</text>
+<line x1='409' y1='26' x2='409' y2='260' stroke='#D5DDDA' stroke-width='1'/>
+<text x='409' y='276' font-family='IBM Plex Mono,monospace' font-size='9.5' fill='#6B7C77' text-anchor='middle'>2022</text>
+<line x1='461' y1='26' x2='461' y2='260' stroke='#D5DDDA' stroke-width='1'/>
+<text x='461' y='276' font-family='IBM Plex Mono,monospace' font-size='9.5' fill='#6B7C77' text-anchor='middle'>2023</text>
+<line x1='513' y1='26' x2='513' y2='260' stroke='#D5DDDA' stroke-width='1'/>
+<text x='513' y='276' font-family='IBM Plex Mono,monospace' font-size='9.5' fill='#6B7C77' text-anchor='middle'>2024</text>
+<line x1='565' y1='26' x2='565' y2='260' stroke='#D5DDDA' stroke-width='1'/>
+<text x='565' y='276' font-family='IBM Plex Mono,monospace' font-size='9.5' fill='#6B7C77' text-anchor='middle'>2025</text>
+<line x1='617' y1='26' x2='617' y2='260' stroke='#D5DDDA' stroke-width='1'/>
+<text x='617' y='276' font-family='IBM Plex Mono,monospace' font-size='9.5' fill='#6B7C77' text-anchor='middle'>2026</text>
+<line x1='669' y1='26' x2='669' y2='260' stroke='#D5DDDA' stroke-width='1'/>
+<text x='669' y='276' font-family='IBM Plex Mono,monospace' font-size='9.5' fill='#6B7C77' text-anchor='middle'>2027</text>
+<text x='138' y='51.5' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='11' font-weight='700' fill='#111A18' text-anchor='end'>Mutsumian</text>
+<line x1='148' y1='48' x2='716' y2='48' stroke='#D5DDDA' stroke-width='1'/>
+<rect x='158' y='44' width='115' height='8' rx='4' fill='#e87ba4' opacity='.5'/>
+<text x='279' y='51.5' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='9' fill='#6B7C77'>개점 2017~19 추정 · 리틀도쿄</text>
+<text x='138' y='85.5' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='11' font-weight='700' fill='#111A18' text-anchor='end'>Unatoto</text>
+<line x1='148' y1='82' x2='716' y2='82' stroke='#D5DDDA' stroke-width='1'/>
+<circle cx='239' cy='82' r='5' fill='#fff' stroke='#2a78d6' stroke-width='2'/>
+<text x='239' y='73' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='8.6' fill='#6B7C77' text-anchor='middle'>법인 설립</text>
+<circle cx='299' cy='82' r='5' fill='#2a78d6' stroke='#fff' stroke-width='1.5'/>
+<text x='299' y='98' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='8.6' fill='#6B7C77' text-anchor='middle'>1호 벤탄</text>
+<circle cx='404' cy='82' r='5' fill='#2a78d6' stroke='#fff' stroke-width='1.5'/>
+<text x='404' y='73' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='8.6' fill='#6B7C77' text-anchor='middle'>탄빈</text>
+<circle cx='428' cy='82' r='5' fill='#2a78d6' stroke='#fff' stroke-width='1.5'/>
+<text x='428' y='98' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='8.6' fill='#6B7C77' text-anchor='middle'>하노이</text>
+<circle cx='452' cy='82' r='5' fill='#2a78d6' stroke='#fff' stroke-width='1.5'/>
+<text x='452' y='73' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='8.6' fill='#6B7C77' text-anchor='middle'>7군</text>
+<circle cx='500' cy='82' r='5' fill='#2a78d6' stroke='#fff' stroke-width='1.5'/>
+<text x='500' y='98' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='8.6' fill='#6B7C77' text-anchor='middle'>10군</text>
+<circle cx='575' cy='82' r='5' fill='#2a78d6' stroke='#fff' stroke-width='1.5'/>
+<text x='575' y='73' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='8.6' fill='#6B7C77' text-anchor='middle'>푸년 · 라이선스</text>
+<text x='138' y='119.5' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='11' font-weight='700' fill='#111A18' text-anchor='end'>Dong Fan</text>
+<line x1='148' y1='116' x2='716' y2='116' stroke='#D5DDDA' stroke-width='1'/>
+<circle cx='476' cy='116' r='5' fill='#4a3aa7' stroke='#fff' stroke-width='1.5'/>
+<text x='476' y='107' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='8.6' fill='#6B7C77' text-anchor='middle'>개점</text>
+<text x='138' y='153.5' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='11' font-weight='700' fill='#111A18' text-anchor='end'>Yakiuo Ishikawa</text>
+<line x1='148' y1='150' x2='716' y2='150' stroke='#D5DDDA' stroke-width='1'/>
+<circle cx='558' cy='150' r='5' fill='#008300' stroke='#fff' stroke-width='1.5'/>
+<text x='552' y='141' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='8.6' fill='#6B7C77' text-anchor='end'>1군 소프트오픈</text>
+<circle cx='621' cy='150' r='5' fill='#008300' stroke='#fff' stroke-width='1.5'/>
+<text x='621' y='166' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='8.6' fill='#6B7C77' text-anchor='middle'>타오디엔</text>
+<text x='138' y='187.5' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='11' font-weight='700' fill='#111A18' text-anchor='end'>Unagi Shokudo</text>
+<line x1='148' y1='184' x2='716' y2='184' stroke='#D5DDDA' stroke-width='1'/>
+<circle cx='556' cy='184' r='5' fill='#eb6834' stroke='#fff' stroke-width='1.5'/>
+<text x='550' y='200' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='8.6' fill='#6B7C77' text-anchor='end'>타오디엔 본점</text>
+<circle cx='612' cy='184' r='5' fill='#eb6834' stroke='#fff' stroke-width='1.5'/>
+<text x='606' y='175' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='8.6' fill='#6B7C77' text-anchor='end'>하노이</text>
+<circle cx='624' cy='184' r='5' fill='#fff' stroke='#eb6834' stroke-width='2'/>
+<text x='630' y='200' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='8.6' fill='#6B7C77' text-anchor='start'>서울 마포</text>
+<circle cx='643' cy='184' r='5' fill='#eb6834' stroke='#fff' stroke-width='1.5'/>
+<text x='649' y='175' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='8.6' fill='#6B7C77' text-anchor='start'>고법</text>
+<text x='138' y='221.5' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='11' font-weight='700' fill='#111A18' text-anchor='end'>Yosakura</text>
+<line x1='148' y1='218' x2='716' y2='218' stroke='#D5DDDA' stroke-width='1'/>
+<circle cx='598' cy='218' r='5' fill='#eda100' stroke='#fff' stroke-width='1.5'/>
+<text x='598' y='234' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='8.6' fill='#6B7C77' text-anchor='middle'>호치민점</text>
+<text x='138' y='255.5' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='11' font-weight='700' fill='#111A18' text-anchor='end'>UNAGI Station</text>
+<line x1='148' y1='252' x2='716' y2='252' stroke='#D5DDDA' stroke-width='1'/>
+<circle cx='621' cy='252' r='5' fill='#1baf7a' stroke='#fff' stroke-width='1.5'/>
+<text x='621' y='243' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='8.6' fill='#6B7C77' text-anchor='middle'>개점</text>
+<circle cx='672' cy='252' r='5' fill='#fff' stroke='#1baf7a' stroke-width='2' stroke-dasharray='2.5 2'/>
+<text x='672' y='268' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='8.6' fill='#6B7C77' text-anchor='middle'>2호점 계획</text>
+<circle cx='148' cy='290' r='4.5' fill='#6B7C77'/><text x='157' y='294' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='9' fill='#6B7C77'>개점</text>
+<circle cx='204' cy='290' r='4.5' fill='#fff' stroke='#6B7C77' stroke-width='1.8'/><text x='213' y='294' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='9' fill='#6B7C77'>법인·해외 참고</text>
+<circle cx='312' cy='290' r='4.5' fill='#fff' stroke='#6B7C77' stroke-width='1.8' stroke-dasharray='2.5 2'/><text x='321' y='294' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='9' fill='#6B7C77'>계획</text>
+</svg>    <div class="note">2024년 11월 이후 신규 개점이 집중 — 카테고리가 활황 초입에 있음을 보여줍니다. Mutsumian의 개점 시점은 단일 출처 추정.</div>
+  </div>
 
-  <h4 style="color:var(--glaze)">인접 브랜드 — 장어는 시그니처 단품 (2)</h4>
-  <table class="avoid">
-    <thead><tr>
-      <th style="width:17%">브랜드</th><th style="width:20%">본체 카테고리</th><th style="width:10%">개점</th>
-      <th style="width:10%">매장 수</th><th style="width:16%">소재 (구 군)</th><th style="width:27%">장어 관련 · 가격</th>
-    </tr></thead>
-    <tbody>
-      <tr>
-        <td><b>Yakiuo Ishikawa Saigon</b><br><span class="mono">焼うお いし川</span></td>
-        <td>해산물 야키니쿠 × 오마카세<br><span class="mono">도쿄 츠키지 발(發)</span></td>
-        <td class="num">2024.11.15<br>소프트오픈</td>
-        <td class="num">2<br>(1군+타오디엔)</td>
-        <td>1군 38 Thái Văn Lung ·<br>2군 79 Xuân Thủy</td>
-        <td class="num">코스 980k++ ~ 1.9M / 타오디엔 오마카세 1M~3.7M. 우나기동은 테이블 직화 마무리 시그니처(단품가 미확인)</td>
-      </tr>
-      <tr>
-        <td><b>Dong Fan</b><br><span class="mono">海鮮と天丼 丼飯</span></td>
-        <td>카이센동·텐동<br><span class="mono">스시 코바야시 자매점</span></td>
-        <td class="num">2023.4</td>
-        <td class="num">1 (약 12석)</td>
-        <td>1군 2F, 8/5 Lê Thánh Tôn</td>
-        <td class="num">우나동 190k / 290k / 360k (사이드 라인) · 2025.4 이후 영업 확인 자료 없음 <span class="tag q">미확인</span></td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h4>가격 스펙트럼</h4>
-  <div class="spec">VND (1인 기준 · 확인된 실측치만)
-
- 129k ─ 229k   Unatoto 런치세트 (상시 27% 할인 프로모션 병행)
- 190k ─ 360k   Dong Fan 우나동 3종(사이드) · Unatoto 덮밥 하단
- 250k ─ 550k   Unagi Shokudo 250k~500k(주력 270k) · Unatoto 덮밥 상단
- ─────────────────────────────────────────────────────────
- 550k ─ 850k   ★ 빈 구간 — 확인된 상시 메뉴 없음
- ─────────────────────────────────────────────────────────
- 850k ─ 1.2M   Unagi Yosakura 850k / 850k / 1.2M
- 980k ─ 3.7M   Yakiuo Ishikawa 코스·오마카세 (장어 포함 구성)
-   미지수      UNAGI Station · Mutsumian — 현장 확인 필요</div>
-
-  <h4>카테고리 구조 판독</h4>
-  <ul>
-    <li><b>다점포는 2개사</b> — Unatoto(6개점)가 리드하고, 한국계 Unagi Shokudo(3개점+)가 추격하는 양강 구도. 나머지는 1~2개점.</li>
-    <li><b>2024~2026년 신규 진입 러시</b> — Yakiuo(2024.11) → Yosakura(2025.8) → UNAGI Station(2026.1경) → Shokudo 고법점(2026 중반). 2년 새 확인된 신규 개점만 5건으로, 이 카테고리는 <b>활황 초입</b>입니다.</li>
-    <li><b>공급망 수직화 경쟁 개시</b> — UNAGI Station(자체 양식 표방 + 양식설비 수입 42건), Mutsumian(베트남 양식 활장어 소구), Shokudo(나짱 양식장 조달 소개). 냉동 수입 대비 '활어·현지 양식'이 차별화 축으로 부상.</li>
-    <li><b>가격은 양극화, 550k~850k 구간이 공백</b> — 볼륨(129k~550k)과 프리미엄(850k~)이 분리되어 있고 그 사이 상시 메뉴가 확인되지 않습니다.</li>
-    <li><b>인적 네트워크</b> — UNAGI Station 창업 셰프 Lam과 Yakiuo 유치 주역 Lanh Phan은 Maguro Studio(2022 공동 창업) 인맥 — 호치민 프리미엄 일식 신(scene)을 같은 로컬 외식가 그룹이 주도하는 정황.</li>
-    <li><b>지리적 집중</b> — 확인된 호치민 매장의 절반가량이 1군 리틀도쿄와 타오디엔에 몰려 있고, 로컬 주거 상권(탄빈·10군·푸년)까지 내려간 것은 Unatoto뿐입니다.</li>
-  </ul>
+  <div class="figcard avoid">
+    <div class="cap">Fig.2 — 1인 가격 범위 (확인된 실측치)</div>
+<svg viewBox='0 0 780 318' role='img' aria-label='브랜드별 1인 가격 범위. 55만에서 85만 동 구간이 공백.' style='width:100%;height:auto'>
+<rect x='236' y='16' width='48' height='258' fill='#E8F1EE'/>
+<line x1='148' y1='16' x2='148' y2='274' stroke='#D5DDDA' stroke-width='1'/>
+<text x='148' y='290' font-family='IBM Plex Mono,monospace' font-size='9' fill='#6B7C77' text-anchor='middle'>0</text>
+<line x1='228' y1='16' x2='228' y2='274' stroke='#D5DDDA' stroke-width='1'/>
+<text x='228' y='290' font-family='IBM Plex Mono,monospace' font-size='9' fill='#6B7C77' text-anchor='middle'>0.5M</text>
+<line x1='307' y1='16' x2='307' y2='274' stroke='#D5DDDA' stroke-width='1'/>
+<text x='307' y='290' font-family='IBM Plex Mono,monospace' font-size='9' fill='#6B7C77' text-anchor='middle'>1M</text>
+<line x1='387' y1='16' x2='387' y2='274' stroke='#D5DDDA' stroke-width='1'/>
+<text x='387' y='290' font-family='IBM Plex Mono,monospace' font-size='9' fill='#6B7C77' text-anchor='middle'>1.5M</text>
+<line x1='467' y1='16' x2='467' y2='274' stroke='#D5DDDA' stroke-width='1'/>
+<text x='467' y='290' font-family='IBM Plex Mono,monospace' font-size='9' fill='#6B7C77' text-anchor='middle'>2M</text>
+<line x1='547' y1='16' x2='547' y2='274' stroke='#D5DDDA' stroke-width='1'/>
+<text x='547' y='290' font-family='IBM Plex Mono,monospace' font-size='9' fill='#6B7C77' text-anchor='middle'>2.5M</text>
+<line x1='626' y1='16' x2='626' y2='274' stroke='#D5DDDA' stroke-width='1'/>
+<text x='626' y='290' font-family='IBM Plex Mono,monospace' font-size='9' fill='#6B7C77' text-anchor='middle'>3M</text>
+<line x1='706' y1='16' x2='706' y2='274' stroke='#D5DDDA' stroke-width='1'/>
+<text x='706' y='290' font-family='IBM Plex Mono,monospace' font-size='9' fill='#6B7C77' text-anchor='middle'>3.5M</text>
+<text x='754' y='290' font-family='IBM Plex Mono,monospace' font-size='9' fill='#6B7C77' text-anchor='end'>VND</text>
+<text x='138' y='42' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='11' font-weight='700' fill='#111A18' text-anchor='end'>Unatoto</text>
+<rect x='169' y='32' width='67' height='12' rx='4' fill='#2a78d6'/>
+<text x='244' y='42' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='9.3' fill='#6B7C77'>런치 129k~ · 덮밥 200k~550k</text>
+<text x='138' y='76' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='11' font-weight='700' fill='#111A18' text-anchor='end'>Dong Fan</text>
+<rect x='178' y='66' width='27' height='12' rx='4' fill='#4a3aa7'/>
+<text x='213' y='76' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='9.3' fill='#6B7C77'>우나동 190k~360k (사이드)</text>
+<text x='138' y='110' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='11' font-weight='700' fill='#111A18' text-anchor='end'>Unagi Shokudo</text>
+<rect x='186' y='100' width='41' height='12' rx='4' fill='#eb6834'/>
+<text x='236' y='110' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='9.3' fill='#6B7C77'>주력 270k · 밴드 240k~500k</text>
+<text x='138' y='144' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='11' font-weight='700' fill='#111A18' text-anchor='end'>Mutsumian</text>
+<rect x='188' y='134' width='40' height='12' rx='4' fill='#e87ba4'/>
+<text x='236' y='144' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='9.3' fill='#6B7C77'>우나주 小 250k · 大 500k · 히츠마부시 500k</text>
+<text x='138' y='178' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='11' font-weight='700' fill='#111A18' text-anchor='end'>Yosakura</text>
+<rect x='284' y='168' width='56' height='12' rx='4' fill='#eda100'/>
+<text x='347' y='178' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='9.3' fill='#6B7C77'>850k / 850k / 1.2M</text>
+<text x='138' y='212' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='11' font-weight='700' fill='#111A18' text-anchor='end'>Yakiuo Ishikawa</text>
+<rect x='304' y='202' width='434' height='12' rx='4' fill='#008300'/>
+<text x='304' y='228' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='9.3' fill='#6B7C77'>코스 980k++ · 오마카세 상위 ~3.7M</text>
+<text x='138' y='256' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='11' font-weight='700' fill='#111A18' text-anchor='end'>UNAGI Station</text>
+<text x='148' y='256' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='9.5' fill='#6B7C77'>가격 전 채널 미공개 — 현장 확인 필요 (자체 표방: '합리적 가격')</text>
+<text x='260' y='266' font-family='IBM Plex Mono,monospace' font-size='8.6' fill='#0B5F54' text-anchor='middle'>빈 구간 550k–850k</text>
+</svg>    <div class="note">볼륨존(129k~550k)과 프리미엄존(850k~)이 분리되어 있고, 사이의 550k~850k 구간에는 확인된 상시 메뉴가 없습니다.</div>
+  </div>
 </section>
-<div class="co">
-  <div class="co-head">
-    <div class="co-tag">Profile 01 · 전문 브랜드 · 카테고리 리더</div>
-    <div class="co-name">名代 宇奈とと <span>Izakaya Unatoto</span></div>
-    <div class="co-line">일본 상장사 직영의 저가 볼륨 모델. 연혁·지점·주소가 전 항목 확정된 유일한 브랜드이며, 유일하게 로컬 주거 상권까지 진출한 다점포 체인입니다.</div>
-  </div>
-  <table class="facts">
-    <tr><td class="k">운영 주체</td><td><span class="tag vv">확정</span> 현지법인 <b>GF CAPITAL (VIETNAM) CO., LTD.</b>(2018.10.8 설립, 본사 93 Nguyễn Du 구 1군, 법인장 Katahira Masayuki, 정관자본 약 202.7억 VND) — 모기업 <b>G-FACTORY 주식회사</b>(도쿄증권 그로스 3474). 우나토토 외 <b>Izakaya Kamura·Sushi Nishitsugu·오모이데요코초</b>(2025.4 오픈)도 병행 운영</td></tr>
-    <tr><td class="k">연혁</td><td><span class="tag vv">확정</span> 베트남 1호 벤탄점 <b>2019.11.22</b> 개점(JETRO 보도). 이후 ②탄빈 2021.12.1 → ③하노이 낌마 2022.5.15 → ④응우옌티탑 2022.11.1 → ⑤바탕하이 2023.10 → ⑥판식롱 <b>2025.3.10</b>(베트남 첫 일본인 오너 라이선스점)</td></tr>
-    <tr><td class="k">지점·소재 군</td><td><span class="tag vv">확정</span> 6개점 전부 영업 중(2026.8 조사 기준):<br>
-      ① <b>1군</b> 56 Trương Định (신 P. Bến Thành) ☎028 3620 6840<br>
-      ② <b>탄빈</b> 248 Nguyễn Hồng Đào (신 P. Tân Bình) ☎028 3535 5154<br>
-      ③ <b>7군</b> 70 Nguyễn Thị Thập (신 P. Tân Thuận) ☎028 3620 3380<br>
-      ④ <b>10군</b> 426-428 Đường 3 Tháng 2 (신 P. Hòa Hưng)<br>
-      ⑤ <b>푸년</b> 240 Phan Xích Long (신 P. Cầu Kiệu)<br>
-      ⑥ <b>하노이</b> 531 Kim Mã<br>
-      <span class="mono" style="color:var(--muted)">일부 현지 리스티클에 등장하는 "타오디엔점"·"5/70 Nguyễn Trung Ngạn" 주소는 오기 — 지점이 아님</span></td></tr>
-    <tr><td class="k">메인 품목</td><td><span class="tag vv">확정</span> 비장탄 숯불 장어: 우나동·우나쥬·히츠마부시 + 장어꼬치(타레 5종) + 스시·사시미·튀김 등 <b>약 300개 메뉴의 이자카야 업태</b>. 슬로건 '早い・安い・旨い(빠르고 싸고 맛있다)'</td></tr>
-    <tr><td class="k">메인 가격대</td><td><span class="tag v">교차</span> 런치세트 <b>129,000~229,000</b>(장어정식 5찬 169k, 장어+가라아게 229k, 상시 27% 할인 프로모션) · 덮밥 단품 약 <b>200k~550k</b>(소형 우나동+미소시루 308k 사례) · 1인 평균 객단가 약 200k (Foody 밴드 119k~499k)</td></tr>
-    <tr><td class="k">영업시간</td><td><span class="tag v">교차</span> 벤탄·탄빈·바탕하이·낌마 <b>매일 11:00–23:00</b> · 판식롱 일~목 11–22 / 금·토·공휴일 11–23</td></tr>
-    <tr><td class="k">연매출·재무</td><td><span class="tag v">교차</span> 베트남 법인 단독: 비공개. <b>G-FACTORY 연결(음식+경영서포트 사업 합산)</b>: FY2024.12 매출 약 <b>62.6억 엔</b>(+11.8%) · FY2025.12 매출 약 65억 엔(집계 사이트 기준)·<b>경상손실 -0.92억 엔</b>(2026.2.13 발표, 당초 +0.32억 흑자 예상에서 하향)·모회사주주 귀속 순손실 약 -2.5억 엔 · FY2026 1Q 경상손실 -0.29억 엔(전년 -1.02억에서 축소) · <b>영업이익 2기 연속 적자</b>. ※결산단신 원문 대조 미완 — 정밀치는 IR 확인 필요</td></tr>
-    <tr><td class="k">원물·공급망</td><td><span class="tag q">미확인</span> 베트남 매장 장어 산지 공식 미공개. 일본 본체의 초저가 모델은 해외 양식 장어 조달 구조로 알려짐(매체 분석). 2023년 홋카이도 가리비를 일·베 공동 메뉴로 운영한 물류 실적 존재</td></tr>
-    <tr><td class="k">평판</td><td><span class="tag v">교차</span> Tripadvisor 벤탄점 <b>4.3/5 · 리뷰 18건 · #911</b>/4,860. Foody 평가 혼재(가성비·친절 호평 vs 대기·서비스 불만)</td></tr>
-    <tr><td class="k">확장 신호</td><td><span class="tag v">교차</span> 매우 활발: ①판식롱 라이선스 1호를 계기로 <b>라이선스 파트너 추가 모집 공표</b> ②신업태 오모이데요코초(2025.4) ③바탕하이·낌마 리뉴얼(2025) ④<b>방콕 2개점 라이선스 오픈(2025.8~9)</b> — 아세안 확장 가속 ⑤현지 상시 채용 중</td></tr>
-    <tr><td class="k">참고 (일본)</td><td><span class="tag vv">확정</span> 일본 우나동 기본가 <b>640엔</b>(2025.1.1 인상, 구 590엔·더블 1,200엔·우나쥬 1,060엔). 전세계 매장 수는 출처 상충으로 미확정: 일본어 위키 2024.8 기준 <b>73개</b>(국내 63+해외 10) vs "95개"(그룹 합산 추정) vs "150개점"(베트남 홍보 문구 — 마케팅 수치로 판정)</td></tr>
-  </table>
-</div>
-
-<div class="co">
-  <div class="co-head">
-    <div class="co-tag">Profile 02 · 전문 브랜드 · 2위 다점포</div>
-    <div class="co-name">Unagi Shokudo</div>
-    <div class="co-line">한국계 운영의 나고야식 히츠마부시 브랜드. 타오디엔 본점을 축으로 하노이·고법으로 확장 중인 다점포 체인이며, 서울에도 동명·동컨셉 매장을 운영합니다.</div>
-  </div>
-  <table class="facts">
-    <tr><td class="k">운영 주체</td><td><span class="tag v">교차</span> <b>한국인 오너가 운영하는 일식(나고야식) 콘셉트</b> — 자본·운영은 한국계, 상품은 일식+한식 퓨전 요소(김치 장어탕 등). 등록: HỘ KINH DOANH UNAGI SHOUKUDO(개인사업체, 세무코드 8456611384-001, 등록지 9 Đường 9, Thảo Điền). ※베트남 법령상 hộ kinh doanh 등록 명의는 베트남 국적자로 한정 — 한국인 오너는 실질 운영자로 해석해야 함(검증 에이전트 법리 지적)</td></tr>
-    <tr><td class="k">연혁</td><td><span class="tag v">교차</span> 타오디엔 본점 <b>2024년 4분기 개점</b>(2024.12 한국어 방문기 "오픈한 지 얼마 안 됨"). 이후 하노이 미딩 지점 런칭(2025년 말 추정) → 고법 지점(2026년 중반 추정) 순으로 확장</td></tr>
-    <tr><td class="k">지점·소재 군</td><td><span class="tag v">교차</span> 확인 3개점 + 프로젝트 1건 + 해외 1건:<br>
-      ① <b>2군 타오디엔 본점</b> — Số 9, hẻm 30, Đường số 9 (신 P. An Khánh) ☎+84 773 992 188 · 마스테리 안푸 뒤편 골목<br>
-      ② <b>하노이 미딩</b> — Lô 44, TT1 KĐT Mỹ Đình-Mễ Trì ☎0365 109 997<br>
-      ③ <b>고법(Gò Vấp)</b> — 전용 SNS(@unagishokudogovap) 확인, 2026 중반 신설 추정, 번지 미확인<br>
-      ④ <b>푸미흥(구 7군) 프로젝트</b> — 인테리어 업체의 완공 사례 게시로 출점 정황 <span class="tag s">단일출처</span><br>
-      ⑤ <b>서울 마포본점</b> — 2026.2.23 정식 오픈(동명·동컨셉, 18,000원대 히츠마부시)</td></tr>
-    <tr><td class="k">메인 품목</td><td><span class="tag vv">확정</span> 나고야식 히츠마부시(시그니처) 단일 카테고리 특화 + 김치 장어탕·우나동·차즈케·덮밥류·후토마키. <b>숯불 2회 구이</b>(1차 성형·기름 제거 → 타레 2차) 및 <b>4단계 시식법 안내</b> 실제 운영 확인</td></tr>
-    <tr><td class="k">메인 가격대</td><td><span class="tag vv">확정</span> 히츠마부시 <b>270,000</b> · 김치 장어탕 <b>240,000</b> · 전체 밴드 <b>250,000~500,000 VND</b> (복수 출처 일치, VAT 별도 청구 없음 보고)</td></tr>
-    <tr><td class="k">영업시간</td><td><span class="tag v">교차</span> 타오디엔 본점 <b>11:00–15:00 / 17:00–22:00</b></td></tr>
-    <tr><td class="k">연매출</td><td><span class="tag vv">확정</span> 비공개 — 개인사업체 형태로 공시 의무 없음, 공개 자료 전무</td></tr>
-    <tr><td class="k">원물</td><td><span class="tag s">단일출처</span> <b>나짱(Nha Trang) 양식장에서 활장어 조달</b> 소개(toplist.vn) · 고법점 IG는 '일본종 장어' 품종 마케팅</td></tr>
-    <tr><td class="k">평판</td><td><span class="tag vv">확정</span> 구글 <b>4.8/5 · 리뷰 683건</b> — 조사 대상 중 리뷰 수 최다</td></tr>
-    <tr><td class="k">확장 신호</td><td><span class="tag v">교차</span> 공격적: 1년 반 사이 하노이→고법→(정황상 Q7)으로 다점포화 + 한국 역진출(서울 마포). 브랜드 SNS를 지점별 분리 운영</td></tr>
-  </table>
-  <div class="callout"><b>판독</b> — 리뷰 수(683)·평점(4.8)·확장 속도(약 20개월에 3개점+α) 모두 카테고리 2위. "한국계 운영 + 일식 카테고리 언어 + 현지 양식 조달"이라는 구성으로 이미 시장에서 검증받고 있는 사업자입니다.</div>
-</div>
-
-<div class="co">
-  <div class="co-head">
-    <div class="co-tag">Profile 03 · 전문 브랜드 · 활장어 수직계열 시도</div>
-    <div class="co-name">UNAGI Station <span>= Unagista / UNAGI Sta.</span></div>
-    <div class="co-line">활장어 수조와 오픈키친, 자체 양식을 표방하는 프리미엄 신생 브랜드. 'Unagista'는 이 브랜드의 축약 표기(UNAGI Sta.)입니다.</div>
-  </div>
-  <table class="facts">
-    <tr><td class="k">브랜드 동일성</td><td><span class="tag v">교차</span> unagi.vn(사이트명 Unagista)·Facebook(UNAGI Station)·Instagram(@unagista.hcmc, 'UNAGI Sta.') 3개 채널의 주소·전화(+84 90 879 22 89)·이메일(service@unagi.vn)이 전부 일치 — 동일 브랜드로 판정. 반박 증거 없음</td></tr>
-    <tr><td class="k">지점·소재 군</td><td><span class="tag v">교차</span> <b>1개점</b>: 6A Thái Văn Lung — 구 1군 Bến Nghé, 신 <b>P. Sài Gòn</b> (리틀도쿄 초입). 타 지점 흔적 없음</td></tr>
-    <tr><td class="k">운영 법인</td><td><span class="tag v">교차</span> CÔNG TY TNHH UNAGI VIETNAM (세무코드 <b>0319304771</b> — '03' 프리픽스는 호치민 발급, 구조 검증 통과). 등록지 6A Thái Văn Lung + Diamond Plaza 903호. 법정대표 Nguyễn Hữu Anh Duy</td></tr>
-    <tr><td class="k">연혁·창업자</td><td><span class="tag v">교차</span> 창업 셰프 <b>Lam</b> — 호치민 일식당 Towa 출신 → 2022년 Lanh Phan과 Maguro Studio 공동 창업 → Shoku → UNAGI Station. 개점은 <b>2026년 1월경 추정</b>(IG 첫 게시물 타임스탬프 2026.1.30 — 디코딩 검증 일치, 일본인 블로거 2026.4 방문기 존재). '일본 수련' 서사는 브랜드 측 주장으로 독립 검증 안 됨 <span class="tag s">단일출처</span></td></tr>
-    <tr><td class="k">메인 품목</td><td><span class="tag v">교차</span> <b>활장어 수조 보관 → 즉석 손질 → 오픈키친 구이</b>: 우나동·우나주, <b>간토식(찐 후 구이)·간사이식(직화) 병행</b>, 장어 일품요리 + 부메뉴 사시미·와규·스시, 커플 세트. 수조·오픈키친은 제3자 리뷰(Tripadvisor)로 확인</td></tr>
-    <tr><td class="k">메인 가격대</td><td><span class="tag q">미확인</span> <b>구체 수치 미공개</b> — 전 채널·배달앱 어디에도 가격 미노출, GrabFood/ShopeeFood 입점 미확인. 공급업체 자료는 "경쟁력 있는 가격"이라고만 서술. ※수치를 지어내지 않고 공란으로 둠 — 현장 확인 필요</td></tr>
-    <tr><td class="k">영업시간</td><td><span class="tag v">교차</span> 웹사이트 11:00–22:00 vs Facebook 11:00–22:30 (상충 병기, 브레이크 표기 없음)</td></tr>
-    <tr><td class="k">연매출</td><td><span class="tag vv">확정</span> 비공개 (비상장 유한책임법인 — 공시 의무 없음)</td></tr>
-    <tr><td class="k">원물·공급망</td><td><span class="tag s">단일출처</span> 상충 존재: 웹사이트는 "일본 직수입", 설비사(Hoshizaki) 사례연구는 "Thái Nguyên 전용 시설 farm-to-table". 동명 법인 <b>UNAGI VIETNAM FARM JSC</b>(3401248620, 2023.10 설립, 내수면 양식업)는 실재하나 — 검증 결과 <b>등록지는 구 Bình Thuận성</b>(현 Lâm Đồng, 세무코드 '34' 프리픽스 구조 분석으로 확정)이며 Thái Nguyên이 아님. 법정대표도 상이(Trần Đại Thắng)해 계열 관계 미확정. 다만 이 팜 법인의 <b>양식 설비류 수입 42건</b>(한·중발, 배관·시트·탱크)이 무역데이터로 확인 — 양식장 구축 정황은 실재</td></tr>
-    <tr><td class="k">평판</td><td><span class="tag v">교차</span> Tripadvisor 4.0~4.3/5 · <b>리뷰 4건</b>(표본 극소) · FB 팔로워 259 · IG 팔로워 99/게시물 48 — 온라인 존재감 미미(신생 정황과 일관). 일본인 푸드블로거 호평 리뷰 1건(2026.4)</td></tr>
-    <tr><td class="k">확장 신호</td><td><span class="tag s">단일출처</span> <b>2027년 초 구 7군에 2호점 계획</b>(현 주방 설계도 복제 적용 — 설비사 사례연구 단독 서술) + 요리사 커뮤니티 3곳 이상에 채용 공고 <span class="tag v">교차</span> + Hoshizaki(주방)·QDC(인테리어, 100~250㎡급) 전문 업체 기용</td></tr>
-  </table>
-  <div class="callout warn"><b>주의</b> — 핵심 서사(창업자·양식장·2호점)의 상당 부분이 설비 공급업체 사례연구라는 <b>단일 출처</b>에 의존합니다. 공급업체 사례연구는 고객이 제공한 정보를 옮긴 것이라 독립 검증으로 볼 수 없습니다. 주소·전화(0908 79 22 89)와 가격은 현장에서 확정하십시오.</div>
-</div>
-
-<div class="co">
-  <div class="co-head">
-    <div class="co-tag">Profile 04 · 전문 브랜드 · 최고가 티어</div>
-    <div class="co-name">Unagi Yosakura <span>日本鰻世桜 · Chi nhánh số 1 HCM</span></div>
-    <div class="co-line">장어와 와규를 한 그릇에 묶은 최고가 포지션. '오사카' 브랜딩의 실체는 2024년 설립 신생기업의 인바운드 특화 FC 모델입니다.</div>
-  </div>
-  <table class="facts">
-    <tr><td class="k">운영 주체</td><td><span class="tag v">교차</span> <b>주식회사 세오(株式会社世桜)</b> — 본사 오사카시 조토구, <b>2024년 3월 설립</b>, 대표 다카하라 아키토(高原彰人, 23세). 인바운드 특화 와쇼쿠 브랜드 기획·FC 전개사. 호치민점은 직영으로 소개됨</td></tr>
-    <tr><td class="k">연혁</td><td><span class="tag vv">확정</span> 호치민점 <b>2025년 8월 24일 개점</b> — 공식 IG '호치민 1호점 오픈' 게시물의 타임스탬프 디코딩(2025-08-24)과 VIETJO 보도('8월 오픈'), 최초 소비자 리뷰(8.29)가 3중 일치. 브랜드 지점: 일본 — 오사카 신사이바시 본점(일본요리 世桜)·<b>후지산점</b>(야마나시 후지요시다, FC, 2024.12.16)·교토 기온점 / 해외 — <b>하노이 규카츠점</b>(2025) + 호치민 장어점</td></tr>
-    <tr><td class="k">'오사카 출신' 실체</td><td><span class="tag v">교차</span> <b>부분적 사실</b>: 모회사가 오사카 소재이고 신사이바시에 본점 실존. 단 회사 업력 2년 미만 — "일본에서 유명"(현지 SNS 리뷰 표현)은 마케팅성 과장으로 판정. 장어 업태 일본 지점은 오사카가 아니라 야마나시·교토 소재</td></tr>
-    <tr><td class="k">지점·소재 군</td><td><span class="tag v">교차</span> 234 Nguyễn Đình Chiểu — 구 3군, 신 <b>P. Xuân Hòa</b> (구 P. Võ Thị Sáu) · 베트남 내 장어 업태는 이 1곳</td></tr>
-    <tr><td class="k">메인 품목</td><td><span class="tag v">교차</span> 3갈래: <b>우나기 히츠마부시 / 와규 히츠마부시 / 우나기+와규 콤보</b>. 비법 타레 숯불 가바야키 + <b>하가마(羽釜) 솥밥</b>. 나고야식 3단계 식사법 안내, 토핑·다시 무료 리필</td></tr>
-    <tr><td class="k">메인 가격대</td><td><span class="tag vv">확정</span> 실측 메뉴가: 우나기 히츠마부시 <b>850,000</b> · 와규 히츠마부시 <b>850,000</b> · 우나기+와규 콤보 <b>1,200,000 VND</b> (집계 사이트의 "70만~" 표기는 실물 메뉴 근거 없음)</td></tr>
-    <tr><td class="k">영업시간</td><td><span class="tag v">교차</span> <b>10:30–14:30 / 17:00–22:00</b> (공식 예약 플랫폼 TableCheck 기준 우세 — 11:00 개시 표기는 집계 매체)</td></tr>
-    <tr><td class="k">연매출</td><td><span class="tag s">단일출처</span> 베트남 법인: 비공개. 브랜드 자체 공개 참고치 — 신사이바시 본점 월매출 1,200만 엔(22석·야간 4시간), 야마나시 FC점 월 400만 엔+(카운터 8석·점심 5시간) ※FC 모집용 수치이므로 보수적으로 해석</td></tr>
-    <tr><td class="k">원물</td><td><span class="tag q">미확인</span> '일본산 장어·수입 와규' 표방, 일본인 셰프 상품 개발(VIETJO). 산지(현 단위)·활어/가공 여부·수입 경로 미공개</td></tr>
-    <tr><td class="k">평판</td><td><span class="tag v">교차</span> Tripadvisor <b>5.0/5 · 리뷰 6건</b>(표본 극소) · 2025 하반기 Threads/Lemon8/TikTok 다수 바이럴. "현지 물가 대비 비싸지만 값어치" 논조</td></tr>
-    <tr><td class="k">확장 신호</td><td><span class="tag v">교차</span> 강함: 모회사 "10개월 내 국내외 20점포" 목표 공표 + <b>FC 가맹 모집 중</b>(전용 사이트, '장인 불필요' 모델) + 베트남 다점포 계획 명시 + 2025년 한 해 하노이·호치민 연속 출점</td></tr>
-  </table>
-  <div class="callout warn"><b>주의</b> — 프리미엄 가격(850k~1.2M)을 받는 근거가 '노포 헤리티지'가 아니라 <b>신생 FC 모델의 브랜딩</b>이라는 점이 검증의 핵심 발견입니다. 이 가격대가 유지되는지(할인 여부·좌석 회전)는 현장에서 확인할 가치가 큽니다.</div>
-</div>
-
-<div class="co">
-  <div class="co-head">
-    <div class="co-tag">Profile 05 · 전문 브랜드 · 최고참 추정</div>
-    <div class="co-name">Yuugatei Mutsumian <span>遊雅亭 睦庵</span></div>
-    <div class="co-line">리틀도쿄의 장어 전문점. '베트남 최초 활장어 숯불구이'를 소구하며 약 5년간 영업해 온 것으로 보이는 카테고리 최고참 추정 사업자입니다.</div>
-  </div>
-  <table class="facts">
-    <tr><td class="k">지점·소재 군</td><td><span class="tag s">단일출처</span> 호치민: <b>15/7 Lê Thánh Tôn</b> — 구 1군 Bến Nghé, 신 P. Sài Gòn (리틀도쿄 골목) · 하노이: 52A Linh Lang(표기 'Linh Lãng'은 오기 가능성), Ba Đình — <b>최소 2개점 브랜드 추정</b></td></tr>
-    <tr><td class="k">연혁</td><td><span class="tag s">단일출처</span> Tripadvisor 사진 캡션 "개업 5년"(작성 시점 불명) + 구 리스팅 ID 생성 패턴 → <b>2017~2019년경 개점 추정</b> — 사실이면 Unatoto(2019.11)보다 이르거나 비슷한 <b>카테고리 최고참</b></td></tr>
-    <tr><td class="k">메인 품목</td><td><span class="tag v">교차</span> 장어 단일 소구: 시그니처 <b>Unagi Don</b>. 자체 소구 — "<b>베트남에서 양식한 일본종 활장어</b>를 숯불 직화, 베트남 최초 생장어 숯불구이"(업체 자기 서술 — 사실 승격 금지)</td></tr>
-    <tr><td class="k">가격</td><td><span class="tag q">미확인</span> 구체 수치 미확보. 정성 평가: "인근 레탄톤 일식당 대비 다소 저렴, 일본인·로컬 모두에게 인기"(2024.4 현지 구르메 리뷰)</td></tr>
-    <tr><td class="k">영업시간·재무</td><td><span class="tag q">미확인</span> 미확보 / 비공개</td></tr>
-    <tr><td class="k">평판</td><td><span class="tag s">단일출처</span> Tripadvisor 리스팅 2건 병존(d14176334/d17479283 — 구 리스팅과 신 리스팅으로 추정), 수치 미열람. Epicure Vietnam 사이공 우나기 특집 수록, 한국어 리스팅("장어 애호가라면 꼭") 존재</td></tr>
-  </table>
-  <div class="callout warn"><b>전 항목 현장 확인 필요</b> — 이 업체는 검증 단계의 검색 차단으로 실존·주소·가격 모두 재확인이 안 된 상태입니다. 다만 복수의 독립 리스팅(Epicure·Gurutto·Tripadvisor)에 장어 전문으로 일관되게 등장하므로 허수일 가능성은 낮습니다. 리틀도쿄 실사 시 UNAGI Station(6A)·Dong Fan(8/5)과 같은 동선에서 15/7 Lê Thánh Tôn을 함께 확인하면 됩니다.</div>
-</div>
-
-<div class="co">
-  <div class="co-head adj">
-    <div class="co-tag">Profile 06 · 인접 브랜드</div>
-    <div class="co-name">Yakiuo Ishikawa Saigon <span>焼うお いし川</span></div>
-    <div class="co-line">본체는 츠키지 발(發) '고기 없는 야키니쿠'×오마카세. 우나기동은 시그니처 단품으로, 장어 전문점이 아니라 인접 경쟁자로 분류합니다.</div>
-  </div>
-  <table class="facts">
-    <tr><td class="k">브랜드 기원</td><td><span class="tag v">교차</span> 도쿄 츠키지 스시집 '築地青空三代目' 운영사 有限会社築地青空(대표 이시카와 다카노부)가 7년 개발한 '肉を焼かない焼肉(고기를 굽지 않는 야키니쿠)' 컨셉 — 2018년 츠키지 1호점, 이후 롯폰기·긴자·나고야·후쿠오카 전개. 사이공점은 <b>브랜드 최초 해외 지점</b></td></tr>
-    <tr><td class="k">베트남 운영</td><td><span class="tag v">교차</span> 현지 법인 CÔNG TY CỔ PHẦN YAKIUO VIỆT NAM(0318638362, 2024.8.23 설립). 유치 주역은 일본 수산물 수입업 출신 외식가 <b>Lanh Phan</b>과 <b>Mr. Lâm</b> — UNAGI Station 창업 셰프와 동일 인맥(Maguro Studio 공동 창업 그룹)</td></tr>
-    <tr><td class="k">지점·소재 군</td><td><span class="tag v">교차</span> ① <b>1군</b> 38 Thái Văn Lung (신 P. Sài Gòn) — <b>2024.11.15 소프트오픈</b>(JETRO는 '2024.12 개업' 표기), 약 60석(테이블 36·카운터 10·소파 18) + <b>VIP룸 2개</b>(8석·6석) ☎0933 828 768 ② <b>타오디엔</b> 79 Xuân Thủy (신 P. An Khánh) — 2026년 초 개점 추정 ☎093 261 50 68</td></tr>
-    <tr><td class="k">장어 관련</td><td><span class="tag v">교차</span> 우나기동 — 자리에서 직화로 마무리하는 시그니처 단품. 단품 정가는 미확인 <span class="tag q">미확인</span></td></tr>
-    <tr><td class="k">가격대</td><td><span class="tag v">교차</span> Yakiuo Course <b>980,000++</b>(엔트리) · 우마미 코스 약 1.9M · 타오디엔점 오마카세 6종 약 <b>1M~3.7M</b> · 알라카르트: 산쇼쿠동 1M++, 야키우오 세트 590k. JETRO 기준 저녁 객단가 1만 엔(약 170만 VND) 초과</td></tr>
-    <tr><td class="k">영업시간</td><td><span class="tag v">교차</span> 1군점 11:00–14:00(LO 13:30) / 18:00–22:30(LO 21:30) — '연중무휴' 여부는 미확인</td></tr>
-    <tr><td class="k">재무·평판</td><td>재무 비공개 <span class="tag vv">확정</span> · Tripadvisor 5.0/5(리뷰 소수) · <b>Vietcetera Flavors Awards 2024 'F&B Concept of the Year' 수상</b>(2024.12) <span class="tag v">교차</span></td></tr>
-    <tr><td class="k">확장</td><td><span class="tag v">교차</span> 1군→타오디엔 2호점 완료(개점 약 1년 만) + JETRO 인터뷰에서 <b>하노이·다낭 포함 베트남 5개점 목표</b> 언급. FC 모집 정황 없음 — 직영·라이선스 구조</td></tr>
-  </table>
-</div>
-
-<div class="co">
-  <div class="co-head adj">
-    <div class="co-tag">Profile 07 · 인접 브랜드</div>
-    <div class="co-name">Dong Fan <span>海鮮と天丼 丼飯 · DONG FAN SASHIMI BOWL</span></div>
-    <div class="co-line">카이센동·텐동 전문 소형점. 우나동 3종은 사이드 메뉴로, 카테고리 최저 진입가(190k)를 형성하지만 장어가 본업은 아닙니다.</div>
-  </div>
-  <table class="facts">
-    <tr><td class="k">정체</td><td><span class="tag v">교차</span> 정식 상호 <b>「海鮮と天丼 丼飯(돈부리메시)」</b>, 현지 간판 DONG FAN SASHIMI BOWL. 레탄톤의 에도마에 스시집 <b>Sushi Kobayashi 자매점</b>, 스시 장인 감수. 10개 이상 독립 출처에 등재 — 실존 확실</td></tr>
-    <tr><td class="k">지점·소재 군</td><td><span class="tag v">교차</span> 1개점, 약 12석: 2F, 8/5 Lê Thánh Tôn — 구 1군, 신 P. Sài Gòn (1층은 라멘집 Miso Chikura) ☎0867 490 494. <b>2023년 4월 말 소프트오픈</b></td></tr>
-    <tr><td class="k">메인 품목</td><td><span class="tag v">교차</span> 카이센동·치라시(우니·이쿠라)·마구로동·프리미엄 텐동 등 6~9종 짧은 메뉴. 명물 '밥 2층' 구조(아래층 밥은 다시를 부어 오차즈케로). <b>우나동 3종(190k/290k/360k)은 사이드 라인</b> — 카바야키 소스·숯불</td></tr>
-    <tr><td class="k">가격대</td><td><span class="tag v">교차</span> 메뉴 160,000~ 시작 · 홋카이도 우니 특상 카이센동 1인 745,200(VAT 포함 실측, 2024.8) · 우나동 190/290/360k</td></tr>
-    <tr><td class="k">영업시간</td><td><span class="tag q">미확인</span> 출처 4곳 상충 — 공통 코어는 점심 11–14시경 / 저녁 17–21시경, 브레이크 있음</td></tr>
-    <tr><td class="k">현재 영업 여부</td><td><span class="tag q">미확인</span> ⚠️ 확인된 최종 활동 흔적이 <b>2025년 4월</b>(TikTok 리뷰). 폐점 보도는 없으나 이후 16개월간 영업 확인 자료 부재 — 방문 전 전화 확인 권장</td></tr>
-    <tr><td class="k">재무·확장</td><td>비공개 <span class="tag vv">확정</span> · 확장 신호 없음</td></tr>
-  </table>
-</div>
-
 
 <section>
-  <div class="shead"><span class="n">02</span><h2>감시 대상 · 미해결 항목</h2></div>
+  <div class="shead"><span class="n">02</span><h2>매장 분포 · 자본 구조</h2></div>
+
+  <div class="figcard avoid">
+    <div class="cap">Fig.3 — 매장 분포 (구 군 기준 개념도)</div>
+<svg viewBox='0 0 668 478' role='img' aria-label='호치민 개념도 위 장어 매장 분포 — 리틀도쿄 반경 300m에 4곳 밀집' style='width:100%;height:auto'>
+<path d='M585,20 C555,90 428,150 424,240 L424,330 C424,390 400,430 390,470' fill='none' stroke='#C7DBDF' stroke-width='13' stroke-linecap='round'/>
+<rect x='420' y='20' width='190' height='150' rx='8' fill='#EDF1F0' stroke='#D5DDDA'/>
+<text x='428' y='36' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='10.5' font-weight='700' fill='#6B7C77'>투득시</text>
+<rect x='105' y='60' width='140' height='66' rx='8' fill='#EDF1F0' stroke='#D5DDDA'/>
+<text x='113' y='76' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='10.5' font-weight='700' fill='#6B7C77'>고밥</text>
+<rect x='280' y='70' width='105' height='150' rx='8' fill='#EDF1F0' stroke='#D5DDDA'/>
+<text x='288' y='86' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='10.5' font-weight='700' fill='#6B7C77'>빈탄</text>
+<rect x='60' y='140' width='160' height='74' rx='8' fill='#EDF1F0' stroke='#D5DDDA'/>
+<text x='68' y='156' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='10.5' font-weight='700' fill='#6B7C77'>탄빈</text>
+<rect x='228' y='140' width='74' height='74' rx='8' fill='#EDF1F0' stroke='#D5DDDA'/>
+<text x='236' y='156' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='10.5' font-weight='700' fill='#6B7C77'>푸년</text>
+<rect x='430' y='180' width='150' height='110' rx='8' fill='#EDF1F0' stroke='#D5DDDA'/>
+<text x='438' y='196' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='10.5' font-weight='700' fill='#6B7C77'>2군 타오디엔</text>
+<rect x='95' y='226' width='95' height='62' rx='8' fill='#EDF1F0' stroke='#D5DDDA'/>
+<text x='103' y='242' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='10.5' font-weight='700' fill='#6B7C77'>10군</text>
+<rect x='198' y='226' width='100' height='62' rx='8' fill='#EDF1F0' stroke='#D5DDDA'/>
+<text x='206' y='242' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='10.5' font-weight='700' fill='#6B7C77'>3군</text>
+<rect x='306' y='226' width='105' height='86' rx='8' fill='#EDF1F0' stroke='#D5DDDA'/>
+<text x='314' y='242' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='10.5' font-weight='700' fill='#6B7C77'>1군</text>
+<rect x='95' y='296' width='95' height='44' rx='8' fill='#EDF1F0' stroke='#D5DDDA'/>
+<text x='103' y='312' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='10.5' font-weight='700' fill='#6B7C77'>5군</text>
+<rect x='318' y='322' width='84' height='48' rx='8' fill='#EDF1F0' stroke='#D5DDDA'/>
+<text x='326' y='338' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='10.5' font-weight='700' fill='#6B7C77'>4군</text>
+<rect x='268' y='384' width='170' height='58' rx='8' fill='#EDF1F0' stroke='#D5DDDA'/>
+<text x='276' y='400' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='10.5' font-weight='700' fill='#6B7C77'>7군</text>
+<circle cx='330' cy='262' r='9' fill='#2a78d6' stroke='#fff' stroke-width='1.6'/>
+<text x='330' y='265.6' font-family='IBM Plex Mono,monospace' font-size='9.5' font-weight='600' fill='#fff' text-anchor='middle'>U</text>
+<circle cx='120' cy='178' r='9' fill='#2a78d6' stroke='#fff' stroke-width='1.6'/>
+<text x='120' y='181.6' font-family='IBM Plex Mono,monospace' font-size='9.5' font-weight='600' fill='#fff' text-anchor='middle'>U</text>
+<circle cx='140' cy='258' r='9' fill='#2a78d6' stroke='#fff' stroke-width='1.6'/>
+<text x='140' y='261.6' font-family='IBM Plex Mono,monospace' font-size='9.5' font-weight='600' fill='#fff' text-anchor='middle'>U</text>
+<circle cx='262' cy='200' r='9' fill='#2a78d6' stroke='#fff' stroke-width='1.6'/>
+<text x='262' y='203.6' font-family='IBM Plex Mono,monospace' font-size='9.5' font-weight='600' fill='#fff' text-anchor='middle'>U</text>
+<circle cx='340' cy='412' r='9' fill='#2a78d6' stroke='#fff' stroke-width='1.6'/>
+<text x='340' y='415.6' font-family='IBM Plex Mono,monospace' font-size='9.5' font-weight='600' fill='#fff' text-anchor='middle'>U</text>
+<circle cx='500' cy='232' r='9' fill='#eb6834' stroke='#fff' stroke-width='1.6'/>
+<text x='500' y='235.6' font-family='IBM Plex Mono,monospace' font-size='9.5' font-weight='600' fill='#fff' text-anchor='middle'>S</text>
+<circle cx='170' cy='90' r='9' fill='#eb6834' stroke='#fff' stroke-width='1.6'/>
+<text x='170' y='93.6' font-family='IBM Plex Mono,monospace' font-size='9.5' font-weight='600' fill='#fff' text-anchor='middle'>S</text>
+<circle cx='526' cy='258' r='9' fill='#008300' stroke='#fff' stroke-width='1.6'/>
+<text x='526' y='261.6' font-family='IBM Plex Mono,monospace' font-size='9.5' font-weight='600' fill='#fff' text-anchor='middle'>Y</text>
+<circle cx='246' cy='258' r='9' fill='#eda100' stroke='#fff' stroke-width='1.6'/>
+<text x='246' y='261.6' font-family='IBM Plex Mono,monospace' font-size='9.5' font-weight='600' fill='#fff' text-anchor='middle'>O</text>
+<rect x='352' y='236' width='52' height='40' rx='6' fill='none' stroke='#0B5F54' stroke-width='1.6' stroke-dasharray='4 3'/>
+<text x='378' y='230' font-family='IBM Plex Mono,monospace' font-size='8.6' fill='#0B5F54' text-anchor='middle'>리틀도쿄</text>
+<circle cx='366' cy='250' r='9' fill='#1baf7a' stroke='#fff' stroke-width='1.6'/>
+<text x='366' y='253.6' font-family='IBM Plex Mono,monospace' font-size='9.5' font-weight='600' fill='#fff' text-anchor='middle'>N</text>
+<circle cx='392' cy='250' r='9' fill='#e87ba4' stroke='#fff' stroke-width='1.6'/>
+<text x='392' y='253.6' font-family='IBM Plex Mono,monospace' font-size='9.5' font-weight='600' fill='#fff' text-anchor='middle'>M</text>
+<circle cx='366' cy='268' r='9' fill='#008300' stroke='#fff' stroke-width='1.6'/>
+<text x='366' y='271.6' font-family='IBM Plex Mono,monospace' font-size='9.5' font-weight='600' fill='#fff' text-anchor='middle'>Y</text>
+<circle cx='392' cy='268' r='9' fill='#4a3aa7' stroke='#fff' stroke-width='1.6'/>
+<text x='392' y='271.6' font-family='IBM Plex Mono,monospace' font-size='9.5' font-weight='600' fill='#fff' text-anchor='middle'>D</text>
+<line x1='404' y1='276' x2='448' y2='330' stroke='#0B5F54' stroke-width='1.2' stroke-dasharray='4 3'/>
+<rect x='430' y='318' width='230' height='148' rx='9' fill='#fff' stroke='#0B5F54' stroke-width='1.6'/>
+<text x='440' y='336' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='10.5' font-weight='700' fill='#0B5F54'>리틀도쿄 확대 · 300m에 4곳</text>
+<line x1='500' y1='346' x2='500' y2='454' stroke='#D5DDDA' stroke-width='7'/>
+<line x1='448' y1='404' x2='638' y2='404' stroke='#D5DDDA' stroke-width='7'/>
+<text x='506' y='356' font-family='IBM Plex Mono,monospace' font-size='7.8' fill='#6B7C77'>Thái Văn Lung</text>
+<text x='442' y='417' font-family='IBM Plex Mono,monospace' font-size='7.8' fill='#6B7C77'>Lê Thánh Tôn</text>
+<circle cx='500' cy='366' r='8' fill='#1baf7a' stroke='#fff' stroke-width='1.4'/>
+<text x='500' y='369.2' font-family='IBM Plex Mono,monospace' font-size='8.6' font-weight='600' fill='#fff' text-anchor='middle'>N</text>
+<text x='512' y='369.2' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='8.4' fill='#111A18'>Station · 6A TVL</text>
+<circle cx='500' cy='440' r='8' fill='#008300' stroke='#fff' stroke-width='1.4'/>
+<text x='500' y='443.2' font-family='IBM Plex Mono,monospace' font-size='8.6' font-weight='600' fill='#fff' text-anchor='middle'>Y</text>
+<text x='512' y='443.2' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='8.4' fill='#111A18'>Yakiuo · 38 TVL</text>
+<circle cx='558' cy='404' r='8' fill='#4a3aa7' stroke='#fff' stroke-width='1.4'/>
+<text x='558' y='407.2' font-family='IBM Plex Mono,monospace' font-size='8.6' font-weight='600' fill='#fff' text-anchor='middle'>D</text>
+<text x='558' y='386' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='8.4' fill='#111A18' text-anchor='middle'>Dong Fan · 2F 8/5</text>
+<circle cx='606' cy='404' r='8' fill='#e87ba4' stroke='#fff' stroke-width='1.4'/>
+<text x='606' y='407.2' font-family='IBM Plex Mono,monospace' font-size='8.6' font-weight='600' fill='#fff' text-anchor='middle'>M</text>
+<text x='606' y='428' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='8.4' fill='#111A18' text-anchor='middle'>Mutsumian · 15/7</text>
+<text x='446' y='460' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='7.9' fill='#6B7C77'>Unatoto 벤탄점은 서쪽 900m (56 Trương Định)</text>
+</svg>    <div class="note">1군 리틀도쿄 반경 300m에 4개 브랜드가 밀집합니다(U=Unatoto·S=Shokudo·N=Station·M=Mutsumian·Y=Yakiuo·O=Yosakura·D=Dong Fan).
+    로컬 주거 상권(탄빈·10군·푸년·고법)까지 나간 것은 Unatoto와 Shokudo뿐입니다.</div>
+  </div>
+
+  <div class="figcard avoid">
+    <div class="cap">Fig.4 — 자본·인맥 구조</div>
+<svg viewBox='0 0 780 400' role='img' aria-label='브랜드 자본·인맥 구조도' style='width:100%;height:auto'>
+<text x='20' y='16' font-family='IBM Plex Mono,monospace' font-size='9' fill='#0B5F54'>일본 자본 ①</text>
+<text x='218' y='16' font-family='IBM Plex Mono,monospace' font-size='9' fill='#0B5F54'>일본 자본 ②</text>
+<text x='416' y='16' font-family='IBM Plex Mono,monospace' font-size='9' fill='#0B5F54'>일본 자본 ③ × 로컬</text>
+<text x='614' y='16' font-family='IBM Plex Mono,monospace' font-size='9' fill='#0B5F54'>한국계 / 로컬 신생</text>
+<rect x='20' y='26' width='168' height='50' rx='8' fill='#fff' stroke='#2a78d6' stroke-width='1.8'/>
+<text x='104.0' y='45' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='10.6' font-weight='700' fill='#111A18' text-anchor='middle'>G-FACTORY</text>
+<text x='104.0' y='60' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='8.8' fill='#6B7C77' text-anchor='middle'>도쿄증권 그로스 3474</text>
+<line x1='104' y1='76' x2='104' y2='104' stroke='#6B7C77' stroke-width='1.5'/>
+<line x1='104' y1='104' x2='108.3' y2='96.1' stroke='#6B7C77' stroke-width='1.5'/>
+<line x1='104' y1='104' x2='99.7' y2='96.1' stroke='#6B7C77' stroke-width='1.5'/>
+<text x='109.0' y='86.0' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='8.4' fill='#6B7C77'>100%</text>
+<rect x='20' y='104' width='168' height='52' rx='8' fill='#fff' stroke='#2a78d6' stroke-width='1.8'/>
+<text x='104.0' y='123' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='10.6' font-weight='700' fill='#111A18' text-anchor='middle'>GF CAPITAL (VN)</text>
+<text x='104.0' y='138' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='8.8' fill='#6B7C77' text-anchor='middle'>2018.10 · 자본 202.7억 VND</text>
+<line x1='104' y1='156' x2='104' y2='184' stroke='#6B7C77' stroke-width='1.5'/>
+<line x1='104' y1='184' x2='108.3' y2='176.1' stroke='#6B7C77' stroke-width='1.5'/>
+<line x1='104' y1='184' x2='99.7' y2='176.1' stroke='#6B7C77' stroke-width='1.5'/>
+<rect x='20' y='184' width='168' height='64' rx='8' fill='#fff' stroke='#2a78d6' stroke-width='1.8'/>
+<text x='104.0' y='203' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='10.6' font-weight='700' fill='#111A18' text-anchor='middle'>Izakaya Unatoto ×6</text>
+<text x='104.0' y='218' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='8.8' fill='#6B7C77' text-anchor='middle'>+ Kamura · Nishitsugu</text>
+<text x='104.0' y='231' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='8.8' fill='#6B7C77' text-anchor='middle'>+ 오모이데요코초 2025.4</text>
+<line x1='104' y1='248' x2='104' y2='276' stroke='#6B7C77' stroke-width='1.5'/>
+<line x1='104' y1='276' x2='108.3' y2='268.1' stroke='#6B7C77' stroke-width='1.5'/>
+<line x1='104' y1='276' x2='99.7' y2='268.1' stroke='#6B7C77' stroke-width='1.5'/>
+<text x='109.0' y='258.0' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='8.4' fill='#6B7C77'>라이선스</text>
+<rect x='20' y='276' width='168' height='44' rx='8' fill='#fff' stroke='#2a78d6' stroke-width='1.8' stroke-dasharray='5 4'/>
+<text x='104.0' y='295' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='10.6' font-weight='700' fill='#111A18' text-anchor='middle'>판식롱점(6호) 2025.3</text>
+<text x='104.0' y='310' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='8.8' fill='#6B7C77' text-anchor='middle'>일본인 오너 운영</text>
+<rect x='218' y='26' width='168' height='50' rx='8' fill='#fff' stroke='#eda100' stroke-width='1.8'/>
+<text x='302.0' y='45' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='10.6' font-weight='700' fill='#111A18' text-anchor='middle'>주식회사 세오</text>
+<text x='302.0' y='60' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='8.8' fill='#6B7C77' text-anchor='middle'>오사카 · 2024.3 설립</text>
+<line x1='302' y1='76' x2='302' y2='104' stroke='#6B7C77' stroke-width='1.5'/>
+<line x1='302' y1='104' x2='306.3' y2='96.1' stroke='#6B7C77' stroke-width='1.5'/>
+<line x1='302' y1='104' x2='297.7' y2='96.1' stroke='#6B7C77' stroke-width='1.5'/>
+<text x='307.0' y='86.0' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='8.4' fill='#6B7C77'>직영</text>
+<rect x='218' y='104' width='168' height='52' rx='8' fill='#fff' stroke='#eda100' stroke-width='1.8'/>
+<text x='302.0' y='123' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='10.6' font-weight='700' fill='#111A18' text-anchor='middle'>Yosakura 호치민점</text>
+<text x='302.0' y='138' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='8.8' fill='#6B7C77' text-anchor='middle'>장어 · 2025.8.24</text>
+<line x1='302' y1='156' x2='302' y2='184' stroke='#6B7C77' stroke-width='1.5'/>
+<line x1='302' y1='184' x2='306.3' y2='176.1' stroke='#6B7C77' stroke-width='1.5'/>
+<line x1='302' y1='184' x2='297.7' y2='176.1' stroke='#6B7C77' stroke-width='1.5'/>
+<rect x='218' y='184' width='168' height='50' rx='8' fill='#fff' stroke='#eda100' stroke-width='1.8'/>
+<text x='302.0' y='203' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='10.6' font-weight='700' fill='#111A18' text-anchor='middle'>하노이 규카츠점 2025</text>
+<text x='302.0' y='218' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='8.8' fill='#6B7C77' text-anchor='middle'>일본 내 FC: 후지산·기온</text>
+<rect x='416' y='26' width='168' height='50' rx='8' fill='#fff' stroke='#008300' stroke-width='1.8'/>
+<text x='500.0' y='45' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='10.6' font-weight='700' fill='#111A18' text-anchor='middle'>有限会社築地青空</text>
+<text x='500.0' y='60' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='8.8' fill='#6B7C77' text-anchor='middle'>도쿄 츠키지 · 이시카와</text>
+<line x1='500' y1='76' x2='500' y2='104' stroke='#6B7C77' stroke-width='1.5'/>
+<line x1='500' y1='104' x2='504.3' y2='96.1' stroke='#6B7C77' stroke-width='1.5'/>
+<line x1='500' y1='104' x2='495.7' y2='96.1' stroke='#6B7C77' stroke-width='1.5'/>
+<text x='505.0' y='86.0' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='8.4' fill='#6B7C77'>라이선스·합작</text>
+<rect x='416' y='104' width='168' height='64' rx='8' fill='#fff' stroke='#008300' stroke-width='1.8'/>
+<text x='500.0' y='123' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='10.6' font-weight='700' fill='#111A18' text-anchor='middle'>Cty CP YAKIUO VN</text>
+<text x='500.0' y='138' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='8.8' fill='#6B7C77' text-anchor='middle'>2024.8 설립</text>
+<text x='500.0' y='151' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='8.8' fill='#6B7C77' text-anchor='middle'>유치: Lanh Phan · Mr. Lâm</text>
+<line x1='500' y1='168' x2='500' y2='196' stroke='#6B7C77' stroke-width='1.5'/>
+<line x1='500' y1='196' x2='504.3' y2='188.1' stroke='#6B7C77' stroke-width='1.5'/>
+<line x1='500' y1='196' x2='495.7' y2='188.1' stroke='#6B7C77' stroke-width='1.5'/>
+<rect x='416' y='196' width='168' height='50' rx='8' fill='#fff' stroke='#008300' stroke-width='1.8'/>
+<text x='500.0' y='215' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='10.6' font-weight='700' fill='#111A18' text-anchor='middle'>1군점 + 타오디엔점</text>
+<text x='500.0' y='230' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='8.8' fill='#6B7C77' text-anchor='middle'>2024.11 / 2026 초</text>
+<rect x='614' y='26' width='148' height='50' rx='8' fill='#fff' stroke='#eb6834' stroke-width='1.8'/>
+<text x='688.0' y='45' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='10.6' font-weight='700' fill='#111A18' text-anchor='middle'>한국계 오너</text>
+<text x='688.0' y='60' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='8.8' fill='#6B7C77' text-anchor='middle'>hộ kinh doanh 등록</text>
+<line x1='688' y1='76' x2='688' y2='104' stroke='#6B7C77' stroke-width='1.5'/>
+<line x1='688' y1='104' x2='692.3' y2='96.1' stroke='#6B7C77' stroke-width='1.5'/>
+<line x1='688' y1='104' x2='683.7' y2='96.1' stroke='#6B7C77' stroke-width='1.5'/>
+<rect x='614' y='104' width='148' height='64' rx='8' fill='#fff' stroke='#eb6834' stroke-width='1.8'/>
+<text x='688.0' y='123' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='10.6' font-weight='700' fill='#111A18' text-anchor='middle'>Unagi Shokudo ×3+</text>
+<text x='688.0' y='138' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='8.8' fill='#6B7C77' text-anchor='middle'>타오디엔·하노이·고법</text>
+<text x='688.0' y='151' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='8.8' fill='#6B7C77' text-anchor='middle'>+ 서울 마포 2026.2</text>
+<rect x='614' y='196' width='148' height='62' rx='8' fill='#fff' stroke='#1baf7a' stroke-width='1.8'/>
+<text x='688.0' y='215' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='10.6' font-weight='700' fill='#111A18' text-anchor='middle'>셰프 Lam</text>
+<text x='688.0' y='230' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='8.8' fill='#6B7C77' text-anchor='middle'>Towa → Maguro Studio</text>
+<text x='688.0' y='243' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='8.8' fill='#6B7C77' text-anchor='middle'>(2022) → Shoku</text>
+<line x1='688' y1='258' x2='688' y2='286' stroke='#6B7C77' stroke-width='1.5'/>
+<line x1='688' y1='286' x2='692.3' y2='278.1' stroke='#6B7C77' stroke-width='1.5'/>
+<line x1='688' y1='286' x2='683.7' y2='278.1' stroke='#6B7C77' stroke-width='1.5'/>
+<text x='693.0' y='268.0' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='8.4' fill='#6B7C77'>창업</text>
+<rect x='614' y='286' width='148' height='50' rx='8' fill='#fff' stroke='#1baf7a' stroke-width='1.8'/>
+<text x='688.0' y='305' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='10.6' font-weight='700' fill='#111A18' text-anchor='middle'>UNAGI Station 2026.1</text>
+<text x='688.0' y='320' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='8.8' fill='#6B7C77' text-anchor='middle'>Cty TNHH UNAGI VN</text>
+<rect x='416' y='286' width='168' height='50' rx='8' fill='#fff' stroke='#1baf7a' stroke-width='1.8' stroke-dasharray='5 4'/>
+<text x='500.0' y='305' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='10.6' font-weight='700' fill='#111A18' text-anchor='middle'>UNAGI VN FARM JSC</text>
+<text x='500.0' y='320' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='8.8' fill='#6B7C77' text-anchor='middle'>양식업 2023.10 · 등기 구 빈투언</text>
+<line x1='584' y1='311' x2='614' y2='311' stroke='#6B7C77' stroke-width='1.5' stroke-dasharray='5 4'/>
+<text x='599' y='303' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='8.2' fill='#6B7C77' text-anchor='middle'>계열 미확정</text>
+<path d='M584,136 C600,150 600,210 614,222' fill='none' stroke='#6B7C77' stroke-width='1.4' stroke-dasharray='5 4'/>
+<text x='598' y='176' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='8.2' fill='#6B7C77' text-anchor='middle' transform='rotate(-90 598 176)'>Maguro Studio 인맥</text>
+<text x='20' y='386' font-family='Be Vietnam Pro,Noto Sans KR,sans-serif' font-size='9' fill='#6B7C77'>실선 = 확인된 자본·운영 관계 · 점선 = 라이선스 또는 미확정 관계</text>
+</svg>    <div class="note">일본 자본 3개(상장사 직영·신생 FC·츠키지 라이선스), 한국계 1개, 로컬 신생 1개가 병존합니다.
+    Yakiuo 유치 주역(Lanh Phan·Mr. Lâm)과 UNAGI Station 창업 셰프(Lam)는 Maguro Studio 공동 창업 인맥으로 연결됩니다.</div>
+  </div>
+</section>
+
+<div class="co">
+  <div class="co-head" style="border-top-color:#2a78d6">
+    <div class="co-tag" style="color:#2a78d6">Profile 01 · 전문 · 카테고리 리더</div>
+    <div class="co-name">名代 宇奈とと <span>Izakaya Unatoto</span></div>
+    <div class="co-line">일본 상장사 직영의 저가 볼륨 체인. 좌석 기준 카테고리 최대 규모(베트남 5개점 합산 수용 약 690명)로, 오피스 런치와 이자카야 디너를 이원 운영합니다.</div>
+  </div>
+  <div class="tiles">
+    <div class="tile"><div class="tl">VN 지점</div><div class="tv">6</div><div class="ts">호치민 5 + 하노이 1</div></div>
+    <div class="tile"><div class="tl">주력가</div><div class="tv">129k~</div><div class="ts">런치세트 · 덮밥 200k~550k</div></div>
+    <div class="tile"><div class="tl">수용 인원</div><div class="tv">~690명</div><div class="ts">5개점 합산 · 룸 18개+</div></div>
+    <div class="tile"><div class="tl">VN 진출</div><div class="tv">2019.11</div><div class="ts">벤탄 1호점</div></div>
+  </div>
+  <table class="facts">
+    <tr><td class="k">운영 주체</td><td><span class="tag vv">확정</span> GF CAPITAL (VIETNAM) CO., LTD.(2018.10.8 설립, 본사 93 Nguyễn Du, 법인장 Katahira Masayuki, 정관자본 약 202.7억 VND) — 모기업 <b>G-FACTORY</b>(도쿄증권 그로스 3474). Izakaya Kamura·Sushi Nishitsugu·오모이데요코초(2025.4) 병행 운영</td></tr>
+    <tr><td class="k">연혁</td><td><span class="tag vv">확정</span> 벤탄 2019.11.22 → 탄빈 2021.12.1 → 하노이 낌마 2022.5.15 → 7군 2022.11.1 → 10군 2023.10 → 푸년 2025.3.10(첫 일본인 오너 라이선스점). 방콕 2개점 라이선스(2025.8~9)로 아세안 확장 중</td></tr>
+    <tr><td class="k">지점 · 좌석</td><td><span class="tag v">교차</span>
+      ① 1군 56 Trương Định (신 P. Bến Thành) — 약 80석 · <b>룸 5개</b> ☎028 3620 6840<br>
+      ② 탄빈 248 Nguyễn Hồng Đào (신 P. Tân Bình) — 2층 · <b>180석 · 룸 12개</b> ☎028 3535 5154<br>
+      ③ 7군 70 Nguyễn Thị Thập (신 P. Tân Thuận) — <b>200석</b>(1층 130+2층 70) · 룸 1개 ☎028 3620 3380<br>
+      ④ 10군 426-428 Đường 3/2 (신 P. Hòa Hưng) — 3층 · 130석 · 룸 보유(거래처 접대용 명시)<br>
+      ⑤ 푸년 240 Phan Xích Long (신 P. Cầu Kiệu) ⑥ 하노이 531 Kim Mã — 3층 · 100석</td></tr>
+    <tr><td class="k">영업시간</td><td><span class="tag v">교차</span> 대부분 지점 매일 11:00–23:00 · 푸년점만 일~목 22시 / 금·토·공휴일 23시 마감 · 런치세트 운영 11:00–15:00(10군 지점 확인)</td></tr>
+    <tr><td class="k">재무</td><td><span class="tag v">교차</span> 베트남 법인 단독 비공개. G-FACTORY 연결: FY2024 매출 약 62.6억 엔(+11.8%) · FY2025 매출 약 65억 엔, 경상손실 -0.92억 엔·순손실 약 -2.5억 엔 · FY2026 1Q 경상손실 -0.29억 엔(적자 축소). 일본 우나동 기준가 640엔(2025.1 인상)</td></tr>
+    <tr><td class="k">배달·예약</td><td><span class="tag v">교차</span> ShopeeFood(브랜드관) · GrabFood · Capichi · Delivery K · MoMo 페이지 — 배달 20분~ 표방. PasGo 예약(예약석 60분 홀드)</td></tr>
+    <tr><td class="k">프로모션</td><td><span class="tag v">교차</span> 런치 129k 자체가 상시 할인 포지션 + 연말 콤보 최대 29% · 연휴 두 번째 메뉴 50% · '골든아워' 일본 주류 50% · 상시 보처 캠페인 · ShopeeFood 할인코드</td></tr>
+    <tr><td class="k">평판</td><td><span class="tag s">단일출처</span> 구글 4.8/5 인용 보도(지점 미상) · Tripadvisor 벤탄점 4.3/5·18건 · Foody 서비스 10/10 언급, 1인 표기 119k~499k. 피크는 저녁(이자카야 수요), 점심은 한산 — 조용한 식사는 점심 권장(7군점 리뷰)</td></tr>
+  </table>
+  <h4>메뉴 · 가격 (확인분)</h4>
+  <table class="menu avoid">
+    <thead><tr><th style="width:34%">품목</th><th style="width:14%">가격(VND)</th><th style="width:34%">품목</th><th style="width:14%">가격(VND)</th></tr></thead>
+    <tbody>
+      <tr><td>런치세트(기본, 5찬)</td><td class="p">129,000~</td><td>차즈케 · 야키오니기리</td><td class="p">99,000~139,000</td></tr>
+      <tr><td>일본식 풀 런치세트</td><td class="p">149,000~</td><td>타마고야키</td><td class="p">70,000~100,000</td></tr>
+      <tr><td>우나동 단품</td><td class="p">139,000~</td><td>야키토리 꼬치(개당)</td><td class="p">50,000</td></tr>
+      <tr><td>장어구이 정식(5찬)</td><td class="p">169,000</td><td>미소국 / 일본차</td><td class="p">30,000 / 30,000~50,000</td></tr>
+      <tr><td>장어+치킨가라아게 세트</td><td class="p">229,000</td><td>밥 없는 장어구이 단품</td><td class="p">~300,000+</td></tr>
+      <tr><td>장어 더블 세트(5찬)</td><td class="p">279,000</td><td>사케·쇼추·일본맥주</td><td class="p">100,000~500,000</td></tr>
+      <tr><td>장어덮밥류 전체 밴드</td><td class="p">200,000~550,000</td><td>총 메뉴 수</td><td class="p">약 300종</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:7.8pt;color:var(--muted);margin-top:1.5mm">런치세트 메인은 장어 외 소고기덮밥·카레·참치덮밥·구운돼지덮밥 등 5종 선택. 히츠마부시·우나동 사이즈별 개별 단가는 미확인.</p>
+</div>
+
+<div class="co">
+  <div class="co-head" style="border-top-color:#eb6834">
+    <div class="co-tag" style="color:#eb6834">Profile 02 · 전문 · 2위 다점포</div>
+    <div class="co-name">Unagi Shokudo</div>
+    <div class="co-line">한국계 운영의 나고야식 히츠마부시 브랜드. 개인사업체(hộ kinh doanh)로 출발해 약 20개월 만에 하노이·고법으로 확장했고, 서울 마포에도 동명·동컨셉 매장을 냈습니다.</div>
+  </div>
+  <div class="tiles">
+    <div class="tile"><div class="tl">지점</div><div class="tv">3+</div><div class="ts">타오디엔·하노이·고법 (+서울)</div></div>
+    <div class="tile"><div class="tl">주력가</div><div class="tv">270k</div><div class="ts">히츠마부시 · 밴드 240k~500k</div></div>
+    <div class="tile"><div class="tl">구글 평점</div><div class="tv">4.8</div><div class="ts">리뷰 435~683건(스냅숏별)</div></div>
+    <div class="tile"><div class="tl">개점</div><div class="tv">2024 Q4</div><div class="ts">타오디엔 본점</div></div>
+  </div>
+  <table class="facts">
+    <tr><td class="k">운영 주체</td><td><span class="tag vv">확정</span> HỘ KINH DOANH UNAGI SHOUKUDO(개인사업체, 세무코드 8456611384-001, 등록지 9 Đường 9, Thảo Điền). 한국인 오너 운영은 제3자 리뷰 다수로 교차 확인 — 법령상 hộ kinh doanh 명의는 베트남 국적자 한정이므로 한국인 오너는 실질 운영자로 해석</td></tr>
+    <tr><td class="k">지점</td><td><span class="tag v">교차</span>
+      ① 타오디엔 본점 — Số 9, hẻm 30, Đường số 9 (신 P. An Khánh) ☎+84 773 992 188 · 마스테리 안푸 뒤편 골목, 야외 그릴 오픈키친, 식사시간 만석+대기(2024.12 관찰)<br>
+      ② 하노이 미딩 — Lô 44, TT1 KĐT Mỹ Đình-Mễ Trì ☎0365 109 997 (※Đống Đa '980 Đ. Láng' 동명 리스팅 별도 존재 — 별점포 또는 오등록, 미해결)<br>
+      ③ 고법 — 전용 SNS 3종(@unagishokudogovap) 활동 중, 도로명 미확인<br>
+      ④ 푸미흥(구 7군) 프로젝트 — 시공업체 완공 게시 3건 교차, 개점 여부 미확인 <span class="tag s">단일출처</span><br>
+      ⑤ 서울 마포본점 — 테이블링 입점, 히츠마부시 上 18,000원(호치민 270k ≈ 14,500원보다 소폭 높음)</td></tr>
+    <tr><td class="k">영업시간</td><td><span class="tag v">교차</span> 본점 11:00–15:00 / 17:00–22:00 우세(출처 간 11–14/17–21 병존 — 현장 확인 권장)</td></tr>
+    <tr><td class="k">조리·서비스</td><td><span class="tag vv">확정</span> 숯불 2회 구이(1차 성형·기름 제거 → 타레 2차) + 직원의 나고야식 4단계 시식 안내(①원물 ②약미 ③오차즈케 ④자유) — 복수 매체 교차</td></tr>
+    <tr><td class="k">원물</td><td><span class="tag s">단일출처</span> 냐짱 양식장 활장어 조달 소개 · 고법점은 '일본종 장어' 품종 마케팅</td></tr>
+    <tr><td class="k">배달·재무</td><td><span class="tag v">교차</span> GrabFood 입점(ID 5-C8AFJN4GJ3BTT6) · ShopeeFood 미확인. 재무 비공개(개인사업체 — 공시 의무 없음)</td></tr>
+    <tr><td class="k">가격 동향</td><td><span class="tag v">교차</span> 히츠마부시 270k가 2025년 초~2026년 여름까지 동결 정황(2025.3 Threads·2026 기사 동일가) · VAT 별도 청구 없음 보고(2024.12, 최신 유효성 미확인)</td></tr>
+  </table>
+  <h4>메뉴 · 가격 (확인분)</h4>
+  <table class="menu avoid">
+    <thead><tr><th style="width:34%">품목</th><th style="width:16%">가격(VND)</th><th style="width:50%">비고</th></tr></thead>
+    <tbody>
+      <tr><td>히츠마부시 (cơm lươn)</td><td class="p">270,000</td><td>시그니처 · 3개 독립 매체 일치(2026년 기사 기준 현재가)</td></tr>
+      <tr><td>김치 장어탕 (canh lươn kim chi)</td><td class="p">240,000</td><td>한·일 퓨전 — 서울 마포점도 '얼큰 장어탕 정식' 판매(그룹 공통)</td></tr>
+      <tr><td>부타동 · 오야코동 · 사케동 · 연어 후토마키 · 튀김우동</td><td class="p">미확인</td><td>품목 확인, 개별가 미확보 · 1회 식사 총액 사례 490,000(2024.12, 성인 2인분 상당)</td></tr>
+      <tr><td>전체 밴드</td><td class="p">240,000~500,000</td><td>주류 '무난' 수준</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="co">
+  <div class="co-head" style="border-top-color:#1baf7a">
+    <div class="co-tag" style="color:#1baf7a">Profile 03 · 전문 · 활장어 수직계열 시도</div>
+    <div class="co-name">UNAGI Station <span>Unagista / UNAGI Sta.</span></div>
+    <div class="co-line">리틀도쿄 초입의 활장어 전문 신생 브랜드. 매장 수조의 활장어를 즉석 손질해 간토식·간사이식 두 구이를 모두 내는, 카테고리 유일의 구성입니다.</div>
+  </div>
+  <div class="tiles">
+    <div class="tile"><div class="tl">지점</div><div class="tv">1</div><div class="ts">6A Thái Văn Lung (2호점 2027 계획)</div></div>
+    <div class="tile"><div class="tl">가격</div><div class="tv">미공개</div><div class="ts">'합리적 가격' 자체 표방</div></div>
+    <div class="tile"><div class="tl">개점</div><div class="tv">2026 Q1</div><div class="ts">추정 (IG 첫 게시물 1.30)</div></div>
+    <div class="tile"><div class="tl">스타일</div><div class="tv">간토+간사이</div><div class="ts">활장어 수조 · 오픈키친</div></div>
+  </div>
+  <table class="facts">
+    <tr><td class="k">법인</td><td><span class="tag v">교차</span> CÔNG TY TNHH UNAGI VIETNAM(0319304771 — 호치민 발급 구조 검증 통과) · 등록지 6A Thái Văn Lung + Diamond Plaza 903호 · 법정대표 Nguyễn Hữu Anh Duy</td></tr>
+    <tr><td class="k">창업자</td><td><span class="tag vv">확정</span> 셰프 Lam — 고급 일식당 <b>Towa 출신</b>(Dot Magazine 명시) → 2022년 Lanh Phan(Yamanaka Vietnam CEO·참치 수입업)과 Maguro Studio 공동 창업 → Shoku → UNAGI Station. 풀네임은 전 출처 미노출</td></tr>
+    <tr><td class="k">메뉴 구성</td><td><span class="tag vv">확정</span> 우나주·돈부리 + <b>일품 장어요리(一品鰻) 다수</b> — "오주·돈부리에만 의존하지 않는 장어집, 접대에도 적합"(일본어 블로거 평). 사시미·와규 병행(FB 페이지명 자체가 'Unagi . Sashimi . Wagyu'). 간토식(찐 후 구이)·간사이식(직화) 동시 제공</td></tr>
+    <tr><td class="k">가격</td><td><span class="tag q">미확인</span> 3개 언어·22회 검색에서도 귀속 가능한 가격 0건 — <b>미공개가 사실로 재확정</b>. 검색에 뜨는 190k/290k/360k(Unatoto·Dong Fan계)·700k~1.2M(Yosakura계)은 타 매장 가격이므로 인용 금지</td></tr>
+    <tr><td class="k">영업시간</td><td><span class="tag v">교차</span> 웹사이트 11:00–22:00 / 공식 IG 11:00–22:30 — 채널 간 자체 표기 불일치(병기)</td></tr>
+    <tr><td class="k">예약·배달</td><td><span class="tag vv">확정</span> 전화 0908 79 22 89 · service@unagi.vn — 2회 독립 확인. 자체 배달('30분 내' 표방)·테이크아웃, 카드 결제(Amex/Master/Visa). GrabFood/ShopeeFood 입점 미확인</td></tr>
+    <tr><td class="k">공급망</td><td><span class="tag s">단일출처</span> '타이응우옌 전용 시설 farm-to-table' 서사는 설비사(Hoshizaki) 사례연구 단독. 동명 팜 법인(UNAGI VN FARM JSC, 3401248620)은 실재하나 등기지는 구 빈투언성이고 법정대표 상이 — 계열 관계 미확정. 웹사이트 문구는 '일본 직수입'으로 상충</td></tr>
+    <tr><td class="k">평판·확장</td><td><span class="tag v">교차</span> Tripadvisor 4.0~4.3(리뷰 4건) · 일본어 블로거 호평(2026.4) · 채용 공고 3건+ · 2027년 초 구 7군 2호점 계획(설비사 단독 서술)</td></tr>
+  </table>
+</div>
+
+<div class="co">
+  <div class="co-head" style="border-top-color:#eda100">
+    <div class="co-tag" style="color:#8a6400">Profile 04 · 전문 · 최고가 티어</div>
+    <div class="co-name">Unagi Yosakura <span>日本鰻世桜 · HCM 1호점</span></div>
+    <div class="co-line">장어와 와규를 하가마 솥밥 위에 얹는 최고가 포지션. 오사카 신생 FC 기업의 해외 2호점으로, 일본 본토 정규가보다 높은 가격을 받는 인바운드형 모델입니다.</div>
+  </div>
+  <div class="tiles">
+    <div class="tile"><div class="tl">지점</div><div class="tv">1</div><div class="ts">234 Nguyễn Đình Chiểu (구 3군)</div></div>
+    <div class="tile"><div class="tl">가격</div><div class="tv">850k~1.2M</div><div class="ts">메인 3갈래</div></div>
+    <div class="tile"><div class="tl">개점</div><div class="tv">2025.8.24</div><div class="ts">확정 (IG 타임스탬프)</div></div>
+    <div class="tile"><div class="tl">인증</div><div class="tv">88/100</div><div class="ts">HONMONO (자기공시형)</div></div>
+  </div>
+  <table class="facts">
+    <tr><td class="k">운영 주체</td><td><span class="tag v">교차</span> 주식회사 세오(株式会社世桜, 오사카, 2024.3 설립·FC 전개사) 직영. 브랜드 지점: 신사이바시 본점(스시·가이세키 업태 '日本料理世桜') · 장어 업태는 후지산점(2024.12.16, FC)·교토 기온점 · 해외 1호 하노이 규카츠점(2025) → 해외 2호가 호치민 장어점</td></tr>
+    <tr><td class="k">메뉴</td><td><span class="tag v">교차</span> 메인 3갈래: 우나기 히츠마부시 <b>850,000</b> / 와규 히츠마부시 <b>850,000</b> / 우나기+와규 콤보 <b>1,200,000</b> (++여부 미확인). 통장어+와규+이쿠라+저온살균 계란 스페셜, 사이드 소수 운영. 시그니처 음료 유즈소다(히말라야 핑크솔트) <span class="tag s">단일출처</span>. 일본 후지산점은 이쿠라·금박·계란 노른자 토핑 옵션 — HCM 도입 가능성</td></tr>
+    <tr><td class="k">조리</td><td><span class="tag vv">확정</span> 하가마(羽釜) 솥으로 매일 취반 + 숯불 가바야키 + 나고야식 3단계 시식(그대로→약미→오차즈케)</td></tr>
+    <tr><td class="k">영업시간</td><td><span class="tag v">교차</span> <b>2부제(브레이크 있음)</b>: 런치 11:00(일부 출처 10:30)–14:30 / 디너 17:00–22:00</td></tr>
+    <tr><td class="k">공간</td><td><span class="tag v">교차</span> 일본인 디자이너 내외장 · 목재 마감·은은한 조명·사쿠라 모티프 · 수공예 도자기. 바 카운터+테이블 배치(좌석 수 미확인)</td></tr>
+    <tr><td class="k">예약</td><td><span class="tag vv">확정</span> TableCheck(노쇼 정책: 예약시간 15분/주말 5분 내 연락두절 시 취소) · ☎0973 868 084 · Zalo Mini App 운영(로컬 CRM 채널)</td></tr>
+    <tr><td class="k">일본 가격 비교</td><td><span class="tag v">교차</span> 후지산점 히츠마부시 2,900~4,800엔(런치 4,000엔) ≈ VND 49만~84만 — <b>호치민 기본가 850k가 일본 정규가 상단을 상회</b></td></tr>
+    <tr><td class="k">평판·타깃</td><td><span class="tag v">교차</span> Tripadvisor 5.0(리뷰 6건) · '재주 일본인이 안심하고 다니는 전문점' 소구(VIETJO)이나 실제로는 TikTok·Lemon8 로컬 인플루언서 리뷰 활발 — 베트남 젊은층 유입 상당. 모회사 '10개월 내 20점포' 목표·FC 모집 중</td></tr>
+  </table>
+</div>
+
+<div class="co">
+  <div class="co-head" style="border-top-color:#e87ba4">
+    <div class="co-tag" style="color:#c2497e">Profile 05 · 전문 · 최고참 · 유일한 완결형 수직계열</div>
+    <div class="co-name">Yuugatei Mutsumian <span>遊雅亭 睦庵</span></div>
+    <div class="co-line">베트남인 셰프가 자기 양식장의 활장어로 굽는, 카테고리에서 유일하게 '치어→양식→활어 입고→즉석 손질'이 검증된 수직계열 전문점입니다.</div>
+  </div>
+  <div class="tiles">
+    <div class="tile"><div class="tl">지점</div><div class="tv">2</div><div class="ts">호치민 + 하노이(52A Linh Lang)</div></div>
+    <div class="tile"><div class="tl">주력가</div><div class="tv">250k~500k</div><div class="ts">우나주 小/大 · 히츠마부시 500k</div></div>
+    <div class="tile"><div class="tl">개점</div><div class="tv">~2018</div><div class="ts">"개점 5년차" 캡션 · 최고참 추정</div></div>
+    <div class="tile"><div class="tl">양식장</div><div class="tv">냐짱·붕따우</div><div class="ts">자사 · 치어부터 1~1.5년</div></div>
+  </div>
+  <table class="facts">
+    <tr><td class="k">오너</td><td><span class="tag vv">확정</span> 베트남인 셰프 <b>Trung</b>(일본어 능통) — 일식당 이타마에 8년 + 냐짱 장어 양식장 2년 경력 후 창업(일본어 매체 오너 인터뷰 + 복수 출처 교차)</td></tr>
+    <tr><td class="k">공급망</td><td><span class="tag vv">확정</span> <b>냐짱·붕따우 자사 양식장</b> — 일본과 같은 품종을 치어부터 1~1.5년 양식, 활어 상태로 매장 입고, 주문 후 손질·숯불 직화. '베트남 최초 활장어 숯불구이' 소구. 입구에 구이대를 두어 시각·후각 연출</td></tr>
+    <tr><td class="k">지점</td><td><span class="tag v">교차</span> ① 호치민 15/7(일부 표기 15A) Lê Thánh Tôn 골목 (신 P. Sài Gòn) ☎090 649 5133 · 028 3824 8457 — 1층 카운터 + 2층 테이블(3층·다다미 포함 약 50석 설은 단일출처) ② 하노이 52A Linh Lang, Ba Đình</td></tr>
+    <tr><td class="k">영업시간</td><td><span class="tag q">상충</span> 11:00–14:00/17:00–22:30(LO 22:00) 분할설 vs 11:30–22:30 통짜설(vietnam-navi) — 시점 차이 가능, 현장 확인 필요. 연중무휴 표기. 전화 배달 운영</td></tr>
+    <tr><td class="k">스타일</td><td><span class="tag v">교차</span> 간토식·간사이식 양쪽 제공 · 인근 레탄톤 일식당 대비 저가 포지셔닝 평가 다수 · 일본인·로컬 모두에게 인기</td></tr>
+    <tr><td class="k">평판</td><td><span class="tag v">교차</span> Tripadvisor 중복 리스팅 2건(같은 호치민 점포): 4.0/5·5건 + 4.7/5·3건 — 표본 극소. 구글 평점 미확보. Epicure Vietnam 사이공 우나기 특집 수록</td></tr>
+  </table>
+  <h4>메뉴 · 가격 (확인분)</h4>
+  <table class="menu avoid">
+    <thead><tr><th style="width:34%">품목</th><th style="width:16%">가격(VND)</th><th style="width:50%">비고</th></tr></thead>
+    <tbody>
+      <tr><td>우나주 大</td><td class="p">500,000</td><td>독립 2출처+ 교차 확정</td></tr>
+      <tr><td>우나주 小(미니)</td><td class="p">250,000</td><td>〃</td></tr>
+      <tr><td>히츠마부시</td><td class="p">500,000</td><td>하프 사이즈 옵션 취급</td></tr>
+      <tr><td>런치 세트 우나주</td><td class="p">549,000</td><td><span style="color:var(--muted)">단일출처 — 단품 500k와의 관계(세트 구성/시점) 미확정</span></td></tr>
+      <tr><td>사이드: 돼지 매실시소말이 튀김 / 전갱이 사시미 / 멸치 두부 / 굴 사시미</td><td class="p">110k / 135k / 80k / 75k</td><td>단일출처 · 장어뼈 튀김·에다마메 기본 안주</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="co">
+  <div class="co-head adj" style="border-top-color:#008300">
+    <div class="co-tag" style="color:#008300">Profile 06 · 인접 · 해산물 오마카세</div>
+    <div class="co-name">Yakiuo Ishikawa Saigon <span>焼うお いし川</span></div>
+    <div class="co-line">츠키지 발(發) '고기 없는 야키니쿠'×오마카세. 테이블 직화 우나기동이 시그니처 단품으로, 장어 자체가 본업은 아니지만 최상위 가격대를 형성합니다.</div>
+  </div>
+  <div class="tiles">
+    <div class="tile"><div class="tl">지점</div><div class="tv">2</div><div class="ts">1군 + 타오디엔(2026 초)</div></div>
+    <div class="tile"><div class="tl">가격</div><div class="tv">980k++~</div><div class="ts">오마카세 상위 ~3.7M</div></div>
+    <div class="tile"><div class="tl">좌석(1군)</div><div class="tv">~60석</div><div class="ts">VIP룸 2개(8+6석)</div></div>
+    <div class="tile"><div class="tl">수상</div><div class="tv">2024</div><div class="ts">Vietcetera F&B Concept</div></div>
+  </div>
+  <table class="facts">
+    <tr><td class="k">기원·운영</td><td><span class="tag v">교차</span> 도쿄 츠키지 스시집 '築地青空三代目' 운영사(이시카와)가 2018년 개발한 컨셉의 첫 해외점. 현지 법인 Cty CP YAKIUO VIỆT NAM(0318638362, 2024.8.23) — 유치 주역 Lanh Phan·Mr. Lâm</td></tr>
+    <tr><td class="k">지점</td><td><span class="tag v">교차</span> ① 1군 38 Thái Văn Lung (신 P. Sài Gòn) — 2024.11.15 소프트오픈 · 테이블 36+카운터 10+소파 18 · VIP룸 2(최소 4명) ☎0933 828 768 ② 타오디엔 79 Xuân Thủy (신 P. An Khánh) — <b>디너 18:00–22:30만 운영, 런치 'Coming soon'</b>(2026.8) ☎093 261 50 68</td></tr>
+    <tr><td class="k">장어 관련</td><td><span class="tag v">교차</span> 'Unagi Don grilled directly at the table'이 시그니처로 복수 소개문에 명시 — 코스·알라카르트 선택 가능. <b>단품 정가는 전 출처 미노출</b> <span class="tag q">미확인</span></td></tr>
+    <tr><td class="k">가격</td><td><span class="tag v">교차</span> Yakiuo Course 980,000++(사시미급 5종 구성 — 구성 수는 공식 단독) · 우마미 코스 약 1.9M · 오마카세 상위 ~3.7M(코스 개수 미확인) · 산쇼쿠동 1M++ · 야키우오 세트 590k · JETRO 기준 저녁 객단가 1만 엔 초과</td></tr>
+    <tr><td class="k">영업시간(1군)</td><td><span class="tag v">교차</span> 11:00–14:00(LO 13:30) / 18:00–22:30(LO 21:30)</td></tr>
+    <tr><td class="k">공급망·평판</td><td><span class="tag v">교차</span> 일본 수입 사시미급 선어를 전문 야키시(焼き師)가 구움 — Lanh Phan의 수산물 수입 루트 활용 추정. 장어 산지 미확인. Tripadvisor 5.0(소수 리뷰) · TableCheck 예약 · Capichi 배달 · 베트남 전역 5개점 목표(JETRO 인터뷰)</td></tr>
+  </table>
+</div>
+
+<div class="co">
+  <div class="co-head adj" style="border-top-color:#4a3aa7">
+    <div class="co-tag" style="color:#4a3aa7">Profile 07 · 인접 · 카이센동 전문</div>
+    <div class="co-name">Dong Fan <span>海鮮と天丼 丼飯 · DONG FAN SASHIMI BOWL</span></div>
+    <div class="co-line">스시 코바야시 자매점의 카이센동·텐동 소형 전문점. 우나동 3종은 사이드 라인으로, 카테고리 최저 진입가를 형성합니다.</div>
+  </div>
+  <div class="tiles">
+    <div class="tile"><div class="tl">지점</div><div class="tv">1</div><div class="ts">2F, 8/5 Lê Thánh Tôn</div></div>
+    <div class="tile"><div class="tl">우나동</div><div class="tv">190k~360k</div><div class="ts">사이드 라인 3종</div></div>
+    <div class="tile"><div class="tl">좌석</div><div class="tv">카운터+12</div><div class="ts">4인 테이블 3개 + 카운터석</div></div>
+    <div class="tile"><div class="tl">개점</div><div class="tv">2023.4</div><div class="ts">소프트오픈</div></div>
+  </div>
+  <table class="facts">
+    <tr><td class="k">정체</td><td><span class="tag v">교차</span> 정식 상호 「海鮮と天丼 丼飯(돈부리메시)」 — 레탄톤 에도마에 스시집 Sushi Kobayashi 자매점, 스시 장인 감수. 1층은 라멘집 Miso Chikura</td></tr>
+    <tr><td class="k">메뉴</td><td><span class="tag v">교차</span> 카이센동 <b>160,000~</b>(치라시·마구로동·프리미엄 텐동 등 6~9종 짧은 구성) · 명물 '밥 2층' — 아래층 밥에 뜨거운 다시를 부어 오차즈케로 2번 즐기는 방식 · 홋카이도 우니 특상 카이센동 1인 745,200 실측(2024.8, VAT 8% 포함) · 우나동 190k / 더블 290k / 우나타마동 360k(단일출처)</td></tr>
+    <tr><td class="k">영업시간</td><td><span class="tag q">상충</span> 점심 10~11시대 개시 / 저녁 17–21시대 — 출처 4곳 상이, 브레이크 있음. ☎0867 490 494(유효성 미확인)</td></tr>
+    <tr><td class="k">영업 현황</td><td><span class="tag v">교차</span> 2026년 '영업 중 추정' — 폐업 언급 0건, Capichi 리스팅이 신 행정동 체계로 유지·갱신, 2026년판 레탄톤 일본식당 지도 등재 정황. 단 2026년 날짜의 직접 리뷰는 미확보</td></tr>
+    <tr><td class="k">공급망·재무</td><td><span class="tag v">교차</span> 고치현 혼마구로·홋카이도 우니 등 일본 직송 + 현지 선어 혼합. 장어 산지 미확인. 재무 비공개 · 확장 신호 없음</td></tr>
+  </table>
+</div>
+
+<section>
+  <div class="shead"><span class="n">03</span><h2>시장 컨텍스트 · 감시 대상 · 미확인 항목</h2></div>
+
+  <h4>시장 기준선</h4>
+  <table class="avoid">
+    <thead><tr><th style="width:30%">지표</th><th style="width:34%">수치</th><th>근거·주의</th></tr></thead>
+    <tbody>
+      <tr><td>호치민 우나기동 시장가 밴드</td><td class="num"><b>약 129k~149k(체인 런치 하단) ~ 500k(전문점 특상·히츠마부시)</b></td><td>하단 Unatoto 런치 · 상단 Mutsumian 大·히츠마부시 (프리미엄존 850k~은 별도 티어)</td></tr>
+      <tr><td>베트남 일식당 수</td><td class="num">전국 2,500+ (2022)</td><td>독립 재확인 수치. "호치민 944(2024)"는 단일 조사(B-Company) — 기준 불명, 타 연도와 직접 비교 금지</td></tr>
+      <tr><td>일본 우나동 체인 기준가</td><td class="num">Unatoto 일본 640엔 (2025.1 인상)</td><td>더블 1,200엔 · 우나쥬 1,060엔</td></tr>
+      <tr><td>Yosakura 일본 정규가</td><td class="num">히츠마부시 2,900~4,800엔</td><td>≈ VND 49만~84만 — 호치민 850k가 상단 상회</td></tr>
+    </tbody>
+  </table>
 
   <h4>감시 대상 — 鰻の成瀬 (Unagi Naruse)</h4>
-  <div class="callout warn"><b>베트남 진출 여부 미확인</b> — 일본에서 약 300점 규모로 급성장한 저가 장어 FC 체인(홍콩·대만·한국 등 해외 전개 중). 이번 조사에서 베트남 진출 기록은 발견되지 않았으나 <b>확인 실패이지 '진출 안 함' 확정이 아닙니다.</b> 진출 시 저가 볼륨존에서 Unatoto와 정면 충돌하는 최대 위협 후보 — 공식 점포 리스트(unagi-naruse.com/shoplist) 정기 모니터링을 권합니다.</div>
+  <div class="callout warn"><b>공개 정보상 베트남 진출 확인 안 됨 (2026.8 검색 기준)</b> — 일본 약 300점 급성장 저가 장어 FC. 확인된 해외 전개는 홍콩 2점 · 한국 1점(2024.12) · 방콕 프롬퐁점(2025.11.29 개점). 베트남 관련 일본어 기사군에도 미등장. 진출 시 저가 볼륨존에서 Unatoto와 정면 충돌 — 공식 점포 리스트(unagi-naruse.com/shoplist) 정기 모니터링 권장.</div>
 
-  <h4>미해결 — 현장에서만 확정 가능한 항목</h4>
+  <h4>미확인 — 현장에서만 확정 가능</h4>
   <table class="avoid">
-    <thead><tr><th style="width:26%">항목</th><th>필요 조치</th></tr></thead>
+    <thead><tr><th style="width:30%">항목</th><th>확인 방법</th></tr></thead>
     <tbody>
-      <tr><td>UNAGI Station 가격 전체</td><td>메뉴판 촬영 (전 채널 미공개 — 이 문서 최대 공백)</td></tr>
-      <tr><td>UNAGI Station 실물·2호점</td><td>6A Thái Văn Lung 방문 + 전화(0908 79 22 89) — 핵심 서사가 설비사 단일 출처</td></tr>
-      <tr><td>Mutsumian 전 항목</td><td>15/7 Lê Thánh Tôn 방문 — 실존·가격·좌석·원물(베트남 양식 활장어 주장) 확인</td></tr>
-      <tr><td>Dong Fan 영업 여부</td><td>전화(0867 490 494) — 최종 활동 흔적 2025.4</td></tr>
-      <tr><td>Yakiuo 우나기동 단품가</td><td>메뉴판 확인 — 코스가만 확보됨</td></tr>
-      <tr><td>Shokudo 고법점 주소·Q7 출점</td><td>SNS(@unagishokudogovap) DM 또는 본점 문의</td></tr>
-      <tr><td>Unatoto 지점별 평점·리뷰 수</td><td>Google Maps·GrabFood·ShopeeFood 지점별 수집 (현재 벤탄점 TA만 확보)</td></tr>
-      <tr><td>G-FACTORY FY2025 정밀치·2Q 실적</td><td>결산단신 원문(TDnet) — 2026.8 중순 2Q 발표분 포함</td></tr>
-      <tr><td>Station↔Farm 법인 계열 관계</td><td>등기부 원문(지분 관계) — 법정대표 상이로 현재 미확정</td></tr>
+      <tr><td><b>UNAGI Station 가격 전체</b></td><td>메뉴판 촬영 · ☎0908 79 22 89 — 3개 언어 검색 22회에서도 0건, 이 문서 최대 공백</td></tr>
+      <tr><td>Yakiuo 우나기동 단품가 · 오마카세 상위 코스표</td><td>메뉴판 · TableCheck 코스 목록</td></tr>
+      <tr><td>Shokudo 고법점 도로명 · 푸미흥점 개점 여부</td><td>SNS(@unagishokudogovap) 프로필 · 현장</td></tr>
+      <tr><td>Mutsumian 영업시간(분할 vs 통짜) · 구글 평점</td><td>현장 간판 · Google Maps</td></tr>
+      <tr><td>Yosakura 850k의 세금·봉사료 포함 여부</td><td>메뉴판 각주 · 영수증</td></tr>
+      <tr><td>Dong Fan 2026년 영업 직접 확인</td><td>☎0867 490 494</td></tr>
+      <tr><td>Unatoto 히츠마부시·우나동 사이즈별 단가, 지점별 구글 평점</td><td>지점 메뉴판 · Google Maps</td></tr>
+      <tr><td>Station↔Farm 법인 지분 관계</td><td>등기부 원문</td></tr>
     </tbody>
   </table>
-
-  <h4>연매출 확보 경로</h4>
-  <p style="font-size:8.8pt;color:var(--ink2)">공개 재무는 Unatoto 모기업(G-FACTORY 연결)뿐입니다. 나머지는 ① 베트남 국가기업등록포털(법인 기본 정보) ② VIRAC·Vietdata·FiinGroup 유료 DB ③ D&B·Coface 신용조사 ④ 좌석 수 × 점유율 × 회전수 × 객단가 × 영업일 추정 모델 — ④의 입력값(좌석·점유율·객단가)은 현장 실측으로만 확보 가능합니다.</p>
 </section>
 
 <section>
-  <div class="shead"><span class="n">03</span><h2>조사 방법 · 출처</h2></div>
-
-  <h4>파이프라인</h4>
+  <div class="shead"><span class="n">04</span><h2>출처</h2></div>
   <ul>
-    <li><b>1단 조사(8기)</b> — 브랜드별 전담 6기 + 카테고리 전수 스윕 1기 + G-FACTORY 재무 전담 1기. 베트남어·영어·일본어 병렬 검색, 주장마다 출처 URL·신뢰도 부착, 모르는 것은 '모름'으로 기록.</li>
-    <li><b>2단 검증(7기)</b> — 각 주장의 반박을 시도해 확정/수정/기각/미확인 판정. 오프라인 구조 검증 병행: <b>세무코드 발급지 프리픽스 분석</b>(03=호치민, 34=구 빈투언, 46=타이응우옌 — 앵커 법인으로 교정), <b>Instagram/Threads 게시물 ID의 수학적 타임스탬프 디코딩</b>(개점일 3건 확정), 문서 이력 감사.</li>
-    <li><b>원칙</b> — 확인되지 않은 항목은 수치를 만들어 넣지 않고 '미확인'으로 남김. 허위로 판정된 인용은 본문에서 배제.</li>
+    <li><b>공적·공시</b> — JETRO 비즈니스 단신, G-FACTORY(TSE 3474) 공시·IR 집계(kabutan·irbank·minkabu), 베트남 세무등록 DB(masothue.com·thuvienphapluat.vn: 0319304771 / 3401248620 / 0318638362 / 8456611384-001), Volza 무역데이터, 결의 1685/NQ-UBTVQH15(행정개편), 닛케이(成瀬 한국 진출)</li>
+    <li><b>브랜드 공식</b> — unatoto.com·unatotovietnam.com, unagi.vn·FB UnagiStation·IG @unagista.hcmc, yakiuo-ishikawa.jp·yakiuosaigon.com, 世桜 공식 IG·VIETJO 보도, Unagi Shokudo 지점별 FB/IG/TikTok, TableCheck·PasGo·GrabFood·ShopeeFood·Capichi·MoMo 리스팅, 테이블링(서울)</li>
+    <li><b>산업·매체</b> — Hoshizaki SEA 사례연구, Vietcetera(Flavors Awards 2024), The Dot Magazine, Jovel Chan, Epicure Vietnam, Poste·vietnam-sketch·vietnam-navi·Gurutto(일계 정보지), Kilala·Mia.vn·Toplist·thaodien.app·saigondidau·angiday(베트남 매체), HONMONO, タイランドハイパーリンクス(成瀬 방콕)</li>
+    <li><b>리뷰·소비자</b> — Tripadvisor(d34244723·d19266095·d28767086·d30485753/55·d14176334·d17479283·d34030854), Foody·Google 리뷰 스냅숏, Tabelog 베트남, Threads·Lemon8·TikTok 일자 검증 게시물, 일본어 푸드블로그(cheritheglutton·wkvetter·hataraku-mama·social-zero 오너 인터뷰), 한국어 방문기(hochiminhgourmet)</li>
   </ul>
-
-  <h4>주요 출처</h4>
-  <ul>
-    <li><b>공적·공시</b> — JETRO 비즈니스 단신(우나토토 베트남 1호점, 2019.12), G-FACTORY(TSE 3474) 공시·IR 집계(kabutan·irbank·minkabu), 베트남 기업등기 DB(masothue.com·thuvienphapluat.vn·tratencongty.com: 세무코드 0319304771 / 3401248620 / 0318638362 / 8456611384-001), Volza 무역데이터, 국회상무위 결의 1685/NQ-UBTVQH15(행정개편)</li>
-    <li><b>브랜드 공식</b> — unatoto.com·unatotovietnam.com, unagi.vn, yakiuo-ishikawa.jp·yakiuosaigon.com, 世桜 공식 IG·FC 사이트, Unagi Shokudo 지점별 FB/IG, TableCheck 예약 페이지</li>
-    <li><b>산업·현지 매체</b> — VIETJO, PR TIMES, 다이아몬드 체인스토어 온라인, Hoshizaki SEA 사례연구, Vietcetera(Flavors Awards), Epicure Vietnam, Poste(일계 정보지), Gurutto Vietnam, Kilala, Mia.vn, Toplist, thaodien.app</li>
-    <li><b>리뷰·소비자</b> — Tripadvisor(d34244723·d19266095·d28767086·d30485753/55·d14176334/17479283), Foody, Google 리뷰 스냅숏, Threads·Lemon8·TikTok 일자 검증 게시물, 일본어 푸드블로그, 한국어 방문기</li>
-  </ul>
-
   <div class="foot">
-    본 문서는 2026년 8월 20일 시점의 공개 정보 기준입니다. 가격·영업시간·영업 여부는 변동성이 크므로 현장 확인이 최종 근거입니다.
-    일부 브랜드 공식 사이트는 조사 환경의 네트워크 정책상 직접 열람이 차단되어 검색 캐시·복수 매체 교차로 대체했습니다.
+    2026년 8월 20일 시점 공개 정보 기준. 조사·검증 2단 파이프라인(브랜드별 전담 에이전트, 베트남어·영어·일본어 병렬 검색, 총 27기·검색 및 도구 호출 660여 회)으로 수집·교차했으며,
+    각 항목의 판정 태그(확정/교차/단일출처/미확인)는 출처 독립성 기준입니다. 가격·영업시간·영업 여부는 변동성이 크므로 현장 확인이 최종 근거입니다.
     확인되지 않은 항목은 수치를 만들어 넣지 않고 '미확인'으로 남겼습니다.
   </div>
 </section>
