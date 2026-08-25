@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="ko"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>로그인 · 출퇴근 관리</title><link rel="stylesheet" href="/static/app.css">
+</head><body>
+<div class="auth">
+  <div class="card"><div class="card-body">
+    <h1>출퇴근 관리</h1>
+    <p class="sub">매장 계정으로 로그인하세요</p>
+    {% if error %}<div class="note alert">{{ error }}</div>{% endif %}
+    <form method="post" action="/login">
+      <input type="hidden" name="next" value="{{ next }}">
+      <label for="email">이메일</label>
+      <input id="email" type="email" name="email" required autofocus autocomplete="username">
+      <label for="pw">비밀번호</label>
+      <input id="pw" type="password" name="password" required autocomplete="current-password">
+      <button class="btn primary">로그인</button>
+    </form>
+  </div></div>
+</div>
+</body></html>

@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}근무표 가져오기 · {{ ctx.name }}{% endblock %}
+{% block content %}
+<div class="page-head"><h1>근무표 가져오기</h1>
+  <p>쓰던 종이 근무표를 처음 한 번 들여올 때 쓰는 기능입니다</p></div>
+
+<div class="note">
+  인식 결과는 <b>초안으로만</b> 들어갑니다. 근무표 편집기에서 확인하고 고친 뒤
+  발행해야 지각 판정에 쓰입니다.
+</div>
+
+{% if not server_enabled %}
+<div class="note warn">
+  서버에 OCR 키가 설정되어 있지 않습니다. <span class="mono">DEEPSEEK_API_KEY</span> 를
+  넣으면 이 기능이 켜집니다. 넣지 않아도 <a href="/s/{{ ctx.slug }}/schedule">근무표 편집기</a>는
+  그대로 씁니다.
+</div>
+{% elif not store_enabled %}
+<div class="note warn">
+  <b>이 매장은 가져오기가 꺼져 있습니다.</b>
+  근무표 사진에는 직원 이름이 들어 있고, 인식을 위해 해외 서비스로 전송됩니다.
+  개인정보 국외이전에 해당할 수 있어 <b>직원 고지·동의를 받은 뒤</b> 매장 설정에서
+  <span class="mono">ocr_import_enabled</span> 를 켜주세요.
+</div>
+{% else %}
+<div class="card">
+  <header><h2>사진 올리기</h2><span class="mono muted" style="font-size:12px">{{ model }}</span></header>
+  <div class="card-body">
+    <form class="row" method="post" action="/s/{{ ctx.slug }}/import/upload" enctype="multipart/form-data">
+      <div><label>어느 주차인가요 (월요일)</label>
+        <input type="date" name="week" value="{{ default_week }}" required></div>
+      <div><label>근무표 사진</label>
+        <input type="file" name="image" accept="image/*" required></div>
+      <div style="flex:0"><button class="btn primary">인식</button></div>
+    </form>
+    <p class="muted" style="font-size:12.5px;margin:12px 0 0">
+      사진은 자동으로 여러 조각으로 나눠 보냅니다. 통째로 보내면 축소돼서
+      글자가 뭉개지기 때문입니다. 표 전체가 프레임에 들어오게, 최대한 정면에서 찍어주세요.
+    </p>
+  </div>
+</div>
+{% endif %}
+
+<div class="card">
+  <header><h2>가져오기 이력</h2></header>
+  <div class="scroll"><table>
+    <thead><tr><th>시각</th><th>주차</th><th>모델</th><th class="num">조각</th><th>결과</th></tr></thead>
+    <tbody>
+    {% for h in history %}
+      <tr><td class="t">{{ h.created_at.strftime('%m-%d %H:%M') }}</td>
+          <td class="t">{{ h.week_start or '—' }}</td>
+          <td class="mono muted" style="font-size:12px">{{ h.model }}</td>
+          <td class="num">{{ h.tiles }}</td>
+          <td>{% if h.status == 'done' %}
+                {{ h.parsed.get('schedule_details', [])|length }}건 인식
+              {% else %}<span class="tag warn">실패</span>
+                <span class="muted">{{ h.error[:70] }}</span>{% endif %}</td></tr>
+    {% else %}<tr><td colspan="5" class="empty">아직 없습니다</td></tr>{% endfor %}
+    </tbody>
+  </table></div>
+</div>
+{% endblock %}

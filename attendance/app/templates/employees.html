@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %}직원 · {{ ctx.name }}{% endblock %}
+{% block content %}
+<div class="page-head"><h1>직원</h1>
+  <p>퇴사 처리해도 근무 기록은 남습니다 — 급여 근거이자 보존 대상입니다</p></div>
+
+{% if ctx.at_least('manager') %}
+<div class="card">
+  <header><h2>새 직원</h2></header>
+  <div class="card-body">
+    <form method="post" action="/s/{{ ctx.slug }}/employees/add" class="row">
+      <div><label>이름</label><input type="text" name="name" required></div>
+      <div><label>카드 번호</label><input type="text" name="card_uid" placeholder="카드를 대면 채워집니다"></div>
+      <div><label>부서</label>
+        <input type="text" name="department" list="depts">
+        <datalist id="depts">{% for d in ctx.departments() %}<option value="{{ d }}">{% endfor %}</datalist>
+      </div>
+      <div><label>유형</label><select name="employee_type">
+        <option>아르바이트</option><option>정직원</option></select></div>
+      <div style="flex:0"><button class="btn primary">등록</button></div>
+    </form>
+  </div>
+</div>
+{% endif %}
+
+<div class="card">
+  <header>
+    <h2>{{ '전체' if show_inactive else '재직 중' }} {{ employees|length }}명</h2>
+    <a class="btn sm" href="?show_inactive={{ 'false' if show_inactive else 'true' }}">
+      {{ '재직자만 보기' if show_inactive else '퇴사자도 보기' }}</a>
+  </header>
+  <div class="scroll"><table>
+    <thead><tr><th>이름</th><th>부서</th><th>유형</th><th>카드</th><th>상태</th>
+      {% if ctx.at_least('manager') %}<th></th>{% endif %}</tr></thead>
+    <tbody>
+    {% for e in employees %}
+      <tr>
+        {% if ctx.at_least('manager') and e.is_active %}
+        <form method="post" action="/s/{{ ctx.slug }}/employees/{{ e.id }}/update" id="f{{ e.id }}"></form>
+        <td><input form="f{{ e.id }}" type="text" name="name" value="{{ e.name }}"></td>
+        <td><input form="f{{ e.id }}" type="text" name="department" value="{{ e.department }}" list="depts"></td>
+        <td><select form="f{{ e.id }}" name="employee_type">
+              <option {{ 'selected' if e.employee_type=='아르바이트' }}>아르바이트</option>
+              <option {{ 'selected' if e.employee_type=='정직원' }}>정직원</option></select></td>
+        <td><input form="f{{ e.id }}" type="text" name="card_uid" value="{{ e.card_uid or '' }}" class="mono"></td>
+        <td><span class="tag on">재직</span></td>
+        <td style="text-align:right;white-space:nowrap">
+          <button form="f{{ e.id }}" class="btn sm">저장</button>
+          <form class="inline" method="post" action="/s/{{ ctx.slug }}/employees/{{ e.id }}/deactivate"
+                onsubmit="return confirm('{{ e.name }} 퇴사 처리할까요? 근무 기록은 그대로 남습니다.')">
+            <button class="btn sm danger">퇴사</button></form>
+        </td>
+        {% else %}
+        <td>{{ e.name }}</td><td>{{ e.department or '—' }}</td><td>{{ e.employee_type }}</td>
+        <td class="mono muted">{{ e.card_uid or '—' }}</td>
+        <td>{% if e.is_active %}<span class="tag on">재직</span>{% else %}<span class="tag">퇴사</span>{% endif %}</td>
+        {% if ctx.at_least('manager') %}
+        <td style="text-align:right">
+          <form class="inline" method="post" action="/s/{{ ctx.slug }}/employees/{{ e.id }}/reactivate">
+            <button class="btn sm">복직</button></form></td>
+        {% endif %}
+        {% endif %}
+      </tr>
+    {% else %}
+      <tr><td colspan="6" class="empty">등록된 직원이 없습니다</td></tr>
+    {% endfor %}
+    </tbody>
+  </table></div>
+</div>
+{% endblock %}

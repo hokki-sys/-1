@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block title %}기록 · {{ ctx.name }}{% endblock %}
+{% block content %}
+<div class="page-head"><h1>출퇴근 기록</h1>
+  <p>원본 탭은 수정하지 않습니다. 보정은 따로 쌓이고 이력이 남습니다</p></div>
+
+<div class="card">
+  <div class="card-body">
+    <form class="row" method="get">
+      <div><label>시작</label><input type="date" name="start" value="{{ start }}"></div>
+      <div><label>끝</label><input type="date" name="end" value="{{ end }}"></div>
+      <div><label>이름</label><input type="text" name="q" value="{{ q }}" placeholder="이름 일부"></div>
+      <div style="flex:0"><button class="btn primary">조회</button></div>
+      <div style="flex:0"><a class="btn" href="/s/{{ ctx.slug }}/logs/export.csv?start={{ start }}&end={{ end }}&q={{ q }}">CSV</a></div>
+    </form>
+  </div>
+</div>
+
+<div class="card">
+  <header><h2>{{ rows|length }}건</h2><span class="muted" style="font-size:12.5px">영업일 기준</span></header>
+  <div class="scroll"><table>
+    <thead><tr><th>영업일</th><th>이름</th><th>출근</th><th>퇴근</th><th class="num">실근무</th>
+      <th>예정</th><th>상태</th>{% if ctx.at_least('manager') %}<th></th>{% endif %}</tr></thead>
+    <tbody>
+    {% for r in rows %}
+      <tr>
+        <td class="t">{{ r.business_date }}</td>
+        <td>{{ r.employee_name }}{% if r.late %} <span class="tag warn">지각</span>{% endif %}
+            {% if r.is_adjusted %} <span class="tag">보정됨</span>{% endif %}</td>
+        <td class="t">{{ r.check_in|hhmm }}</td>
+        <td class="t">{{ r.check_out|hhmm }}</td>
+        <td class="num">{{ r.actual|mins if r.check_out else '—' }}</td>
+        <td class="t muted">{{ r.expected_in|hhmm }}</td>
+        <td>{% if r.needs_attention %}<span class="tag warn">퇴근 누락</span>
+            {% else %}{{ STATUS_LABEL.get(r.status, r.status) }}{% endif %}</td>
+        {% if ctx.at_least('manager') %}
+        <td style="text-align:right">
+          <details><summary class="btn sm" style="display:inline-block">보정</summary>
+            <form method="post" action="/s/{{ ctx.slug }}/logs/{{ r.session_id }}/adjust"
+                  style="text-align:left;padding:10px;border:1px solid var(--line);
+                         background:var(--surface);position:absolute;right:20px;z-index:5;
+                         width:290px;margin-top:6px">
+              <label>출근</label>
+              <input type="text" name="check_in" class="mono"
+                     value="{{ r.check_in.strftime('%Y-%m-%d %H:%M') }}" required>
+              <label>퇴근 (비우면 미완결)</label>
+              <input type="text" name="check_out" class="mono"
+                     value="{{ r.check_out.strftime('%Y-%m-%d %H:%M') if r.check_out else '' }}">
+              <label>사유 (필수)</label>
+              <input type="text" name="reason" required placeholder="예: 퇴근 태그 누락, 본인 확인">
+              <button class="btn primary sm" style="margin-top:10px">보정 저장</button>
+            </form>
+          </details>
+        </td>
+        {% endif %}
+      </tr>
+    {% else %}
+      <tr><td colspan="8" class="empty">해당 기간에 기록이 없습니다</td></tr>
+    {% endfor %}
+    </tbody>
+  </table></div>
+</div>
+
+<div class="card">
+  <header><h2>기간 합계</h2>
+    <span class="muted" style="font-size:12.5px">{{ ctx.rounding().label }}</span></header>
+  <div class="scroll"><table>
+    <thead><tr><th>이름</th><th>부서</th><th class="num">실근무</th><th class="num">정산근무</th>
+      <th class="num">근무일</th><th class="num">지각</th><th class="num">미완결</th></tr></thead>
+    <tbody>
+    {% for t in totals %}
+      <tr><td>{{ t.name }}</td><td class="muted">{{ t.department or '—' }}</td>
+          <td class="num">{{ t.actual_label }}</td><td class="num">{{ t.settled_label }}</td>
+          <td class="num">{{ t.sessions }}</td>
+          <td class="num">{{ t.late_count or '—' }}</td>
+          <td class="num">{{ t.open_or_missing or '—' }}</td></tr>
+    {% else %}<tr><td colspan="7" class="empty">없습니다</td></tr>{% endfor %}
+    </tbody>
+  </table></div>
+</div>
+{% endblock %}

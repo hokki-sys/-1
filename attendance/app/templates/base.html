@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{% block title %}출퇴근 관리{% endblock %}</title>
+<link rel="stylesheet" href="/static/app.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='13' font-size='13'>🕐</text></svg>">
+</head>
+<body>
+{% if ctx is defined and ctx %}
+<header class="top">
+  <div class="brand">{{ ctx.name }}<small>{{ ctx.slug }}</small></div>
+  <nav class="nav">
+    <a href="/s/{{ ctx.slug }}/" class="{{ 'on' if nav=='dashboard' }}">현황</a>
+    <a href="/s/{{ ctx.slug }}/schedule" class="{{ 'on' if nav=='schedule' }}">근무표</a>
+    <a href="/s/{{ ctx.slug }}/logs" class="{{ 'on' if nav=='logs' }}">기록</a>
+    <a href="/s/{{ ctx.slug }}/reports" class="{{ 'on' if nav=='reports' }}">근무시간</a>
+    <a href="/s/{{ ctx.slug }}/employees" class="{{ 'on' if nav=='employees' }}">직원</a>
+    {% if ctx.at_least('owner') %}
+    <a href="/s/{{ ctx.slug }}/devices" class="{{ 'on' if nav=='devices' }}">단말</a>
+    <a href="/s/{{ ctx.slug }}/import" class="{{ 'on' if nav=='import' }}">가져오기</a>
+    {% endif %}
+  </nav>
+  <div class="who">
+    {% if stores and stores|length > 1 %}
+      <select onchange="if(this.value)location.href=this.value" aria-label="매장 전환">
+        {% for store, role in stores %}
+        <option value="/s/{{ store.slug }}/" {{ 'selected' if store.slug==ctx.slug }}>{{ store.name }}</option>
+        {% endfor %}
+      </select>
+    {% endif %}
+    <span>{{ user.name or user.email }}</span>
+    <form method="post" action="/logout"><button class="btn sm">나가기</button></form>
+  </div>
+</header>
+{% endif %}
+<main>
+  {% if error %}<div class="note alert">{{ error }}</div>{% endif %}
+  {% if ok %}<div class="note ok">{{ ok }}</div>{% endif %}
+  {% block content %}{% endblock %}
+</main>
+<script src="/static/app.js" defer></script>
+</body>
+</html>

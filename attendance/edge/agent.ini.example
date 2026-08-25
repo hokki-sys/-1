@@ -1,0 +1,13 @@
+[server]
+# 서버 주소 (끝에 / 없이)
+base_url = https://attendance.example.com
+# 관리자 화면 > 단말 에서 발급받은 토큰. 발급 시 한 번만 보입니다.
+token = PASTE_DEVICE_TOKEN_HERE
+
+[reader]
+# 시리얼(COM) 모드 리더기 경로. 윈도우는 COM3 같은 형태입니다.
+port = /dev/ttyUSB0
+baudrate = 9600
+
+[device]
+queue_file = queue.db

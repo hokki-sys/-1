@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+{% block title %}근무표 · {{ ctx.name }}{% endblock %}
+{% block content %}
+<div class="page-head">
+  <h1>{{ monday.strftime('%m월 %d일') }} — {{ days[6].strftime('%m월 %d일') }}</h1>
+  {% if week and week.status == 'published' %}
+    <span class="tag on">발행됨</span>
+    <p>이 근무표가 지각 판정의 기준입니다</p>
+  {% else %}
+    <span class="tag">초안</span>
+    <p>발행해야 지각 판정에 쓰입니다</p>
+  {% endif %}
+  <span id="dirty-mark" class="tag warn" hidden>저장 안 됨</span>
+</div>
+
+<div class="card">
+  <header>
+    <div class="row" style="gap:6px">
+      <form class="inline" data-confirm-dirty>
+        <a class="btn sm" href="?week={{ prev_week }}">◀ 지난주</a>
+        <a class="btn sm" href="?week={{ next_week }}">다음주 ▶</a>
+      </form>
+      {% if ctx.at_least('manager') %}
+      <form class="inline" method="post" action="/s/{{ ctx.slug }}/schedule/copy-previous" data-confirm-dirty>
+        <input type="hidden" name="week" value="{{ monday }}">
+        <button class="btn sm">지난주 복사</button>
+      </form>
+      {% endif %}
+      <a class="btn sm" href="/s/{{ ctx.slug }}/schedule/print?week={{ monday }}" target="_blank">인쇄</a>
+    </div>
+    {% if ctx.at_least('manager') %}
+    <div class="row" style="gap:6px">
+      {% if week and week.status == 'published' %}
+        <form class="inline" method="post" action="/s/{{ ctx.slug }}/schedule/unpublish" data-confirm-dirty>
+          <input type="hidden" name="week" value="{{ monday }}">
+          <button class="btn sm">초안으로</button></form>
+      {% else %}
+        <form class="inline" method="post" action="/s/{{ ctx.slug }}/schedule/publish" data-confirm-dirty>
+          <input type="hidden" name="week" value="{{ monday }}">
+          <button class="btn sm">발행</button></form>
+      {% endif %}
+      <button form="sched-form" id="save-btn" class="btn primary">저장</button>
+    </div>
+    {% endif %}
+  </header>
+
+  <div class="card-body">
+    <div class="presets noprint">
+      <span class="k">칸을 고르고</span>
+      {% for p in presets %}
+      <button type="button" class="chipbtn"
+              data-preset="{{ '%02d:%02d'|format(p.start_time.hour, p.start_time.minute) }}-{{ '%02d:%02d'|format(p.end_time.hour, p.end_time.minute) }}">
+        {{ '%02d:%02d'|format(p.start_time.hour, p.start_time.minute) }}–{{ '%02d:%02d'|format(p.end_time.hour, p.end_time.minute) }}
+        <span class="muted">{{ p.label }}</span></button>
+      {% endfor %}
+      <button type="button" class="chipbtn clear" data-preset="">휴무</button>
+    </div>
+
+    <form id="sched-form" method="post" action="/s/{{ ctx.slug }}/schedule/save">
+      <input type="hidden" name="week" value="{{ monday }}">
+      <input type="hidden" name="grid" id="grid-payload">
+    </form>
+
+    <div class="scroll">
+      <table class="sched" id="sched-grid" data-standard-hours="{{ thresholds.weekly_standard_hours }}">
+        <thead>
+          <tr>
+            <th style="text-align:left;padding-left:12px">직원</th>
+            {% for d in days %}
+            <th class="{{ 'today' if d == today_date }}">{{ WEEKDAYS_KO[loop.index0] }}<br>{{ d.day }}</th>
+            {% endfor %}
+            <th style="text-align:right;padding-right:12px">주간</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% set ns = namespace(dept=None) %}
+          {% for row in rows %}
+            {% if row.department != ns.dept %}
+              {% set ns.dept = row.department %}
+              <tr class="dept"><td colspan="9">{{ row.department or '부서 없음' }}</td></tr>
+            {% endif %}
+            <tr data-emp="{{ row.employee_id }}">
+              <td class="nm">{{ row.employee_name }}</td>
+              {% for d in days %}
+                {% set items = row.by_date.get(d, []) %}
+                {% set text = items | map(attribute='label') | join(' ') %}
+                <td class="{{ 'has' if text }}">
+                  <input class="cell" type="text" value="{{ text }}"
+                         data-key="{{ row.employee_id }}|{{ d }}"
+                         placeholder="" inputmode="numeric" autocomplete="off"
+                         aria-label="{{ row.employee_name }} {{ d }}"
+                         {{ 'readonly' if not ctx.at_least('manager') }}>
+                </td>
+              {% endfor %}
+              <td class="tot"><b>{{ (row.total_minutes / 60) | round(1) }}</b><i>h</i>
+                  <span class="bar"></span></td>
+            </tr>
+          {% else %}
+            <tr><td colspan="9" class="empty">직원을 먼저 등록하세요</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <p class="muted" style="font-size:12.5px;margin:10px 0 0">
+      칸에 <span class="mono">10-22</span> 처럼 적습니다. 비우면 휴무. 방향키로 위아래 이동.
+      기준선 주 {{ thresholds.weekly_short_hours|int }}시간 · {{ thresholds.weekly_standard_hours|int }}시간.
+    </p>
+  </div>
+</div>
+
+{% if warnings %}
+<div class="card">
+  <header><h2>확인해 보세요 {{ warnings|length }}건</h2>
+    <span class="muted" style="font-size:12.5px">저장을 막지는 않습니다</span></header>
+  <div class="card-body">
+    <ul class="warnlist">
+      {% for w in warnings %}<li class="{{ 'w' if w.severity.value == 'warning' else 'i' }}">{{ w.message }}</li>{% endfor %}
+    </ul>
+  </div>
+</div>
+{% endif %}
+
+{% if revisions %}
+<div class="card">
+  <header><h2>발행 후 변경 이력</h2></header>
+  <div class="scroll"><table>
+    <thead><tr><th>시각</th><th>변경한 사람</th><th>내용</th></tr></thead>
+    <tbody>{% for r in revisions %}
+      <tr><td class="t">{{ r.created_at.strftime('%m-%d %H:%M') }}</td>
+          <td>{{ r.actor }}</td><td>{{ r.summary }}</td></tr>
+    {% endfor %}</tbody>
+  </table></div>
+</div>
+{% endif %}
+{% endblock %}

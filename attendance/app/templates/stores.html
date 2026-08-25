@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="ko"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>매장 선택</title><link rel="stylesheet" href="/static/app.css">
+</head><body><main>
+<div class="page-head"><h1>매장 선택</h1><p>{{ user.name or user.email }}</p></div>
+<div class="card"><table>
+  <thead><tr><th>매장</th><th>슬러그</th><th>권한</th><th></th></tr></thead>
+  <tbody>
+  {% for store, role in stores %}
+    <tr><td>{{ store.name }}</td><td class="mono muted">{{ store.slug }}</td>
+        <td>{{ {'owner':'사장','manager':'점장','staff':'직원'}[role] }}</td>
+        <td style="text-align:right"><a class="btn sm" href="/s/{{ store.slug }}/">열기</a></td></tr>
+  {% else %}
+    <tr><td colspan="4" class="empty">접근 가능한 매장이 없습니다</td></tr>
+  {% endfor %}
+  </tbody>
+</table></div>
+<form method="post" action="/logout"><button class="btn">나가기</button></form>
+</main></body></html>

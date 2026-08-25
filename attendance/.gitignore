@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.env
+*.db
+edge/queue.db
+.pytest_cache/

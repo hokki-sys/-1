@@ -1,0 +1,170 @@
+/* 색은 경고에만 씁니다. 나머지는 전부 무채색 + 굵기와 간격으로 구분합니다. */
+:root{
+  --bg:#f4f5f6; --surface:#fff; --surface-2:#fafafa; --sunken:#eeeff1;
+  --ink:#16181c; --ink-2:#4a5158; --ink-3:#858d95;
+  --line:#dcdfe3; --line-soft:#e9ebee;
+  --warn:#9a6207; --warn-bg:#fdf4e3;
+  --alert:#a3311f; --alert-bg:#fbeeec;
+  --ok:#2f6b4f;
+  --mono:"SF Mono",ui-monospace,Menlo,Consolas,monospace;
+  --sans:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",
+         "Noto Sans KR",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#121417; --surface:#191c20; --surface-2:#1e2227; --sunken:#101215;
+    --ink:#e4e7ea; --ink-2:#a6adb4; --ink-3:#767d85;
+    --line:#2c3138; --line-soft:#23272d;
+    --warn:#d6a45c; --warn-bg:#2a2216;
+    --alert:#e08272; --alert-bg:#2b1a17;
+    --ok:#79bd9a;
+  }
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+     font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+h1,h2,h3{margin:0;font-weight:600;letter-spacing:-.01em}
+h1{font-size:20px} h2{font-size:16px} h3{font-size:14px}
+
+/* ---------- 껍데기 ---------- */
+.top{display:flex;align-items:center;gap:18px;padding:0 20px;height:52px;
+     background:var(--surface);border-bottom:1px solid var(--line);
+     position:sticky;top:0;z-index:20;flex-wrap:wrap}
+.brand{font-weight:600;font-size:15px;white-space:nowrap}
+.brand small{display:block;font-family:var(--mono);font-size:10px;color:var(--ink-3);
+             letter-spacing:.08em;font-weight:400;line-height:1}
+.nav{display:flex;gap:2px;margin-left:8px;flex:1;flex-wrap:wrap}
+.nav a{padding:6px 11px;font-size:14px;color:var(--ink-2);text-decoration:none;border-radius:3px}
+.nav a:hover{background:var(--sunken);color:var(--ink)}
+.nav a.on{background:var(--ink);color:var(--surface);font-weight:500}
+.who{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--ink-3)}
+.who form{margin:0}
+main{max-width:1240px;margin:0 auto;padding:24px 20px 80px}
+.page-head{display:flex;align-items:baseline;gap:14px;margin-bottom:18px;flex-wrap:wrap}
+.page-head p{margin:0;color:var(--ink-3);font-size:13.5px}
+
+/* ---------- 카드 / 표 ---------- */
+.card{background:var(--surface);border:1px solid var(--line);margin-bottom:18px}
+.card > header{display:flex;align-items:center;justify-content:space-between;gap:12px;
+               padding:12px 16px;border-bottom:1px solid var(--line);
+               background:var(--surface-2);flex-wrap:wrap}
+.card > header h2{font-size:14px}
+.card-body{padding:16px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{text-align:left;padding:9px 14px;border-bottom:1px solid var(--line-soft)}
+th{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+   color:var(--ink-3);font-weight:500;background:var(--surface-2);
+   border-bottom:1px solid var(--line);white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+td.num,th.num{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums}
+td.t{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.empty{padding:34px 16px;text-align:center;color:var(--ink-3);font-size:14px}
+
+/* ---------- 상태 표시: 색이 아니라 굵기·라벨로 ---------- */
+.tag{display:inline-block;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;
+     padding:2px 7px;border:1px solid var(--line);color:var(--ink-3);white-space:nowrap}
+.tag.on{border-color:var(--ink-2);color:var(--ink)}
+.tag.warn{border-color:var(--warn);color:var(--warn);background:var(--warn-bg)}
+.tag.alert{border-color:var(--alert);color:var(--alert);background:var(--alert-bg)}
+.dot{display:inline-block;width:7px;height:7px;background:var(--ink-3);margin-right:6px}
+.dot.live{background:var(--ok)}
+.dot.off{background:var(--alert)}
+
+/* ---------- 알림줄 ---------- */
+.note{padding:11px 15px;margin-bottom:16px;font-size:14px;border:1px solid var(--line);
+      background:var(--surface)}
+.note.warn{border-color:var(--warn);background:var(--warn-bg);color:var(--warn)}
+.note.alert{border-color:var(--alert);background:var(--alert-bg);color:var(--alert)}
+.note.ok{border-color:var(--line);background:var(--surface-2);color:var(--ink-2)}
+.note b{font-weight:600}
+
+/* ---------- 폼 ---------- */
+input,select,textarea,button{font-family:inherit;font-size:14px;color:inherit}
+input[type=text],input[type=email],input[type=password],input[type=date],
+input[type=file],select,textarea{
+  padding:7px 10px;border:1px solid var(--line);background:var(--surface);
+  color:var(--ink);width:100%;border-radius:0}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--ink-2);outline-offset:-1px}
+label{display:block;font-size:12px;color:var(--ink-3);margin-bottom:4px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end}
+.row > div{flex:1;min-width:130px}
+.btn{padding:7px 14px;border:1px solid var(--line);background:var(--surface);
+     cursor:pointer;white-space:nowrap}
+.btn:hover{background:var(--sunken)}
+.btn.primary{background:var(--ink);color:var(--surface);border-color:var(--ink);font-weight:500}
+.btn.primary:hover{opacity:.86}
+.btn.danger{color:var(--alert);border-color:var(--alert)}
+.btn.sm{padding:4px 9px;font-size:12.5px}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+form.inline{display:inline}
+
+/* ---------- 근무표 격자 ---------- */
+.sched{border-collapse:collapse;width:100%;min-width:820px;font-size:13.5px}
+.sched th,.sched td{border:1px solid var(--line-soft);padding:0;text-align:center;
+                    vertical-align:middle}
+.sched thead th{background:var(--surface-2);border-bottom:1px solid var(--line);
+                padding:8px 6px;font-family:var(--mono);font-size:11px;
+                letter-spacing:.03em;color:var(--ink-3);font-weight:500;text-transform:none}
+.sched thead th.today{color:var(--ink);font-weight:700}
+.sched td.nm{text-align:left;padding:8px 12px;white-space:nowrap;font-weight:500;
+             background:var(--surface);min-width:110px}
+.sched td.nm small{display:block;font-family:var(--mono);font-size:10px;color:var(--ink-3);
+                   font-weight:400;letter-spacing:.06em}
+.sched tr.dept td{background:var(--sunken);text-align:left;padding:6px 12px;
+                  font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;
+                  color:var(--ink-3);border-left:none;border-right:none}
+.sched input.cell{width:100%;height:38px;border:none;background:transparent;text-align:center;
+                  font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:13px;
+                  padding:0;color:var(--ink)}
+.sched input.cell:focus{outline:2px solid var(--ink);outline-offset:-2px;background:var(--surface)}
+.sched td.has input.cell{background:var(--sunken)}
+.sched td.tot{text-align:right;padding:8px 12px;font-family:var(--mono);
+              font-variant-numeric:tabular-nums;white-space:nowrap;background:var(--surface)}
+.sched td.tot b{font-weight:600}
+.sched td.tot i{font-style:normal;color:var(--ink-3);font-size:11px}
+.sched td.tot.over b{color:var(--warn)}
+.sched td.tot .bar{display:block;height:2px;background:var(--ink-3);margin-top:3px}
+.sched td.tot.over .bar{background:var(--warn)}
+
+.presets{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:12px}
+.presets .k{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--ink-3);
+            text-transform:uppercase;margin-right:4px}
+.chipbtn{font-family:var(--mono);font-size:12px;padding:4px 10px;border:1px solid var(--line);
+         background:var(--surface);cursor:pointer}
+.chipbtn:hover{background:var(--sunken);border-color:var(--ink-2)}
+.chipbtn.clear{color:var(--ink-3)}
+
+.warnlist{margin:0;padding-left:18px;font-size:13.5px;color:var(--ink-2)}
+.warnlist li{margin-bottom:4px}
+.warnlist li.w::marker{color:var(--warn)}
+.warnlist li.i::marker{color:var(--ink-3)}
+
+/* ---------- 인쇄 ---------- */
+@media print{
+  .top,.noprint,.presets{display:none!important}
+  body{background:#fff;font-size:11pt}
+  main{max-width:none;padding:0}
+  .card{border:none;margin:0}
+  .card > header{background:none;border-bottom:1px solid #000;padding:0 0 6px}
+  .sched{min-width:0;font-size:10pt}
+  .sched td.has{background:#f0f0f0!important;-webkit-print-color-adjust:exact;
+                print-color-adjust:exact}
+  .sched th,.sched td{border:1px solid #999}
+  @page{size:A4 landscape;margin:12mm}
+}
+
+/* ---------- 로그인 ---------- */
+.auth{max-width:340px;margin:12vh auto;padding:0 20px}
+.auth .card-body{padding:22px}
+.auth h1{margin-bottom:4px}
+.auth p.sub{margin:0 0 20px;color:var(--ink-3);font-size:13px}
+.auth label{margin-top:12px}
+.auth .btn{width:100%;margin-top:18px}
+
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.muted{color:var(--ink-3)}
+.tokenbox{font-family:var(--mono);font-size:13px;word-break:break-all;padding:12px;
+          background:var(--sunken);border:1px solid var(--line);margin:8px 0}

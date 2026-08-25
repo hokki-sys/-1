@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}근무시간 · {{ ctx.name }}{% endblock %}
+{% block content %}
+<div class="page-head"><h1>근무시간</h1><p>{{ label }}</p></div>
+
+<div class="card"><div class="card-body">
+  <form class="row" method="get">
+    <div><label>단위</label><select name="period">
+      <option value="daily" {{ 'selected' if period=='daily' }}>일별</option>
+      <option value="weekly" {{ 'selected' if period=='weekly' }}>주별</option>
+      <option value="monthly" {{ 'selected' if period=='monthly' }}>월별</option>
+    </select></div>
+    <div><label>기준일</label><input type="date" name="anchor" value="{{ anchor }}"></div>
+    <div style="flex:0"><button class="btn primary">조회</button></div>
+    <div style="flex:0"><a class="btn" href="/s/{{ ctx.slug }}/reports/export.csv?period={{ period }}&anchor={{ anchor }}">CSV</a></div>
+  </form>
+</div></div>
+
+<div class="card">
+  <header><h2>{{ rows|length }}명</h2>
+    <span class="muted" style="font-size:12.5px">정산 기준 · {{ policy_label }}</span></header>
+  <div class="scroll"><table>
+    <thead><tr><th>이름</th><th>부서</th><th>유형</th><th class="num">실근무</th>
+      <th class="num">정산근무</th><th class="num">정산(분)</th><th class="num">근무일</th>
+      <th class="num">지각</th><th class="num">미완결</th></tr></thead>
+    <tbody>
+    {% for r in rows %}
+      <tr><td>{{ r.name }}</td><td class="muted">{{ r.department or '—' }}</td>
+          <td class="muted">{{ r.employee_type }}</td>
+          <td class="num">{{ r.actual_label }}</td>
+          <td class="num"><b>{{ r.settled_label }}</b></td>
+          <td class="num">{{ r.settled_minutes|round|int }}</td>
+          <td class="num">{{ r.sessions }}</td>
+          <td class="num">{{ r.late_count or '—' }}</td>
+          <td class="num">{% if r.open_or_missing %}<span class="tag warn">{{ r.open_or_missing }}</span>{% else %}—{% endif %}</td>
+      </tr>
+    {% else %}<tr><td colspan="9" class="empty">해당 기간에 기록이 없습니다</td></tr>{% endfor %}
+    </tbody>
+  </table></div>
+</div>
+<p class="muted" style="font-size:12.5px">
+  미완결(근무 중·퇴근 누락) 기록은 합계에서 빠집니다. 자동으로 마감하지 않으므로
+  <a href="/s/{{ ctx.slug }}/logs">기록</a>에서 보정한 뒤 다시 조회하세요.
+</p>
+{% endblock %}

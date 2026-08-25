@@ -1,0 +1,16 @@
+<table>
+  <thead><tr><th>탭 시각</th><th>서버 도착</th><th>단말</th><th>쓰임</th></tr></thead>
+  <tbody>
+  {% for p in punches %}
+    <tr>
+      <td class="t">{{ p.tapped_at.astimezone(ctx.tz).strftime('%Y-%m-%d %H:%M:%S') }}</td>
+      <td class="t muted">{{ p.received_at.astimezone(ctx.tz).strftime('%H:%M:%S') }}</td>
+      <td class="muted">{{ p.device_name or '—' }}</td>
+      <td>{% if p.id in ignored %}<span class="tag">중복으로 무시</span>
+          {% elif ws and p.id == ws.check_in_punch_id %}출근
+          {% elif ws and p.id == ws.check_out_punch_id %}퇴근
+          {% else %}—{% endif %}</td>
+    </tr>
+  {% else %}<tr><td colspan="4" class="empty">원본 탭 기록이 없습니다</td></tr>{% endfor %}
+  </tbody>
+</table>

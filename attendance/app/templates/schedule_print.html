@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ko"><head>
+<meta charset="utf-8"><title>{{ ctx.name }} 근무표 {{ monday }}</title>
+<link rel="stylesheet" href="/static/app.css">
+</head><body><main>
+<div class="card">
+  <header>
+    <h2>{{ ctx.name }} · {{ monday.strftime('%Y년 %m월 %d일') }} — {{ days[6].strftime('%m월 %d일') }}</h2>
+    <span class="mono muted">{{ '발행본' if week and week.status=='published' else '초안' }}</span>
+  </header>
+  <div class="card-body">
+    <table class="sched">
+      <thead><tr><th style="text-align:left;padding-left:10px">직원</th>
+        {% for d in days %}<th>{{ WEEKDAYS_KO[loop.index0] }} {{ d.day }}</th>{% endfor %}
+        <th style="text-align:right;padding-right:10px">주간</th></tr></thead>
+      <tbody>
+        {% set ns = namespace(dept=None) %}
+        {% for row in rows %}
+          {% if row.department != ns.dept %}{% set ns.dept = row.department %}
+            <tr class="dept"><td colspan="9">{{ row.department or '부서 없음' }}</td></tr>{% endif %}
+          <tr>
+            <td class="nm">{{ row.employee_name }}</td>
+            {% for d in days %}
+              {% set items = row.by_date.get(d, []) %}
+              {% set text = items | map(attribute='label') | join(' ') %}
+              <td class="{{ 'has' if text }}" style="padding:7px 4px;font-family:var(--mono)">{{ text }}</td>
+            {% endfor %}
+            <td class="tot"><b>{{ (row.total_minutes / 60) | round(1) }}</b><i>h</i></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+<button class="btn primary noprint" onclick="window.print()">인쇄</button>
+</main></body></html>
