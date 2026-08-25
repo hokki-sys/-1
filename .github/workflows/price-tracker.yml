@@ -5,7 +5,7 @@ on:
     - cron: "30 22 * * *" # 매일 07:30 KST
   workflow_dispatch:
   push:
-    branches: [claude/vendor-product-price-tracking-6bo0w5]
+    branches: [claude/online-price-tracking-design-lzqbb0]
 
 permissions:
   contents: write
@@ -32,6 +32,23 @@ jobs:
           FOODEN_COOKIE: ${{ secrets.FOODEN_COOKIE }}
           TRACKER_VERBOSE: "1"
         run: python3 tracker/track_price.py
+
+      - name: Run retail panel collector (Naver/Coupang)
+        id: retail
+        if: always()
+        env:
+          TRACKER_VERBOSE: "1"
+        run: python3 tracker/retail_panel.py
+
+      - name: Fetch USD/KRW rate
+        if: always()
+        continue-on-error: true
+        run: python3 tracker/retail_fx.py
+
+      - name: Aggregate retail panel
+        id: retail_agg
+        if: always()
+        run: python3 tracker/retail_aggregate.py
 
       - name: Run wholesale (wonmul) collector
         if: always()
@@ -109,13 +126,16 @@ jobs:
           include-hidden-files: true
 
       - name: Open issue on price change
-        if: always() && steps.track.outputs.changed == 'true'
+        if: >-
+          always() && (steps.track.outputs.changed == 'true'
+          || steps.retail_agg.outputs.retail_changed == 'true')
         uses: actions/github-script@v7
         with:
           script: |
             const fs = require('fs');
             const parts = [];
-            for (const f of ['tracker/.change_note.md', 'tracker/.market_note.md']) {
+            for (const f of ['tracker/.change_note.md', 'tracker/.market_note.md',
+                             'tracker/.retail_note.md']) {
               try { parts.push(fs.readFileSync(f, 'utf8')); } catch (e) {}
             }
             const body = parts.join('\n\n---\n\n')

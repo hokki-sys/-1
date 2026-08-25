@@ -18,6 +18,7 @@ from datetime import date, datetime, timedelta
 from pathlib import Path
 
 import market_price as mp
+import retail_config as cfg
 import track_price as tp
 
 ROOT = Path(__file__).resolve().parent
@@ -52,6 +53,8 @@ def cmp_line(cur: float, prev: float | None, unit: str, when: str = "") -> str:
         return f"{arrow(p)} {p:+.1f}% (${prev:,.2f}{when_s})"
     if unit == "¥":
         return f"{arrow(p)} {p:+.1f}% (¥{prev:,.0f}{when_s})"
+    if unit == "배":       # 배수는 1 미만 소수라 정수 절사하면 값이 사라진다
+        return f"{arrow(p)} {p:+.1f}% ({prev:,.2f}배{when_s})"
     return f"{arrow(p)} {p:+.1f}% ({int(prev):,}원{when_s})"
 
 
@@ -203,15 +206,136 @@ def japan_section(today: str) -> tuple[list[str], bool, list[str]]:
     return lines, updated, notes
 
 
+def _f(value) -> float | None:
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return None
+
+
+def retail_section(today: str) -> tuple[list[str], bool, list[str]]:
+    """온라인 소매 시세 (설계 10장). 헤드라인은 중앙값 7일 이동평균."""
+    daily = mp.load_csv(ROOT / "item_daily.csv")
+    items = mp.load_csv(ROOT / "panel_items.csv")
+    offers = mp.load_csv(ROOT / "panel_offers.csv")
+    active = [o for o in offers if o.get("status", "active") == "active"]
+    if not daily:
+        n = len(active)
+        hint = (f"패널 오퍼 {n}개 등록됨 — 첫 수집 대기 중" if n
+                else "패널 미구성 — tracker/README.md 의 '패널 만들기' 참고")
+        return [f"- {hint}", ""], False, []
+
+    label_of = {i["item_id"]: i["label"] for i in items}
+    last_day = max(r["date"] for r in daily)
+    lines: list[str] = []
+    notes: list[str] = []
+    changed = False
+
+    for row in sorted((r for r in daily if r["date"] == last_day),
+                      key=lambda r: label_of.get(r["item_id"], r["item_id"])):
+        name = label_of.get(row["item_id"], row["item_id"])
+        ma = _f(row.get("median_ma7"))
+        med = _f(row.get("median_won_per_kg"))
+        if ma is None and med is None:
+            lines.append(f"● {name}")
+            lines.append(f"   관측 {row['n_offers']}건 — 통계를 낼 만큼 모이지 않음")
+            lines.append("")
+            continue
+
+        lines.append(f"● {name}")
+        lines.append(f"   시세: {ma or med:,.0f}원/kg (7일 이동평균, {last_day[5:]} 기준)")
+        lines.append(f"   분포: 최저 {_f(row.get('min_won_per_kg')) or 0:,.0f} · "
+                     f"중앙 {med or 0:,.0f} · p75 {_f(row.get('p75_won_per_kg')) or 0:,.0f} 원/kg")
+        for name_p, key in (("전일", "d1_pct"), ("전주", "d7_pct"), ("전월", "d30_pct")):
+            v = _f(row.get(key))
+            lines.append(f"   {name_p}대비: " + (f"{arrow(v * 100)}{abs(v) * 100:.1f}%"
+                                                if v is not None else "—"))
+        lo, mid, hi = row.get("n_lo", "0"), row.get("n_mid", "0"), row.get("n_hi", "0")
+        lines.append(f"   표본: 오퍼 {row['n_offers']}개 / 판매자 {row['n_sellers']}곳 "
+                     f"(분위 {lo}/{mid}/{hi})")
+        if row.get("is_30d_low"):
+            lines.append("   ※ 30일 최저 경신")
+            changed = True
+            notes.append(f"{name} 30일최저")
+        weak = [t for t, v in (("lo", lo), ("mid", mid), ("hi", hi))
+                if int(v or 0) < cfg.MIN_PER_TERCILE]
+        if weak:
+            lines.append(f"   ⚠️ {'/'.join(weak)} 분위 표본 부족 — 지표 신뢰도 낮음")
+            notes.append(f"{name} 표본부족")
+            changed = True
+        d7 = _f(row.get("d7_pct"))
+        if d7 is not None and abs(d7) >= cfg.TREND_SHIFT_PCT:
+            changed = True
+            notes.append(f"소매 {arrow(d7 * 100)}{abs(d7) * 100:.1f}%")
+        lines.append("")
+
+    pending = sum(1 for o in active if o.get("match_status") == "pending")
+    if pending >= cfg.PENDING_ALERT:
+        lines.append(f"· 검토 대기 오퍼 {pending}건 — panel_offers.csv 확인 필요")
+        lines.append("")
+    return lines, changed, notes
+
+
+def cross_section(today: str) -> list[str]:
+    """마진 구조 (설계 10-4). 소매·도매·수입을 한 축에 놓는다."""
+    cross = mp.load_csv(ROOT / "retail_cross.csv")
+    items = mp.load_csv(ROOT / "panel_items.csv")
+    if not cross:
+        return ["- 소매 데이터가 쌓이면 자동으로 채워집니다", ""]
+    label_of = {i["item_id"]: i["label"] for i in items}
+    last_day = max(r["date"] for r in cross)
+    rows = [r for r in cross if r["date"] == last_day]
+    lines: list[str] = []
+
+    def series(metric: str, item_id: str) -> list[tuple[date, float]]:
+        out = []
+        for r in cross:
+            if r["metric"] == metric and r["item_id"] == item_id and _f(r["value"]):
+                out.append((d(r["date"]), float(r["value"])))
+        return sorted(out)
+
+    gap = [r for r in rows if r["metric"] == "origin_gap"]
+    if gap:
+        g = gap[0]
+        lines.append("● 원산지 가격차 (국내산 ÷ 중국산 필렛)")
+        lines.append(f"   현재: {float(g['value']):.2f}배 — {g['detail']}")
+        lines.extend(multi_period_lines(series("origin_gap", g["item_id"]), "배"))
+        lines.append("")
+
+    for metric, title in (("import_multiple", "수입 원가 대비 소매 배수"),
+                          ("import_multiple_cif", "CIF 원가 대비 소매 배수")):
+        hits = [r for r in rows if r["metric"] == metric]
+        if not hits:
+            continue
+        lines.append(f"● {title}")
+        for r in sorted(hits, key=lambda x: x["item_id"]):
+            lines.append(f"   {label_of.get(r['item_id'], r['item_id'])}: "
+                         f"{float(r['value']):.2f}배 — {r['detail']}")
+        if metric == "import_multiple_cif":
+            lines.append("   ※ 관세·부가세·통관비 미반영 (retail_config.LANDED_COST 설정 시 반영)")
+        lines.append("")
+
+    ratios = [r for r in rows if r["metric"] == "retail_wholesale_ratio"]
+    if ratios:
+        lines.append("● 소매 ÷ 도매(활 뱀장어 경매가)")
+        for r in sorted(ratios, key=lambda x: x["item_id"]):
+            lines.append(f"   {label_of.get(r['item_id'], r['item_id'])}: "
+                         f"{float(r['value']):.2f}배")
+        lines.append(f"   ※ {ratios[0]['detail']}")
+        lines.append("")
+    return lines or ["- 산출 가능한 지표 없음", ""]
+
+
 def main() -> int:
     today = datetime.now(tp.KST).strftime("%Y-%m-%d")
     p_lines, p_changed, p_notes = product_section()
+    r_lines, r_changed, r_notes = retail_section(today)
     w_lines, w_new, w_notes = wonmul_section(today)
     i_lines, i_new, i_notes = import_section(today)
     j_lines, j_new, j_notes = japan_section(today)
 
-    notes = p_notes + w_notes + i_notes + j_notes
-    if p_changed:
+    notes = p_notes + r_notes + w_notes + i_notes + j_notes
+    if p_changed or r_changed:
         status = "가격 변동 있음"
     elif w_new or i_new or j_new:
         status = "신규 데이터 있음"
@@ -229,17 +353,25 @@ def main() -> int:
         sep,
         *p_lines,
         sep,
-        "2) 원물 도매 경매가 (전국 공영도매시장)",
+        "2) 온라인 소매 시세 (네이버·쿠팡 패널, 배송비 포함 원/kg)",
+        sep,
+        *r_lines,
+        sep,
+        "3) 원물 도매 경매가 (전국 공영도매시장)",
         sep,
         *w_lines,
         sep,
-        "3) 중국산 수입실적 — 한국 (월간, USD/kg CIF, 관세청 통관)",
+        "4) 중국산 수입실적 — 한국 (월간, USD/kg CIF, 관세청 통관)",
         sep,
         *i_lines,
         sep,
-        "4) 중국산 수입실적 — 일본 (월간, USD/kg 환산·CIF, 일본 재무성)",
+        "5) 중국산 수입실적 — 일본 (월간, USD/kg 환산·CIF, 일본 재무성)",
         sep,
         *j_lines,
+        sep,
+        "6) 마진 구조 (소매 ÷ 도매 ÷ 수입)",
+        sep,
+        *cross_section(today),
         f"전체 이력: {REPO_URL}",
         "※ '—'는 해당 기간의 데이터가 아직 쌓이지 않았다는 뜻입니다.",
         "※ 일본 단가는 ECB 월중 환율로 USD 환산 (원화·엔화 원본은 CSV에 보존).",
@@ -248,7 +380,8 @@ def main() -> int:
     OUT_PATH.write_text(body, encoding="utf-8")
     tp.log(body)
     tp.gh_output("subject", f"[장어 시세] {today} — {status}")
-    tp.gh_output("changed", "true" if (p_changed or w_new or i_new or j_new) else "false")
+    tp.gh_output("changed",
+                 "true" if (p_changed or r_changed or w_new or i_new or j_new) else "false")
     return 0
 
 

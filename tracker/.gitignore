@@ -1,5 +1,6 @@
 .debug/
 .change_note.md
 .market_note.md
+.retail_note.md
 .daily_report.txt
 __pycache__/
