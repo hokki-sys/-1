@@ -1,0 +1,727 @@
+<title>부산역 솥밥 전략</title>
+<style>
+  /* Toss Design System (TDS) tokens — light */
+  :root {
+    --bg: #FFFFFF;
+    --fill: #F9FAFB;        /* grey50  */
+    --fill-2: #F2F4F6;      /* grey100 */
+    --line: #E5E8EB;        /* grey200 */
+    --text: #191F28;        /* grey900 */
+    --text-2: #4E5968;      /* grey700 */
+    --text-3: #6B7684;      /* grey600 */
+    --text-4: #8B95A1;      /* grey500 */
+    --blue: #3182F6;        /* blue500 */
+    --blue-deep: #1B64DA;   /* blue700 */
+    --blue-tint: #E8F3FF;   /* blue50  */
+    --danger: #F04452;      /* red500  */
+    --danger-tint: rgba(240, 68, 82, .06);
+    --warn: #D67E00;
+    --warn-tint: rgba(214, 126, 0, .10);
+    --ok: #0BA360;
+    --ok-tint: rgba(11, 163, 96, .10);
+    --on-accent: #FFFFFF;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #101013;
+      --fill: #17171C;
+      --fill-2: #202027;
+      --line: #2C2C35;
+      --text: #E5E8EB;
+      --text-2: #B0B8C1;
+      --text-3: #8B95A1;
+      --text-4: #6B7684;
+      --blue: #4593FC;
+      --blue-deep: #64A8FF;
+      --blue-tint: rgba(69, 147, 252, .13);
+      --danger: #FF7A85;
+      --danger-tint: rgba(240, 68, 82, .12);
+      --warn: #FFB023;
+      --warn-tint: rgba(255, 176, 35, .13);
+      --ok: #35C285;
+      --ok-tint: rgba(53, 194, 133, .13);
+      --on-accent: #FFFFFF;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #101013;
+    --fill: #17171C;
+    --fill-2: #202027;
+    --line: #2C2C35;
+    --text: #E5E8EB;
+    --text-2: #B0B8C1;
+    --text-3: #8B95A1;
+    --text-4: #6B7684;
+    --blue: #4593FC;
+    --blue-deep: #64A8FF;
+    --blue-tint: rgba(69, 147, 252, .13);
+    --danger: #FF7A85;
+    --danger-tint: rgba(240, 68, 82, .12);
+    --warn: #FFB023;
+    --warn-tint: rgba(255, 176, 35, .13);
+    --ok: #35C285;
+    --ok-tint: rgba(53, 194, 133, .13);
+    --on-accent: #FFFFFF;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Toss Product Sans", "Pretendard", -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Segoe UI", sans-serif;
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: -0.01em;
+  }
+  .wrap { max-width: 820px; margin: 0 auto; padding: 56px 20px 100px; }
+
+  /* ---------- header ---------- */
+  .chip {
+    display: inline-flex; align-items: center;
+    background: var(--blue-tint); color: var(--blue-deep);
+    font-size: 13px; font-weight: 700; letter-spacing: 0;
+    padding: 5px 12px; border-radius: 999px; margin-bottom: 18px;
+  }
+  h1 {
+    font-size: clamp(30px, 5.4vw, 44px); line-height: 1.22; margin: 0 0 12px;
+    font-weight: 800; letter-spacing: -0.028em; text-wrap: balance;
+  }
+  .subtitle { color: var(--text-3); font-size: 17px; margin: 0 0 32px; font-weight: 500; }
+
+  .notice {
+    background: var(--fill); border-radius: 16px;
+    padding: 18px 22px; font-size: 14.5px; color: var(--text-2);
+    margin-bottom: 16px;
+  }
+  .notice strong { color: var(--text); }
+  .notice .nt { display: block; font-size: 12.5px; font-weight: 700; color: var(--text-4); margin-bottom: 4px; letter-spacing: .02em; }
+
+  .verdict {
+    background: var(--warn-tint); border-radius: 16px;
+    padding: 20px 22px; margin-bottom: 16px;
+    display: flex; gap: 18px; align-items: center; flex-wrap: wrap;
+  }
+  .verdict .vd {
+    font-size: 22px; font-weight: 800; color: var(--warn);
+    letter-spacing: -0.02em; white-space: nowrap;
+  }
+  .verdict p { margin: 0; flex: 1 1 320px; font-size: 15px; color: var(--text-2); }
+  .verdict p strong { color: var(--text); }
+
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 48px; }
+  .stat { background: var(--fill); border-radius: 16px; padding: 18px 18px 15px; }
+  .stat b { display: block; font-size: 25px; font-weight: 800; color: var(--blue); font-variant-numeric: tabular-nums; letter-spacing: -0.02em; margin-bottom: 2px; }
+  .stat span { font-size: 13px; color: var(--text-3); font-weight: 500; }
+
+  /* ---------- toc ---------- */
+  nav.toc { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 60px; }
+  nav.toc a {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: var(--fill-2); color: var(--text-2);
+    text-decoration: none; font-size: 14px; font-weight: 600;
+    padding: 9px 16px; border-radius: 999px;
+    transition: background .15s ease, color .15s ease;
+  }
+  nav.toc a:hover, nav.toc a:focus-visible { background: var(--blue-tint); color: var(--blue-deep); }
+  nav.toc .n { color: var(--blue); font-weight: 800; font-variant-numeric: tabular-nums; }
+
+  /* ---------- sections ---------- */
+  section { margin-bottom: 72px; }
+  .chapter {
+    display: inline-flex; background: var(--blue-tint); color: var(--blue-deep);
+    font-size: 12.5px; font-weight: 800; padding: 4px 11px; border-radius: 999px;
+    margin-bottom: 12px; letter-spacing: .01em;
+  }
+  h2 {
+    font-size: 27px; margin: 0 0 22px; font-weight: 800;
+    letter-spacing: -0.024em; line-height: 1.3; text-wrap: balance;
+  }
+  h3 { font-size: 18.5px; margin: 38px 0 14px; font-weight: 700; letter-spacing: -0.015em; }
+  p { margin: 0 0 14px; max-width: 46em; }
+  ul, ol { margin: 0 0 16px; padding-left: 22px; }
+  li { margin-bottom: 8px; }
+  li::marker { color: var(--text-4); }
+  strong { font-weight: 700; }
+  .hl { color: var(--danger); font-weight: 700; }
+  .muted { color: var(--text-4); font-size: 13.5px; }
+  a { color: var(--blue); text-decoration: none; font-weight: 600; }
+  a:hover, a:focus-visible { text-decoration: underline; text-underline-offset: 3px; }
+  .tag { display: inline-block; font-size: 12px; font-weight: 800; padding: 1px 8px; border-radius: 999px; vertical-align: 1px; white-space: nowrap; }
+  .tag.ok { background: var(--ok-tint); color: var(--ok); }
+  .tag.mid { background: var(--warn-tint); color: var(--warn); }
+  .tag.bad { background: var(--danger-tint); color: var(--danger); }
+  .tag.info { background: var(--blue-tint); color: var(--blue-deep); }
+
+  /* summary */
+  .summary { counter-reset: sm; list-style: none; padding: 0; display: grid; gap: 10px; }
+  .summary li {
+    counter-increment: sm; background: var(--fill); border-radius: 16px;
+    padding: 16px 20px 16px 58px; position: relative; margin: 0;
+  }
+  .summary li::before {
+    content: counter(sm); position: absolute; left: 18px; top: 17px;
+    width: 26px; height: 26px; border-radius: 50%;
+    background: var(--blue); color: var(--on-accent); font-size: 13.5px; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  /* tables */
+  .tbl { overflow-x: auto; background: var(--fill); border-radius: 16px; margin-bottom: 20px; }
+  table { border-collapse: collapse; width: 100%; font-size: 14.5px; min-width: 560px; }
+  th {
+    text-align: left; font-size: 13px; color: var(--text-4); font-weight: 700;
+    padding: 13px 18px 9px; white-space: nowrap;
+  }
+  td { padding: 11px 18px; border-top: 1px solid var(--line); vertical-align: top; font-variant-numeric: tabular-nums; }
+  td:first-child { font-weight: 700; white-space: nowrap; }
+  .num { font-variant-numeric: tabular-nums; }
+
+  /* checklist */
+  .check-group { background: var(--fill); border-radius: 16px; padding: 20px 22px; margin-bottom: 12px; }
+  .check-group h4 { margin: 0 0 12px; font-size: 15.5px; font-weight: 800; color: var(--blue-deep); }
+  .check-group.warn h4 { color: var(--warn); }
+  .check-group.stop h4 { color: var(--danger); }
+  .check-group h4 .muted { font-weight: 600; }
+  .check { list-style: none; padding: 0; margin: 0; }
+  .check > li { padding-left: 32px; position: relative; margin-bottom: 10px; color: var(--text-2); }
+  .check > li:last-child { margin-bottom: 0; }
+  .check > li strong { color: var(--text); }
+  .check > li::before {
+    content: "✓"; position: absolute; left: 0; top: 2px;
+    width: 19px; height: 19px; border-radius: 6px;
+    background: var(--blue-tint); color: var(--blue);
+    font-size: 12px; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .check-group.warn .check > li::before { content: "!"; background: var(--warn-tint); color: var(--warn); }
+  .check-group.stop .check > li::before { content: "✕"; background: var(--danger-tint); color: var(--danger); }
+
+  /* concept cards */
+  .concepts { display: grid; gap: 12px; }
+  .concept { background: var(--fill); border-radius: 16px; padding: 20px 22px; }
+  .concept h4 { margin: 0 0 8px; font-size: 16.5px; font-weight: 800; letter-spacing: -0.015em; }
+  .concept h4 .k { color: var(--blue); margin-right: 8px; }
+  .concept p, .concept ul { color: var(--text-2); font-size: 14.8px; }
+  .concept p strong, .concept li strong { color: var(--text); }
+  .concept ul { margin-bottom: 0; }
+
+  /* roadmap */
+  .phase { position: relative; padding: 0 0 26px 30px; }
+  .phase::before {
+    content: ""; position: absolute; left: 7px; top: 9px; bottom: -3px;
+    width: 2px; background: var(--line);
+  }
+  .phase:last-of-type::before { display: none; }
+  .phase::after {
+    content: ""; position: absolute; left: 2px; top: 7px;
+    width: 12px; height: 12px; border-radius: 50%;
+    background: var(--blue);
+  }
+  .phase h4 { margin: 0 0 8px; font-size: 16.5px; font-weight: 800; letter-spacing: -0.015em; }
+  .phase h4 small { color: var(--text-4); font-weight: 600; margin-left: 8px; font-size: 13px; }
+  .phase ul { margin-bottom: 0; color: var(--text-2); }
+  .phase ul strong { color: var(--text); }
+
+  footer { border-top: 1px solid var(--line); padding-top: 22px; color: var(--text-4); font-size: 13.5px; }
+  footer p { margin-bottom: 8px; }
+  footer strong { color: var(--text-3); }
+
+  :focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-radius: 4px; }
+  @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="chip">벤치마킹 · 출점 전략 보고서 · 2026. 08. 28</div>
+    <h1>부산역 솥밥 전략</h1>
+    <p class="subtitle">솔솥 브랜드 해체 분석 · 전 지점 입지 분석 · 부산역 적합도 검증 · 재해석 콘셉트 제안</p>
+
+    <div class="notice">
+      <span class="nt">데이터 신뢰도</span>
+      병렬 웹 리서치 4트랙(브랜드 · 전 지점 · 부산역 상권 · 경쟁/리뷰), 150여 회 검색 기반. 조사 환경의 프록시가 솔솥 공식 사이트·네이버·다이닝코드 등 다수 도메인을 차단해 상당수 팩트는 <strong>검색 스니펫 교차검증</strong>으로 수집했으며, 본문에 [확인]/[추정]을 구분 표기했습니다. 실행 전 <strong>공정위 정보공개서 원본 · solsot.co.kr 매장찾기 · 현장 임장</strong>으로 재검증을 전제합니다.
+    </div>
+
+    <div class="verdict">
+      <span class="vd">조건부 적합</span>
+      <p><strong>부산역은 "솔솥 복제"로는 부적합, "여행자 주력형 재해석"으로는 유망.</strong> 솔솥 입지 공식 5조건 중 4개 충족 — 관건은 통과형 유동의 식사 전환율과 저녁 수요 보완입니다.</p>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><b>79개점</b><span>솔솥 국내 매장 (2026.8) + 해외 5개국</span></div>
+      <div class="stat"><b>4.9만 명</b><span>부산역 일평균 이용객 (전국 4위)</span></div>
+      <div class="stat"><b>364만 명</b><span>부산 외국인 관광객 2025 (역대 최대)</span></div>
+      <div class="stat"><b>6.9억 원</b><span>솔솥 가맹점 평균 연매출 (2022)</span></div>
+    </div>
+
+    <nav class="toc" aria-label="목차">
+      <a href="#summary"><span class="n">✦</span>요약</a>
+      <a href="#ch1"><span class="n">1</span>브랜드 해체</a>
+      <a href="#ch2"><span class="n">2</span>전 지점 입지</a>
+      <a href="#ch3"><span class="n">3</span>부산 기존점</a>
+      <a href="#ch4"><span class="n">4</span>경쟁 지형</a>
+      <a href="#ch5"><span class="n">5</span>리뷰 마이닝</a>
+      <a href="#ch6"><span class="n">6</span>부산역 적합도</a>
+      <a href="#ch7"><span class="n">7</span>재해석 콘셉트</a>
+      <a href="#ch8"><span class="n">8</span>손익 시뮬레이션</a>
+      <a href="#ch9"><span class="n">9</span>카피 리스크</a>
+      <a href="#ch10"><span class="n">10</span>실행 로드맵</a>
+    </nav>
+  </header>
+
+  <section id="summary">
+    <h2>요약</h2>
+    <ol class="summary">
+      <li><strong>솔솥은 2021년 7월 설립 후 5년 만에 국내 79개점 + 해외 5개국</strong>(몽골·인니·태국·홍콩·대만 계약)으로 성장한 카테고리 1위. 본사 2024년 매출 92.5억 · 영업이익 19.1억 원(20.6%), 가맹점 평균 연매출 6.9억 원(2022) — 본사·가맹 양쪽 검증된 모델입니다.</li>
+      <li>성공 방정식: <strong>프리미엄 1인 한상(17,000원 앵커) × 20평 소형·주방 최소화 × 본사 전처리 식자재(센트럴키친) × 누룽지·숭늉 마무리 의식 × 오피스·핫플 이원 입지</strong> + 웨이팅 앱·지점별 인스타로 '줄 서는 브랜드' 관리.</li>
+      <li>전 지점 입지는 <strong>A. 프라임 오피스(13) / B. 핫플·관광(15) / C. 신도시·가족(10)</strong>의 3축. 부산 3개점(서면·해운대·광안)은 전부 B형 — <strong>부산의 교통허브·오피스형 입지는 비어 있습니다.</strong></li>
+      <li><strong>부산역 판정: 조건부 적합.</strong> 일 4.9만 유동·외국인 급증·솥밥 공백이라는 기회 vs 상권 총량(서면의 1/7)·저녁 공동화·국밥 가격 기준선(8천~1만 원)이라는 위협. 솔솥 서울역점(역전 오피스 1층, 직장인 주력) 모델의 <strong>공식 반전 — '여행자 주력 + 로컬 보조'</strong> 재설계가 필요합니다.</li>
+      <li>리뷰 마이닝 결과 솔솥의 반복 불만 5가지 — <strong>웨이팅 · 가격 대비 양(가격 평점 3.1) · 좁은 좌석 · 지점 편차 · 심플한 반찬</strong> — 이 역설계 차별화 지점입니다.</li>
+      <li>재해석은 <strong>A안 '부산 항구 솥밥'(로컬 수산 + 장어 시그니처)</strong>을 정체성으로, <strong>B안 '역전 빠른 한상'(조식·열차 연동 사전주문·15분 제공·캐리어 동선)</strong>을 운영으로 결합 권장. 장어 원물 조달 원가 우위가 있다면 솔솥 최고가 메뉴(장어솥밥 25,000원) 구간을 19,000~21,000원 주력으로 끌어내리는 플레이가 가능하며, 장어에 친숙한 <strong>일본·대만 관광객</strong>(부산 방문 1·3위) 수요와 정합합니다.</li>
+      <li><strong>카피 리스크 실재</strong>: "솥솥"이 실존 브랜드가 아니라 소비자의 '솔솥' 오기였을 만큼 유사 명칭 혼동이 실증됨. 원조가 부산에 3개점 운영 중이므로 명칭·BI·상차림의 동일 재현은 법적+평판('덮죽 사태'형) 리스크 — 구조는 차용하되 표현은 독자화.</li>
+      <li>손익 골격(20평·26석·객단가 1.7만): 일 150명 시 월매출 약 7,650만 원, 감가 전 영업이익률 20%대 후반 [추정]. <strong>손익분기 일 80~90명 = 부산역 일 유동의 0.2%</strong>. 총투자 2.3~2.8억, 회수 18~30개월이 현실적 범위입니다.</li>
+    </ol>
+  </section>
+
+  <section id="ch1">
+    <div class="chapter">1장</div>
+    <h2>솔솥 브랜드 해체 분석</h2>
+
+    <h3>1-1. 회사 개요와 성장 궤적</h3>
+    <div class="tbl"><table>
+      <tr><td>법인</td><td>㈜솔솥 — <strong>2021년 7월 설립</strong>, 서울 마포구 대흥로 60 · 김건·하경재 공동대표 · 본사 15명 <span class="tag info">확인</span></td></tr>
+      <tr><td>본사 실적</td><td><strong>2024년 매출 92.5억(+26.7%) · 영업이익 19.1억(+28.0%)</strong> — NICE 재무, 상위 12% 평가 <span class="tag info">확인</span></td></tr>
+      <tr><td>매장 수</td><td>2024.7 약 50개 → 2025년 말 77개 → <strong>2026.8 공식 매장찾기 79개</strong> (월 1~2개점 페이스) <span class="tag info">확인</span></td></tr>
+      <tr><td>해외</td><td>몽골→인도네시아→태국(방콕 2)→홍콩→<strong>대만(2026.8 WEDO그룹 계약)</strong> — 해외 매체에서 "viral Korean rice chain" 소개 <span class="tag info">확인</span></td></tr>
+      <tr><td>기원</td><td>익선동에서 시작, 한남·서촌·연남 등 핫플 중심 초기 확장 (1호점 공식 확인은 미완) <span class="tag mid">추정</span></td></tr>
+      <tr><td>투자</td><td>외부 투자 유치 기사 미발견 — 자체 현금흐름 성장 <span class="tag mid">추정</span></td></tr>
+    </table></div>
+    <p><strong>시사점</strong> — 상대는 동네 맛집이 아니라 자본력·표준화·해외 인지도를 갖춘 <strong>카테고리 킹</strong>입니다. 정면 모방이 아니라 솔솥이 비워둔 포지션(입지·가격·지역성)을 파고들어야 합니다.</p>
+
+    <h3>1-2. 비즈니스 모델</h3>
+    <ul>
+      <li><strong>본사 수익</strong>: 개설 수익(가맹비 1,419만 + 교육비 550만 + 인테리어 평당 374만) + 식자재 유통 마진 — 법인 업종이 '상품 종합 도매업'인 점이 방증(물류가 본체).</li>
+      <li><strong>가맹 경제성</strong>: 표준 창업비 약 1.48억(20평, 점포비 별도), 평균 연매출 6.9억(2022) = 월 5,750만. 업계 솥밥 평균 영업이익률 25% 내외.</li>
+      <li>본사 마케팅 주장(검증 불가): "20평 월매출 1억", "순이익 최대 42%", "회수 평균 5개월" — 최상위 사례의 일반화로 간주.</li>
+      <li><strong>직영 5개 상권에서 신메뉴·브랜딩 검증 → 가맹 전파</strong>. 우리도 1호점을 직영 테스트베드로 보는 관점이 필요합니다.</li>
+    </ul>
+
+    <h3>1-3. 메뉴 아키텍처 · 가격 전략</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>구간</th><th>메뉴</th><th>가격</th><th>역할</th></tr></thead>
+      <tbody>
+        <tr><td>볼륨존</td><td>꼬막(남도 직송)·치즈닭갈비</td><td class="num">14,000</td><td>입문·트래픽</td></tr>
+        <tr><td><strong>앵커</strong></td><td><strong>스테이크(시그니처)</strong>·전복·도미관자·연어·갈치순살</td><td class="num"><strong>17,000</strong> <span class="muted">(특수상권 17,900~19,900)</span></td><td>매출 중심축</td></tr>
+        <tr><td>프리미엄</td><td>금태</td><td class="num">23,000</td><td>객단가 상향</td></tr>
+        <tr><td>최고가</td><td><strong>민물장어</strong></td><td class="num">25,000</td><td>위신 메뉴</td></tr>
+        <tr><td>사이드</td><td>유린기 8,500 · 새우튀김 7,900</td><td class="num">—</td><td>객단가 +30~50%</td></tr>
+      </tbody>
+    </table></div>
+    <ul>
+      <li>17,000원 <strong>단일 앵커에 메뉴 밀집</strong> → 선택 부담 축소. 2024→2026 사실상 동결, 대신 상권별 차등(+900~2,900원).</li>
+      <li>제철 신메뉴 지속 출시(직영 테스트), 2인 세트 42,400~57,900원 흔적(명동).</li>
+      <li><strong>주목</strong>: 최고가 포지션이 '민물장어' — 장어 원물 원가가 낮은 사업자라면 이 위신 구간을 주력 구간으로 끌어내릴 수 있습니다(7장 A안).</li>
+    </ul>
+
+    <h3>1-4. 경험 설계 — 핵심 자산</h3>
+    <p>솔솥이 파는 것은 밥이 아니라 <strong>'의식(ritual)이 있는 한 끼'</strong>입니다.</p>
+    <div class="check-group">
+      <h4>모방할 것은 메뉴가 아니라 이 구조</h4>
+      <ul class="check">
+        <li><strong>자체 설계 주물솥에 생쌀부터 취반</strong> — "갓 지은 밥"의 신뢰</li>
+        <li>위는 고슬한 밥, 바닥은 <strong>누룽지</strong> — 식감의 2층 구조</li>
+        <li>솥밥 + 반찬 + 샐러드 + 김 + <strong>숭늉용 육수</strong> — 누룽지탕으로 마무리하는 <strong>2단계 식사</strong></li>
+        <li>테이블마다 <strong>'맛있게 먹는 법' 안내</strong> + 직원 설명 — 외국인도 의식을 완주</li>
+        <li>결과: "누룽지 육수 마무리"가 거의 모든 후기의 기억 포인트 = SNS 자발 확산 엔진</li>
+      </ul>
+    </div>
+    <p class="muted">이 구조 자체는 한식 보편 문법이라 차용에 법적 문제가 없으며(9장), 표현(그릇·안내물·명칭)만 독자화하면 됩니다.</p>
+
+    <h3>1-5. 공간 · 운영 · 마케팅</h3>
+    <ul>
+      <li><strong>20평 표준 · "주방 최소화로 홀 확대"</strong> — 임대료·인건비 절감이 가맹 소구점.</li>
+      <li>조리 표준화: <strong>"어려운 식자재 손질은 본사에서 완벽 처리"</strong> = 전처리·원팩 + 센트럴키친 + 바잉파워 → 매장은 취반·토핑·플레이팅에 집중, 숙련 조리사 의존 최소화.</li>
+      <li>웨이팅: 테이블링(서울역·구로지밸리) + 캐치테이블(한남·판교·해운대, 글로벌판으로 외국인 예약) 이원 운영.</li>
+      <li>영업 패턴: 11:00~21:00 + <strong>브레이크 15~17시</strong>(오피스형). <strong>구로지밸리점은 09시 조식 운영 실험</strong>. 서울역점은 테이블 키오스크.</li>
+      <li>마케팅: 본사 계정(팔로워 약 6,700)은 작게, <strong>지점별 인스타 분산 운영</strong> + 언론·창업 유튜브 + 해외 매체·캐치테이블 글로벌로 관광객 유입.</li>
+    </ul>
+
+    <h3>1-6. 성공 방정식 — 모방 난이도</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>요소</th><th>내용</th><th>독자 브랜드 모방</th></tr></thead>
+      <tbody>
+        <tr><td>경험 의식화</td><td>주물솥 취반→누룽지→숭늉 + 먹는 법 안내</td><td><span class="tag ok">낮음</span> 보편 문법 — 표현만 독자화</td></tr>
+        <tr><td>메뉴 문법</td><td>토핑 중심·사진형 메뉴, 17,000원 앵커</td><td><span class="tag ok">낮음</span> 가격 설계로 우위 가능</td></tr>
+        <tr><td>1인 한상</td><td>혼밥·직장인·여행자 흡수</td><td><span class="tag ok">낮음</span></td></tr>
+        <tr><td>식자재 표준화</td><td>센트럴키친·원팩·바잉파워</td><td><span class="tag bad">높음</span> 단일점 불가 → '당일 원물 직조리'로 역차별화</td></tr>
+        <tr><td>웨이팅 브랜딩</td><td>줄 서는 집 + 원격 줄서기</td><td><span class="tag mid">중간</span> 오픈 초기 화제성 설계</td></tr>
+        <tr><td>관광 인지도</td><td>K-푸드 바이럴</td><td><span class="tag mid">중간</span> 부산역 입지 자체가 관광 접점</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section id="ch2">
+    <div class="chapter">2장</div>
+    <h2>전 지점 입지 분석</h2>
+    <p><strong>공식 매장찾기 기준 국내 79개점</strong>(2026.8) 중 지도·예약 플랫폼·인스타·채용공고 교차 소스로 <strong>45개점을 개별 식별</strong>했습니다(서울 27 · 경기 5 · 지방 13). 나머지 약 34개는 검색 노출이 약한 신규 가맹점 위주 [추정] — 완전 목록은 solsot.co.kr 매장찾기에서 확정 가능합니다.</p>
+
+    <h3>서울 — 프라임 오피스·역세권 (13)</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>지점</th><th>위치</th><th>입지 성격</th></tr></thead>
+      <tbody>
+        <tr><td>광화문점</td><td>서울파이낸스센터 B2</td><td>프라임 오피스 아케이드 — 금융·대기업 점심</td></tr>
+        <tr><td>광화문케이트윈점</td><td>케이트윈타워 <span class="muted">(77호점)</span></td><td>동일 상권 2호점 = 수요 초과 방증</td></tr>
+        <tr><td>시청역점</td><td>세종대로11길 30, 2층 <span class="muted">(78호점)</span></td><td>시청 오피스</td></tr>
+        <tr><td>센터원점</td><td>을지로 센터원 B1</td><td>을지로입구 대기업</td></tr>
+        <tr><td>종로타워점</td><td>종로타워 B1</td><td>종각역 직결 오피스</td></tr>
+        <tr><td>서울역점</td><td><strong>그레이츠 숭례 1층</strong> <span class="muted">(2025.7 추정)</span></td><td><strong>역전 오피스 + KTX 여행객 보조</strong></td></tr>
+        <tr><td>여의도점</td><td>여의도</td><td>금융 오피스</td></tr>
+        <tr><td>강남역점 · 역삼점</td><td>강남역 / 테헤란로</td><td>역세권·오피스</td></tr>
+        <tr><td>포스코센터점</td><td>테헤란로 포스코센터</td><td>프라임 오피스(선릉·대치)</td></tr>
+        <tr><td>교대역점</td><td>교대역 인근</td><td>법조타운·학원가</td></tr>
+        <tr><td>구로지밸리점</td><td>지밸리비즈플라자 2층</td><td>G밸리 IT — <strong>조식(09시) 운영 실험점</strong></td></tr>
+        <tr><td>마곡점</td><td>마곡사이언스타워 1층</td><td>R&amp;D 오피스 + 역세권</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>서울 — 핫플레이스·관광 (11)</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>지점</th><th>위치</th><th>입지 성격</th></tr></thead>
+      <tbody>
+        <tr><td>익선점</td><td>익선동 한옥거리</td><td>전국구 관광 핫플 — 초기(1호점 후보) 매장</td></tr>
+        <tr><td>연남점</td><td>동교로38길 B1</td><td>연남동 카페거리 — 브랜드 원형</td></tr>
+        <tr><td>서촌점</td><td>경복궁역 서촌</td><td>관광 + 로컬</td></tr>
+        <tr><td>명동점</td><td>명동10길, 2층</td><td><strong>외국인 특화</strong> — 다국어·캐리어 보관·22시 영업</td></tr>
+        <tr><td>한남점 · 성수점 · 청담점</td><td>한남 / 성수 / 청담</td><td>핫플 (성수 ★4.3, 청담 약 24석)</td></tr>
+        <tr><td>송리단길점</td><td>석촌호수</td><td>핫플 — ★4.5 상위 노출</td></tr>
+        <tr><td>대학로점 · 망원점</td><td>혜화 / 망원</td><td>대학·공연 상권 / 핫플</td></tr>
+        <tr><td>경의선숲길점</td><td>대흥역(본사 도보권)</td><td>로컬 + 숲길 — 본사 인근 테스트 성격 [추정]</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>서울 복합(3) · 경기(5) · 지방(13)</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>지점</th><th>위치</th><th>입지 성격</th></tr></thead>
+      <tbody>
+        <tr><td>상암점 · 건대스타시티점 · 올림픽공원점<span class="muted">⚠</span></td><td>DDMC B1 / 롯데백화점 B1 / 방이동</td><td>미디어 오피스 / 백화점+대학가 / 공원·주거(재확인 필요)</td></tr>
+        <tr><td>판교점 · 분당야탑점</td><td>테크노밸리 / 야탑역 도보 3분</td><td>IT 오피스 / 역세권 주거(무료주차)</td></tr>
+        <tr><td>수원광교점 · 동탄호수공원점 · 미사강변점</td><td>광교 카페거리 / 동탄2 호수공원 / 미사</td><td>신도시 — 2024~25 가맹 확장 주력 방향</td></tr>
+        <tr><td>대전둔산점 · 대전관평점 · 천안불당점</td><td>둔산 / 테크노밸리 / 신불당</td><td>행정타운 / 신도시+아울렛 / 신도시(4시간 주차)</td></tr>
+        <tr><td>대구동성로점 · 울산삼산점</td><td>동성로 / 삼산로(업스퀘어 1분)</td><td>지방 최대 도심 핫플 / 몰+상업지</td></tr>
+        <tr><td>구미점 · 구미산동점</td><td>송정동 / 산동읍 <span class="muted">(79호점 최신)</span></td><td>구도심 관공서 / 확장단지 — 중소도시 2점 체제</td></tr>
+        <tr><td>경주황리단길점<span class="muted">⚠</span> · 창원점<span class="muted">⚠</span></td><td>황리단길 / 창원</td><td>관광 핫플 / 재확인 필요</td></tr>
+        <tr><td><strong>부산 서면·해운대·광안점</strong></td><td>동천로 51-1 / 해리단길 / 광남로 78</td><td><strong>전부 핫플·관광형</strong> — 3장 상세</td></tr>
+        <tr><td>서귀포점</td><td>서귀포 신시가지</td><td>행정타운 + 관광(범섬 뷰)</td></tr>
+      </tbody>
+    </table></div>
+    <p class="muted">인천·광주·전주·강원·김해·양산은 지점 미검출(부존재 또는 노출 부족) [추정]. 명시적 폐점 사례 미발견(구로지밸리점 식신 폐업 표기는 오정보 가능성 — 요확인).</p>
+
+    <h3>솔솥의 입지 선정 공식 (도출)</h3>
+    <div class="check-group">
+      <h4>45개 지점을 관통하는 5조건</h4>
+      <ul class="check">
+        <li><strong>계산 가능한 대량 유동</strong> — 오피스 상주(점심) 또는 검증된 핫플·관광(주말). 유동의 질보다 예측 가능성</li>
+        <li><strong>1인 식사 수요 밀도</strong> — 혼밥 직장인·나홀로 여행객이 두터운 상권</li>
+        <li><strong>20평 소형 구획</strong> — B1~2층까지 수용, 가시성보다 임차 효율. 웨이팅 앱이 발견성 보완</li>
+        <li><strong>SNS 서사가 있는 상권</strong> — 상권 이름이 곧 해시태그(익선동·해리단길·송리단길…)</li>
+        <li><strong>경쟁 공백</strong> — 같은 상권에 프리미엄 솥밥 부재(솔솥끼리도 중복 회피, 예외는 수요 초과 광화문뿐)</li>
+      </ul>
+    </div>
+    <p>입지 유형 분포: <strong>A. 프라임 오피스 약 13개</strong>(브레이크타임·조식 실험이 증거하는 점심 고회전형) · <strong>B. 핫플·관광 약 15개</strong>(웨이팅이 브랜딩 장치) · <strong>C. 신도시·가족 약 10개</strong>(주차 편의, 최신 확장 방향) · D. 특수(백화점·행정·역전).</p>
+  </section>
+
+  <section id="ch3">
+    <div class="chapter">3장</div>
+    <h2>부산 기존점 정밀 분석</h2>
+    <p>같은 도시의 원조 3개점은 ① 부산의 프리미엄 솥밥 수요가 검증됐다는 <strong>기회</strong>이자 ② 직접 비교의 준거가 되는 <strong>위협</strong>입니다.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>항목</th><th>서면점</th><th>해운대점</th><th>광안점</th></tr></thead>
+      <tbody>
+        <tr><td>주소</td><td>부산진구 동천로 51-1 (전포 카페거리 인접)</td><td>우동1로20번길 27-10 (해리단길)</td><td>수영구 광남로 78 (광안리)</td></tr>
+        <tr><td>상권</td><td>부산 최대 도심 핫플</td><td>관광 핫플</td><td>해변 관광 + 주거</td></tr>
+        <tr><td>오픈</td><td>미상 (2022~23 추정)</td><td>2023년 상반기 [추정]</td><td>미상</td></tr>
+        <tr><td>운영</td><td>11:30~21:00 · 주차 불가 · 캐치테이블</td><td>주말 예약 불가(현장 웨이팅) · 복층 · 반려동물</td><td>1인석 · 단체 · 주차 · 지점 인스타</td></tr>
+        <tr><td>평판</td><td>"평일 저녁에도 웨이팅" · 정갈함 호평</td><td>★4.6 수준 · 주말 웨이팅 30분+</td><td>후기 표본 부족</td></tr>
+      </tbody>
+    </table></div>
+    <ul>
+      <li>3개점 전부 <strong>B형(핫플·관광) 입지</strong> — '부산의 연남동들'에만 출점. <strong>교통허브(부산역)·오피스(중앙동) 입지는 공백</strong>이며, 부산역 출점 시 최근접 서면점과 지하철 4정거장(약 4km)으로 비중복.</li>
+      <li>단, 솔솥이 서울역점(2025.7)으로 '역전 모델'을 검증 중 — <strong>성과 확인 시 부산역점 직접 출점 가능성. 선점 속도가 중요합니다.</strong></li>
+      <li>해리단길에서 로컬 체인 한다솥과 병존 — 한 상권에 솥밥 복수 생존이 가능하다는 관측점.</li>
+    </ul>
+  </section>
+
+  <section id="ch4">
+    <div class="chapter">4장</div>
+    <h2>경쟁 지형 분석</h2>
+
+    <h3>솥밥 카테고리 주요 브랜드</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>브랜드</th><th>규모</th><th>가격(1인)</th><th>포지셔닝</th><th>부산</th></tr></thead>
+      <tbody>
+        <tr><td>솔솥</td><td>국내 79 + 해외 5개국</td><td class="num">1.4만~2.5만</td><td>프리미엄 1인 한상 · 오피스+핫플</td><td><strong>3개점</strong></td></tr>
+        <tr><td>온기정</td><td>직영 2 + 가맹 23 (2024) · 평균 7.15억</td><td class="num">0.9만~1.5만</td><td>일본식 텐동·우동 (솥밥은 서브)</td><td>—</td></tr>
+        <tr><td>동양솥밥</td><td>6호점~ · 창업비 약 7,095만</td><td class="num">중저가</td><td>한·중·일 퓨전, 15평 부부 창업</td><td>—</td></tr>
+        <tr><td>담솥</td><td>송도·성수·익선 등 5+</td><td class="num">중가</td><td>주문 즉시 취반 · 신도시/핫플</td><td>—</td></tr>
+        <tr><td>가가솥밥</td><td>강남·용인·대전·김해 4</td><td class="num">1.5만~2.5만</td><td>이색 시즌 메뉴(붉은대게 등)</td><td>—(김해 인접)</td></tr>
+        <tr><td>한다솥</td><td>부산 6+ (광안리 본점)</td><td class="num">중가</td><td>솥밥+생선구이 정식 · 가족/올데이</td><td>토착</td></tr>
+        <tr><td>솥이랑</td><td>서면 삼정타워 등</td><td class="num">중가</td><td>로컬 맛집형 (★4.4)</td><td>토착</td></tr>
+        <tr><td>호호·온가솥밥</td><td>소규모</td><td class="num">—</td><td>배달·소자본</td><td>—</td></tr>
+      </tbody>
+    </table></div>
+    <ul>
+      <li><strong>중요 발견 — "솥솥"은 실존 브랜드가 아닙니다.</strong> 온라인 '솥솥' 표기 대부분이 '솔솥'의 오기로 확인(다이닝코드 '솥솥 센터원점' 페이지 삭제, '솔솥 센터원점'만 존재). 받침 하나 차이도 검색·리뷰가 뒤섞인다는 실증 = <strong>네이밍의 음운 거리 확보가 실무 이슈</strong>(9장).</li>
+      <li>시장 국면: 솥밥 붐(2021~22 발원)은 혼밥 47%·1인 가구 836만의 순풍이 유효하나 <strong>프랜차이즈 난립기</strong> — 창업 전문지 공통 경고는 "고가 솥밥은 상권별 매출 편차가 크다: 입지 조사 필수".</li>
+    </ul>
+
+    <h3>부산·부산역 경쟁 구도와 진입 여백</h3>
+    <ul>
+      <li>부산 '솥밥' 등록 업소 약 450~460곳(다이닝코드) — 상위권은 로컬 강자(다솥맛집·솥이랑·한다솥). 그러나 <strong>부산역·초량 권역은 솥밥 전문점 사실상 부재.</strong></li>
+      <li>상권 대표 업종은 돼지국밥(본전돼지국밥 노포 + 최근 1년 신규 3곳의 '국밥 로드')·밀면·만두(신발원 평일 1시간 웨이팅) — <strong>국밥 8,000~10,000원이 가격 기준선</strong>. 17,000원 한 끼는 '국밥과 다른 목적의 식사'(여행의 한 끼, 대접받는 혼밥)로 프레이밍해야 넘어갑니다.</li>
+    </ul>
+    <div class="check-group">
+      <h4>신규 진입 여백 5가지</h4>
+      <ul class="check">
+        <li><strong>입지 여백</strong> — 부산역·초량 = 부산 내 솥밥 무주공산 + 솔솥 입지 공백</li>
+        <li><strong>가격 여백</strong> — 솔솥 가격 불만(평점 3.1): '같은 프리미엄 감성, 더 든든한 구성'</li>
+        <li><strong>운영 여백</strong> — 웨이팅·대기 불만: 사전주문·회전 설계로 여행자 친화</li>
+        <li><strong>정체성 여백</strong> — 전국 표준화 솔솥 vs 부산 로컬 원물 스토리(기장미역·대변멸치·전복·갈치·장어)</li>
+        <li><strong>고객 여백</strong> — 급증하는 대만·중국·일본 관광객 대응(다국어·캐리어·결제)의 미체계</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="ch5">
+    <div class="chapter">5장</div>
+    <h2>고객 리뷰 마이닝</h2>
+    <p>평점 구조: 맛·경험 <strong>4.3~4.6</strong>(구글 서촌 4.6, 종로타워 맛 4.5) vs <strong>가격 만족 3점대 초반</strong>(연남 가격 3.1) — "맛은 인정, 가성비는 논쟁"이 정량 확인됩니다 [스니펫 기준].</p>
+
+    <h3>반복 칭찬 → 계승할 것</h3>
+    <ul>
+      <li><strong>갓 지은 밥·누룽지 마무리</strong> — "밥이 고슬고슬"(한남) · "누룽지 육수가 구수"(서촌)</li>
+      <li><strong>정갈한 한상 비주얼</strong> — "비주얼이 예쁘고 고급스럽다"(해운대) · <strong>재료 토핑</strong> "전복이 크고 푸짐"(서면)</li>
+      <li><strong>혼밥 편의·회전</strong> — "개별 주문·계산이라 솥밥인데도 회전이 빠르다"(센터원)</li>
+      <li><strong>친절·안내</strong> — "'먹는 법'을 상세히 안내"(서울역·서면) · <strong>부가 편의</strong> — 캐리어 보관(명동)·유아 의자(서울역)·반려동물(해운대)</li>
+    </ul>
+
+    <h3>반복 불만 → 역설계할 것</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>불만</th><th>근거</th><th>우리의 설계 응답</th></tr></thead>
+      <tbody>
+        <tr><td>웨이팅 <span class="tag bad">최다</span></td><td>익선 토요일 1시간 · 해운대 주말 30분+</td><td>원격 줄서기 + <strong>열차 시간 연동 사전주문</strong></td></tr>
+        <tr><td>가격 대비 양</td><td>가격 평점 3.1 · "양이 너무 적어요"</td><td>공기밥·누룽지 무한 등 '밥 인심' 장치</td></tr>
+        <tr><td>좁은 좌석</td><td>"좁디좁음"(센터원) · 합석(명동)</td><td>좌석 간격 + 1인 바석(캐리어 고려)</td></tr>
+        <tr><td>지점 품질 편차</td><td>"체인점 맛" · 익선 노후 · 야탑 비린내</td><td>단일점 직영 품질 — '당일 원물' 소구</td></tr>
+        <tr><td>반찬 심플</td><td>"구성이 심플"(센터원)</td><td>부산 로컬 찬 1~2종 보강</td></tr>
+        <tr><td>응대 디테일</td><td>"숭늉이 맹물이었다"</td><td>마무리 의식의 '진짜 육수' 품질 관리</td></tr>
+      </tbody>
+    </table></div>
+    <p><strong>부산역 함의</strong> — 솔솥이 검증한 고객군(직장인·커플·외국인·혼밥·가족)과 부산역 유동은 정확히 겹치되, <strong>여행자 비중이 훨씬 높습니다.</strong></p>
+  </section>
+
+  <section id="ch6">
+    <div class="chapter">6장</div>
+    <h2>부산역 상권 분석 &amp; 적합도 검증</h2>
+
+    <h3>수요 구조 (정량)</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>수요원</th><th>규모</th></tr></thead>
+      <tbody>
+        <tr><td>철도 이용객</td><td><strong>일평균 약 4.9만 명</strong>(2025 코레일 · 전국 4위 · KTX 기준 서울역 다음 2위) + SRT 경부선 일 40회 착발 → 합산 일 5만 중후반 [추정] <span class="tag info">확인</span></td></tr>
+        <tr><td>외국인 관광객</td><td>부산 <strong>2025년 364만 명 역대 최대</strong> → 2026 상반기 242만(+43.9%) · 대만 19.7% &gt; 중국 19.4% &gt; 일본 12.0% · 카드 지출 +63% <span class="tag info">확인</span></td></tr>
+        <tr><td>국제여객터미널</td><td>역과 보행데크 직결 · 대마도 노선 2024년 38.8만(+60%) · 부관훼리 매일 운항 (퀸비틀은 2024 철수) <span class="tag info">확인</span></td></tr>
+        <tr><td>호텔 배후</td><td>아스티(360실)·라마다앙코르(446실)·토요코인 2곳 등 도보권 <strong>약 1,000실 내외</strong> <span class="tag mid">일부 추정</span></td></tr>
+        <tr><td>오피스·개발</td><td>중앙동 해운·항만 업무지구(도보 5~10분) · 북항재개발(총 20조, 2027 준공 목표) · 협성마리나G7 보행데크 직결 <span class="tag info">확인</span></td></tr>
+        <tr><td>주거 배후</td><td>초량 신축(베스티움 센트럴베이 1,076세대 등) <span class="tag info">확인</span></td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>상권 한계 3가지</h3>
+    <ul>
+      <li><strong>상권 총량</strong> — 부산역 상권 월매출 약 251억(2021, 전국 98위) = <strong>서면(1,739억)의 약 1/7</strong>. '부산 최대 상권'이 아니라 통과형 특수 상권.</li>
+      <li><strong>통과형 유동</strong> — 4.9만 명 다수는 체류 없이 통과. 식사 전환 장치(역 도보 1~3분·빠른 제공·사전주문)가 성패를 가름.</li>
+      <li><strong>가격 기준선</strong> — 돼지국밥 로드의 8천~1만 원 앵커. <span class="muted">임대료는 초량 이면 보증금 2,500/월 80만 사례 등 서울 대비 낮음. 단 역사 구내는 코레일유통 입찰·매출연동 구조(삼진어묵 매장 월 임대료 약 2억 보도)로 별차원 — 배제 권고.</span></li>
+    </ul>
+
+    <h3>서울역점 vs 부산역 (앵커 비교)</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>항목</th><th>솔솥 서울역점 (실존)</th><th>부산역 (우리)</th></tr></thead>
+      <tbody>
+        <tr><td>입지</td><td>역전 프라임 오피스(그레이츠 숭례) 1층, 역 도보 3~4분</td><td>역전 로드샵/호텔 저층부 (초량 방면)</td></tr>
+        <tr><td>기본 수요</td><td><strong>평일 오피스 점심</strong> ("평일이 더 붐빈다")</td><td>오피스 얇음 — 중앙동은 도보 5~10분로 분리</td></tr>
+        <tr><td>보조 수요</td><td>KTX 여행객</td><td><strong>여행객·외국인·호텔 투숙이 주력이 되어야 함</strong></td></tr>
+        <tr><td>시사점</td><td>'역세권 = 역전 오피스 + 여행 보조' 공식</td><td><strong>공식 반전: '여행 주력 + 로컬 보조'</strong></td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>적합도 매트릭스 — 솔솥 입지 공식 5조건 대입</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>조건</th><th>판정</th><th>근거</th></tr></thead>
+      <tbody>
+        <tr><td>① 대량 유동</td><td><span class="tag ok">○ 충족</span></td><td>일 4.9만+α — 규모 충분, 통과형이라 전환 설계 필수</td></tr>
+        <tr><td>② 1인 식사 밀도</td><td><span class="tag ok">◎ 최적</span></td><td>출장객·나홀로 여행·혼밥 최적 상권</td></tr>
+        <tr><td>③ 소형·합리 임대료</td><td><span class="tag ok">◎ 충족</span></td><td>초량 임대료 낮음, 물건 선택지 존재</td></tr>
+        <tr><td>④ SNS 서사</td><td><span class="tag mid">△→○ 보완</span></td><td>'힙'은 약하나 차이나타운·이바구길 + '국밥의 도시에서 솥밥' 역발상 서사 가능</td></tr>
+        <tr><td>⑤ 경쟁 공백</td><td><span class="tag ok">◎ 최적</span></td><td>프리미엄 솥밥 부재 + 솔솥 3개점과 비중복</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>리스크 → 보완</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>리스크</th><th>보완 전략</th></tr></thead>
+      <tbody>
+        <tr><td>상권 총량 (서면의 1/7)</td><td>목표 매출을 상권에 맞게 설정(8장) + 포장 '기차 솥밥 도시락'·배달 부가</td></tr>
+        <tr><td>저녁 공동화</td><td>호텔 투숙객(~1,000실) 저녁 타깃 + 주류 페어링(7장 C안)</td></tr>
+        <tr><td>국밥 관성</td><td>정면 대결 회피 — '여행의 특별한 한 끼' 포지셔닝, 다른 시간대·목적 공략</td></tr>
+        <tr><td>원조 존재(솔솥 3개점 + 부산역 후발 가능성)</td><td>선점 속도 + 독자 정체성(7장) + 상표 선출원(9장)</td></tr>
+        <tr><td>통과형 전환율</td><td>역 도보 1~3분 고수 + 열차 연동 사전주문 + 15분 제공 시스템</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>마이크로 입지 후보 (반경 500m)</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>블록</th><th>장점</th><th>단점</th><th>판정</th></tr></thead>
+      <tbody>
+        <tr><td>① 광장 건너 중앙대로변</td><td>최대 가시성 · 국밥 로드의 검증 유동</td><td>임대료 최고 · 노포와 정면 비교</td><td><span class="tag ok">유력</span></td></tr>
+        <tr><td>② 차이나타운 초입</td><td>외국인 밀도 · 콘셉트 정합</td><td>저녁·비수기 편차 · 중식 이미지 혼선</td><td><span class="tag mid">차선</span></td></tr>
+        <tr><td>③ 초량 이면(이바구길 초입)</td><td>임대료 최저 · SNS 목적지 연출</td><td>발견성 낮음 — 초기 고전</td><td><span class="tag mid">보류(2호점감)</span></td></tr>
+        <tr><td>④ 호텔 축·역 서측(아스티·G7 방면)</td><td>투숙객 직결 · 조식/저녁 수요 · 신축</td><td>일반 유동은 광장 대비 적음</td><td><span class="tag ok">유력</span></td></tr>
+        <tr><td>⑤ 역사 구내(코레일유통)</td><td>최대 유동</td><td>매출연동 수수료 극고 · 취반 오퍼레이션 부적합</td><td><span class="tag bad">배제</span></td></tr>
+      </tbody>
+    </table></div>
+    <p><strong>권고: ①(광장 정면)과 ④(호텔 축)를 임장 비교.</strong> 판단 기준은 '15~20시 실측 유동'과 '20평 전후 1층 물건의 임대 조건'.</p>
+  </section>
+
+  <section id="ch7">
+    <div class="chapter">7장</div>
+    <h2>재해석 콘셉트 제안</h2>
+    <p><strong>공통 원칙</strong> — 솔솥에서 가져올 것은 <strong>구조</strong>(1인 한상·취반 신뢰·누룽지 의식·17,000원 앵커·20평 고효율·웨이팅 관리), 버릴 것은 <strong>표현</strong>(이름·BI·그릇·문구·메뉴명). 그리고 부산역이 요구하는 것(속도·다국어·시간대 확장)을 더합니다.</p>
+
+    <div class="concepts">
+      <div class="concept">
+        <h4><span class="k">A안</span>"부산 항구 솥밥" — 로컬 원물 + 장어 시그니처 <span class="tag ok">정체성 축 · 권장</span></h4>
+        <p>"항구도시의 제철 원물을 솥에 짓다" — 기장미역·대변멸치·통영전복·제주갈치 등 남해안 원물 스토리 + <strong>장어솥밥의 시그니처 주력화</strong>.</p>
+        <ul>
+          <li><strong>왜 장어인가</strong> ① 솔솥 체계에서 장어(25,000원)는 최고가 위신 메뉴 — 원물 조달 원가 우위가 있다면 <strong>19,000~21,000원 주력으로 끌어내려 카테고리의 가격-가치 공식을 깨는 플레이</strong> ② 우나기동 문화에 친숙한 일본(3위)·대만(1위) 관광객과 정합 ③ 히츠마부시의 3단계 먹는 법과 누룽지·숭늉 의식은 구조가 같음 — <strong>"부산식 장어 솥밥 3식(그대로→양념·고명→숭늉)"</strong>이라는 독자 의식으로 재창조</li>
+          <li>메뉴 골격(예): 멸치솥밥 12,000(볼륨) / 미역전복·갈치 16,000~17,000(앵커) / <strong>장어솥밥 19,000~21,000(시그니처)</strong> / 월 1회 계절 원물 한정 — '앵커 아래 로컬, 앵커 위 장어'</li>
+          <li>타깃: 여행자(내국인+외국인) 60% · 로컬/오피스 40%</li>
+        </ul>
+      </div>
+      <div class="concept">
+        <h4><span class="k">B안</span>"역전 한상, 빠른 솥밥" — 여행자 오퍼레이션 <span class="tag ok">운영 축 · A와 결합</span></h4>
+        <p>솥밥의 약점 = 취반 대기(약 13분). 열차 시간에 쫓기는 부산역 고객과 상극 — <strong>이걸 풀면 상권을 독점합니다.</strong></p>
+        <ul>
+          <li><strong>열차 시간 연동 사전주문</strong>(QR: "12:40 KTX 전 식사" → 도착 시각 맞춰 취반 시작) + 좌석 예약·선결제</li>
+          <li><strong>'착석 7분 내 첫 상, 총 30분 완식' 보장</strong> · 캐리어 보관 선반·바석</li>
+          <li><strong>조식 솥밥(07:30~)</strong> — 구로지밸리점 조식 실험의 부산역 버전, 국밥 지배적인 아침 시장의 대안</li>
+          <li>4개 국어(한·영·일·중) 메뉴·먹는 법 픽토그램 · 포장 '기차 솥밥 도시락'(누룽지 별첨)</li>
+          <li>솔솥이 어느 지점에서도 완성하지 못한 운영 — 원조가 부산역에 후발 진입해도 <strong>방어선</strong>이 됩니다</li>
+        </ul>
+      </div>
+      <div class="concept">
+        <h4><span class="k">C안</span>"초량 프리미엄 로컬 다이닝" — 저녁 확장 <span class="tag mid">2단계 옵션</span></h4>
+        <p>저녁·심야 주류 페어링(하이볼·부산 막걸리)과 안주형 사이드(장어구이·전복버터구이)로 호텔 투숙·북항 수요 흡수. <strong>1단계 안착 후</strong> 도입 권장(처음부터 이원 운영은 20평·소인원 구조에 과부하).</p>
+      </div>
+    </div>
+
+    <h3>네이밍 방향 <span class="muted">(KIPRIS 검색 → 선출원 전제)</span></h3>
+    <ul>
+      <li><strong>지역성</strong>: '초량반상' '항구솥' '미항(味港)' — 부산역·항구 서사 직결 / <strong>원물</strong>: '물때솥밥' '파도한상' / <strong>기능</strong>: '기차솥밥' '역전반상'</li>
+      <li><span class="hl">피할 것</span>: '솔·솥' 2음절 조합의 변형(솔솥·솥솔·솔솟 류), 소나무·솥 이모지 체계 등 솔솥 연상 요소</li>
+    </ul>
+  </section>
+
+  <section id="ch8">
+    <div class="chapter">8장</div>
+    <h2>손익 시뮬레이션 <span class="muted">(전 항목 추정)</span></h2>
+    <p>전제: 20평(66㎡)·26석 · 객단가 17,000원 · 월 30일 · 초량 로드샵 월세 250만(보증금 3,000~5,000만) 가정. 독자 브랜드라 가맹비·로열티 없음, 대신 R&amp;D·시행착오 비용을 초기 투자에 반영.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>구분</th><th>보수 (일 100명)</th><th>기본 (일 150명)</th><th>낙관 (일 200명)</th></tr></thead>
+      <tbody>
+        <tr><td>월 매출</td><td class="num">5,100만</td><td class="num"><strong>7,650만</strong></td><td class="num">1억 200만</td></tr>
+        <tr><td>식재료 원가 (36%)</td><td class="num">1,836만</td><td class="num">2,754만</td><td class="num">3,672만</td></tr>
+        <tr><td>인건비 (4~6명+점주)</td><td class="num">1,300만</td><td class="num">1,700만</td><td class="num">2,100만</td></tr>
+        <tr><td>임차·관리</td><td class="num">300만</td><td class="num">300만</td><td class="num">300만</td></tr>
+        <tr><td>수수료·광열·마케팅 (8%)</td><td class="num">408만</td><td class="num">612만</td><td class="num">816만</td></tr>
+        <tr><td><strong>영업이익</strong></td><td class="num"><strong>1,256만 (24.6%)</strong></td><td class="num"><strong>2,284만 (29.9%)</strong></td><td class="num"><strong>3,312만 (32.5%)</strong></td></tr>
+        <tr><td>감가 차감 후 <span class="muted">(2.5억/5년)</span></td><td class="num">839만</td><td class="num">1,867만</td><td class="num">2,895만</td></tr>
+      </tbody>
+    </table></div>
+    <ul>
+      <li>벤치마크: 솔솥 가맹 평균 월 5,750만(2022) — '기본' 시나리오가 그 수준. 장어 원물 원가 우위 실현 시 원가율 36%→32~33% 개선 여지(월 +150~300만).</li>
+      <li><strong>손익분기 일 80~90명</strong> — 부산역 일 유동 4.9만의 <strong>0.2% 전환이면 일 100명</strong>. 전환 장치(B안)가 곧 손익입니다.</li>
+      <li>총투자 [추정]: 보증금 3,000~5,000만 + 권리금 0~5,000만 + 인테리어·주방 1.2~1.5억 + 운전자금 3,000만 = <strong>약 2.3~2.8억</strong>. 기본 시나리오 기준 회수 18~30개월.</li>
+      <li class="muted">⚠ 상권 실측 전 골격 모델 — 임장 유동 카운트, 소상공인 상권정보시스템·오픈업 추정매출, 실제 임대 조건으로 캘리브레이션 필수. '보수' 미만(일 70명↓) 3개월 지속 시 구조 재검토.</li>
+    </ul>
+  </section>
+
+  <section id="ch9">
+    <div class="chapter">9장</div>
+    <h2>카피 리스크 가이드 — 벤치마킹의 경계선</h2>
+    <p>원조가 <strong>같은 도시에 3개점 운영 중</strong>이라 유사성 판단에 불리한 조건입니다. 법(상표법·부정경쟁방지법)과 평판('카피 논란')을 함께 관리해야 합니다.</p>
+    <ul>
+      <li><strong>상표법</strong> — 발음·외관·관념 중 하나만 유사해도 침해 소지. '솔솥/솥솥' 혼동 실증이 보여주듯 ㅅ+솥 2음절 조합은 위험지대 → 독자 명칭 확정 후 <strong>KIPRIS 검색 → 사용 전 출원</strong>(43류 음식점업 + 30류).</li>
+      <li><strong>부정경쟁방지법</strong> — 주지 표지 혼동 + <strong>트레이드드레스</strong>(매장 외관·상차림 연출·메뉴판 구성의 '종합적 이미지') 동일 재현 시 성과물 도용 시비. 개별 요소(솥·누룽지·1인 반상)는 업계 보편 문법이라 자유, 문제는 <strong>조합의 동일 재현</strong>.</li>
+      <li><strong>평판 축 — 덮죽 교훈(2020)</strong>: 법정 전에 SNS 여론으로 카피 브랜드가 철수. <strong>'베꼈다'는 서사가 성립하는 순간 신규 브랜드는 회복 불능</strong> — 특히 부산은 솔솥 경험자가 많아 비교 콘텐츠가 나오기 쉬운 도시.</li>
+    </ul>
+    <div class="check-group">
+      <h4>✅ 자유 — 카테고리 보편 문법, 안심 차용</h4>
+      <ul class="check">
+        <li>솥밥 업태 · 1인 한상 · 주문 후 취반 · 누룽지/숭늉 마무리 · 17,000원대 가격 · 웨이팅 앱 · 20평 고효율 설계</li>
+      </ul>
+    </div>
+    <div class="check-group warn">
+      <h4>⚠ 주의 — 2개 이상 겹치지 않게, 우리식 표현으로 변형</h4>
+      <ul class="check">
+        <li>메뉴 라인업·가격표의 통째 미러링 · 유사 그릇/트레이 조합 · 동일 인테리어 무드 재현 · '먹는 법' 안내의 동일 구성 <span class="muted">(→ 장어 3식 의식, 항구 컬러, 놋그릇 등으로 독자화)</span></li>
+      </ul>
+    </div>
+    <div class="check-group stop">
+      <h4>🚫 금지 — 법적 + 평판 즉시 리스크</h4>
+      <ul class="check">
+        <li>'솔솥' 유사 명칭·로고·이모지 체계 · "솔솥 스타일/출신" 마케팅 문구 · 사진/문구 도용 · 솔솥 리뷰·순위 편승 광고 키워드</li>
+      </ul>
+    </div>
+    <p><strong>한 줄 기준</strong> — <em>"솔솥을 아는 손님이 '어, 솔솥이랑 비슷하네'가 아니라 '부산역엔 이런 집이 있네'라고 말하게 만들 것."</em></p>
+  </section>
+
+  <section id="ch10">
+    <div class="chapter">10장</div>
+    <h2>실행 로드맵 &amp; 후속 과제</h2>
+    <div class="phase">
+      <h4>정보공개서 원본 열람 <small>공정위 가맹사업정보제공시스템</small></h4>
+      <ul><li>솔솥(+한다솥·온기정) 최신 평균매출·폐점률 확인 → 8장 모델 캘리브레이션</li></ul>
+    </div>
+    <div class="phase">
+      <h4>현장 임장 2회 이상 <small>평일/주말 × 조식·점심·오후·저녁</small>
+      </h4>
+      <ul><li>후보 ①(광장 정면)·④(호텔 축) 블록별 보행 카운트 + 국밥 노포 웨이팅 관측 (07~09 / 11~14 / 15~17 / 18~21시)</li></ul>
+    </div>
+    <div class="phase">
+      <h4>데이터 보강 &amp; 물건 스캔</h4>
+      <ul><li>소상공인 상권정보시스템(sbiz.or.kr)·오픈업으로 초량동 한식 매출 분포 확인 · 20평 전후 1층 물건 3건+ 비교(부동산 2곳 이상)</li></ul>
+    </div>
+    <div class="phase">
+      <h4>상표 선출원 <small>사용 개시 전</small></h4>
+      <ul><li>네이밍 후보 3안 KIPRIS 검색 → 43류·30류 출원</li></ul>
+    </div>
+    <div class="phase">
+      <h4>메뉴 R&amp;D</h4>
+      <ul><li>장어솥밥 원가표(원물 수급 단가 반영) · 취반 표준화(목표: 착석 후 첫 상 7분) · 조식 반상 프로토타입</li></ul>
+    </div>
+    <div class="phase">
+      <h4>솔솥 실식 답사</h4>
+      <ul><li><strong>서울역점(역전 모델) · 서면점(부산 수용도) · 해운대점</strong> 각 1회+, 피크·비피크 방문 — 제공 시간/회전/고객 구성 기록</li></ul>
+    </div>
+    <div class="notice" style="margin-top: 10px;">
+      <span class="nt">성공 판정 기준 (오픈 후 3개월)</span>
+      일 방문 <strong>100명↑</strong> · 객단가 <strong>1.6만↑</strong> · 외국인 비중 <strong>20%↑</strong> · 리뷰 평점 <strong>4.3↑</strong> · '카피' 언급 리뷰 <strong>0건</strong>
+    </div>
+  </section>
+
+  <footer>
+    <p><strong>핵심 출처</strong> — 브랜드·재무: 사람인 ㈜솔솥 기업정보 · 캐치 재무평가 · 신아일보(2026.1 탐방) · 월간식당 · 대한건설경제(대만 진출) / 가맹: solsot.co.kr · 창업도 · 부자비즈 / 지점·리뷰: 다이닝코드 각 지점 · 테이블링(서울역) · 캐치테이블 · 식신 · Timeout HK · DanielFoodDiary · Thaiger / 부산역: 코레일 2025 실적 · 매일신문 · 부산일보(KTX 20주년, 돼지국밥 로드, 상권 매출) · 뉴스핌(2026 상반기 관광) · 서울신문 · KNN · 헤럴드경제(북항) · SBS(역사 임대료). 전체 URL 목록은 저장소 <strong>reports/solsot-busan-benchmark.md</strong> 부록 참조.</p>
+    <p>본 보고서의 모든 수치·평가는 공개 웹 정보 기반 추정을 포함하며, 투자 결정 전 원본 데이터 재검증과 현장 실사를 전제로 합니다. · 2026-08-28 작성</p>
+  </footer>
+</div>
