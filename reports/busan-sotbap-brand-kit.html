@@ -1,414 +1,331 @@
-<title>가마뫼 브랜드 킷</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;900&display=swap">
+<title>부산역 솥밥 브랜드 킷</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;900&display=swap">
 <style>
-  /* Toss Design System (TDS) tokens — light */
-  :root {
-    --bg: #FFFFFF;
-    --fill: #F9FAFB;
-    --fill-2: #F2F4F6;
-    --line: #E5E8EB;
-    --text: #191F28;
-    --text-2: #4E5968;
-    --text-3: #6B7684;
-    --text-4: #8B95A1;
-    --blue: #3182F6;
-    --blue-deep: #1B64DA;
-    --blue-tint: #E8F3FF;
-    --danger: #F04452;
-    --danger-tint: rgba(240, 68, 82, .06);
-    --warn: #D67E00;
-    --warn-tint: rgba(214, 126, 0, .10);
-    --ok: #0BA360;
-    --ok-tint: rgba(11, 163, 96, .10);
-    --on-accent: #FFFFFF;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg: #101013; --fill: #17171C; --fill-2: #202027; --line: #2C2C35;
-      --text: #E5E8EB; --text-2: #B0B8C1; --text-3: #8B95A1; --text-4: #6B7684;
-      --blue: #4593FC; --blue-deep: #64A8FF; --blue-tint: rgba(69,147,252,.13);
-      --danger: #FF7A85; --danger-tint: rgba(240,68,82,.12);
-      --warn: #FFB023; --warn-tint: rgba(255,176,35,.13);
-      --ok: #35C285; --ok-tint: rgba(53,194,133,.13);
-      --on-accent: #FFFFFF;
-    }
-  }
-  :root[data-theme="dark"] {
-    --bg: #101013; --fill: #17171C; --fill-2: #202027; --line: #2C2C35;
-    --text: #E5E8EB; --text-2: #B0B8C1; --text-3: #8B95A1; --text-4: #6B7684;
-    --blue: #4593FC; --blue-deep: #64A8FF; --blue-tint: rgba(69,147,252,.13);
-    --danger: #FF7A85; --danger-tint: rgba(240,68,82,.12);
-    --warn: #FFB023; --warn-tint: rgba(255,176,35,.13);
-    --ok: #35C285; --ok-tint: rgba(53,194,133,.13);
-    --on-accent: #FFFFFF;
-  }
-
-  * { box-sizing: border-box; }
-  body {
-    background: var(--bg); color: var(--text);
-    font-family: "Toss Product Sans", "Pretendard", -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Segoe UI", sans-serif;
-    margin: 0; font-size: 16px; line-height: 1.7;
-    -webkit-font-smoothing: antialiased; letter-spacing: -0.01em;
-  }
-  .wrap { max-width: 820px; margin: 0 auto; padding: 56px 20px 100px; }
-
-  .chip {
-    display: inline-flex; align-items: center;
-    background: var(--blue-tint); color: var(--blue-deep);
-    font-size: 13px; font-weight: 700; padding: 5px 12px; border-radius: 999px; margin-bottom: 18px;
-  }
-  h1 {
-    font-size: clamp(30px, 5.4vw, 44px); line-height: 1.22; margin: 0 0 12px;
-    font-weight: 800; letter-spacing: -0.028em; text-wrap: balance;
-  }
-  .subtitle { color: var(--text-3); font-size: 17px; margin: 0 0 32px; font-weight: 500; }
-  .notice {
-    background: var(--fill); border-radius: 16px; padding: 18px 22px;
-    font-size: 14.5px; color: var(--text-2); margin-bottom: 16px;
-  }
-  .notice strong { color: var(--text); }
-  .notice .nt { display: block; font-size: 12.5px; font-weight: 700; color: var(--text-4); margin-bottom: 4px; letter-spacing: .02em; }
-
-  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 48px; }
-  .stat { background: var(--fill); border-radius: 16px; padding: 18px 18px 15px; }
-  .stat b { display: block; font-size: 24px; font-weight: 800; color: var(--blue); font-variant-numeric: tabular-nums; letter-spacing: -0.02em; margin-bottom: 2px; }
-  .stat span { font-size: 13px; color: var(--text-3); font-weight: 500; }
-
-  nav.toc { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 60px; }
-  nav.toc a {
-    display: inline-flex; align-items: center; gap: 7px;
-    background: var(--fill-2); color: var(--text-2); text-decoration: none;
-    font-size: 14px; font-weight: 600; padding: 9px 16px; border-radius: 999px;
-    transition: background .15s ease, color .15s ease;
-  }
-  nav.toc a:hover, nav.toc a:focus-visible { background: var(--blue-tint); color: var(--blue-deep); }
-  nav.toc .n { color: var(--blue); font-weight: 800; font-variant-numeric: tabular-nums; }
-
-  section { margin-bottom: 72px; }
-  .chapter {
-    display: inline-flex; background: var(--blue-tint); color: var(--blue-deep);
-    font-size: 12.5px; font-weight: 800; padding: 4px 11px; border-radius: 999px;
-    margin-bottom: 12px; letter-spacing: .01em;
-  }
-  h2 { font-size: 27px; margin: 0 0 22px; font-weight: 800; letter-spacing: -0.024em; line-height: 1.3; text-wrap: balance; }
-  h3 { font-size: 18.5px; margin: 38px 0 14px; font-weight: 700; letter-spacing: -0.015em; }
-  p { margin: 0 0 14px; max-width: 46em; }
-  ul, ol { margin: 0 0 16px; padding-left: 22px; }
-  li { margin-bottom: 8px; }
-  li::marker { color: var(--text-4); }
-  strong { font-weight: 700; }
-  .hl { color: var(--danger); font-weight: 700; }
-  .muted { color: var(--text-4); font-size: 13.5px; }
-  a { color: var(--blue); text-decoration: none; font-weight: 600; }
-  a:hover, a:focus-visible { text-decoration: underline; text-underline-offset: 3px; }
-  .tag { display: inline-block; font-size: 12px; font-weight: 800; padding: 1px 8px; border-radius: 999px; vertical-align: 1px; white-space: nowrap; }
-  .tag.ok { background: var(--ok-tint); color: var(--ok); }
-  .tag.mid { background: var(--warn-tint); color: var(--warn); }
-  .tag.bad { background: var(--danger-tint); color: var(--danger); }
-  .tag.info { background: var(--blue-tint); color: var(--blue-deep); }
-
-  .summary { counter-reset: sm; list-style: none; padding: 0; display: grid; gap: 10px; }
-  .summary li {
-    counter-increment: sm; background: var(--fill); border-radius: 16px;
-    padding: 16px 20px 16px 58px; position: relative; margin: 0;
-  }
-  .summary li::before {
-    content: counter(sm); position: absolute; left: 18px; top: 17px;
-    width: 26px; height: 26px; border-radius: 50%;
-    background: var(--blue); color: var(--on-accent); font-size: 13.5px; font-weight: 800;
-    display: flex; align-items: center; justify-content: center;
-  }
-
-  .tbl { overflow-x: auto; background: var(--fill); border-radius: 16px; margin-bottom: 20px; }
-  table { border-collapse: collapse; width: 100%; font-size: 14.5px; min-width: 560px; }
-  th { text-align: left; font-size: 13px; color: var(--text-4); font-weight: 700; padding: 13px 18px 9px; white-space: nowrap; }
-  td { padding: 11px 18px; border-top: 1px solid var(--line); vertical-align: top; font-variant-numeric: tabular-nums; }
-  td:first-child { font-weight: 700; white-space: nowrap; }
+  /* IICOMBINED reference system — achromatic, flat, editorial. Deliberate single-theme (gallery white). */
+  html { background: #ffffff; }
+  body { background: #ffffff; color: #111111; margin: 0; font-family: "Pretendard", -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Segoe UI", sans-serif; font-size: 15px; line-height: 1.8; font-weight: 400; -webkit-font-smoothing: antialiased; letter-spacing: -0.005em; }
+  .inner { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+  section.band { background: #f3f4f6; }
+  section { padding: 64px 0; }
+  section, .tbl, .stat, .plate, .board { box-shadow: none; }
+  section, .tbl, .stat, .plate { border-radius: 0; }
+  header.hero { padding: 88px 0 56px; background: #ffffff; }
+  .eyebrow { font-size: 11px; letter-spacing: .28em; text-transform: uppercase; color: #858585; margin: 0 0 22px; }
+  h1 { font-family: "Noto Serif KR", "Times New Roman", Times, serif; font-size: clamp(34px, 6vw, 54px); font-weight: 400; line-height: 1.18; margin: 0 0 18px; color: #111111; text-wrap: balance; }
+  .standfirst { color: #343434; font-size: 15px; max-width: 46em; margin: 0 0 8px; }
+  .hairline { border: none; border-top: 1px solid #111111; margin: 40px 0 0; }
+  .method { font-size: 13px; color: #555555; line-height: 1.85; max-width: 52em; }
+  .method strong { color: #111111; font-weight: 600; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0 36px; margin: 44px 0 0; }
+  .stat { border-top: 1px solid #111111; padding: 14px 0 0; }
+  .stat b { display: block; font-family: "Noto Serif KR", Times, serif; font-weight: 400; font-size: 30px; color: #111111; line-height: 1.15; margin-bottom: 4px; font-variant-numeric: tabular-nums; }
+  .stat span { font-size: 12px; color: #858585; }
+  nav.toc { display: flex; flex-wrap: wrap; gap: 10px; margin: 44px 0 0; }
+  nav.toc a { display: inline-flex; align-items: center; height: 34px; padding: 0 20px; border: 1px solid #111111; border-radius: 9999px; color: #111111; text-decoration: none; font-size: 12px; letter-spacing: .08em; transition: opacity 150ms cubic-bezier(0.25,0.1,0.25,1); }
+  nav.toc a:hover, nav.toc a:focus-visible { opacity: .55; }
+  .ch-eyebrow { font-size: 11px; letter-spacing: .3em; text-transform: uppercase; color: #858585; margin: 0 0 14px; }
+  h2 { font-family: "Noto Serif KR", "Times New Roman", Times, serif; font-size: clamp(26px, 4vw, 36px); font-weight: 400; line-height: 1.25; margin: 0 0 10px; color: #111111; text-wrap: balance; }
+  .defline { color: #343434; font-size: 15px; max-width: 48em; margin: 0 0 36px; }
+  .defline strong { font-weight: 600; color: #111111; }
+  h3 { font-size: 13px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: #111111; margin: 46px 0 14px; padding-top: 14px; border-top: 1px solid #111111; }
+  h3 .sub { color: #858585; font-weight: 400; letter-spacing: .04em; text-transform: none; font-size: 12px; margin-left: 10px; }
+  p { margin: 0 0 14px; max-width: 50em; color: #343434; }
+  p strong, li strong { color: #111111; font-weight: 600; }
+  ul, ol { margin: 0 0 16px; padding-left: 20px; color: #343434; }
+  li { margin-bottom: 7px; }
+  li::marker { color: #858585; }
+  .muted { color: #858585; font-size: 12.5px; }
+  a { color: #111111; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+  a:hover { opacity: .6; }
+  .tag { display: inline-block; border: 1px solid #111111; border-radius: 9999px; padding: 0 9px; font-size: 9.5px; letter-spacing: .14em; text-transform: uppercase; color: #111111; line-height: 17px; vertical-align: 2px; white-space: nowrap; }
+  .tag.mid { border-color: #858585; color: #555555; }
+  .tag.bad { border-color: #d12b2b; color: #d12b2b; }
+  ol.summary { list-style: none; padding: 0; margin: 0; counter-reset: sm; max-width: 54em; }
+  ol.summary li { counter-increment: sm; padding: 18px 0 18px 56px; position: relative; margin: 0; border-top: 1px solid #e3e4e6; color: #343434; font-size: 14.5px; }
+  ol.summary li:first-child { border-top: 1px solid #111111; }
+  ol.summary li::before { content: "0" counter(sm); position: absolute; left: 0; top: 20px; font-family: "Noto Serif KR", Times, serif; font-size: 17px; color: #111111; }
+  .tbl { overflow-x: auto; margin: 0 0 26px; background: #ffffff; border-top: 1px solid #111111; }
+  section.band .tbl { background: transparent; }
+  table { border-collapse: collapse; width: 100%; font-size: 13px; min-width: 640px; }
+  th { text-align: left; font-size: 10px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: #858585; padding: 12px 14px 8px; white-space: nowrap; border-bottom: 1px solid #111111; }
+  td { padding: 11px 14px; border-bottom: 1px solid #e3e4e6; vertical-align: top; color: #343434; font-variant-numeric: tabular-nums; line-height: 1.7; }
+  td:first-child { color: #111111; font-weight: 600; white-space: nowrap; }
+  td.win { color: #111111; font-weight: 600; border-left: 2px solid #111111; }
+  td.lose { color: #d12b2b; }
   .num { font-variant-numeric: tabular-nums; }
+  .plate { background: #f3f4f6; padding: 22px 26px; margin: 0 0 26px; }
+  section.band .plate { background: #ffffff; }
+  .plate .pt { font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: #858585; display: block; margin-bottom: 8px; }
+  .plate p, .plate ul { margin-bottom: 0; }
+  .plate li { margin-bottom: 8px; }
+  .plate li:last-child { margin-bottom: 0; }
+  footer { padding: 56px 0 90px; background: #ffffff; }
+  footer .inner { border-top: 1px solid #111111; padding-top: 26px; }
+  footer p { font-size: 12.5px; color: #858585; max-width: none; }
+  footer strong { color: #343434; font-weight: 600; }
+  :focus-visible { outline: 1px solid #111111; outline-offset: 3px; }
+  @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+  @media (max-width: 640px) { section { padding: 48px 0; } header.hero { padding: 64px 0 44px; } }
 
-  .check-group { background: var(--fill); border-radius: 16px; padding: 20px 22px; margin-bottom: 12px; }
-  .check-group h4 { margin: 0 0 12px; font-size: 15.5px; font-weight: 800; color: var(--blue-deep); }
-  .check { list-style: none; padding: 0; margin: 0; }
-  .check > li { padding-left: 32px; position: relative; margin-bottom: 10px; color: var(--text-2); }
-  .check > li:last-child { margin-bottom: 0; }
-  .check > li strong { color: var(--text); }
-  .check > li::before {
-    content: "✓"; position: absolute; left: 0; top: 2px;
-    width: 19px; height: 19px; border-radius: 6px;
-    background: var(--blue-tint); color: var(--blue);
-    font-size: 12px; font-weight: 800;
-    display: flex; align-items: center; justify-content: center;
-  }
-
-  .phase { position: relative; padding: 0 0 26px 30px; }
-  .phase::before { content: ""; position: absolute; left: 7px; top: 9px; bottom: -3px; width: 2px; background: var(--line); }
-  .phase:last-of-type::before { display: none; }
-  .phase::after { content: ""; position: absolute; left: 2px; top: 7px; width: 12px; height: 12px; border-radius: 50%; background: var(--blue); }
-  .phase h4 { margin: 0 0 8px; font-size: 16.5px; font-weight: 800; letter-spacing: -0.015em; }
-  .phase h4 small { color: var(--text-4); font-weight: 600; margin-left: 8px; font-size: 13px; }
-  .phase ul { margin-bottom: 0; color: var(--text-2); }
-  .phase ul strong { color: var(--text); }
-
-  /* BI swatches */
-  .swatches { display: flex; gap: 10px; flex-wrap: wrap; margin: 6px 0 18px; }
-  .sw { flex: 1 1 150px; border-radius: 14px; padding: 14px 16px; font-size: 13px; font-weight: 700; border: 1px solid var(--line); }
-  .sw small { display: block; font-weight: 600; opacity: .75; font-size: 12px; margin-top: 2px; }
-
-  /* ---------- menu board mockup — deliberate single-look object ---------- */
+  /* menu board mockup — deliberate single-look object (BI 시안 A: 먹색×놋쇠×쌀백) */
   .board-wrap { display: flex; justify-content: center; margin: 26px 0 14px; }
-  .board {
-    width: 100%; max-width: 590px;
-    background: #23262C; color: #F2EBDC;
-    border: 1px solid #3A3E46; border-radius: 6px;
-    padding: 34px 30px 26px;
-    box-shadow: 0 18px 44px rgba(0,0,0,.28);
-    font-family: "Noto Serif KR", "Apple SD Gothic Neo", "Noto Sans KR", serif;
-  }
-  .board * { color: inherit; }
+  .board { width: 100%; max-width: 590px; background: #23262C; color: #F2EBDC; border: 1px solid #3A3E46; padding: 34px 30px 26px; font-family: "Noto Serif KR", "Apple SD Gothic Neo", serif; }
   .board .b-hanja { text-align: center; font-size: 13px; letter-spacing: .42em; color: #C4A253; margin: 0 0 6px; font-weight: 600; }
-  .board .b-name { text-align: center; font-size: 44px; font-weight: 900; letter-spacing: .08em; margin: 0; line-height: 1.15; color: #F2EBDC; }
-  .board .b-sub { text-align: center; font-size: 12.5px; color: #A9A08C; margin: 6px 0 0; font-weight: 600; letter-spacing: .06em; }
+  .board .b-name { text-align: center; font-size: 40px; font-weight: 900; letter-spacing: .08em; margin: 0; line-height: 1.15; color: #F2EBDC; }
+  .board .b-sub { text-align: center; font-size: 12px; color: #A9A08C; margin: 6px 0 0; font-weight: 600; letter-spacing: .06em; }
   .board .b-rule { border: none; border-top: 1px solid #C4A253; opacity: .55; margin: 20px 0; }
   .board .b-story { font-size: 12.5px; line-height: 1.75; color: #C9C0AC; text-align: center; margin: 0 0 4px; font-weight: 600; }
-
   .board .b-sec { font-size: 12px; font-weight: 700; letter-spacing: .3em; color: #C4A253; margin: 24px 0 10px; text-transform: uppercase; }
   .board .b-item { display: flex; align-items: baseline; gap: 10px; margin-bottom: 11px; }
   .board .b-no { font-size: 11px; color: #8E8672; font-weight: 700; min-width: 22px; }
   .board .b-nm { font-size: 16px; font-weight: 700; color: #F2EBDC; }
-  .board .b-en { display: block; font-size: 11px; color: #9A917D; font-weight: 600; letter-spacing: .01em; font-family: "Pretendard", "Noto Sans KR", sans-serif; }
+  .board .b-en { display: block; font-size: 11px; color: #9A917D; font-weight: 600; font-family: "Pretendard", "Noto Sans KR", sans-serif; }
   .board .b-dots { flex: 1; border-bottom: 1px dotted #55584F; transform: translateY(-4px); min-width: 20px; }
   .board .b-pr { font-size: 16.5px; font-weight: 900; color: #C4A253; font-variant-numeric: tabular-nums; white-space: nowrap; }
-
-  .board .b-sig {
-    border: 1.5px solid #C4A253; border-radius: 4px;
-    padding: 16px 16px 13px; margin: 6px 0 4px; position: relative;
-    background: rgba(196,162,83,.06);
-  }
-  .board .b-sig-badge {
-    position: absolute; top: -11px; left: 14px;
-    background: #C4A253; color: #23262C; font-size: 11px; font-weight: 900;
-    padding: 2px 10px; border-radius: 999px; letter-spacing: .12em;
-    font-family: "Pretendard", "Noto Sans KR", sans-serif;
-  }
+  .board .b-sig { border: 1.5px solid #C4A253; padding: 16px 16px 13px; margin: 6px 0 4px; position: relative; background: rgba(196,162,83,.06); }
+  .board .b-sig-badge { position: absolute; top: -11px; left: 14px; background: #C4A253; color: #23262C; font-size: 11px; font-weight: 900; padding: 2px 10px; border-radius: 9999px; letter-spacing: .12em; font-family: "Pretendard", sans-serif; }
   .board .b-steps { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 9px; }
-  .board .b-step {
-    flex: 1 1 140px; font-size: 11.5px; color: #C9C0AC; font-weight: 600;
-    border-top: 1px solid #55584F; padding-top: 7px; line-height: 1.55;
-    font-family: "Pretendard", "Noto Sans KR", sans-serif;
-  }
+  .board .b-step { flex: 1 1 140px; font-size: 11.5px; color: #C9C0AC; font-weight: 600; border-top: 1px solid #55584F; padding-top: 7px; line-height: 1.55; font-family: "Pretendard", sans-serif; }
   .board .b-step b { color: #C4A253; font-weight: 900; margin-right: 4px; }
-  .board .b-opt { font-size: 12px; color: #9A917D; font-weight: 600; margin-top: 8px; font-family: "Pretendard", "Noto Sans KR", sans-serif; }
-
+  .board .b-opt { font-size: 12px; color: #9A917D; font-weight: 600; margin-top: 8px; font-family: "Pretendard", sans-serif; }
   .board .b-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 0 26px; }
   @media (max-width: 560px) { .board .b-cols { grid-template-columns: 1fr; } }
-
-  .board .b-foot {
-    margin-top: 20px; padding-top: 12px; border-top: 1px solid #3A3E46;
-    font-size: 10.5px; color: #8E8672; line-height: 1.7; font-weight: 600;
-    font-family: "Pretendard", "Noto Sans KR", sans-serif;
-  }
+  .board .b-foot { margin-top: 20px; padding-top: 12px; border-top: 1px solid #3A3E46; font-size: 10.5px; color: #8E8672; line-height: 1.7; font-weight: 600; font-family: "Pretendard", sans-serif; }
   .board .b-foot b { color: #C9C0AC; }
-
-  footer { border-top: 1px solid var(--line); padding-top: 22px; color: var(--text-4); font-size: 13.5px; }
-  footer p { margin-bottom: 8px; }
-  footer strong { color: var(--text-3); }
-
-  :focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-radius: 4px; }
-  @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
 </style>
 
-<div class="wrap">
-  <header>
-    <div class="chip">브랜드 킷 · 2부 · 2026. 08. 28</div>
-    <h1>가마뫼 브랜드 킷</h1>
-    <p class="subtitle">네이밍 상세 개발 · 메뉴판 설계 · 원가표 — 1부 「부산역 솥밥 전략」의 실행 설계</p>
-
-    <div class="notice">
-      <span class="nt">전제 · 데이터</span>
-      1부 권고 조합(<strong>A안 로컬 원물·장어 시그니처 × B안 여행자 오퍼레이션</strong>)의 실행안입니다. 장어 원가는 저장소 <strong>tracker/</strong>의 자사 시세 추적 데이터(관세청 통관 수입단가·국내 도매 경매가)를 직접 반영했습니다. 네이밍 상호 충돌은 웹 검색으로 스크리닝했으나 <strong>KIPRIS 상표 검색은 미수행(환경 차단)</strong> — 최종 선정 전 43·30·35류 검증 필수. [확인]/[추정] 구분 표기.
-    </div>
-
+<header class="hero">
+  <div class="inner">
+    <p class="eyebrow">Brand Kit · Series 02 · Rev. 2026. 09. 01</p>
+    <h1>부산역 솥밥 브랜드 킷</h1>
+    <p class="standfirst">네이밍 트랙 전체 이력(3라운드·후보 40여 개) · 메뉴판 설계 · BOM 원가표 · 자사 장어 시세 데이터 전량.</p>
+    <p class="method"><strong>브랜드명 현재 상태: 미확정.</strong> 1차 추천 '가마뫼' 반려 → '만선(滿船)' 계열 선호로 수렴 중 — 확정 전 상호 검색+KIPRIS 필수(라운드 1에서 유력 후보 2개가 실충돌로 탈락한 전례). 서브 명칭('장어 3식'·'첫솥'·'기차솥')은 가칭. 원가는 자사 트래커 실데이터 기반, [확인]/[추정] 구분.</p>
     <div class="stats">
-      <div class="stat"><b>가마뫼</b><span>추천 네이밍 — 충돌 0건, 釜山의 첫 이름</span></div>
-      <div class="stat"><b>$10.8~11.2</b><span>자사 장어 수입 CIF/kg (2026.5~7 통관)</span></div>
-      <div class="stat"><b>19,500원</b><span>장어솥밥 3식 — 솔솥 대비 -5,500원</span></div>
-      <div class="stat"><b>31.5%</b><span>설계 블렌디드 원가율 (1부 가정 36%)</span></div>
+      <div class="stat"><b>19,500원</b><span>장어솥밥 3식 — 솔솥 25,000 대비 −5,500</span></div>
+      <div class="stat"><b>$10.75~11.23</b><span>조제장어 수입 CIF/kg (2026.5~7 통관, 월 250~276톤 시장)</span></div>
+      <div class="stat"><b>2,600원</b><span>장어 토핑 1인분 원가 — 국산 대비 절반 이하</span></div>
+      <div class="stat"><b>31.5%</b><span>블렌디드 설계 원가율 · 목표 객단가 19,000원</span></div>
     </div>
-
     <nav class="toc" aria-label="목차">
-      <a href="#summary"><span class="n">✦</span>요약</a>
-      <a href="#ch1"><span class="n">1</span>네이밍</a>
-      <a href="#ch2"><span class="n">2</span>메뉴·원가</a>
-      <a href="#ch3"><span class="n">3</span>메뉴판 목업</a>
-      <a href="#ch4"><span class="n">4</span>실행 체크리스트</a>
+      <a href="#summary">요약</a>
+      <a href="#ch1">01 네이밍 트랙</a>
+      <a href="#ch2">02 메뉴·BOM</a>
+      <a href="#ch3">03 장어 시세 데이터</a>
+      <a href="#ch4">04–05 엔지니어링·원산지</a>
+      <a href="#ch6">06 메뉴판 목업</a>
+      <a href="#ch7">07 체크리스트</a>
     </nav>
-  </header>
+    <hr class="hairline">
+  </div>
+</header>
 
-  <section id="summary">
+<section id="summary">
+  <div class="inner">
+    <p class="ch-eyebrow">Summary</p>
     <h2>요약</h2>
     <ol class="summary">
-      <li><strong>추천 네이밍: "가마뫼"(KAMAMOE)</strong> — 부산(釜山) 지명 자체가 "가마솥을 엎어놓은 모양의 산", 순우리말 <strong>가마뫼</strong>에서 온 것이 공식 확인(1481 동국여지승람·부산시 명칭유래). "부산의 첫 이름을 상호로 쓴 솥밥집"이라는, 부산역에서 이길 수 없는 서사입니다. 상호 충돌 0건.</li>
-      <li>스크리닝에서 유력 후보 2개 실격 — <strong>'가마산'은 광안리 동명 식당 실존, '뜸'은 기장에 동명 솥밥집 실존</strong>. 차순위는 초량반상(지리명이라 상표 등록력 약함)·가마항(釜港).</li>
-      <li>메뉴 골격 <strong>"앵커 아래 로컬, 앵커 위 장어"</strong>: 로컬 원물 12,500~17,500원 + 시그니처 <strong>가마뫼 장어솥밥 3식 19,500원</strong>. 자사 수입 단가(CIF $10.8~11.2/kg) 기준 장어 토핑 원가 1인분 <strong>약 2,600원</strong> — 국산 활장어(도매 20,200~25,253원/kg, 손질 후 3.4만~4.6만/kg) 대비 절반 이하. 이 격차가 해자입니다.</li>
-      <li>전 메뉴 원가율 28~35%(블렌디드 31.5%), 목표 객단가 19,000원. 부가세 분리 재계산 시 기본 시나리오(일 150명) <strong>월 영업이익 약 2,020만 원</strong>.</li>
-      <li>원산지는 <strong>정면 돌파 + 듀얼 티어</strong>: "중국산·자사 직수입 3중 검품" 투명 표기 + 국내산 활장어 업그레이드(+7,500원). 가격 파괴의 이유를 설명하는 정직함이 마케팅입니다.</li>
+      <li><strong>네이밍은 3라운드를 거쳐 만선 계열로 수렴 중.</strong> 라운드 1(부산 어원 — 가마뫼 추천, 반려) → 라운드 2(밥·기차·바다·사투리 19안) → 라운드 3(만선 조합 20안). 스크리닝에서 실충돌 2건(가마산=광안리 식당, 뜸=기장 솥밥집)을 걸러낸 실증 — 만선 계열도 확정 전 동일 검증 필수.</li>
+      <li><strong>메뉴 골격 "앵커 아래 로컬, 앵커 위 장어."</strong> 로컬 원물 12,500~17,500원 + 장어 3식 19,500원(곱빼기 +6,000 · 국내산 업그레이드 +7,500 듀얼 티어) + 조식 9,500~10,500 + 기차 도시락 12,500~15,000.</li>
+      <li><strong>원가 해자의 근거는 자사 데이터.</strong> 조제장어 CIF $10.75~11.23/kg(2026.5~7) vs 국내산 도매 20,200~25,253원/kg(필렛 환산 3.4만~4.6만) → 장어 토핑 1인분 약 2,600원, <strong>19,500원에 팔아도 원가율 29.7%.</strong></li>
+      <li>전 메뉴 원가율 27~35%(블렌디드 31.5%), 목표 객단가 19,000원. 손익 확정판은 3부(40평) — 본 문서의 20평 모델은 가맹 표준점 참조용.</li>
+      <li>원산지는 정면 돌파("중국산·자사 직수입 3중 검품") + 국내산 옵션 병행. 메뉴판은 A3 양면·4개 국어·№ 주문·QR 사전주문 — 목업 시안 포함.</li>
     </ol>
-  </section>
+  </div>
+</section>
 
-  <section id="ch1">
-    <div class="chapter">1장</div>
-    <h2>네이밍 상세 개발</h2>
+<section id="ch1" class="band">
+  <div class="inner">
+    <p class="ch-eyebrow">Chapter 01 — Naming Track</p>
+    <h2>네이밍 — 3라운드 전체 이력</h2>
+    <p class="defline">평가 6축: ①충돌 ②솔솥과의 거리("솥솥"이 솔솥 오기로 판명된 실증) ③외국어 전달(대만·일본 관광객) ④서사 ⑤검색 선점 ⑥등록·확장성(지명+보통명사는 등록 난항).</p>
 
-    <h3>후보 스크리닝 결과 <span class="muted">(6축: 충돌·솔솥 거리·외국어·서사·검색 선점·등록/확장성)</span></h3>
+    <h3>라운드 1 <span class="sub">부산 어원·지역 계열 — 결과: 반려</span></h3>
     <div class="tbl"><table>
-      <thead><tr><th>후보</th><th>판정</th><th>사유</th></tr></thead>
+      <thead><tr><th>후보</th><th>결과</th><th>사유</th></tr></thead>
       <tbody>
-        <tr><td>가마산</td><td><span class="tag bad">탈락</span></td><td><strong>광안리에 동명 식당(회·고기) 실존</strong> — 같은 도시 F&amp;B 충돌</td></tr>
-        <tr><td>뜸</td><td><span class="tag bad">탈락</span></td><td>기장에 프리미엄 솥밥집 '뜸' 실존 (1부 조사)</td></tr>
-        <tr><td>역전솥밥·부산솥밥</td><td><span class="tag bad">탈락</span></td><td>보통명사+지명 → 상표 식별력 부족, 검색 선점 불가</td></tr>
-        <tr><td>물때솥</td><td><span class="tag bad">탈락</span></td><td>'물때 낀'의 부정 동음</td></tr>
-        <tr><td>미항(味港)</td><td><span class="tag mid">보류</span></td><td>직접 충돌 미검출이나 항구 관용어라 선점력 약함 → 서브 카피로 활용</td></tr>
-        <tr><td>첫차밥상</td><td><span class="tag mid">전환</span></td><td>스토리가 조식 한정 → 조식 서브브랜드 <strong>'첫솥'</strong>으로 전환(충돌 없음)</td></tr>
-        <tr><td>가마항(釜港)</td><td><span class="tag ok">3순위</span></td><td>충돌 미검출·한자 전달력. 단 부산 '가마솥' 상호 55곳+ 군집에 섞임</td></tr>
-        <tr><td>초량반상</td><td><span class="tag ok">2순위</span></td><td>충돌 미검출·하이퍼로컬. 단 지리명+보통명사라 등록 다툼 소지, 확장 제약</td></tr>
-        <tr><td><strong>가마뫼</strong></td><td><span class="tag ok">1순위 ◎</span></td><td>충돌 0건 · 조어성 옛말(등록력 강) · 도시 어원 서사 · 검색 독점 가능</td></tr>
+        <tr><td>가마산</td><td class="lose">❌ 실충돌</td><td><strong>광안리 동명 식당(회·고기, 광안해변로 263) 실존</strong> — 같은 도시 F&amp;B 충돌</td></tr>
+        <tr><td>뜸</td><td class="lose">❌ 실충돌</td><td>기장 프리미엄 솥밥집 '뜸(오시리아본점)' 실존</td></tr>
+        <tr><td>역전솥밥·부산솥밥 / 물때솥</td><td class="lose">❌</td><td>보통명사+지명 식별력 부족 / '물때 낀' 부정 동음</td></tr>
+        <tr><td>미항(味港) / 첫차밥상</td><td class="num">△ 보류 / 전환</td><td>항구 관용어라 선점력 약함 / 조식 서브명 '첫솥'으로 전환(충돌 없음)</td></tr>
+        <tr><td>가마항(釜港) / 초량반상</td><td class="num">○</td><td>충돌 미검출 — 단 '가마솥' 상호 55곳+ 군집 / 지리명이라 등록 다툼·확장 제약</td></tr>
+        <tr><td>가마뫼</td><td class="num">◎ → <strong>반려</strong></td><td>충돌 0건 · 부산(釜山)의 순우리말 어원("가마솥을 엎어놓은 산", 1481 동국여지승람 — 부산시 공식) · 日 カモメ(부산갈매기) 음운 보너스. <strong>의뢰인 선호 불일치로 반려</strong> — 어원 스토리는 브랜드 스토리텔링 소재로 잔존</td></tr>
       </tbody>
     </table></div>
 
-    <h3>'가마뫼' 브랜드 언어 시스템</h3>
-    <p class="muted">핵심 스토리(사실 기반): 1481년 동국여지승람 — "산이 가마솥을 엎어놓은 모양과 같다(釜山)". 그 산의 우리말이 가마뫼.</p>
+    <h3>라운드 2 <span class="sub">4계열 19안</span></h3>
     <div class="tbl"><table>
-      <tr><td>상호</td><td><strong>가마뫼</strong> · 영문 KAMAMOE · 한자 병기 釜山/釜飯 · 매장명 "가마뫼 부산역본점"</td></tr>
-      <tr><td>태그라인</td><td>"부산(釜山)의 첫 이름, 가마뫼" / 보조 "가마솥 산 아래, 갓 지은 한 상"</td></tr>
-      <tr><td>시그니처 의식</td><td><strong>가마뫼 3식(三食)</strong> — ①그대로 ②특제 양념장·고명 ③가마숭늉(누룽지탕 마무리). 히츠마부시 문법의 솥밥 재해석 — 솔솥 '누룽지 의식'과 구별되는 독자 의식</td></tr>
-      <tr><td>서브브랜드</td><td>조식 <strong>"첫솥"</strong>(07:30 그날 첫 가마) · 포장 <strong>"기차솥"</strong>(열차 도시락) · 숭늉 <strong>"가마숭늉"</strong>(실육수 — 솔솥 '맹물 숭늉' 불만의 역설계)</td></tr>
-      <tr><td>외국어</td><td>EN "KAMAMOE — Busan Pot Rice House" · 日 カマモエ(釜飯専門店) · 中(번체) 釜飯專門店 "釜山的第一個名字"</td></tr>
-      <tr><td>일본어 보너스</td><td>カマモエ ≒ カモメ(갈매기) 음운 연상 = <strong>부산갈매기</strong> — 긍정 자산. 단 갈매기 모티프는 쓰지 않고(카모메식당 기시감 방지) 분철 표기 '가마·뫼'로 오독 관리</td></tr>
-      <tr><td>SNS</td><td>@kamamoe_busan (선점 확인) · #가마뫼 #부산역솥밥 #가마뫼3식</td></tr>
-      <tr><td>솔솥과 거리</td><td>음운·글자수·이모지 체계(⛰️🍲 vs 🌲🍚) 모두 원거리 — 1부 9장 금지선 통과</td></tr>
+      <thead><tr><th>계열</th><th>후보 전량</th></tr></thead>
+      <tbody>
+        <tr><td>밥 그 자체 (공용)</td><td>고슬 · 뜨물 · 백미(白米·百味·白眉) · 이팝(쌀밥꽃) · 안치다 · 김오름 · 미곡상회 · 소반(역전소반·바다소반 조합형)</td></tr>
+        <tr><td>부산역·기차</td><td>도착한상(사전주문 운영이 이름 안에) · 기적(汽笛+기적) · 밥이온다 · 정시</td></tr>
+        <tr><td>바다·항구 (2안 전용)</td><td>물마루(수평선) · <strong>만선(滿船)</strong> · 밀물 · 해무 · 물비늘</td></tr>
+        <tr><td>사투리 (캐주얼)</td><td>밥무라 · 마이무라("많이 먹어라" — 양 인심 선언)</td></tr>
+        <tr><td>제외</td><td class="muted">윤슬(과소비) · 고봉(고봉민김밥 연상) · 온정(온기정 유사) · 성씨 시작 조합(사람 이름 오독)</td></tr>
+      </tbody>
     </table></div>
 
-    <h3>BI 컬러 방향 <span class="muted">(로고 모티프: 엎어놓은 솥뚜껑 = 산 능선)</span></h3>
-    <div class="swatches">
-      <div class="sw" style="background:#23262C; color:#F2EBDC; border-color:#23262C;">먹색 (숯가마)<small>#23262C — 바탕·보드</small></div>
-      <div class="sw" style="background:#C4A253; color:#23262C; border-color:#C4A253;">놋쇠 (유기)<small>#C4A253 — 로고·강조</small></div>
-      <div class="sw" style="background:#F2EBDC; color:#23262C;">쌀백색<small>#F2EBDC — 타이포·기물</small></div>
-    </div>
-
-    <div class="check-group">
-      <h4>상표 실무 체크리스트 (선정 즉시)</h4>
-      <ul class="check">
-        <li><strong>KIPRIS 선행조사</strong>: '가마뫼'(+초량반상·가마항 예비) — 43류(음식점)·30류(도시락·쌀가공)·35류(프랜차이즈)</li>
-        <li>문자상표 + 로고 결합상표 동시 출원 — <strong>사용 개시 전 완료</strong>(1부 9장 원칙)</li>
-        <li>도메인·인스타·네이버 플레이스·카카오 채널 동시 선점</li>
-        <li>'첫솥'·'기차솥'·'가마뫼 3식'은 서브 사용 후 확장 확정 시 추가 출원 <span class="muted">('첫솥'은 도시락 브랜드 '한솥'과 1글자 차 — 단독 상호 사용은 비권장, 서브 라벨 한정)</span></li>
+    <h3>라운드 3 <span class="sub">'만선' 조합 20안 — 현재 선호 계열</span></h3>
+    <div class="tbl"><table>
+      <thead><tr><th>형식</th><th>후보 전량 (굵게 = 개인 톱)</th></tr></thead>
+      <tbody>
+        <tr><td>만선+α</td><td>만선호(선명 문법 — 가게가 배) · <strong>만선기(滿船旗 — 깃발 로고·"입고=게양" 의식 내장)</strong> · 만선옥 · 오늘만선 · 만선반상 · 만선한상 · 만선부두 · 만선솥밥(검색 실용) · 만선정(온기정 어미 주의) · 만선식당(동명 확률 주의)</td></tr>
+        <tr><td>X만선</td><td><strong>갓만선('갓 잡은·갓 지은' 부사 공유)</strong> · 첫만선 · 늘만선 · <strong>또만선("또 만선!"+"또 만나선" 중의)</strong> · 온만선 · 참만선 · 복만선 · 철만선(제철+鐵) · 꽉만선 · 왕만선</td></tr>
+        <tr><td>제외</td><td class="muted">대만선(대만+선 오독) · 반만선("반만 참") · 금만선(禁 오독) · 성씨 음절</td></tr>
+      </tbody>
+    </table></div>
+    <div class="plate">
+      <span class="pt">현재 상태 · 다음 단계</span>
+      <ul>
+        <li><strong>미확정</strong> — 유력 후보(만선기·갓만선·또만선·만선호)의 상호 검색+KIPRIS 43·30·35류 조회 미수행. 라운드 1에서 유력 2개가 실충돌 탈락한 전례상 필수.</li>
+        <li>'만선'은 수산 정체성이 강해 <strong>3부 가칭2(수산 솥밥) 권고와 정합</strong> — 가칭1(종합) 선택 시 육류 메뉴와의 어긋남은 3부 비교에 반영됨.</li>
+        <li>확정 즉시: KIPRIS → 문자+로고 결합 출원(사용 개시 전) → 채널 선점 → 서브명 사용('첫솥'은 '한솥'과 1글자 차 — 서브 라벨 한정).</li>
       </ul>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="ch2">
-    <div class="chapter">2장</div>
-    <h2>메뉴 설계 &amp; 원가표</h2>
+<section id="ch2">
+  <div class="inner">
+    <p class="ch-eyebrow">Chapter 02 — Menu &amp; BOM</p>
+    <h2>메뉴 설계 · 원가표 전량</h2>
+    <p class="defline">설계 원칙 = 1부 리뷰 역설계: 가격 대비 양(3.1) → 시그니처 −22% + 공기밥·누룽지 무료 / 웨이팅 → 조식 배치 취반 5분 + QR 사전주문 착석 7분 / 반찬·숭늉 불만 → 부산 찬 3종 + 실육수 규정 / 편차 → 단일점 직영 당일 원물.</p>
 
-    <h3>설계 원칙 — 1부 리뷰 역설계의 실행</h3>
-    <ul>
-      <li><strong>가격 대비 양 불만(3.1)</strong> → 시그니처를 솔솥 동일 메뉴 대비 -22%(장어 25,000→19,500) + <strong>공기밥·누룽지 추가 무료</strong> 명문화</li>
-      <li><strong>웨이팅·대기</strong> → 조식 배치 취반 5분 제공 · 본상 QR 사전주문(열차 연동)으로 착석 7분 내 첫 상</li>
-      <li><strong>반찬 심플·숭늉 맹물</strong> → 부산 찬 3종 고정 + '가마숭늉' 실육수 규정(원가 250원 반영)</li>
-    </ul>
-
-    <h3>메뉴별 원가·마진 <span class="muted">(1인상 공통 베이스 2,600원: 쌀 220g 950 + 찬·샐러드·김 1,100 + 가마숭늉 250 + 가스·소모품 300 [추정])</span></h3>
+    <h3>전체 메뉴판 (가격 확정안)</h3>
     <div class="tbl"><table>
-      <thead><tr><th>메뉴</th><th>판매가</th><th>토핑 원가</th><th>총원가</th><th>원가율</th></tr></thead>
+      <thead><tr><th>구간</th><th>메뉴</th><th>가격</th><th>비고</th></tr></thead>
       <tbody>
-        <tr><td>기장미역들깨솥밥</td><td class="num">12,500</td><td class="num">900</td><td class="num">3,500</td><td class="num">28.0%</td></tr>
-        <tr><td>멸치쌈솥밥 (대변항)</td><td class="num">13,500</td><td class="num">1,300</td><td class="num">3,900</td><td class="num">28.9%</td></tr>
-        <tr><td>불맛부챗살솥밥</td><td class="num">16,500</td><td class="num">2,700</td><td class="num">5,300</td><td class="num">32.1%</td></tr>
-        <tr><td>제주갈치솥밥</td><td class="num">17,000</td><td class="num">2,900</td><td class="num">5,500</td><td class="num">32.4%</td></tr>
-        <tr><td>완도전복미역솥밥</td><td class="num">17,500</td><td class="num">3,100</td><td class="num">5,700</td><td class="num">32.6%</td></tr>
-        <tr><td><strong>가마뫼 장어솥밥 3식</strong> ⭐</td><td class="num"><strong>19,500</strong></td><td class="num">3,200</td><td class="num"><strong>5,800</strong></td><td class="num"><strong>29.7%</strong></td></tr>
-        <tr><td>계절 한 솥 (월 교체)</td><td class="num">21,000</td><td class="num">4,800</td><td class="num">7,400</td><td class="num">35.2%</td></tr>
-        <tr><td>첫솥 미역 / 명란버터 (조식)</td><td class="num">9,500 / 10,500</td><td class="num">700 / 1,200</td><td class="num">2,900 / 3,400</td><td class="num">30.5% / 32.4%</td></tr>
-        <tr><td>장어 한 꼬치 ⭐</td><td class="num">6,500</td><td class="num">—</td><td class="num">1,500</td><td class="num">23.1%</td></tr>
-        <tr><td>전복 버터구이 / 어묵탕 / 계란찜</td><td class="num">7,500 / 5,500 / 4,000</td><td class="num">—</td><td class="num">2,800 / 1,600 / 900</td><td class="num">37.3% / 29.1% / 22.5%</td></tr>
-        <tr><td>하이볼 / 생탁 / 금정산성막걸리</td><td class="num">7,500 / 5,000 / 12,000</td><td class="num">—</td><td class="num">1,400 / 1,400 / 6,000</td><td class="num">18.7% / 28% / 50%</td></tr>
-        <tr><td>기차솥 도시락 (장어/부챗살)</td><td class="num">15,000 / 12,500</td><td class="num">—</td><td class="num">4,900 / 4,300</td><td class="num">32.7% / 34.4%</td></tr>
-        <tr><td>가마뫼 상 (2인 세트)</td><td class="num">48,000</td><td class="num">—</td><td class="num">15,900</td><td class="num">33.1%</td></tr>
+        <tr><td>로컬 볼륨</td><td>기장미역들깨(비건 대응) · 멸치쌈(대변항)</td><td class="num">12,500 · 13,500</td><td>부산 원물 스토리</td></tr>
+        <tr><td>육류 브릿지</td><td>직화목살 · 불맛부챗살(파채·갈릭간장)</td><td class="num">15,900 · 16,500</td><td>수산 비선호 방어(3부 반영)</td></tr>
+        <tr><td>앵커</td><td>제주갈치 · 완도전복미역(활전복 2미·버터)</td><td class="num">17,000 · 17,500</td><td></td></tr>
+        <tr><td>시그니처</td><td class="win">장어솥밥 3식 — ①그대로 ②양념장·고명 ③숭늉</td><td class="num"><strong>19,500</strong> · 곱빼기 +6,000 · 국내산 +7,500</td><td>솔솥 25,000 대비 −5,500</td></tr>
+        <tr><td>한정</td><td>계절 한 솥(대하→방어·굴→도다리쑥, 여름 물회 페어링 — 4부 반영)</td><td class="num">21,000</td><td>재방문·SNS 장치</td></tr>
+        <tr><td>조식 '첫솥(가칭)'</td><td>미역솥밥상 · 명란버터솥밥상 · +드립커피</td><td class="num">9,500 · 10,500 · +2,000</td><td>07:30~10:30 배치 취반 5분</td></tr>
+        <tr><td>곁들임</td><td>장어 한 꼬치 · 전복 버터구이 · 부산어묵탕 · 계란찜</td><td class="num">6,500 · 7,500 · 5,500 · 4,000</td><td></td></tr>
+        <tr><td>음료·주류</td><td>유자 하이볼 · 생탁 · 금정산성막걸리 · 소주/맥주 · 제로 음료</td><td class="num">7,500 · 5,000 · 12,000 · 5,000/6,000 · 3,000</td><td></td></tr>
+        <tr><td>포장·세트</td><td>기차솥 도시락(장어/부챗살, 누룽지칩 별첨) · 2인 세트(장어 3식+전복+꼬치+어묵탕)</td><td class="num">15,000/12,500 · <strong>48,000</strong></td><td>15분 전 QR 주문 · 개별가 51,000</td></tr>
       </tbody>
     </table></div>
-    <p class="muted">전 [추정] 단가는 시식 R&amp;D 실측 BOM으로 교체 전제. 목표 밴드: 단품 28~35% · 사이드 20~37% · 주류 20~50%(금정산성은 명물 미끼로 허용).</p>
 
-    <h3>장어 원가 우위 — 자사 트래커 데이터 [확인]</h3>
+    <h3>BOM 전량 <span class="sub">공통 베이스 2,600원: 쌀 220g 950(4,300원/kg급) + 찬·샐러드·김 1,100 + 숭늉 실육수 250 + 가스·소모품 300 [추정]</span></h3>
     <div class="tbl"><table>
-      <thead><tr><th>조달 경로</th><th>단가</th><th>기준</th></tr></thead>
+      <thead><tr><th>메뉴</th><th>판매가</th><th>토핑 산식</th><th>총원가</th><th>원가율</th></tr></thead>
       <tbody>
-        <tr><td><strong>중국산 조제 장어 수입 CIF</strong> (HS 1604.17)</td><td class="num"><strong>$10.75~11.23/kg</strong> ≈ 14,500~15,200원</td><td>2026.5~7월 관세청 통관 (tracker/import_history.csv)</td></tr>
-        <tr><td>중국산 활 뱀장어 CIF (HS 0301.92)</td><td class="num">$8.40~11.09/kg</td><td>2026.1~7월</td></tr>
-        <tr><td>→ 착지가 가정치 (관세·통관·물류 포함)</td><td class="num">20,000원/kg</td><td>원가표 적용값 — <strong>자사 실적 원가로 교체 필수</strong> [추정]</td></tr>
-        <tr><td>국내산 활 뱀장어 도매 (안산 경매)</td><td class="num">20,200~25,253원/kg (활) → 필렛 환산 <strong>3.4만~4.6만원/kg</strong></td><td>2026.5~7월 (tracker/wonmul_history.csv)</td></tr>
-        <tr><td>소매 벤치마크: 양념구이 8미 1kg</td><td class="num">26,700~29,600원</td><td>2026.8월 일별 (tracker/price_history.csv)</td></tr>
+        <tr><td>기장미역들깨 / 멸치쌈</td><td class="num">12,500 / 13,500</td><td class="num">900 / 1,300</td><td class="num">3,500 / 3,900</td><td class="num">28.0% / 28.9%</td></tr>
+        <tr><td>직화목살</td><td class="num">15,900</td><td class="num">목살 110g×11,000=1,210 + 양념 500</td><td class="num">4,310</td><td class="win">27.1%</td></tr>
+        <tr><td>불맛부챗살</td><td class="num">16,500</td><td class="num">부챗살 110g×21,000=2,310 + 파채·소스 400</td><td class="num">5,310</td><td class="num">32.2%</td></tr>
+        <tr><td>제주갈치</td><td class="num">17,000</td><td class="num">갈치 순살 130g×20,000=2,600 + 300</td><td class="num">5,500</td><td class="num">32.4%</td></tr>
+        <tr><td>완도전복미역</td><td class="num">17,500</td><td class="num">전복 2미×1,400=2,800 + 300 <span class="muted">(산지 소매 22,500원/kg 역산)</span></td><td class="num">5,700</td><td class="num">32.6%</td></tr>
+        <tr><td class="win">장어 3식</td><td class="num"><strong>19,500</strong></td><td class="num"><strong>자사 필렛 130g×20,000원/kg=2,600</strong> + 타레·고명 600</td><td class="num">5,800</td><td class="num"><strong>29.7%</strong></td></tr>
+        <tr><td>계절 한 솥</td><td class="num">21,000</td><td class="num">원물 상한 4,800</td><td class="num">7,400</td><td class="num">35.2%</td></tr>
+        <tr><td>첫솥 미역/명란버터</td><td class="num">9,500 / 10,500</td><td class="num">축소 베이스 2,200 + 700 / 1,200</td><td class="num">2,900 / 3,400</td><td class="num">30.5% / 32.4%</td></tr>
+        <tr><td>장어 꼬치 / 전복구이 / 어묵탕 / 계란찜</td><td class="num">6,500 / 7,500 / 5,500 / 4,000</td><td class="num">1,500 / 2,800 / 1,600 / 900</td><td class="num">—</td><td class="num"><strong>23.1%</strong> / 37.3% / 29.1% / 22.5%</td></tr>
+        <tr><td>하이볼 / 생탁 / 금정산성</td><td class="num">7,500 / 5,000 / 12,000</td><td class="num">1,400 / 1,400 / 6,000</td><td class="num">—</td><td class="num">18.7% / 28% / 50%(명물 미끼)</td></tr>
+        <tr><td>기차솥 장어/부챗살 · 2인 세트</td><td class="num">15,000/12,500 · 48,000</td><td class="num">용기 700 포함 / 구성합</td><td class="num">4,900/4,300 · 15,900</td><td class="num">32.7%/34.4% · 33.1%</td></tr>
       </tbody>
     </table></div>
-    <p><strong>결론</strong> — 국내산 활장어로 만들면 장어 토핑만 1인분 4,400~6,000원(솔솥이 25,000원을 받는 이유). 자사 수입 라인은 같은 분량이 <strong>약 2,600원</strong> → <strong>19,500원에 팔아도 원가율 29.7%</strong>. 장어 곱빼기(+6,000원)·장어 꼬치(마진 77%)로 업셀할수록 이익이 커지는 구조입니다.</p>
+  </div>
+</section>
 
-    <h3>메뉴 엔지니어링 · 손익 v2 <span class="muted">(예상 믹스: 장어 28 · 전복 18 · 부챗살 16 · 미역/멸치 14 · 갈치 12 · 계절 12%)</span></h3>
+<section id="ch3" class="band">
+  <div class="inner">
+    <p class="ch-eyebrow">Chapter 03 — Eel Cost Moat, Full Data</p>
+    <h2>장어 원가 우위 — 자사 트래커 데이터 전량</h2>
+
+    <h3>수입 단가 월별 <span class="sub">관세청 통관·KATI — tracker/import_history.csv [확인]</span></h3>
     <div class="tbl"><table>
-      <thead><tr><th>구분</th><th>보수 (일 100명)</th><th>기본 (일 150명)</th><th>낙관 (일 200명)</th></tr></thead>
+      <thead><tr><th>월</th><th>조제장어(1604.17) CIF $/kg</th><th>수입량 kg</th><th>월</th><th>CIF $/kg</th><th>수입량 kg</th></tr></thead>
       <tbody>
-        <tr><td>월 매출 (객단가 19,000, VAT 포함)</td><td class="num">5,700만</td><td class="num"><strong>8,550만</strong></td><td class="num">1억 1,400만</td></tr>
-        <tr><td>순매출 (VAT 제외)</td><td class="num">5,182만</td><td class="num">7,773만</td><td class="num">1억 364만</td></tr>
-        <tr><td>재료비 (31.5%) / 인건비 / 임차·관리</td><td class="num">1,796 / 1,400 / 300</td><td class="num">2,693 / 1,700 / 300</td><td class="num">3,591 / 2,100 / 300</td></tr>
-        <tr><td>수수료·광열·잡 (7.5%) / 감가 (2.5억·5년)</td><td class="num">428 / 417</td><td class="num">641 / 417</td><td class="num">855 / 417</td></tr>
-        <tr><td><strong>영업이익 (감가 포함)</strong></td><td class="num"><strong>약 840만</strong></td><td class="num"><strong>약 2,020만</strong></td><td class="num"><strong>약 3,100만</strong></td></tr>
+        <tr><td>2025-08</td><td class="num">11.58</td><td class="num">258,915</td><td>2026-02</td><td class="num">11.56</td><td class="num">150,381</td></tr>
+        <tr><td>2025-09</td><td class="num">11.67</td><td class="num">251,287</td><td>2026-03</td><td class="num">10.89</td><td class="num">141,052</td></tr>
+        <tr><td>2025-10</td><td class="num">12.34</td><td class="num">114,535</td><td>2026-04</td><td class="num">11.25</td><td class="num">256,250</td></tr>
+        <tr><td>2025-11</td><td class="num">12.33</td><td class="num">185,177</td><td>2026-05</td><td class="win">11.23</td><td class="num">272,640</td></tr>
+        <tr><td>2025-12</td><td class="num">12.14</td><td class="num">186,012</td><td>2026-06</td><td class="win">10.75</td><td class="num">260,729</td></tr>
+        <tr><td>2026-01</td><td class="num">11.71</td><td class="num">218,823</td><td>2026-07</td><td class="win">10.77</td><td class="num">275,918</td></tr>
       </tbody>
     </table></div>
-    <p class="muted">분류: ⭐Stars 장어 3식·장어꼬치 / 🐴Plowhorse 전복·부챗살 / ❓Puzzle 계절 한 솥(홍보 육성) / 🐶주의 멸치쌈(부진 시 조식 전환). 분기 단위 믹스 리뷰.</p>
+    <p>2026년 들어 <strong>$10.75~11.25/kg로 하향 안정</strong>(2025년 대비 약 −8%) · 환율 1,350원 가정 시 CIF 약 14,500~15,200원/kg · 월 141~276톤이 들어오는 성숙 시장. 보조 품목: 활 뱀장어(0301.92) 2026년 $8.40~11.09(7월 $8.40 최저) · 필렛(0304.69) $10.50~15.18 · 냉동 필렛(0304.93) $9.84~12.36.</p>
 
-    <h3>원산지 전략 — 정면 돌파 + 듀얼 티어</h3>
-    <ul>
-      <li>원산지표시법상 <strong>"장어(중국산)" 의무 표기</strong> 전제. 메뉴판 한 줄 스토리: <em>"장어 수입을 업으로 하는 우리 회사가 산지 계약 양만장에서 직수입해 3중 검품합니다. 그래서 이 가격입니다."</em> — 가격 파괴의 이유를 설명하면 원산지는 신뢰 장치가 됩니다.</li>
-      <li><strong>국내산 활장어 업그레이드 +7,500원(=27,000원)</strong> 병행 — 비교 대상(솔솥 25,000)을 스스로 품는 구조. 일본·대만 관광객은 중국산 우나기가 자국 외식에서도 일반적이라 저항 낮음.</li>
-    </ul>
-  </section>
+    <h3>국내산 도매 vs 소매 벤치마크</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>시점</th><th>안산 경매 뱀장어(자연산 상) 원/kg</th><th>비고</th></tr></thead>
+      <tbody>
+        <tr><td>2022-11</td><td class="num">39,500</td><td>고점</td></tr>
+        <tr><td>2023-12 / 2024-09</td><td class="num">28,280 / 27,145</td><td>하락 추세</td></tr>
+        <tr><td>2025-07~10</td><td class="num">23,230 → 22,725</td><td></td></tr>
+        <tr><td>2026-05~07</td><td class="win">20,200 ~ 25,253</td><td>저점권(5/27 20,200 · 6/23 20,958 · 7/7 20,848)</td></tr>
+        <tr><td>소매(푸드엔 양념구이 8미 1kg)</td><td class="num">26,700~29,600 (2026-08 일별)</td><td>가공 완제품 소매가</td></tr>
+      </tbody>
+    </table></div>
+    <div class="plate">
+      <span class="pt">해자의 산식</span>
+      <ul>
+        <li>자사 수입(착지 20,000원/kg 가정 — <strong>실적치로 교체 필수</strong>): 130g 토핑 <strong>2,600원</strong> vs 국내산(활 도매→손질 수율 55~60%→필렛 환산 3.4만~4.6만원/kg): 130g <strong>4,400~6,000원</strong> → 1인분 격차 1,800~3,400원</li>
+        <li>솔솥이 25,000원을 받아야 하는 메뉴를 우리는 <strong>19,500원에 원가율 29.7%</strong>로 판다. 곱빼기(+6,000, 원가 +2,600)·장어 꼬치(23.1%)로 업셀할수록 이익 증가 — 4부 반영: 시그니처 주변 마진 보강 동선을 메뉴판에 설계</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-  <section id="ch3">
-    <div class="chapter">3장</div>
-    <h2>메뉴판 목업 &amp; 제작 사양</h2>
-    <p>A3 세로 하드보드(1인 1판) 앞면 시안입니다 — 먹색 보드 × 놋쇠 박 × 쌀백 타이포(BI 체계). 뒷면은 '가마뫼 3식' 픽토그램 + 브랜드 스토리 + 원산지·알레르기 고지.</p>
+<section id="ch4">
+  <div class="inner">
+    <p class="ch-eyebrow">Chapters 04–05 — Engineering &amp; Origin</p>
+    <h2>메뉴 엔지니어링 · 원산지 전략</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>항목</th><th>값</th></tr></thead>
+      <tbody>
+        <tr><td>본상 예상 믹스</td><td class="num">장어 28 · 전복 18 · 부챗살/목살 16 · 미역/멸치 14 · 갈치 12 · 계절 12%</td></tr>
+        <tr><td>본상 평균 단가/원가</td><td class="num">17,630 / 5,564원 (31.6%)</td></tr>
+        <tr><td>사이드 35%·음료 25% 부착</td><td class="num">+3,700원/인 → <strong>목표 객단가 약 19,000원 · 블렌디드 31.5%</strong></td></tr>
+        <tr><td>손익</td><td class="num"><strong>40평 확정판은 3부 8장</strong> — 본 문서의 20평 모델(일 150명 시 월 영업이익 약 2,020만)은 가맹 표준점(3부 11장) 참조용</td></tr>
+        <tr><td>분류</td><td>⭐장어 3식·장어꼬치 / 🐴전복·부챗살 / ❓계절 한 솥 / 🐶멸치쌈(부진 시 조식 전환) — 분기 리뷰</td></tr>
+      </tbody>
+    </table></div>
+    <div class="plate">
+      <span class="pt">원산지 — 정면 돌파 + 듀얼 티어</span>
+      <ul>
+        <li>원산지표시법상 <strong>"장어(중국산)" 의무 표기.</strong> 메뉴판 한 줄: "장어 수입을 업으로 하는 우리 회사가 산지 계약 양만장에서 직수입해 통관·자사·조리 3중 검품합니다. 그래서 이 가격입니다." — 가격 파괴의 이유를 설명하면 원산지는 신뢰 장치가 된다.</li>
+        <li><strong>국내산 활장어 업그레이드 +7,500(=27,000원)</strong> 병행 — 비교 대상(솔솥 25,000)을 스스로 품는 구조. 일본·대만 관광객은 중국산 우나기에 저항 낮음("imported &amp; triple-inspected by our own trading house").</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
+<section id="ch6" class="band">
+  <div class="inner">
+    <p class="ch-eyebrow">Chapter 06 — Menu Board Mockup</p>
+    <h2>메뉴판 목업 · 제작 사양</h2>
+    <p class="defline">A3 세로 하드보드(1인 1판) 앞면 시안 — <strong>BI 시안 A(먹색×놋쇠×쌀백), 브랜드명 확정 전이라 명칭 슬롯은 비워 둠.</strong> 뒷면: 3식 픽토그램 + 스토리 3줄 + 원산지·알레르기 고지.</p>
     <div class="board-wrap">
-      <div class="board" role="img" aria-label="가마뫼 메뉴판 시안">
-        <p class="b-hanja">釜 山 釜 飯</p>
-        <p class="b-name">가마뫼</p>
-        <p class="b-sub">KAMAMOE — BUSAN POT RICE HOUSE · カマモエ · 釜飯專門店</p>
+      <div class="board" role="img" aria-label="메뉴판 시안 (브랜드명 미정)">
+        <p class="b-hanja">釜 山 · 滿 船</p>
+        <p class="b-name">〔상호 확정 전〕</p>
+        <p class="b-sub">BUSAN POT RICE HOUSE · 釜飯專門店 — 만선 계열 네이밍 확정 시 치환</p>
         <hr class="b-rule">
-        <p class="b-story">1481년 동국여지승람이 적은 부산(釜山)의 뜻 — "산이 가마솥을 엎어놓은 모양과 같다".<br>그 산의 우리말, 가마뫼. 부산의 첫 이름 아래에서 갓 지은 한 상을 냅니다.</p>
-
+        <p class="b-story">가득 잡아 돌아온 배(滿船)의 원물로, 부산역 앞에서 갓 지은 한 상을 냅니다.<br>공기밥과 누룽지는 언제나 무료입니다.</p>
         <p class="b-sec">시그니처 SIGNATURE</p>
         <div class="b-sig">
           <span class="b-sig-badge">부산역에서만</span>
           <div class="b-item" style="margin-bottom:2px;">
             <span class="b-no">№1</span>
-            <span class="b-nm">가마뫼 장어솥밥 3식<span class="b-en">Grilled Eel Pot Rice, Three Ways · うなぎ釜飯 三食 · 鰻魚釜飯三吃</span></span>
+            <span class="b-nm">장어솥밥 3식<span class="b-en">Grilled Eel Pot Rice, Three Ways · うなぎ釜飯 三食 · 鰻魚釜飯三吃</span></span>
             <span class="b-dots"></span>
             <span class="b-pr">19.5</span>
           </div>
           <div class="b-steps">
             <div class="b-step"><b>①</b>먼저 그대로 — 갓 지은 밥과 장어로</div>
             <div class="b-step"><b>②</b>특제 양념장과 고명을 올려</div>
-            <div class="b-step"><b>③</b>가마숭늉을 부어 누룽지탕으로</div>
+            <div class="b-step"><b>③</b>숭늉을 부어 누룽지탕으로</div>
           </div>
-          <p class="b-opt">＋ 장어 곱빼기 6.0 · 국내산 활장어로 업그레이드 7.5 · 공기밥/누룽지 추가는 무료</p>
+          <p class="b-opt">＋ 장어 곱빼기 6.0 · 국내산 활장어 업그레이드 7.5</p>
         </div>
-
         <p class="b-sec">본상 POT RICE</p>
         <div class="b-item"><span class="b-no">№2</span><span class="b-nm">완도전복미역솥밥<span class="b-en">Abalone &amp; Miyeok · あわび釜飯 · 鮑魚釜飯</span></span><span class="b-dots"></span><span class="b-pr">17.5</span></div>
         <div class="b-item"><span class="b-no">№3</span><span class="b-nm">제주갈치솥밥<span class="b-en">Jeju Hairtail · 太刀魚釜飯 · 白帶魚釜飯</span></span><span class="b-dots"></span><span class="b-pr">17.0</span></div>
         <div class="b-item"><span class="b-no">№4</span><span class="b-nm">불맛부챗살솥밥<span class="b-en">Seared Beef &amp; Scallion · 牛肉釜飯 · 火烤牛肉釜飯</span></span><span class="b-dots"></span><span class="b-pr">16.5</span></div>
-        <div class="b-item"><span class="b-no">№5</span><span class="b-nm">멸치쌈솥밥<span class="b-en">Daebyeon Anchovy Ssam · いりこ釜飯 · 鯷魚包飯</span></span><span class="b-dots"></span><span class="b-pr">13.5</span></div>
-        <div class="b-item"><span class="b-no">№6</span><span class="b-nm">기장미역들깨솥밥 <span style="font-size:11px;color:#8E8672;">Ⓥ</span><span class="b-en">Gijang Miyeok &amp; Perilla (Vegan) · わかめ釜飯 · 海帶芝麻釜飯</span></span><span class="b-dots"></span><span class="b-pr">12.5</span></div>
-        <div class="b-item"><span class="b-no">№7</span><span class="b-nm">계절 한 솥 <span style="font-size:11px;color:#8E8672;">이달의 원물</span><span class="b-en">Seasonal Catch of the Month · 季節の釜飯 · 當季釜飯</span></span><span class="b-dots"></span><span class="b-pr">21.0</span></div>
-
+        <div class="b-item"><span class="b-no">№5</span><span class="b-nm">직화목살솥밥<span class="b-en">Char-grilled Pork · 豚焼き釜飯 · 炙燒豬頸肉釜飯</span></span><span class="b-dots"></span><span class="b-pr">15.9</span></div>
+        <div class="b-item"><span class="b-no">№6</span><span class="b-nm">멸치쌈솥밥<span class="b-en">Daebyeon Anchovy Ssam · いりこ釜飯 · 鯷魚包飯</span></span><span class="b-dots"></span><span class="b-pr">13.5</span></div>
+        <div class="b-item"><span class="b-no">№7</span><span class="b-nm">기장미역들깨솥밥 <span style="font-size:11px;color:#8E8672;">Ⓥ</span><span class="b-en">Gijang Miyeok &amp; Perilla (Vegan) · わかめ釜飯 · 海帶芝麻釜飯</span></span><span class="b-dots"></span><span class="b-pr">12.5</span></div>
+        <div class="b-item"><span class="b-no">№8</span><span class="b-nm">계절 한 솥 <span style="font-size:11px;color:#8E8672;">이달의 원물</span><span class="b-en">Seasonal Catch · 季節の釜飯 · 當季釜飯</span></span><span class="b-dots"></span><span class="b-pr">21.0</span></div>
         <div class="b-cols">
           <div>
             <p class="b-sec">곁들임 SIDES</p>
@@ -425,54 +342,44 @@
             <div class="b-item"><span class="b-nm" style="font-size:14.5px;">제로콜라 · 사이다</span><span class="b-dots"></span><span class="b-pr" style="font-size:14.5px;">3.0</span></div>
           </div>
         </div>
-
         <div class="b-foot">
-          <b>첫솥(조식 07:30~10:30)</b> 미역솥밥상 9.5 · 명란버터솥밥상 10.5 — 5분 제공 &nbsp;|&nbsp; <b>기차솥(포장)</b> 장어 15.0 · 부챗살 12.5<br>
+          <b>조식(07:30~10:30)</b> 미역솥밥상 9.5 · 명란버터솥밥상 10.5 — 5분 제공 &nbsp;|&nbsp; <b>기차 도시락</b> 장어 15.0 · 부챗살 12.5<br>
           KTX 출발까지 40분? QR로 먼저 밥을 안치세요 — 착석 7분 내 첫 상 · Pre-order by QR<br>
           가격 단위: 천원 · 장어(중국산·자사 직수입 3중 검품, 국내산 옵션) · 전복(완도) · 갈치(제주 또는 원양) · 쌀(국내산) · 알레르기 정보는 뒷면
         </div>
       </div>
     </div>
-
-    <div class="check-group">
-      <h4>제작 사양 요점</h4>
-      <ul class="check">
-        <li><strong>골든존 우상단</strong>: 시그니처 박스(사진 1컷 + 3식 아이콘 + "부산역에서만" 배지) — Z패턴 첫 착지</li>
-        <li>가격은 천원 단위 축약(19.5)·₩ 생략 — 가격 저항 완화 / 사진은 시그니처·전복·계절 3컷만(과다 사진은 저가 인상)</li>
-        <li>전 메뉴 <strong>№ 번호 주문</strong>(외국인 포인팅) + 한글 大 / EN·日·中(번체) 小 병기, 알레르기 아이콘·비건 표시</li>
-        <li>뒷면: 3식 픽토그램 + 스토리 3줄 + 원산지 고지 — 웨이팅·조리 대기 시간의 읽을거리로 체감 대기 완화</li>
-        <li>보드 재질: 먹색 합지 + 놋쇠 박 로고 · 스탠드 보드(조식/포장)와 QR 텐트카드 별도 제작</li>
+    <div class="plate">
+      <span class="pt">제작 사양 요점</span>
+      <ul>
+        <li>골든존(우상단) 시그니처 박스 — 사진 1컷+3식 아이콘+"부산역에서만" 배지(Z패턴 첫 착지) · 좌상단 브랜드 스토리(대기 체감 완화)</li>
+        <li>가격 천원 축약(19.5)·₩ 생략 · 사진은 시그니처·전복·계절 3컷만(과다 사진은 저가 인상) · 전 메뉴 № 포인팅 주문 · 한글 大+EN/日/中(번체) 小 · 알레르기·비건 표시</li>
+        <li>스탠드 보드(조식·포장)와 QR 텐트카드 별도 · 인쇄 전 원산지 표기 법무 확인 · 브랜드명 확정 시 로고·모티프 재작업</li>
       </ul>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="ch4">
-    <div class="chapter">4장</div>
+<section id="ch7">
+  <div class="inner">
+    <p class="ch-eyebrow">Chapter 07 — Checklist</p>
     <h2>실행 체크리스트</h2>
-    <div class="phase">
-      <h4>네이밍 확정 <small>D-90</small></h4>
-      <ul><li><strong>가마뫼</strong> KIPRIS 43·30·35류 조회 → 무충돌 시 문자+로고 출원 · @kamamoe_busan / 플레이스 / 도메인 선점 · 충돌 시 초량반상→가마항 순 재검토</li></ul>
+    <div class="plate">
+      <ul>
+        <li><strong>① 네이밍 확정</strong> — 만선 계열 유력 3~4개(만선기·갓만선·또만선·만선호) 상호 검색+KIPRIS 43·30·35류 → 무충돌 1안 → 문자+로고 출원 → 인스타·플레이스·도메인 선점</li>
+        <li><strong>② 원가 검증</strong> — 장어 착지원가 실적치 대입(트래커 CIF + 관세·통관·물류 실비) → 전복·갈치·부챗살·목살 3사 견적 → 시식회 3회 BOM 실측</li>
+        <li><strong>③ 가격 수용성</strong> — 블라인드(19,500 vs 국내산 27,000 선택률) · 호텔 컨시어지·역무 관계자 포함</li>
+        <li><strong>④ 메뉴판 제작</strong> — 6장 사양 → 4개 국어 감수 → 원산지 법무 확인 → 인쇄</li>
+        <li><strong>⑤ 취반 장비 3사 견적</strong>(4부 반영) — 동양솥밥형 98만 기계 · 담솥형 자동 취반기 · 업소용 기성품 — "착석 7분"의 실현 수단</li>
+        <li>⑥ 오퍼레이션(배치 취반·QR 플로우·표준 동선)은 3부 로드맵과 병합</li>
+      </ul>
     </div>
-    <div class="phase">
-      <h4>원가 검증 <small>D-75</small></h4>
-      <ul><li>자사 장어 착지원가 실적치로 20,000원/kg 가정 교체 · 전복/갈치/부챗살 견적 3사 비교 · 시식회 3회로 BOM 실측</li></ul>
-    </div>
-    <div class="phase">
-      <h4>가격 수용성 테스트 <small>D-60</small></h4>
-      <ul><li>블라인드 시식(장어 3식 19,500 vs 국산 업그레이드 27,000 선택률) · 호텔 컨시어지·역무 직원 등 상권 내부자 피드백</li></ul>
-    </div>
-    <div class="phase">
-      <h4>메뉴판 제작 <small>D-40</small></h4>
-      <ul><li>본 사양으로 디자인 발주 → 4개 국어 감수 → <strong>원산지 표기 법무 확인</strong> → 인쇄(보드+스탠드+QR 텐트)</li></ul>
-    </div>
-    <div class="phase">
-      <h4>오퍼레이션 결합 <small>D-30</small></h4>
-      <ul><li>배치 취반 스케줄(조식) · QR 사전주문 플로우 · "착석 7분" 표준 동선 — 1부 10장 로드맵과 병합</li></ul>
-    </div>
-  </section>
+  </div>
+</section>
 
-  <footer>
-    <p><strong>데이터 출처</strong> — 자사 트래커(tracker/import_history.csv 관세청 통관 수입단가 · wonmul_history.csv 도매 경매 · price_history.csv 소매 추적, 2026-08-26 수집) / 부산시 공식 명칭유래·부산일보(지명) / 다이닝코드(상호 스크리닝 6건) / 전남몰·완도전복(주)(전복 시세). 상세 URL은 저장소 <strong>reports/busan-sotbap-brand-kit.md</strong> 부록 참조.</p>
-    <p>모든 [추정] 단가는 견적·실측으로 교체 전제이며, 본 문서는 설계 초안으로 투자·가격 결정의 최종 근거가 아닙니다. · 1부: 「부산역 솥밥 전략」 보고서 · 2026-08-28 작성</p>
-  </footer>
-</div>
+<footer>
+  <div class="inner">
+    <p><strong>데이터</strong> — 자사 트래커(tracker/import_history.csv 관세청 월별 수입단가·수입량 · wonmul_history.csv 도매 경매 · price_history.csv 소매, 2026-08-26 수집) · 부산시 명칭유래 · 다이닝코드 스크리닝 8건 · 전남몰·완도전복(주). 상세 URL은 저장소 reports/busan-sotbap-brand-kit.md 부록.</p>
+    <p>[추정] 단가는 견적·실측 교체 전제 — 설계 초안이며 가격 결정의 최종 근거가 아님. 최초 2026-08-28 · 상세판 2026-09-01.</p>
+  </div>
+</footer>

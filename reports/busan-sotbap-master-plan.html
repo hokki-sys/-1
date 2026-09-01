@@ -1,324 +1,291 @@
 <title>부산역 솥밥 총괄 기획서</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600&display=swap">
 <style>
-  :root {
-    --bg: #FFFFFF; --fill: #F9FAFB; --fill-2: #F2F4F6; --line: #E5E8EB;
-    --text: #191F28; --text-2: #4E5968; --text-3: #6B7684; --text-4: #8B95A1;
-    --blue: #3182F6; --blue-deep: #1B64DA; --blue-tint: #E8F3FF;
-    --danger: #F04452; --danger-tint: rgba(240,68,82,.06);
-    --warn: #D67E00; --warn-tint: rgba(214,126,0,.10);
-    --ok: #0BA360; --ok-tint: rgba(11,163,96,.10);
-    --on-accent: #FFFFFF;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg: #101013; --fill: #17171C; --fill-2: #202027; --line: #2C2C35;
-      --text: #E5E8EB; --text-2: #B0B8C1; --text-3: #8B95A1; --text-4: #6B7684;
-      --blue: #4593FC; --blue-deep: #64A8FF; --blue-tint: rgba(69,147,252,.13);
-      --danger: #FF7A85; --danger-tint: rgba(240,68,82,.12);
-      --warn: #FFB023; --warn-tint: rgba(255,176,35,.13);
-      --ok: #35C285; --ok-tint: rgba(53,194,133,.13);
-      --on-accent: #FFFFFF;
-    }
-  }
-  :root[data-theme="dark"] {
-    --bg: #101013; --fill: #17171C; --fill-2: #202027; --line: #2C2C35;
-    --text: #E5E8EB; --text-2: #B0B8C1; --text-3: #8B95A1; --text-4: #6B7684;
-    --blue: #4593FC; --blue-deep: #64A8FF; --blue-tint: rgba(69,147,252,.13);
-    --danger: #FF7A85; --danger-tint: rgba(240,68,82,.12);
-    --warn: #FFB023; --warn-tint: rgba(255,176,35,.13);
-    --ok: #35C285; --ok-tint: rgba(53,194,133,.13);
-    --on-accent: #FFFFFF;
-  }
-
-  * { box-sizing: border-box; }
-  body {
-    background: var(--bg); color: var(--text);
-    font-family: "Toss Product Sans", "Pretendard", -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Segoe UI", sans-serif;
-    margin: 0; font-size: 16px; line-height: 1.7;
-    -webkit-font-smoothing: antialiased; letter-spacing: -0.01em;
-  }
-  .wrap { max-width: 820px; margin: 0 auto; padding: 56px 20px 100px; }
-  .chip { display: inline-flex; align-items: center; background: var(--blue-tint); color: var(--blue-deep); font-size: 13px; font-weight: 700; padding: 5px 12px; border-radius: 999px; margin-bottom: 18px; }
-  h1 { font-size: clamp(30px, 5.4vw, 44px); line-height: 1.22; margin: 0 0 12px; font-weight: 800; letter-spacing: -0.028em; text-wrap: balance; }
-  .subtitle { color: var(--text-3); font-size: 17px; margin: 0 0 32px; font-weight: 500; }
-  .notice { background: var(--fill); border-radius: 16px; padding: 18px 22px; font-size: 14.5px; color: var(--text-2); margin-bottom: 16px; }
-  .notice strong { color: var(--text); }
-  .notice .nt { display: block; font-size: 12.5px; font-weight: 700; color: var(--text-4); margin-bottom: 4px; letter-spacing: .02em; }
-  .verdict { background: var(--ok-tint); border-radius: 16px; padding: 20px 22px; margin-bottom: 16px; display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
-  .verdict .vd { font-size: 22px; font-weight: 800; color: var(--ok); letter-spacing: -0.02em; white-space: nowrap; }
-  .verdict p { margin: 0; flex: 1 1 320px; font-size: 15px; color: var(--text-2); }
-  .verdict p strong { color: var(--text); }
-  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 48px; }
-  .stat { background: var(--fill); border-radius: 16px; padding: 18px 18px 15px; }
-  .stat b { display: block; font-size: 24px; font-weight: 800; color: var(--blue); font-variant-numeric: tabular-nums; letter-spacing: -0.02em; margin-bottom: 2px; }
-  .stat span { font-size: 13px; color: var(--text-3); font-weight: 500; }
-  nav.toc { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 60px; }
-  nav.toc a { display: inline-flex; align-items: center; gap: 7px; background: var(--fill-2); color: var(--text-2); text-decoration: none; font-size: 14px; font-weight: 600; padding: 9px 16px; border-radius: 999px; transition: background .15s ease, color .15s ease; }
-  nav.toc a:hover, nav.toc a:focus-visible { background: var(--blue-tint); color: var(--blue-deep); }
-  nav.toc .n { color: var(--blue); font-weight: 800; font-variant-numeric: tabular-nums; }
-  section { margin-bottom: 72px; }
-  .chapter { display: inline-flex; background: var(--blue-tint); color: var(--blue-deep); font-size: 12.5px; font-weight: 800; padding: 4px 11px; border-radius: 999px; margin-bottom: 12px; letter-spacing: .01em; }
-  h2 { font-size: 27px; margin: 0 0 22px; font-weight: 800; letter-spacing: -0.024em; line-height: 1.3; text-wrap: balance; }
-  h3 { font-size: 18.5px; margin: 38px 0 14px; font-weight: 700; letter-spacing: -0.015em; }
-  p { margin: 0 0 14px; max-width: 46em; }
-  ul, ol { margin: 0 0 16px; padding-left: 22px; }
-  li { margin-bottom: 8px; }
-  li::marker { color: var(--text-4); }
-  strong { font-weight: 700; }
-  .muted { color: var(--text-4); font-size: 13.5px; }
-  a { color: var(--blue); text-decoration: none; font-weight: 600; }
-  a:hover, a:focus-visible { text-decoration: underline; text-underline-offset: 3px; }
-  .tag { display: inline-block; font-size: 12px; font-weight: 800; padding: 1px 8px; border-radius: 999px; vertical-align: 1px; white-space: nowrap; }
-  .tag.ok { background: var(--ok-tint); color: var(--ok); }
-  .tag.mid { background: var(--warn-tint); color: var(--warn); }
-  .tag.bad { background: var(--danger-tint); color: var(--danger); }
-  .tag.info { background: var(--blue-tint); color: var(--blue-deep); }
-  .summary { counter-reset: sm; list-style: none; padding: 0; display: grid; gap: 10px; }
-  .summary li { counter-increment: sm; background: var(--fill); border-radius: 16px; padding: 16px 20px 16px 58px; position: relative; margin: 0; }
-  .summary li::before { content: counter(sm); position: absolute; left: 18px; top: 17px; width: 26px; height: 26px; border-radius: 50%; background: var(--blue); color: var(--on-accent); font-size: 13.5px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
-  .tbl { overflow-x: auto; background: var(--fill); border-radius: 16px; margin-bottom: 20px; }
-  table { border-collapse: collapse; width: 100%; font-size: 14.5px; min-width: 560px; }
-  th { text-align: left; font-size: 13px; color: var(--text-4); font-weight: 700; padding: 13px 18px 9px; white-space: nowrap; }
-  td { padding: 11px 18px; border-top: 1px solid var(--line); vertical-align: top; font-variant-numeric: tabular-nums; }
-  td:first-child { font-weight: 700; white-space: nowrap; }
+  /* IICOMBINED reference system — achromatic, flat, editorial. Deliberate single-theme (gallery white). */
+  html { background: #ffffff; }
+  body { background: #ffffff; color: #111111; margin: 0; font-family: "Pretendard", -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Segoe UI", sans-serif; font-size: 15px; line-height: 1.8; font-weight: 400; -webkit-font-smoothing: antialiased; letter-spacing: -0.005em; }
+  .inner { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+  section.band { background: #f3f4f6; }
+  section { padding: 64px 0; }
+  section, .tbl, .stat, .plate { box-shadow: none; border-radius: 0; }
+  header.hero { padding: 88px 0 56px; background: #ffffff; }
+  .eyebrow { font-size: 11px; letter-spacing: .28em; text-transform: uppercase; color: #858585; margin: 0 0 22px; }
+  h1 { font-family: "Noto Serif KR", "Times New Roman", Times, serif; font-size: clamp(34px, 6vw, 54px); font-weight: 400; line-height: 1.18; margin: 0 0 18px; color: #111111; text-wrap: balance; }
+  .standfirst { color: #343434; font-size: 15px; max-width: 46em; margin: 0 0 8px; }
+  .hairline { border: none; border-top: 1px solid #111111; margin: 40px 0 0; }
+  .method { font-size: 13px; color: #555555; line-height: 1.85; max-width: 52em; }
+  .method strong { color: #111111; font-weight: 600; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0 36px; margin: 44px 0 0; }
+  .stat { border-top: 1px solid #111111; padding: 14px 0 0; }
+  .stat b { display: block; font-family: "Noto Serif KR", Times, serif; font-weight: 400; font-size: 30px; color: #111111; line-height: 1.15; margin-bottom: 4px; font-variant-numeric: tabular-nums; }
+  .stat span { font-size: 12px; color: #858585; }
+  nav.toc { display: flex; flex-wrap: wrap; gap: 10px; margin: 44px 0 0; }
+  nav.toc a { display: inline-flex; align-items: center; height: 34px; padding: 0 20px; border: 1px solid #111111; border-radius: 9999px; color: #111111; text-decoration: none; font-size: 12px; letter-spacing: .08em; transition: opacity 150ms cubic-bezier(0.25,0.1,0.25,1); }
+  nav.toc a:hover, nav.toc a:focus-visible { opacity: .55; }
+  .ch-eyebrow { font-size: 11px; letter-spacing: .3em; text-transform: uppercase; color: #858585; margin: 0 0 14px; }
+  h2 { font-family: "Noto Serif KR", "Times New Roman", Times, serif; font-size: clamp(26px, 4vw, 36px); font-weight: 400; line-height: 1.25; margin: 0 0 10px; color: #111111; text-wrap: balance; }
+  .defline { color: #343434; font-size: 15px; max-width: 48em; margin: 0 0 36px; }
+  .defline strong { font-weight: 600; color: #111111; }
+  h3 { font-size: 13px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: #111111; margin: 46px 0 14px; padding-top: 14px; border-top: 1px solid #111111; }
+  h3 .sub { color: #858585; font-weight: 400; letter-spacing: .04em; text-transform: none; font-size: 12px; margin-left: 10px; }
+  p { margin: 0 0 14px; max-width: 50em; color: #343434; }
+  p strong, li strong { color: #111111; font-weight: 600; }
+  ul, ol { margin: 0 0 16px; padding-left: 20px; color: #343434; }
+  li { margin-bottom: 7px; }
+  li::marker { color: #858585; }
+  .muted { color: #858585; font-size: 12.5px; }
+  a { color: #111111; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+  a:hover { opacity: .6; }
+  .tag { display: inline-block; border: 1px solid #111111; border-radius: 9999px; padding: 0 9px; font-size: 9.5px; letter-spacing: .14em; text-transform: uppercase; color: #111111; line-height: 17px; vertical-align: 2px; white-space: nowrap; }
+  .tag.mid { border-color: #858585; color: #555555; }
+  .tag.bad { border-color: #d12b2b; color: #d12b2b; }
+  ol.summary { list-style: none; padding: 0; margin: 0; counter-reset: sm; max-width: 54em; }
+  ol.summary li { counter-increment: sm; padding: 18px 0 18px 56px; position: relative; margin: 0; border-top: 1px solid #e3e4e6; color: #343434; font-size: 14.5px; }
+  ol.summary li:first-child { border-top: 1px solid #111111; }
+  ol.summary li::before { content: "0" counter(sm); position: absolute; left: 0; top: 20px; font-family: "Noto Serif KR", Times, serif; font-size: 17px; color: #111111; }
+  .tbl { overflow-x: auto; margin: 0 0 26px; background: #ffffff; border-top: 1px solid #111111; }
+  section.band .tbl { background: transparent; }
+  table { border-collapse: collapse; width: 100%; font-size: 13px; min-width: 640px; }
+  th { text-align: left; font-size: 10px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: #858585; padding: 12px 14px 8px; white-space: nowrap; border-bottom: 1px solid #111111; }
+  td { padding: 11px 14px; border-bottom: 1px solid #e3e4e6; vertical-align: top; color: #343434; font-variant-numeric: tabular-nums; line-height: 1.7; }
+  td:first-child { color: #111111; font-weight: 600; white-space: nowrap; }
+  td.win { color: #111111; font-weight: 600; border-left: 2px solid #111111; }
+  td.lose { color: #d12b2b; }
   .num { font-variant-numeric: tabular-nums; }
-  td.win { color: var(--ok); font-weight: 800; }
-  .check-group { background: var(--fill); border-radius: 16px; padding: 20px 22px; margin-bottom: 12px; }
-  .check-group h4 { margin: 0 0 12px; font-size: 15.5px; font-weight: 800; color: var(--blue-deep); }
-  .check { list-style: none; padding: 0; margin: 0; }
-  .check > li { padding-left: 32px; position: relative; margin-bottom: 10px; color: var(--text-2); }
-  .check > li:last-child { margin-bottom: 0; }
-  .check > li strong { color: var(--text); }
-  .check > li::before { content: "✓"; position: absolute; left: 0; top: 2px; width: 19px; height: 19px; border-radius: 6px; background: var(--blue-tint); color: var(--blue); font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
-  .phase { position: relative; padding: 0 0 26px 30px; }
-  .phase::before { content: ""; position: absolute; left: 7px; top: 9px; bottom: -3px; width: 2px; background: var(--line); }
-  .phase:last-of-type::before { display: none; }
-  .phase::after { content: ""; position: absolute; left: 2px; top: 7px; width: 12px; height: 12px; border-radius: 50%; background: var(--blue); }
-  .phase h4 { margin: 0 0 8px; font-size: 16.5px; font-weight: 800; letter-spacing: -0.015em; }
-  .phase h4 small { color: var(--text-4); font-weight: 600; margin-left: 8px; font-size: 13px; }
-  .phase ul { margin-bottom: 0; color: var(--text-2); }
-  .phase ul strong { color: var(--text); }
-  .duo { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 18px; }
+  .plate { background: #f3f4f6; padding: 22px 26px; margin: 0 0 26px; }
+  section.band .plate { background: #ffffff; }
+  .plate .pt { font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: #858585; display: block; margin-bottom: 8px; }
+  .plate p, .plate ul { margin-bottom: 0; }
+  .plate li { margin-bottom: 8px; }
+  .plate li:last-child { margin-bottom: 0; }
+  .duo { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 0 0 26px; }
   @media (max-width: 640px) { .duo { grid-template-columns: 1fr; } }
-  .duo .card { background: var(--fill); border-radius: 16px; padding: 20px 22px; }
-  .duo .card h4 { margin: 0 0 8px; font-size: 16.5px; font-weight: 800; }
-  .duo .card p, .duo .card ul { color: var(--text-2); font-size: 14.5px; }
+  .duo .card { border-top: 1px solid #111111; padding: 16px 0 0; }
+  .duo .card h4 { margin: 0 0 8px; font-family: "Noto Serif KR", Times, serif; font-weight: 600; font-size: 17px; color: #111111; }
+  .duo .card p, .duo .card ul { color: #343434; font-size: 13.5px; }
   .duo .card ul { margin-bottom: 0; }
-  .duo .card.pick { outline: 2px solid var(--ok); outline-offset: -2px; }
-  footer { border-top: 1px solid var(--line); padding-top: 22px; color: var(--text-4); font-size: 13.5px; }
-  footer p { margin-bottom: 8px; }
-  footer strong { color: var(--text-3); }
-  :focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-radius: 4px; }
+  footer { padding: 56px 0 90px; background: #ffffff; }
+  footer .inner { border-top: 1px solid #111111; padding-top: 26px; }
+  footer p { font-size: 12.5px; color: #858585; max-width: none; }
+  footer strong { color: #343434; font-weight: 600; }
+  :focus-visible { outline: 1px solid #111111; outline-offset: 3px; }
   @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+  @media (max-width: 640px) { section { padding: 48px 0; } header.hero { padding: 64px 0 44px; } }
 </style>
 
-<div class="wrap">
-  <header>
-    <div class="chip">총괄 기획서 · 3부 · 2026. 08. 28</div>
+<header class="hero">
+  <div class="inner">
+    <p class="eyebrow">Master Plan · Series 03 · Rev. 2026. 09. 01</p>
     <h1>부산역 솥밥 총괄 기획서</h1>
-    <p class="subtitle">가칭1(종합 솥밥) vs 가칭2(수산 솥밥) — 40평 직영 플래그십부터 가맹사업까지</p>
-
-    <div class="notice">
-      <span class="nt">확정 전제</span>
-      ① 두 브랜드를 동일 기준으로 설계해 <strong>비교 후 1개 선택</strong> ② <strong>가맹사업까지</strong> 시야 포함 ③ 둘 다 <strong>부산역 인근 40평</strong> ④ 보고서형. 브랜드명은 가칭1·가칭2로 표기하고 네이밍 확정 시 치환합니다. 임대료·투자비·40평 관련 수치는 전부 [추정] — 임장·견적 캘리브레이션 전제.
-    </div>
-
-    <div class="verdict">
-      <span class="vd">권고: 가칭2</span>
-      <p><strong>수산 솥밥 + 육류 브릿지 2종.</strong> 비교 스코어 41 vs 33 — 카피 안전도·부산역 정합·소싱 해자·가맹 스토리 네 기둥이 모두 가칭2를 가리킵니다. 가칭1이 맞는 조건도 10장에 명시.</p>
-    </div>
-
+    <p class="standfirst">가칭1(종합 솥밥) vs 가칭2(수산 솥밥) — 40평 플래그십 설계 · 손익 · 가맹사업 · 확장 파이프라인. 4부 경쟁 분석 반영 개정판.</p>
+    <p class="method">확정 전제 — ① 동일 기준 설계 후 <strong>비교·1개 선택</strong> ② <strong>가맹사업까지</strong> ③ 둘 다 <strong>부산역 40평</strong> ④ 보고서형. 브랜드명은 가칭(2부 만선 계열 수렴 중). 임대·투자 수치는 [추정] — 임장·견적 캘리브레이션 전제, 손익은 부가세 분리.</p>
     <div class="stats">
-      <div class="stat"><b>40평 · 54석</b><span>1인 바 8 + 2인 8 + 4인 6 + 6인 2</span></div>
-      <div class="stat"><b>3.5~4.5억</b><span>총투자 추정 (보증금·인테리어·운전자금)</span></div>
-      <div class="stat"><b>일 125~135명</b><span>손익분기 — 부산역 유동의 0.26%</span></div>
-      <div class="stat"><b>월 2,700만</b><span>기본 시나리오 영업이익 (일 220명)</span></div>
+      <div class="stat"><b>권고: 가칭2</b><span>수산 솥밥 + 육류 브릿지 — 스코어 46 vs 36 (11개 기준)</span></div>
+      <div class="stat"><b>40평 · 54석</b><span>1인 바 8 + 2인 8T + 4인 6T + 6인 2T</span></div>
+      <div class="stat"><b>2,680만</b><span>기본(일 220명) 월 영업이익 · BEP 일 125~135명</span></div>
+      <div class="stat"><b>1~2년</b><span>부산 선점 시한(4부) — 동양 대구·담솥 마산 남하</span></div>
     </div>
-
     <nav class="toc" aria-label="목차">
-      <a href="#summary"><span class="n">✦</span>요약</a>
-      <a href="#ch12"><span class="n">1·2</span>시장·포트폴리오</a>
-      <a href="#ch3"><span class="n">3</span>가칭1</a>
-      <a href="#ch4"><span class="n">4</span>가칭2</a>
-      <a href="#ch5"><span class="n">5·6</span>공간·운영·마케팅</a>
-      <a href="#ch8"><span class="n">8</span>손익</a>
-      <a href="#ch10"><span class="n">10</span>비교·권고</a>
-      <a href="#ch11"><span class="n">11</span>가맹 설계</a>
-      <a href="#ch12r"><span class="n">12</span>로드맵</a>
+      <a href="#summary">요약</a>
+      <a href="#ch1">01–02 시장·포트폴리오</a>
+      <a href="#ch3">03–04 가칭1·가칭2</a>
+      <a href="#ch5">05–07 공간·마케팅·입지</a>
+      <a href="#ch8">08–09 손익·리스크</a>
+      <a href="#ch10">10 비교·권고</a>
+      <a href="#ch11">11–12 가맹·로드맵</a>
     </nav>
-  </header>
+    <hr class="hairline">
+  </div>
+</header>
 
-  <section id="summary">
+<section id="summary">
+  <div class="inner">
+    <p class="ch-eyebrow">Summary</p>
     <h2>요약</h2>
     <ol class="summary">
-      <li><strong>결론: 가칭2(수산 솥밥) 권고.</strong> ① 같은 도시에 원조(솔솥 3개점)가 있어 가칭1은 카피 논란 리스크가 구조적 ② 여행자에겐 "부산에서만 먹는 수산 솥밥"이 방문 이유가 됨 ③ 자사 수입·수산 소싱 해자가 최대로 작동 ④ 가맹 시 "부산발 수산 솥밥"은 전국 공백 스토리. 수산 비선호 고객은 <strong>육류 브릿지 2종(부챗살·직화목살)</strong>으로 방어.</li>
-      <li><strong>가칭1이 맞는 경우도 있습니다</strong>: 대중 상권(서면·신도시) 이동, 가족·회식 주 타깃, 24개월 내 가맹 20점+ 속도전 — 이 중 2개 이상이면 재검토(10장).</li>
-      <li><strong>40평의 의미</strong>: 솔솥 최대 불만(좁은 좌석·웨이팅)의 정면 역설계 + 단체·저녁 주류 흡수. 대신 투자 3.5~4.5억·BEP 일 125~135명으로 상승 — 전환율 장치(사전주문·조식·포장)가 더 중요해짐.</li>
-      <li><strong>손익(기본, 일 220명·객단가 18,500)</strong>: 월매출 약 1억 2,200만(VAT 포함), 감가 포함 영업이익 <strong>약 2,700만</strong>. 보수 880만 / 낙관 4,660만 [추정].</li>
-      <li><strong>가맹 로드맵</strong>: 가맹사업법 1+1 요건(직영 1개점 1년 운영) 때문에 가맹 개시는 오픈 후 12~15개월. 본사 수익의 본체는 가맹비가 아니라 <strong>장어·수산 원팩 식자재 공급 마진</strong> — 수입·유통업 기반의 우리가 솔솥식 '도매업 본사' 모델을 더 잘할 수 있습니다.</li>
+      <li><strong>권고: 가칭2(수산 솥밥) + 육류 브릿지 2종.</strong> 11개 기준 스코어 46(브릿지 47) vs 36. 근거 — 카피 안전(원조 솔솥 3개점 회피) · 부산역 여행자에게 "부산에서만" · 장어·수산 직수입 해자 최대 가동 · 가맹 스토리 "부산발 수산 솥밥"은 전국 공백 · 확장 파이프라인이 1호점부터 가동. 가칭1 재검토 조건(대중 상권 이동·가족 타깃·가맹 속도전·수산 설비 축소 중 2개+)도 명시.</li>
+      <li><strong>40평 = 역설계 무기이자 부담.</strong> 54석으로 솔솥 최대 불만(좁은 좌석·웨이팅)을 정면 타격 + 저녁 반주 모드. 대신 투자 3.5~4.5억 · BEP 일 125~135명(부산역 유동의 0.26%) — 전환율 장치(사전주문·조식·포장)가 생명.</li>
+      <li><strong>손익(기본, 일 220명·객단가 18,500)</strong>: 월매출 1억 2,210만(VAT 포함) → 감가 포함 영업이익 약 2,680만(순매출의 24.1%). 보수 880만 / 낙관 4,660만. 민감도 — 객단가 −1,000원=월 −600만 · 일 −30명=−550만 · 원가율 +2%p=−244만.</li>
+      <li><strong>가맹(4부 반영)</strong>: 1+1 요건으로 개시 M12~15. 본사 수익 본체는 원팩 물류 마진(4사 표준 확인 — 로열티의 3~6배). 표준점 창업비 1.3~1.5억은 경쟁 상단 → <strong>점주 순이익 비교표로 증명하는 손익 공개 영업</strong>이 조건. 로열티 정액 50만 + 지역 1호점 6개월 면제.</li>
+      <li><strong>선점 시한 1~2년.</strong> 동양솥밥 2026-08 대구(진입 확률 최고) · 담솥 마산(중간) · 솔솥 서울역점 검증 중. D-120 로드맵 준수가 곧 전략.</li>
     </ol>
-  </section>
+  </div>
+</section>
 
-  <section id="ch12">
-    <div class="chapter">1·2장</div>
-    <h2>시장 요약 &amp; 포트폴리오 전략</h2>
+<section id="ch1" class="band">
+  <div class="inner">
+    <p class="ch-eyebrow">Chapters 01–02 — Market &amp; Portfolio</p>
+    <h2>시장 요약 · 포트폴리오 전략</h2>
     <ul>
-      <li><strong>시장(1·2부 승계)</strong>: 솔솥 79개점이 검증한 카테고리 + 부산역 솥밥 공백 + 외국인 급증(2025년 364만·+43.9%) + 리뷰 역설계 5과제(웨이팅·양·좌석·편차·반찬) + 자사 장어 원가 해자(수입 CIF $10.8~11.2/kg vs 국산 도매 2.0~2.5만/kg).</li>
-      <li><strong>포지셔닝 맵</strong>: 가칭1 = 넓은 메뉴 폭 × 중가 프리미엄 — 솔솥·담솥과 같은 사분면(후발 정면전) / 가칭2 = 수산 전문 × 중가 프리미엄 — <strong>전국 프랜차이즈 공백 사분면</strong>(로컬 한다솥류만 존재).</li>
-      <li><strong>공유 자산(어느 안이든 동일 작동)</strong>: 장어 수입 인프라 · 장어 조리 노하우(히츠마부시 운영 경험) · 시세 트래커(원가 모니터링→가맹 공급가 산정 도구) · 여행자 오퍼레이션 설계 · 부산역 입지 분석.</li>
+      <li><strong>시장(1·2·4부 승계)</strong> — 솔솥 79개점+5개국·본사 2025년 매출 126.2억(+36.4%)·부산 3개점 전부 핫플형(역세권 공백)·서울역점 역전 모델 검증 중 / 부산역 일 4.9만·외국인 364만(+43.9%, 대만&gt;중국&gt;일본)·호텔 1,000실·북항 20조 / 한계: 상권 월 251억(서면의 1/7)·통과형·국밥 기준선 / 경쟁 국면: 담솥 49(정지·마산)·동양 21+4(재가속·대구)·가가 4(정지) / 원가 해자: 장어 토핑 1인분 2,600원(CIF $10.75~11.23/kg).</li>
+      <li><strong>포지셔닝 맵</strong> — 가칭1: 넓은 메뉴 폭×중가 프리미엄(솔솥·담솥 사분면, 후발 정면전) / 가칭2: 수산 전문×중가 프리미엄(<strong>전국 프랜차이즈 공백 사분면</strong>).</li>
+      <li><strong>공유 자산</strong> — 장어 수입 인프라 · 장어 조리 노하우(히츠마부시 SOP) · 시세 트래커(가맹 공급가 산정 도구로 확장) · 여행자 오퍼레이션 · 부산역 입지 분석.</li>
     </ul>
-  </section>
-
-  <section id="ch3">
-    <div class="chapter">3장</div>
-    <h2>가칭1 — 종합 솥밥 브랜드</h2>
-    <p><strong>콘셉트</strong>: "고기도 생선도, 한 솥에서 — 부산역의 프리미엄 종합 솥밥 한상". 솔솥의 카테고리 문법을 쓰되 <strong>양·좌석·가격 역전(장어)</strong>으로 우위. 타깃: 혼밥 여행자 + 가족·단체(돼지·치즈닭갈비가 아이 동반 흡수) + 외국인.</p>
+    <h3>확장 파이프라인 비교 <span class="sub">매장 이후의 부가 사업 — 선택 판단 보조 축</span></h3>
     <div class="tbl"><table>
-      <thead><tr><th>구간</th><th>메뉴</th><th>가격</th><th>원가율</th></tr></thead>
+      <thead><tr><th>축</th><th>가칭1 (종합)</th><th>가칭2 (수산)</th></tr></thead>
       <tbody>
-        <tr><td>볼륨</td><td>대패삼겹숙주솥밥 · 치즈닭갈비솥밥</td><td class="num">13,900 · 14,900</td><td class="num">29.5~30.9%</td></tr>
-        <tr><td>앵커</td><td>직화목살 15,900 · 연어스테이크 17,500 · 전복버터 17,500 · 스테이크(부챗살) 17,900</td><td class="num">15,900~17,900</td><td class="num">29.6~34.9%</td></tr>
-        <tr><td><strong>시그니처</strong></td><td><strong>민물장어솥밥</strong> (자사 직수입)</td><td class="num"><strong>19,500</strong></td><td class="num">29.7%</td></tr>
-        <tr><td>한정·사이드</td><td>계절 솥밥 21,000 · 통새우튀김·계란찜·어묵탕·하이볼</td><td class="num">—</td><td class="num">19~35.2%</td></tr>
+        <tr><td>성격</td><td>메뉴·소스 IP 기반 <strong>상온·냉동 가공</strong></td><td>원물 신뢰 기반 <strong>신선·반찬 가공</strong></td></tr>
+        <tr><td>품목</td><td>소스 3종 리테일 · 냉동 RMR 키트(스테이크·치즈닭갈비·장어) · 편의점 도시락 콜라보 · B2B 단체도시락 · 키즈 밀키트 · 홈 솥밥 키트</td><td>기장미역무침·파김치·젓갈 반찬 · 전복솥밥 밀키트 · <strong>장어 타레구이 팩·명절 선물세트(공통 1순위)</strong> · 매장 즉석 판매</td></tr>
+        <tr><td>유통·경쟁</td><td>전국 이커머스 확장성 高 — 단 CJ 햇반솥반·비비고와 정면(인지도 후행)</td><td>콜드체인 부담·마진 얇음 — 단 대기업 미진입 영역, <strong>1호점 '재구매' 문법으로 즉시 가동</strong></td></tr>
+        <tr><td>결론</td><td>늦게 터지지만 천장이 높다</td><td class="win">일찍 시작해 꾸준히 번다</td></tr>
       </tbody>
     </table></div>
-    <ul>
-      <li><strong>돼지 카테고리(13,900~15,900)는 솔솥에 없는 라인</strong> — 가격 하단을 열어 국밥 상권과의 심리 격차 축소, 원가율도 최저. 블렌디드 원가율 약 31.8%, 객단가 약 18,000원 [추정].</li>
-      <li><strong>카피 리스크 관리(필수)</strong>: 라인업 5/8이 솔솥과 겹침 → 돼지 전면 배치 · 장어 가격 역전 · 사이드/그릇/문구/BI 완전 독자화(유린기 등 솔솥 고유 사이드 미사용) · '주의 등급 표현 2개 이상 중복 금지'를 설계 규정으로.</li>
-      <li>고유 리스크: <span class="tag bad">카피 논란(최대)</span> · 가맹 모집 시 "왜 솔솥 말고?"에 답이 약함 · 연어·소 수입 시세 변동.</li>
-    </ul>
-  </section>
+  </div>
+</section>
 
-  <section id="ch4">
-    <div class="chapter">4장</div>
-    <h2>가칭2 — 수산 솥밥 브랜드</h2>
-    <p><strong>콘셉트</strong>: "항구도시의 제철 수산을 솥에 짓다 — 부산에서만 먹는 수산 솥밥 한상". 2부 브랜드 킷 승계 + 40평·대중성 보정. 타깃: 여행자·외국인(대만·일본 장어 친화) + 혼밥 출장객 + 로컬 저녁 반주.</p>
+<section id="ch3">
+  <div class="inner">
+    <p class="ch-eyebrow">Chapters 03–04 — Brand A vs Brand B</p>
+    <h2>가칭1 · 가칭2 각론</h2>
+
+    <h3>가칭1 종합 솥밥 — 메뉴·BOM 전량 <span class="sub">베이스 2,600원/상</span></h3>
+    <div class="tbl"><table>
+      <thead><tr><th>메뉴</th><th>가격</th><th>토핑 산식</th><th>총원가</th><th>원가율</th></tr></thead>
+      <tbody>
+        <tr><td>대패삼겹숙주</td><td class="num">13,900</td><td class="num">대패 120g×9,000=1,080 + 숙주·소스 420</td><td class="num">4,100</td><td class="num">29.5%</td></tr>
+        <tr><td>치즈닭갈비</td><td class="num">14,900</td><td class="num">닭 1,300 + 치즈 700</td><td class="num">4,600</td><td class="num">30.9%</td></tr>
+        <tr><td>직화목살</td><td class="num">15,900</td><td class="num">목살 110g×11,000=1,210 + 양념 500</td><td class="win">4,310 · 27.1%</td><td class="num"></td></tr>
+        <tr><td>연어스테이크</td><td class="num">17,500</td><td class="num">연어 130g×24,000=3,120 + 400</td><td class="num">6,120</td><td class="lose">35.0%</td></tr>
+        <tr><td>전복버터 / 스테이크(부챗살)</td><td class="num">17,500 / 17,900</td><td class="num">2,800+300 / 부챗살 130g 2,730+500</td><td class="num">5,700 / 5,830</td><td class="num">32.6% / 32.6%</td></tr>
+        <tr><td class="win">민물장어(시그니처)</td><td class="num"><strong>19,500</strong></td><td class="num">자사 필렛 130g 2,600 + 타레 600</td><td class="num">5,800</td><td class="num"><strong>29.7%</strong></td></tr>
+        <tr><td>계절 · 사이드</td><td class="num">21,000 · 4,000~7,900</td><td colspan="3">블렌디드 약 31.8% · 객단가 약 18,000원</td></tr>
+      </tbody>
+    </table></div>
+    <p><strong>돼지 카테고리(13,900~15,900)가 솔솥에 없는 라인</strong> — 국밥 상권과 심리 격차 축소 + 최저 원가율 볼륨존. <strong>카피 규정 필수</strong>: 라인업 5/8 중복 → 돼지 전면 배치 · 장어 가격 역전 · 사이드/그릇/문구/BI 독자화(유린기 미사용) · 주의 등급 표현 2개 이상 중복 금지. 고유 리스크 — <span class="tag bad">카피 논란(구조적)</span> · "왜 솔솥 말고?" 답 부족 · 연어 원가율 35% 상단.</p>
+
+    <h3>가칭2 수산 솥밥 — 구성 <span class="sub">BOM 전량은 2부</span></h3>
     <div class="tbl"><table>
       <thead><tr><th>구간</th><th>메뉴</th><th>가격</th></tr></thead>
       <tbody>
-        <tr><td>로컬 볼륨</td><td>기장미역들깨 · 멸치쌈</td><td class="num">12,500 · 13,500</td></tr>
-        <tr><td><strong>육류 브릿지 (신규)</strong></td><td><strong>불맛부챗살 · 직화목살</strong> — 수산 비선호 동행자 방어</td><td class="num">16,500 · 15,900</td></tr>
+        <tr><td>로컬 볼륨</td><td>기장미역들깨 · 멸치쌈(대변항)</td><td class="num">12,500 · 13,500</td></tr>
+        <tr><td>육류 브릿지</td><td>직화목살 · 불맛부챗살 — 수산 비선호 동행자 방어</td><td class="num">15,900 · 16,500</td></tr>
         <tr><td>앵커</td><td>제주갈치 · 완도전복미역</td><td class="num">17,000 · 17,500</td></tr>
-        <tr><td><strong>시그니처</strong></td><td><strong>장어솥밥 3식</strong> (곱빼기 +6,000 · 국내산 업그레이드 +7,500)</td><td class="num"><strong>19,500</strong></td></tr>
-        <tr><td>한정</td><td>계절 한 솥 (대하→방어·굴→도다리쑥)</td><td class="num">21,000</td></tr>
-        <tr><td><strong>저녁 모드 (40평 신규)</strong></td><td>장어구이 한 판 19,000 · 전복버터구이 · 생선구이 반상 16,500 · 하이볼/금정산성막걸리/사케</td><td class="num">—</td></tr>
-        <tr><td>조식·포장</td><td>첫솥 반상 9,500~10,500 · 기차솥 도시락 12,500~15,000</td><td class="num">—</td></tr>
+        <tr><td class="win">시그니처</td><td>장어솥밥 3식 (곱빼기 +6,000 · 국내산 +7,500)</td><td class="num"><strong>19,500</strong></td></tr>
+        <tr><td>한정</td><td>계절 한 솥 — 가을 대하→겨울 방어·굴→봄 도다리쑥→<strong>여름 물회 페어링·냉국물 반상(4부 반영)</strong></td><td class="num">21,000</td></tr>
+        <tr><td>저녁 모드(40평 신규)</td><td>장어구이 한 판 19,000 · 전복버터구이 · 생선구이 반상 16,500 · 하이볼/금정산성/사케 — 호텔·북항 수요</td><td class="num">—</td></tr>
+        <tr><td>조식·포장</td><td>첫솥 반상 · 기차 도시락(누룽지칩 별첨)</td><td class="num">9,500~10,500 · 12,500~15,000</td></tr>
       </tbody>
     </table></div>
-    <ul>
-      <li>40평의 저녁(18:00~21:30)을 <strong>'장어구이+반주' 세컨드 모드</strong>로 운영 — 호텔 투숙·북항 수요 흡수. 20평에선 과부하였던 이원 운영이 40평·주방 9평에선 가능.</li>
-      <li>블렌디드 원가율 약 31.5%, 객단가 약 19,000원(저녁 주류 상방) [추정].</li>
-      <li>고유 리스크: 수산 시세·계절 변동(트래커 모니터링·계절 교체로 흡수, 장어가 마진 앵커) · 가맹 시 신선 물류 난도(원팩 전처리로 완화).</li>
-    </ul>
-  </section>
+    <p>블렌디드 31.5% · 객단가 19,000원(저녁 주류 상방). 리스크 — 수산 시세·계절(트래커+교체권, 장어가 마진 앵커) · 비선호 이탈(브릿지) · 가맹 신선 물류(원팩 전처리).</p>
+  </div>
+</section>
 
-  <section id="ch5">
-    <div class="chapter">5·6·7장</div>
-    <h2>40평 공간·운영·마케팅 (양안 공통)</h2>
+<section id="ch5" class="band">
+  <div class="inner">
+    <p class="ch-eyebrow">Chapters 05–07 — Space · Marketing · Site</p>
+    <h2>40평 설계 · 90일 마케팅 · 입지 기준</h2>
     <div class="tbl"><table>
       <thead><tr><th>존</th><th>면적</th><th>내용</th></tr></thead>
       <tbody>
-        <tr><td>주방</td><td class="num">9평</td><td>취반 라인(전용 취반기·인덕션 12구) + 구이 존 + 전처리·세척, 일방향 동선</td></tr>
+        <tr><td>주방</td><td class="num">9평</td><td>취반 라인(<strong>자동 취반기/솥밥기계 — 상용 98만 원~, 3사 비교 견적 D-90</strong>) 인덕션 12구 + 구이 존 + 전처리·세척, 일방향 동선</td></tr>
         <tr><td>홀</td><td class="num">27평</td><td><strong>1인 바 8석(창가·캐리어 선반)</strong> + 2인 8T + 4인 6T + 6인 2T = 약 54석</td></tr>
-        <tr><td>웨이팅·픽업</td><td class="num">3평</td><td>원격 줄서기 현황판 + 기차솥 픽업 카운터 + 캐리어 보관</td></tr>
+        <tr><td>웨이팅·픽업 / 창고</td><td class="num">3평 / 1평</td><td>줄서기 현황판 + 도시락 픽업 + 캐리어 보관</td></tr>
       </tbody>
     </table></div>
     <ul>
-      <li><strong>운영</strong>: 07:30 조식(배치 취반) → 점심 피크 → 15~17시 축소 운영(여행자 상권이라 브레이크 없음 권장) → 저녁(가칭2는 반주 모드). 인력 주방 4 + 홀 4 + 점주, 월 인건비 2,200~2,800만 [추정]. QR 열차 연동 사전주문(착석 7분 첫 상)·테이블 오더·POS-트래커 원가 대시보드.</li>
-      <li><strong>마케팅 90일</strong>: D-30 채널 등록·호텔 컨시어지 프리오픈 → D+30 릴스 3기둥(취반 장면/먹는 법 의식/"KTX 40분 전" 데모)·리뷰 시딩 → D+60 외국인 채널(일·중 콘텐츠, 호텔 조식 제휴) → D+90 계절 교체·데이터 보정. KPI: 일 180명 · 외국인 20% · 평점 4.5 · 재방문 15% · '카피' 언급 0건.</li>
-      <li><strong>입지</strong>: 후보 ①광장 정면 vs ④호텔 축(1부 6-6) — 40평 1층 물건 희소로 <strong>물건 가용성이 우선 변수</strong>. 1층 30평+2층 대안 허용(취반 주방은 1층 필수). 배기·가스 용량 확인 필수.</li>
+      <li><strong>운영</strong> — 07:30 조식(배치 취반 5분) → 점심 피크 → 15~17시 <strong>브레이크 없음</strong>(솔솥·담솥·동양 다수가 닫는 시간대를 우리가 먹는다 — 4부 리뷰 불만 반영) → 저녁 반주 모드(가칭2). 인력 주방 4+홀 4+점주(월 2,200~2,800만). QR 열차 연동 사전주문 · 테이블 오더 · POS-트래커 원가 대시보드.</li>
+      <li><strong>마케팅 90일</strong> — D-30 채널 등록+호텔 컨시어지·역무 프리오픈 2일(리허설 4.5+) → D+30 릴스 3기둥(취반 장면/3식 먹는 법/"KTX 40분 전" 데모)+리뷰 시딩(일 120명) → D+60 외국인 채널+호텔 조식 제휴(외국인 15%) → D+90 계절 교체·데이터 보정(일 180명·외국인 20%·평점 4.5·재방문 15%·'카피' 언급 0건).</li>
+      <li><strong>입지</strong> — 후보 ①광장 정면 vs ④호텔 축(1부 15장). 40평 1층 희소로 <strong>물건 가용성이 우선 변수</strong>(1층 30평+2층 허용, 취반 주방 1층 필수). 기준: 15~20시 실측 유동 · 전면 폭 4m+ · 배기·가스 용량 · 월세 400~700만 [추정]. 역사 구내 배제(삼진어묵 월 2억 사례).</li>
     </ul>
-  </section>
+  </div>
+</section>
 
-  <section id="ch8">
-    <div class="chapter">8·9장</div>
-    <h2>손익 모델 &amp; 리스크</h2>
+<section id="ch8">
+  <div class="inner">
+    <p class="ch-eyebrow">Chapters 08–09 — P&amp;L &amp; Risks</p>
+    <h2>손익 모델 · 리스크</h2>
     <div class="tbl"><table>
       <thead><tr><th>구분</th><th>보수 (일 150명)</th><th>기본 (일 220명)</th><th>낙관 (일 300명)</th></tr></thead>
       <tbody>
-        <tr><td>월 매출 (객단가 18,500, VAT 포함)</td><td class="num">8,325만</td><td class="num"><strong>1억 2,210만</strong></td><td class="num">1억 6,650만</td></tr>
-        <tr><td>순매출 (VAT 제외)</td><td class="num">7,568만</td><td class="num">1억 1,100만</td><td class="num">1억 5,136만</td></tr>
-        <tr><td>재료비(32%) / 인건비 / 임차 550만</td><td class="num">2,664 / 2,200</td><td class="num">3,907 / 2,400</td><td class="num">5,328 / 2,700</td></tr>
-        <tr><td>기타(7.5%) / 감가(3.9억·5년)</td><td class="num">624 / 650</td><td class="num">916 / 650</td><td class="num">1,249 / 650</td></tr>
-        <tr><td><strong>영업이익 (감가 포함)</strong></td><td class="num"><strong>약 880만</strong></td><td class="num"><strong>약 2,680만</strong></td><td class="num"><strong>약 4,660만</strong></td></tr>
+        <tr><td>월 매출(객단가 18,500, VAT 포함) → 순매출</td><td class="num">8,325만 → 7,568만</td><td class="num"><strong>1억 2,210만 → 1억 1,100만</strong></td><td class="num">1억 6,650만 → 1억 5,136만</td></tr>
+        <tr><td>재료비(32%) / 인건비</td><td class="num">−2,664 / −2,200</td><td class="num">−3,907 / −2,400</td><td class="num">−5,328 / −2,700</td></tr>
+        <tr><td>임차·관리 / 기타(7.5%) / 감가(3.9억·5년)</td><td class="num">−550 / −624 / −650</td><td class="num">−550 / −916 / −650</td><td class="num">−550 / −1,249 / −650</td></tr>
+        <tr><td><strong>영업이익(감가 포함)</strong></td><td class="num">약 880만 (11.6%)</td><td class="win">약 2,680만 (24.1%)</td><td class="num">약 4,660만 (30.8%)</td></tr>
       </tbody>
     </table></div>
     <ul>
-      <li>브랜드별 보정: 가칭1(객단가 18,000·원가 31.8%) 기본 약 2,580만 / 가칭2(19,000·31.5%) 기본 약 2,700만 + 저녁 주류 상방.</li>
-      <li><strong>BEP 일 125~135명</strong> · 회수(현금 기준) 기본 약 12~15개월, 보수 시 30개월+. 민감도: 객단가 -1,000원 = 월 -600만, 일 -30명 = 월 -550만 → <strong>가격 인하 대신 전환율(사전주문·조식·포장)에 투자.</strong></li>
-      <li>핵심 리스크 대응: 집객 부진 3개월 시 조식·포장→저녁 모드→좌석 재설계 순 대응(운전자금 5,000만) · 솔솥 부산역 후발 진입은 선점+독자 정체성+상표로 방어(가칭2일수록 방어력↑) · 원물 시세는 트래커 모니터링+계절 교체권.</li>
+      <li>브랜드 보정 — 가칭1(18,000·31.8%) 기본 약 2,580만 / 가칭2(19,000·31.5%) 기본 약 2,700만 + 저녁 주류 상방. <strong>BEP 일 125~135명</strong>(유동의 0.26%) · 회수(현금) 기본 12~15개월, 보수 30개월+.</li>
+      <li>민감도 — 객단가 −1,000원 = 월 −600만 · 일 −30명 = −550만 · 원가율 +2%p = −244만 → <strong>가격 인하 대신 전환율·장어 실적 원가 관리에 투자.</strong> 참고(4부 역산): 담솥 점주 월 1,290만(20평) · 동양 실질 895만(15평) — 우리 기본 2,680만은 규모 효과 포함.</li>
+      <li>리스크 대응 — 집객 부진 3개월: 조식·포장 강화→저녁 확대→좌석 재설계(운전자금 5,000만) / 후발 진입: 선점 1~2년+독자 정체성+상표 / 카피: 3등급 규정 + <strong>'특허받은' 표기는 등록 전 금지·출원은 진행</strong>(3식 제공 방식·타레 배합·사전주문 연동 취반) / 원물 시세: 트래커+교체권 / 인력: 장비+SOP.</li>
     </ul>
-  </section>
+  </div>
+</section>
 
-  <section id="ch10">
-    <div class="chapter">10장</div>
-    <h2>비교 매트릭스 &amp; 권고</h2>
+<section id="ch10" class="band">
+  <div class="inner">
+    <p class="ch-eyebrow">Chapter 10 — Matrix &amp; Verdict</p>
+    <h2>비교 매트릭스 (11개 기준) &amp; 권고</h2>
     <div class="tbl"><table>
-      <thead><tr><th>기준 (5점 만점)</th><th>가칭1 종합</th><th>가칭2 수산</th></tr></thead>
+      <thead><tr><th>기준 (5점)</th><th>가칭1 종합</th><th>가칭2 수산</th></tr></thead>
       <tbody>
         <tr><td>시장 검증도</td><td class="win">5</td><td class="num">3</td></tr>
-        <tr><td>차별화·독자성</td><td class="num">2</td><td class="win">5</td></tr>
-        <tr><td>카피·평판 안전도</td><td class="num">2</td><td class="win">5</td></tr>
-        <tr><td>부산역 정합 (여행자·외국인)</td><td class="num">3</td><td class="win">5</td></tr>
-        <tr><td>대중 폭 (비수산 고객)</td><td class="win">5</td><td class="num">3→4 (브릿지 반영)</td></tr>
-        <tr><td>원가 해자 활용</td><td class="num">3</td><td class="win">5</td></tr>
-        <tr><td>가맹 표준화 용이성</td><td class="win">4</td><td class="num">3</td></tr>
-        <tr><td>가맹 모집 스토리</td><td class="num">2</td><td class="win">5</td></tr>
-        <tr><td>운영 난도 (낮을수록 고점)</td><td class="win">4</td><td class="num">3</td></tr>
-        <tr><td>확장 상방 (전국·해외)</td><td class="num">3</td><td class="win">4</td></tr>
-        <tr><td><strong>합계</strong></td><td class="num"><strong>33</strong></td><td class="win"><strong>41 (브릿지 반영 42)</strong></td></tr>
+        <tr><td>차별화·독자성 / 카피·평판 안전</td><td class="num">2 / 2</td><td class="win">5 / 5</td></tr>
+        <tr><td>부산역 정합(여행자·외국인)</td><td class="num">3</td><td class="win">5</td></tr>
+        <tr><td>대중 폭(비수산)</td><td class="win">5</td><td class="num">3→4 (브릿지)</td></tr>
+        <tr><td>원가 해자 활용 / 가맹 스토리</td><td class="num">3 / 2</td><td class="win">5 / 5</td></tr>
+        <tr><td>가맹 표준화 / 운영 난도</td><td class="win">4 / 4</td><td class="num">3 / 3</td></tr>
+        <tr><td>확장 상방 / 파이프라인(2장)</td><td class="num">3 / 3</td><td class="win">4 / 4</td></tr>
+        <tr><td><strong>합계</strong></td><td class="num"><strong>36</strong></td><td class="win"><strong>46 (브릿지 반영 47)</strong></td></tr>
       </tbody>
     </table></div>
     <div class="duo">
-      <div class="card pick">
-        <h4>권고: 가칭2 + 육류 브릿지 <span class="tag ok">선택</span></h4>
-        <ul>
-          <li>카피 안전도 — 같은 도시 원조 3개점 회피</li>
-          <li>부산역 여행자에게 "여기서만"의 이유 제공</li>
-          <li>수입·수산 소싱 해자 최대 가동</li>
-          <li>가맹 스토리 "부산발 수산 솥밥" = 전국 공백</li>
-        </ul>
+      <div class="card">
+        <h4>권고 — 가칭2 + 육류 브릿지</h4>
+        <ul><li>카피 안전 · "부산에서만"의 방문 이유 · 소싱 해자 최대 가동 · "부산발 수산 솥밥" 전국 공백 · 파이프라인 1호점부터 가동</li></ul>
       </div>
       <div class="card">
-        <h4>가칭1을 골라야 하는 조건 <span class="tag mid">2개 이상 해당 시 재검토</span></h4>
-        <ul>
-          <li>입지를 서면·신도시 등 대중 상권으로 변경</li>
-          <li>가족·회식 수요가 주 타깃</li>
-          <li>24개월 내 가맹 20개점+ 속도전 계획</li>
-          <li>수산 전처리 인력·설비 투자 축소 방침</li>
-        </ul>
+        <h4>가칭1 재검토 조건 <span class="tag mid">2개 이상 해당 시</span></h4>
+        <ul><li>① 입지를 서면·신도시 대중 상권으로 변경 ② 가족·회식 주 타깃 ③ 24개월 내 가맹 20개점+ 속도전 ④ 수산 전처리 인력·설비 투자 축소</li></ul>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="ch11">
-    <div class="chapter">11장</div>
-    <h2>가맹사업 설계</h2>
-    <ul>
-      <li><strong>법적 전제</strong>: 정보공개서 등록 전 가맹 모집 불가 + <strong>직영 1개점 1년 이상 운영 요건(1+1)</strong> → 가맹 개시는 오픈 후 12~15개월. 상표 등록이 전제 — 네이밍 확정 즉시 43·30·35류 출원. [가맹거래사 자문 전제]</li>
-      <li><strong>본사 수익 모델</strong> [추정]: 가맹비 1,000만(지역 1호 면제 프로모션) · 교육비 500만 · 인테리어 감리 마진 · 로열티 정액 50만/월 — 그리고 본체는 <strong>장어·수산 원팩 식자재 공급 마진 15~25%</strong>. 수입·유통 인프라가 곧 물류 본부.</li>
-      <li><strong>가맹 표준점</strong>: 직영 40평은 플래그십 — 가맹 표준은 <strong>20~22평·26석·창업비 1.3~1.5억(점포비 별도)</strong>으로 별도 설계(솔솥 1.48억과 동등 이하). 조식·저녁 모드는 플래그십 전용, 가맹점은 점심 중심 단순 운영.</li>
-    </ul>
-    <div class="phase"><h4>P1 플래그십 <small>M0~M12</small></h4><ul><li>부산역 40평 직영 — 브랜드·SOP·원팩 레시피 검증, 운영 데이터 축적(정보공개서 기초)</li></ul></div>
-    <div class="phase"><h4>P2 표준화 <small>M10~M15</small></h4><ul><li>소형 표준점 매뉴얼(주방 6평 버전) + 원팩 생산 체계(자사 또는 임가공)</li></ul></div>
-    <div class="phase"><h4>P3 등록 <small>M12~M15</small></h4><ul><li>정보공개서 등록 · 가맹계약서(가맹거래사) · 물류 계약</li></ul></div>
-    <div class="phase"><h4>P4 가맹 개시 <small>M15~M24</small></h4><ul><li>부산·경남 1~5호점(지역 1호 가맹비 면제) · 슈퍼바이저 1명</li></ul></div>
-    <div class="phase"><h4>P5 확장 <small>M24~M36</small></h4><ul><li>영남 10개점 + 수도권 안테나 1점 · 해외(대만·일본) 마스터 프랜차이즈 타진</li></ul></div>
-  </section>
+<section id="ch11">
+  <div class="inner">
+    <p class="ch-eyebrow">Chapters 11–12 — Franchise &amp; Roadmap</p>
+    <h2>가맹사업 설계 · D-120 로드맵</h2>
 
-  <section id="ch12r">
-    <div class="chapter">12장</div>
-    <h2>실행 로드맵 (D-120 → 오픈)</h2>
-    <div class="phase"><h4>D-120 브랜드·이름 확정 <small>게이트: 상표 선행조사 무충돌</small></h4><ul><li>본 문서 10장으로 브랜드 선택 → 네이밍 확정·출원 → 정보공개서 요건 캘린더 수립</li></ul></div>
-    <div class="phase"><h4>D-100 입지 <small>게이트: 15~20시 유동·전면 폭·배기</small></h4><ul><li>임장 2회(평일/주말×4시간대) · 40평 물건 3건 비교 → 가계약</li></ul></div>
-    <div class="phase"><h4>D-90~45 메뉴·가격 <small>게이트: 원가율 28~35% · 시그니처 선택률 25%+</small></h4><ul><li>시식 1차 BOM 실측(장어 착지원가 실적 대입) → 2차 블라인드 가격 테스트 → 메뉴판 제작(2부 사양)</li></ul></div>
-    <div class="phase"><h4>D-75~30 공사·시스템·인력 <small>게이트: 착석 7분 첫 상 리허설</small></h4><ul><li>존닝 설계 착공 · QR 사전주문 발주 · 채용·SOP 교육(장어 조리 노하우 이관) · 채널 등록</li></ul></div>
-    <div class="phase"><h4>D-7 → D-DAY <small>게이트: 프리오픈 평점 4.5+</small></h4><ul><li>프리오픈 2일(컨시어지·역무원) → 그랜드 오픈</li></ul></div>
-    <div class="phase"><h4>D+90 리뷰 <small>게이트: 일 180명 · 외국인 20%</small></h4><ul><li>믹스·시간대 데이터 보정 → 가맹 준비(P2) 착수 판단</li></ul></div>
-  </section>
+    <h3>본사 수익 모델 <span class="sub">4부 시장 표준 검증 반영</span></h3>
+    <div class="tbl"><table>
+      <thead><tr><th>수익원</th><th>설계</th><th>시장 대조(4부)</th></tr></thead>
+      <tbody>
+        <tr><td>가맹비 / 교육비</td><td class="num">1,000만(지역 1호 면제) / 500만</td><td class="num">경쟁 700~1,419만 / 300~550만</td></tr>
+        <tr><td>로열티</td><td class="num">정액 50만(≈1%) + <strong>지역 1호점 6개월 면제</strong></td><td class="num">시장 표준 1~2%</td></tr>
+        <tr><td class="win">식자재 공급(본체)</td><td>장어·수산 원팩 + 소스·쌀, 마진 15~25%</td><td>4사 공통: 물류 마진 = 로열티의 3~6배. <strong>직수입 원가라 마진 우위 or 점주 원가 인하, 두 선택지 보유</strong></td></tr>
+        <tr><td>표준점</td><td class="num">20~22평·26석·창업비 1.3~1.5억(점포비 별도)</td><td class="num">경쟁 5,858만~1.05억 — 상단이므로 <strong>점주 월 순이익 비교표(손익 공개 영업)</strong>가 모집 조건</td></tr>
+        <tr><td>법적 전제</td><td colspan="2">정보공개서 등록 전 모집 불가 + <strong>직영 1개점 1년(1+1)</strong> → 가맹 개시 M12~15 · 상표 등록이 전제 · 신설 법인 재무는 모기업(수입·유통 실적) 연결 신용 보강 [가맹거래사 자문 전제]</td></tr>
+      </tbody>
+    </table></div>
+    <div class="tbl"><table>
+      <thead><tr><th>단계</th><th>시기</th><th>내용</th></tr></thead>
+      <tbody>
+        <tr><td>P1 플래그십</td><td class="num">M0~12</td><td>부산역 40평 직영 — SOP·원팩 검증·데이터 축적 + <strong>장어 가공품 매장 판매 개시(파이프라인 1순위)</strong></td></tr>
+        <tr><td>P2 표준화</td><td class="num">M10~15</td><td>소형 표준점 매뉴얼(주방 6평) · 원팩 생산 체계 · 취반 장비 표준 확정</td></tr>
+        <tr><td>P3 등록 / P4 개시</td><td class="num">M12~15 / M15~24</td><td>정보공개서·가맹계약서·물류 계약 / 부산·경남 1~5호(1호 가맹비+로열티 면제) · <strong>SV 10개점당 1명 원칙(담솥 8명/49개점 반면교사)</strong></td></tr>
+        <tr><td>P5 확장</td><td class="num">M24~36</td><td>영남 10개점 + 수도권 안테나 · 해외(대만·일본 — 장어 문화 정합) MF 타진</td></tr>
+      </tbody>
+    </table></div>
 
-  <footer>
-    <p><strong>선행 문서</strong> — 1부 「부산역 솥밥 전략」(솔솥 벤치마킹·전 지점·상권) · 2부 「브랜드 킷」(네이밍·메뉴·원가) · 원가 데이터: tracker/ (관세청 통관·도매 경매·소매 추적). 상세 출처는 저장소 <strong>reports/busan-sotbap-master-plan.md</strong> 부록 참조.</p>
-    <p>수치는 공개 정보·자사 데이터 기반 추정 포함 — 12장 각 게이트의 실측으로 갱신하는 살아있는 문서로 운용하십시오. · 2026-08-28 작성</p>
-  </footer>
-</div>
+    <h3>D-120 로드맵</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>시기</th><th>마일스톤</th><th>게이트</th></tr></thead>
+      <tbody>
+        <tr><td>D-120</td><td><strong>브랜드 선택(10장) + 네이밍 확정(2부 만선 계열 스크리닝)·상표 출원</strong> + 정보공개서 캘린더</td><td>상표 선행조사 무충돌</td></tr>
+        <tr><td>D-100</td><td>임장 2회(평일/주말×4시간대) · 40평 물건 3건 비교 → 가계약</td><td>15~20시 유동·전면 폭·배기</td></tr>
+        <tr><td>D-90</td><td>시식 1차 BOM 실측(장어 착지원가 실적 대입) · <strong>취반 장비 3사 견적</strong></td><td>원가율 27~35% 밴드</td></tr>
+        <tr><td>D-75 / D-45</td><td>설계 착공·QR 발주 / 시식 2차 블라인드(19,500 vs 27,000 선택률) → 가격 확정·메뉴판 제작</td><td>시그니처 선택률 25%+</td></tr>
+        <tr><td>D-30 / D-7</td><td>채용·SOP 교육(장어 노하우 이관)·채널 등록 / 프리오픈 2일</td><td>착석 7분 리허설 · 평점 4.5+</td></tr>
+        <tr><td>D-DAY / D+90</td><td>그랜드 오픈 / 데이터 보정 → 가맹 준비(P2) 판단</td><td>일 180명 · 외국인 20%</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+<footer>
+  <div class="inner">
+    <p><strong>시리즈</strong> — 1부 벤치마킹(솔솥·부산역) · 2부 브랜드 킷(네이밍 트랙·메뉴·원가·트래커 데이터) · 4부 경쟁 3사(확장 기록·재무·물류 마진 산식). 원가 데이터: tracker/ 3종 CSV(2026-08-26). 상세 출처는 저장소 reports/busan-sotbap-master-plan.md 부록.</p>
+    <p>수치는 공개 정보·자사 데이터 기반 추정 포함 — 각 게이트 실측으로 갱신하는 살아있는 문서로 운용. 최초 2026-08-28 · 상세판(4부 반영) 2026-09-01.</p>
+  </div>
+</footer>
