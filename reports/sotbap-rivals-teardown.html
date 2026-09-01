@@ -1,0 +1,298 @@
+<title>솥밥 경쟁 3사 해체</title>
+<style>
+  :root {
+    --bg: #FFFFFF; --fill: #F9FAFB; --fill-2: #F2F4F6; --line: #E5E8EB;
+    --text: #191F28; --text-2: #4E5968; --text-3: #6B7684; --text-4: #8B95A1;
+    --blue: #3182F6; --blue-deep: #1B64DA; --blue-tint: #E8F3FF;
+    --danger: #F04452; --danger-tint: rgba(240,68,82,.06);
+    --warn: #D67E00; --warn-tint: rgba(214,126,0,.10);
+    --ok: #0BA360; --ok-tint: rgba(11,163,96,.10);
+    --on-accent: #FFFFFF;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #101013; --fill: #17171C; --fill-2: #202027; --line: #2C2C35;
+      --text: #E5E8EB; --text-2: #B0B8C1; --text-3: #8B95A1; --text-4: #6B7684;
+      --blue: #4593FC; --blue-deep: #64A8FF; --blue-tint: rgba(69,147,252,.13);
+      --danger: #FF7A85; --danger-tint: rgba(240,68,82,.12);
+      --warn: #FFB023; --warn-tint: rgba(255,176,35,.13);
+      --ok: #35C285; --ok-tint: rgba(53,194,133,.13);
+      --on-accent: #FFFFFF;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #101013; --fill: #17171C; --fill-2: #202027; --line: #2C2C35;
+    --text: #E5E8EB; --text-2: #B0B8C1; --text-3: #8B95A1; --text-4: #6B7684;
+    --blue: #4593FC; --blue-deep: #64A8FF; --blue-tint: rgba(69,147,252,.13);
+    --danger: #FF7A85; --danger-tint: rgba(240,68,82,.12);
+    --warn: #FFB023; --warn-tint: rgba(255,176,35,.13);
+    --ok: #35C285; --ok-tint: rgba(53,194,133,.13);
+    --on-accent: #FFFFFF;
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: "Toss Product Sans", "Pretendard", -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Segoe UI", sans-serif;
+    margin: 0; font-size: 16px; line-height: 1.75;
+    -webkit-font-smoothing: antialiased; letter-spacing: -0.01em;
+  }
+  .wrap { max-width: 820px; margin: 0 auto; padding: 56px 20px 100px; }
+  .chip { display: inline-flex; align-items: center; background: var(--blue-tint); color: var(--blue-deep); font-size: 13px; font-weight: 700; padding: 5px 12px; border-radius: 999px; margin-bottom: 18px; }
+  h1 { font-size: clamp(30px, 5.4vw, 44px); line-height: 1.22; margin: 0 0 12px; font-weight: 800; letter-spacing: -0.028em; text-wrap: balance; }
+  .subtitle { color: var(--text-3); font-size: 17px; margin: 0 0 32px; font-weight: 500; }
+  .notice { background: var(--fill); border-radius: 16px; padding: 18px 22px; font-size: 14.5px; color: var(--text-2); margin-bottom: 16px; }
+  .notice strong { color: var(--text); }
+  .notice .nt { display: block; font-size: 12.5px; font-weight: 700; color: var(--text-4); margin-bottom: 4px; letter-spacing: .02em; }
+  .oneline { background: var(--blue-tint); border-radius: 16px; padding: 16px 20px; font-size: 15px; color: var(--text-2); margin-bottom: 20px; }
+  .oneline strong { color: var(--text); }
+  .oneline .ol { display: block; font-size: 12.5px; font-weight: 800; color: var(--blue-deep); margin-bottom: 4px; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 48px; }
+  .stat { background: var(--fill); border-radius: 16px; padding: 18px 18px 15px; }
+  .stat b { display: block; font-size: 23px; font-weight: 800; color: var(--blue); font-variant-numeric: tabular-nums; letter-spacing: -0.02em; margin-bottom: 2px; }
+  .stat span { font-size: 13px; color: var(--text-3); font-weight: 500; }
+  nav.toc { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 60px; }
+  nav.toc a { display: inline-flex; align-items: center; gap: 7px; background: var(--fill-2); color: var(--text-2); text-decoration: none; font-size: 14px; font-weight: 600; padding: 9px 16px; border-radius: 999px; transition: background .15s ease, color .15s ease; }
+  nav.toc a:hover, nav.toc a:focus-visible { background: var(--blue-tint); color: var(--blue-deep); }
+  nav.toc .n { color: var(--blue); font-weight: 800; font-variant-numeric: tabular-nums; }
+  section { margin-bottom: 72px; }
+  .chapter { display: inline-flex; background: var(--blue-tint); color: var(--blue-deep); font-size: 12.5px; font-weight: 800; padding: 4px 11px; border-radius: 999px; margin-bottom: 12px; letter-spacing: .01em; }
+  h2 { font-size: 27px; margin: 0 0 22px; font-weight: 800; letter-spacing: -0.024em; line-height: 1.3; text-wrap: balance; }
+  h3 { font-size: 18.5px; margin: 38px 0 14px; font-weight: 700; letter-spacing: -0.015em; }
+  p { margin: 0 0 14px; max-width: 46em; }
+  ul, ol { margin: 0 0 16px; padding-left: 22px; }
+  li { margin-bottom: 8px; }
+  li::marker { color: var(--text-4); }
+  strong { font-weight: 700; }
+  .muted { color: var(--text-4); font-size: 13.5px; }
+  a { color: var(--blue); text-decoration: none; font-weight: 600; }
+  a:hover, a:focus-visible { text-decoration: underline; text-underline-offset: 3px; }
+  .tag { display: inline-block; font-size: 12px; font-weight: 800; padding: 1px 8px; border-radius: 999px; vertical-align: 1px; white-space: nowrap; }
+  .tag.ok { background: var(--ok-tint); color: var(--ok); }
+  .tag.mid { background: var(--warn-tint); color: var(--warn); }
+  .tag.bad { background: var(--danger-tint); color: var(--danger); }
+  .tag.info { background: var(--blue-tint); color: var(--blue-deep); }
+  .summary { counter-reset: sm; list-style: none; padding: 0; display: grid; gap: 10px; }
+  .summary li { counter-increment: sm; background: var(--fill); border-radius: 16px; padding: 16px 20px 16px 58px; position: relative; margin: 0; }
+  .summary li::before { content: counter(sm); position: absolute; left: 18px; top: 17px; width: 26px; height: 26px; border-radius: 50%; background: var(--blue); color: var(--on-accent); font-size: 13.5px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+  .tbl { overflow-x: auto; background: var(--fill); border-radius: 16px; margin-bottom: 20px; }
+  table { border-collapse: collapse; width: 100%; font-size: 14.5px; min-width: 560px; }
+  th { text-align: left; font-size: 13px; color: var(--text-4); font-weight: 700; padding: 13px 18px 9px; white-space: nowrap; }
+  td { padding: 11px 18px; border-top: 1px solid var(--line); vertical-align: top; font-variant-numeric: tabular-nums; }
+  td:first-child { font-weight: 700; white-space: nowrap; }
+  td.win { color: var(--ok); font-weight: 800; }
+  .check-group { background: var(--fill); border-radius: 16px; padding: 20px 22px; margin-bottom: 12px; }
+  .check-group h4 { margin: 0 0 12px; font-size: 15.5px; font-weight: 800; color: var(--blue-deep); }
+  .check { list-style: none; padding: 0; margin: 0; }
+  .check > li { padding-left: 32px; position: relative; margin-bottom: 10px; color: var(--text-2); }
+  .check > li:last-child { margin-bottom: 0; }
+  .check > li strong { color: var(--text); }
+  .check > li::before { content: "✓"; position: absolute; left: 0; top: 2px; width: 19px; height: 19px; border-radius: 6px; background: var(--blue-tint); color: var(--blue); font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+  footer { border-top: 1px solid var(--line); padding-top: 22px; color: var(--text-4); font-size: 13.5px; }
+  footer p { margin-bottom: 8px; }
+  footer strong { color: var(--text-3); }
+  :focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-radius: 4px; }
+  @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="chip">경쟁 분석 · 4부 · 2026. 09. 01</div>
+    <h1>솥밥 경쟁 3사 해체</h1>
+    <p class="subtitle">담솥 · 동양솥밥 · 가가솥밥 — 확장 기록(날짜) · 원가와 순수익 역산 · 부산 침투 현황</p>
+
+    <div class="notice">
+      <span class="nt">읽는 법</span>
+      브랜드별 전담 조사 3트랙, 검색 100여 회로 만들었습니다. <strong>[확인]</strong>은 출처가 있는 사실, <strong>[추정]</strong>은 정황으로 계산한 값입니다. 원가·순수익은 전부 역산 추정치입니다. 실행 판단 전에는 공정위 정보공개서 원문과 대조하세요.
+    </div>
+
+    <div class="stats">
+      <div class="stat"><b>49개</b><span>담솥 국내 매장 (가맹 47+직영 2, 2026.7)</span></div>
+      <div class="stat"><b>21+4개</b><span>동양솥밥 국내+대만 (2026.8)</span></div>
+      <div class="stat"><b>4개</b><span>가가솥밥 — 5년간 확장 정지</span></div>
+      <div class="stat"><b>1~2년</b><span>부산 상권이 비어 있을 예상 시한</span></div>
+    </div>
+
+    <nav class="toc" aria-label="목차">
+      <a href="#summary"><span class="n">✦</span>요약</a>
+      <a href="#ch1"><span class="n">1</span>담솥</a>
+      <a href="#ch2"><span class="n">2</span>동양솥밥</a>
+      <a href="#ch3"><span class="n">3</span>가가솥밥</a>
+      <a href="#ch4"><span class="n">4·5</span>공통 구조</a>
+      <a href="#ch6"><span class="n">6</span>5자 비교</a>
+      <a href="#ch7"><span class="n">7</span>기획 반영</a>
+    </nav>
+  </header>
+
+  <section id="summary">
+    <h2>요약</h2>
+    <ol class="summary">
+      <li><strong>담솥이 가장 위협적입니다.</strong> 2022년 설립, 2년 만에 40호점, 지금 국내 49개 + LA·호치민 + 태국 계약. 무기는 가지솥밥 — 싼 재료로 시그니처를 만들어 <strong>원가율 약 24%(역산)</strong>. 다만 2026년 들어 "개설 60여 개 vs 운영 49개" 격차와 업종전환 유치 프로모션 등 <strong>성장 정체 신호</strong>가 보입니다. 경남 마산까지 왔습니다.</li>
+      <li><strong>동양솥밥은 확장 속도의 교과서.</strong> 2023년 6월 안산 1호점 → 3년 2개월 만에 국내 21호 + 대만 4호. 비결은 낮은 진입 장벽: 창업비 5,858만(가맹비 면제 시)·솥밥기계 98만 원·로열티 1%·손익계산서 공개 영업. 가격은 주력 9,900~12,900원 저가형. 2026년 8월 대구로 영남 첫 진입.</li>
+      <li><strong>가가솥밥은 확장 답을 못 찾은 5년차.</strong> 101번지남산돈까스 그룹의 세컨드 브랜드. 강남 로드샵 1곳 + 아울렛·휴게소 위성점 4개가 전부. 김해점의 실체는 <strong>남해고속도로 진영휴게소(부산방향) 푸드코트</strong>입니다.</li>
+      <li><strong>공통 구조</strong>: 4사(솔솥 포함) 모두 로열티가 0~2%로 낮습니다. 본사가 돈을 버는 곳은 <strong>식자재 물류 마진</strong>입니다. 우리 가맹 설계(3부)의 방향이 시장 표준과 일치함을 확인했습니다.</li>
+      <li><strong>우리에게 주는 결론</strong>: 부산은 아직 비어 있지만 담솥(마산)·동양(대구)이 영남에 들어왔습니다. <strong>선점 시한은 길어야 1~2년.</strong> 그리고 시그니처 원가 전략에서 담솥은 "싼 재료를 비싸게", 우리는 "비싼 재료(장어)를 싸게 조달" — 우리 쪽이 모방이 더 어렵습니다.</li>
+    </ol>
+  </section>
+
+  <section id="ch1">
+    <div class="chapter">1장 · 심층</div>
+    <h2>담솥</h2>
+    <div class="oneline"><span class="ol">한 줄 정의</span><strong>저원가 시그니처(가지)와 홀 전용 단순 운영으로, 솔솥보다 싸게·빠르게 큰 2위 사업자.</strong> 운영: 이청년에프앤비㈜ (대표 이대희, 직원 8명, 인천 송도)</div>
+
+    <h3>확장 타임라인</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>시점</th><th>사건</th><th>판정</th></tr></thead>
+      <tbody>
+        <tr><td>2022-05-27</td><td>법인 설립</td><td><span class="tag info">확인</span></td></tr>
+        <tr><td>2022 하반기</td><td>1호점 송도 본점(트리플스트리트) — "코로나 중 런칭"</td><td><span class="tag mid">추정</span></td></tr>
+        <tr><td>2023년</td><td>첫 가맹점 (정보공개서 2022 등록 → 이듬해 모집 역산)</td><td><span class="tag mid">추정</span></td></tr>
+        <tr><td><strong>2024 하반기</strong></td><td><strong>가맹 40호점 — "개시 1년 5개월 만"</strong></td><td><span class="tag info">확인</span></td></tr>
+        <tr><td><strong>2025-01-15</strong></td><td>미국 LA점 — 2달 만에 웨이팅 90분+, 홀 매출만 일 $7,200</td><td><span class="tag info">확인</span></td></tr>
+        <tr><td><strong>2025-05</strong></td><td>베트남 호치민점(빈컴메가몰) — 첫 해외 직영</td><td><span class="tag info">확인</span></td></tr>
+        <tr><td><strong>2026-02-12</strong></td><td>태국 마스터프랜차이즈 계약</td><td><span class="tag info">확인</span></td></tr>
+        <tr><td>2026-07</td><td>"국내 49개 운영" + 업종전환 지원·'솥밥 머신' 무상 프로모션</td><td><span class="tag info">확인</span></td></tr>
+      </tbody>
+    </table></div>
+    <p><strong>해석</strong> — 2023~24 급가속 → 2025 해외 전환 → 2026 국내 정체. "개설 60여 개(2026-04)"와 "운영 49개(2026-07)"의 격차 약 10개는 폐점 가능성, 업종전환·장비 무상 프로모션은 신규 창업 수요 둔화의 대응으로 읽힙니다 [추정].</p>
+
+    <h3>원가·순수익 역산 <span class="muted">[전부 추정]</span></h3>
+    <div class="tbl"><table>
+      <thead><tr><th>메뉴</th><th>판매가</th><th>총원가(역산)</th><th>원가율</th></tr></thead>
+      <tbody>
+        <tr><td><strong>가지솥밥 (시그니처)</strong></td><td class="num">12,500</td><td class="num">약 3,050 (가지 450 + 소스 400 + 상차림 2,200)</td><td class="win">약 24%</td></tr>
+        <tr><td>전복솥밥</td><td class="num">15,500</td><td class="num">약 5,000</td><td class="num">약 32%</td></tr>
+        <tr><td>스테이크솥밥</td><td class="num">18,000</td><td class="num">약 5,200</td><td class="num">약 29%</td></tr>
+      </tbody>
+    </table></div>
+    <ul>
+      <li>시그니처가 최저 원가율 → <strong>팔릴수록 마진이 좋아지는 믹스</strong>. 블렌디드 27~29% 추정, 4사 중 최고 마진 구조.</li>
+      <li><strong>점주 손익(역산)</strong>: 평균 연매출 6.26억(단일 소스) = 월 5,212만 → 부가세·재료비(29%)·인건비·임차·로열티 1% 차감 후 <strong>월 약 1,230만(순매출의 26%)</strong>. 상위 사례는 18평 홀 전용으로 월 1.3억 [확인].</li>
+      <li>창업비 약 7,800만(20평, 점포비 별도) — 솔솥의 절반.</li>
+    </ul>
+
+    <h3>주목할 점 3가지</h3>
+    <div class="check-group">
+      <ul class="check">
+        <li><strong>"특허받은 가지솥밥"은 등록번호가 없다</strong> — 출원 보도만 있고 Google Patents 무결과. 마케팅 표현일 가능성 [추정]. 교훈: 우리는 등록 완료 후에만 '특허' 표기, 대신 출원 자체는 모집에 먹힌다는 것도 사실.</li>
+        <li><strong>부산은 없지만 경남 마산합포점 운영 중</strong> — 영남 거점 확보 상태. 몰 입지 선호라 부산 진입 시 서면·센텀 몰이 유력, 부산역 로드샵과 직접 충돌 가능성은 낮음 [추정].</li>
+        <li><strong>약점</strong>: 웨이팅(LA 90분+), 브레이크타임, 포장·배달 없음, 가격 체감(맛 4.9 vs 가격 4.0) → 우리의 사전주문·무휴식·기차솥 도시락·장어 가격파괴가 정확히 이 빈틈을 칩니다.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="ch2">
+    <div class="chapter">2장</div>
+    <h2>동양솥밥</h2>
+    <div class="oneline"><span class="ol">한 줄 정의</span><strong>장비와 매뉴얼로 진입 장벽을 최저로 낮춰, 저가 솥밥을 빠르게 복제하는 확장 기계.</strong> 운영: ㈜엠앤에스→㈜우리이길 (대표 이민규 — 마라홀릭 59개점도 보유)</div>
+
+    <h3>확장 타임라인 <span class="muted">(날짜 확보율 최고)</span></h3>
+    <div class="tbl"><table>
+      <thead><tr><th>시점</th><th>사건</th></tr></thead>
+      <tbody>
+        <tr><td><strong>2023-06</strong></td><td>1호점 안산본점 — 자기 덮밥집(홍대개미)을 리뉴얼 <span class="tag info">확인</span></td></tr>
+        <tr><td>2024-04~07</td><td>3호 목동 → 4호 검단완정(4/15 인허가) → 6호 산본 → 8호 청라(7/25) <span class="tag info">확인</span></td></tr>
+        <tr><td>2024년 말</td><td>12호점 — 1년 만에 1→12개 급팽창 <span class="tag info">확인</span></td></tr>
+        <tr><td>2025-08~09</td><td>15호 경기광주 · <strong>2025-09-17 대만 가오슝 1호</strong>(이후 대만 4호까지) <span class="tag info">확인</span></td></tr>
+        <tr><td>2026-07~08</td><td>두 달에 4개: 18호 인덕원(7/6) → 19호 문정역(7/14) → 20호 계양 → <strong>21호 대구 이시아폴리스(8/3, 첫 영남)</strong> <span class="tag info">확인</span></td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>확장 엔진 — 진입 장벽 최소화</h3>
+    <ul>
+      <li>창업비 <strong>5,858만 원</strong>(15평, 가맹비 면제 시 — "도·시·군 1호점 무료") · <strong>솥밥기계 98만 원</strong>(할부 가능) · 로열티 <strong>매출 1%</strong></li>
+      <li><strong>손익계산서 공개 영업</strong>: 월 매출 5,000만 기준 식자재 35%·인건 22%·임대 7% → 순이익 1,350만(27%)을 본사가 먼저 보여줌. 직영 실적 증빙(안산본점 월 9,400만~1억, 과천 17평 최고 7,639만 — 본사 발표치).</li>
+      <li>가격 밴드 <strong>7,900~22,900원(주력 9,900~12,900)</strong> — 4사 중 유일한 저가형. 규동솥밥 9,900원의 역산 원가율 약 37% — 본사 공개치(식자재 35%)와 부합해 자료 신뢰도가 역으로 확인됨.</li>
+      <li>점주 실질 순이익: 본사 27%는 부가세 포함 기준으로 보이며, 분리 시 <strong>20~22% 수준, 직원 고용 시 15% 안팎</strong> [추정].</li>
+    </ul>
+
+    <h3>주목할 점</h3>
+    <div class="check-group">
+      <ul class="check">
+        <li><strong>부산 도달 예상 2027년</strong> — 수도권→충청·호남→대구(2026-08) 순서로 남하 중, 월 1~2개 페이스 [추정]. 단 저가형이라 부산에선 국밥과 정면 경쟁 — 우리(프리미엄 여행자)와는 부분만 겹침.</li>
+        <li><strong>약점</strong>: "누룽지 퍼포먼스 부족", "프리미엄 대비 평범" — 저가라서 경험이 얕음. 원물·의식·공간의 프리미엄으로 정면충돌 회피 가능.</li>
+        <li>폐점 기록 미발견. 단 확인 상호 23개 vs 공칭 21호점 불일치 — 1~2곳 이탈 가능성 [추정].</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="ch3">
+    <div class="chapter">3장</div>
+    <h2>가가솥밥</h2>
+    <div class="oneline"><span class="ol">한 줄 정의</span><strong>중견 돈까스 그룹(101번지남산돈까스, 매출 300억대)의 세컨드 브랜드. 프리미엄은 지켰지만 확장 답을 못 찾은 5년차.</strong></div>
+
+    <h3>타임라인·구조</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>시점</th><th>사건</th></tr></thead>
+      <tbody>
+        <tr><td>2021년</td><td>론칭 + 강남점(로드샵·플래그십) + 정보공개서 등록 추정 <span class="tag info">확인/추정</span></td></tr>
+        <tr><td>~2023-12</td><td>대전점 — 현대프리미엄아울렛 3층 <span class="tag info">확인</span></td></tr>
+        <tr><td>2025-04-10 추정</td><td><strong>김해 진영복합휴게소(부산방향)점</strong> — 푸드코트 입점 <span class="tag mid">추정(연도)</span></td></tr>
+        <tr><td>2026-09 현재</td><td>4개점(강남·용인·대전·김해) — 5년간 4개, 폐점 없음 <span class="tag info">확인</span></td></tr>
+      </tbody>
+    </table></div>
+    <ul>
+      <li><strong>"1 로드샵 + 특수상권 위성" 모델</strong>: 강남에서 프리미엄 이미지를 만들고, 아울렛·휴게소처럼 집객이 보장된 곳에 위성점. 임차 리스크는 낮지만 위성점은 셀프서비스라 프리미엄 경험이 깨짐(리뷰 불만과 일치).</li>
+      <li>가맹 조건: 26평 약 1억 500만(가맹비 700만), 로열티 순매출 2% — 모집 중이지만 사실상 정지 상태.</li>
+      <li>원가 역산: 붉은대게솥밥 19,000원 = 원가 약 5,200(자숙 홍게살 80g 2,200 포함) → <strong>원가율 약 27%</strong>. 주력가는 2022~2026 동결, 여름 한정 묵사발솥밥으로 방어 — 우리 '계절 한 솥'의 선례.</li>
+      <li><strong>부산 함의</strong>: 김해점은 부산 시내가 아니라 "부산 가는 길목" 트래픽용. 확장력을 볼 때 부산 직접 진입 가능성 낮음 [추정].</li>
+      <li>약점: 간이 심심하다는 호불호, 가격 평점 3.0, 위성점 경험 격차 — <strong>프리미엄을 표방하며 가격 체감 가치를 못 채운 반면교사</strong>.</li>
+    </ul>
+  </section>
+
+  <section id="ch4">
+    <div class="chapter">4·5장</div>
+    <h2>4사 공통 구조 — 본사는 어디서 벌고, 가격은 어떻게 움직였나</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>브랜드</th><th>로열티</th><th>창업비(점포비 별도)</th><th>가격 움직임(2022~26)</th></tr></thead>
+      <tbody>
+        <tr><td>솔솥</td><td class="num">미공표</td><td class="num">1.48억 (20평)</td><td>앵커 17,000 동결 + 특수상권 차등</td></tr>
+        <tr><td>담솥</td><td class="num">1% <span class="muted">단일 소스</span></td><td class="num">7,800만 (20평)</td><td>지점별 차등(12,000~13,000)</td></tr>
+        <tr><td>동양솥밥</td><td class="num">1%</td><td class="num">5,858만~ (15평)</td><td>저가 메뉴만 소폭 인상 흔적</td></tr>
+        <tr><td>가가솥밥</td><td class="num">2%</td><td class="num">8,175만~1.05억 (26평)</td><td>주력 동결 + 시즌 한정으로 방어</td></tr>
+      </tbody>
+    </table></div>
+    <ul>
+      <li><strong>수익 공식의 수렴</strong>: 낮은 로열티로 점주를 모으고, 식자재 원팩 공급 마진으로 번다. 우리 3부 가맹 설계(원팩 마진 중심)가 시장 표준과 같은 방향임을 확인. 장어·수산 직수입 원가 우위 덕에 <strong>같은 공급가에서도 본사 마진이 더 남는 구조</strong>가 가능 — 가맹 단계의 진짜 해자.</li>
+      <li><strong>가격 전략의 수렴</strong>: 일괄 인상 대신 차등·신메뉴·한정 메뉴. 우리도 "본점가 고정 + 계절 한 솥으로 수익성 조절"이 맞음.</li>
+      <li><strong>장비의 상용화</strong>: 담솥 '솥밥 머신' 무상 프로모션, 동양솥밥 기계 98만 원 — 자동 취반 장비가 이미 시장에 있음. "착석 7분 첫 상"의 실현 수단으로 장비 조달 조사를 추가할 것.</li>
+    </ul>
+  </section>
+
+  <section id="ch6">
+    <div class="chapter">6장</div>
+    <h2>5자 비교 매트릭스</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>기준</th><th>솔솥</th><th>담솥</th><th>동양솥밥</th><th>가가솥밥</th><th>가칭2 (우리)</th></tr></thead>
+      <tbody>
+        <tr><td>시작</td><td class="num">2021</td><td class="num">2022</td><td class="num">2023-06</td><td class="num">2021</td><td class="num">2027 목표</td></tr>
+        <tr><td>매장</td><td class="num">79+해외 5개국</td><td class="num">49+LA·호치민·태국MF</td><td class="num">21+대만 4</td><td class="num">4</td><td class="num">1 (플래그십)</td></tr>
+        <tr><td>가격 밴드</td><td class="num">1.4만~2.5만</td><td class="num">1.2만~1.9만</td><td class="num">0.79만~2.29만</td><td class="num">1.5만~2.5만</td><td class="num">1.25만~2.1만</td></tr>
+        <tr><td>시그니처</td><td>스테이크 17,000</td><td>가지 12,500 <span class="muted">(원가율 24%)</span></td><td>규동 9,900</td><td>붉은대게 19,000</td><td class="win">장어 3식 19,500</td></tr>
+        <tr><td>원가 전략</td><td>표준 원팩</td><td>싼 재료를 비싸게</td><td>박리다매</td><td>산지 프리미엄</td><td class="win">비싼 재료를 싸게 조달</td></tr>
+        <tr><td>부산</td><td class="num">3개점(핫플)</td><td class="num">없음 — 마산까지</td><td class="num">없음 — 대구까지</td><td class="num">진영휴게소만</td><td class="win">부산역 선점 목표</td></tr>
+        <tr><td>최대 약점</td><td>가격 대비 양(3.1)</td><td>성장 정체·특허 미등록</td><td>경험의 얕음</td><td>확장 정지·가격 체감</td><td>신규 브랜드 리스크</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section id="ch7">
+    <div class="chapter">7장</div>
+    <h2>우리 기획서(3부)에 반영할 7가지</h2>
+    <div class="check-group">
+      <ul class="check">
+        <li><strong>선점 시한 1~2년</strong> — 담솥은 마산, 동양은 대구까지 왔다. 3부 로드맵의 D-120을 지키는 것 자체가 전략.</li>
+        <li><strong>가맹 표준점 창업비 재검토</strong> — 우리 1.3~1.5억은 경쟁사(5,858만~1.05억) 대비 상단. "장어 원가 우위 → 점주 순이익률 우위"를 수치로 증명하는 모집 자료가 필수(손익 공개 영업이 시장 표준이 됨).</li>
+        <li><strong>로열티</strong> — 시장 표준 1~2%. 우리 정액 50만은 매출 5,000만 기준 1%와 동일 — 유지하되 "1호점 로열티 면제" 프로모션 채택.</li>
+        <li><strong>취반 장비 조달 조사</strong> — 상용 솥밥기계(98만 원~)·자동 취반기 성능 비교를 D-90 체크리스트에 추가.</li>
+        <li><strong>'특허' 표기 규율</strong> — 등록 전 "특허받은" 표기 금지(담솥 반면교사). 조리법·장비 출원은 진행, 등록 후에만 마케팅 사용.</li>
+        <li><strong>여름 비수기 대응</strong> — 가가솥밥의 묵사발솥밥처럼, '계절 한 솥' 캘린더에 여름 메뉴(냉국물 페어링 등) 반영.</li>
+        <li><strong>포장·배달의 고유 가치</strong> — 담솥(홀 전용)·가가(휴게소 셀프)의 공백. '기차솥 도시락'은 4사 누구도 안 하는 영역 — 부산역 입지와 결합하면 고유 무기.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <p><strong>시리즈</strong> — 1부 솔솥 벤치마킹 → 2부 브랜드 킷 → 3부 총괄 기획서 → 4부(본 문서). 전체 출처 URL은 저장소 <strong>reports/sotbap-rivals-teardown.md</strong> 부록 참조 (이넷뉴스·일간스포츠·FETV·겟뉴스·bizno·마이프차·인허가 기록·다이닝코드 등).</p>
+    <p>원가·순수익은 전부 역산 추정치 — 정보공개서 원문(담솥 20220875 · 동양솥밥 20231512 · 가가솥밥 2021 등록분) 대조 전제. · 2026-09-01 작성</p>
+  </footer>
+</div>
