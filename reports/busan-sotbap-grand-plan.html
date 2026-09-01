@@ -7,7 +7,7 @@
   .inner { max-width: 880px; margin: 0 auto; padding: 0 24px; }
   section.band { background: #f3f4f6; }
   section { padding: 64px 0; }
-  section, .tbl, .stat, .plate, .board { box-shadow: none; }
+  section, .tbl, .stat, .plate { box-shadow: none; }
   section, .tbl, .stat, .plate { border-radius: 0; }
   header.hero { padding: 88px 0 56px; background: #ffffff; }
   .eyebrow { font-size: 11px; letter-spacing: .28em; text-transform: uppercase; color: #858585; margin: 0 0 22px; }
@@ -67,31 +67,6 @@
   @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
   @media (max-width: 640px) { section { padding: 48px 0; } header.hero { padding: 64px 0 44px; } }
 
-  /* menu board mockup — deliberate single-look object (BI 시안 A: 먹색×놋쇠×쌀백) */
-  .board-wrap { display: flex; justify-content: center; margin: 26px 0 14px; }
-  .board { width: 100%; max-width: 590px; background: #23262C; color: #F2EBDC; border: 1px solid #3A3E46; padding: 34px 30px 26px; font-family: "Noto Serif KR", "Apple SD Gothic Neo", serif; }
-  .board .b-hanja { text-align: center; font-size: 13px; letter-spacing: .42em; color: #C4A253; margin: 0 0 6px; font-weight: 600; }
-  .board .b-name { text-align: center; font-size: 40px; font-weight: 900; letter-spacing: .08em; margin: 0; line-height: 1.15; color: #F2EBDC; }
-  .board .b-sub { text-align: center; font-size: 12px; color: #A9A08C; margin: 6px 0 0; font-weight: 600; letter-spacing: .06em; }
-  .board .b-rule { border: none; border-top: 1px solid #C4A253; opacity: .55; margin: 20px 0; }
-  .board .b-story { font-size: 12.5px; line-height: 1.75; color: #C9C0AC; text-align: center; margin: 0 0 4px; font-weight: 600; }
-  .board .b-sec { font-size: 12px; font-weight: 700; letter-spacing: .3em; color: #C4A253; margin: 24px 0 10px; text-transform: uppercase; }
-  .board .b-item { display: flex; align-items: baseline; gap: 10px; margin-bottom: 11px; }
-  .board .b-no { font-size: 11px; color: #8E8672; font-weight: 700; min-width: 22px; }
-  .board .b-nm { font-size: 16px; font-weight: 700; color: #F2EBDC; }
-  .board .b-en { display: block; font-size: 11px; color: #9A917D; font-weight: 600; font-family: "Pretendard", "Noto Sans KR", sans-serif; }
-  .board .b-dots { flex: 1; border-bottom: 1px dotted #55584F; transform: translateY(-4px); min-width: 20px; }
-  .board .b-pr { font-size: 16.5px; font-weight: 900; color: #C4A253; font-variant-numeric: tabular-nums; white-space: nowrap; }
-  .board .b-sig { border: 1.5px solid #C4A253; padding: 16px 16px 13px; margin: 6px 0 4px; position: relative; background: rgba(196,162,83,.06); }
-  .board .b-sig-badge { position: absolute; top: -11px; left: 14px; background: #C4A253; color: #23262C; font-size: 11px; font-weight: 900; padding: 2px 10px; border-radius: 9999px; letter-spacing: .12em; font-family: "Pretendard", sans-serif; }
-  .board .b-steps { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 9px; }
-  .board .b-step { flex: 1 1 140px; font-size: 11.5px; color: #C9C0AC; font-weight: 600; border-top: 1px solid #55584F; padding-top: 7px; line-height: 1.55; font-family: "Pretendard", sans-serif; }
-  .board .b-step b { color: #C4A253; font-weight: 900; margin-right: 4px; }
-  .board .b-opt { font-size: 12px; color: #9A917D; font-weight: 600; margin-top: 8px; font-family: "Pretendard", sans-serif; }
-  .board .b-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 0 26px; }
-  @media (max-width: 560px) { .board .b-cols { grid-template-columns: 1fr; } }
-  .board .b-foot { margin-top: 20px; padding-top: 12px; border-top: 1px solid #3A3E46; font-size: 10.5px; color: #8E8672; line-height: 1.7; font-weight: 600; font-family: "Pretendard", sans-serif; }
-  .board .b-foot b { color: #C9C0AC; }
 
   .duo { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 0 0 26px; }
   @media (max-width: 640px) { .duo { grid-template-columns: 1fr; } }
@@ -102,21 +77,22 @@
 </style>
 <header class="hero">
   <div class="inner">
-    <p class="eyebrow">Grand Master Plan · Parts I–IV Consolidated · 2026. 09. 01</p>
+    <p class="eyebrow">Grand Master Plan · Two-Track Edition · 2026. 09. 01</p>
     <h1>부산역 솥밥 통합 기획서</h1>
-    <p class="standfirst">솥솥공방(가칭, 종합 솥밥) vs 만선(가칭, 수산 솥밥) — 벤치마킹 · 경쟁 3사 · 브랜드 킷 · 사업 기획을 한 문서로 합본.</p>
-    <p class="method"><strong>결론: 만선(가칭) 권고</strong>(스코어 46 vs 36, PART D). 브랜드 작업명 확정 — 가칭1→솥솥공방(가칭), 가칭2→만선(가칭). <strong style="color:#d12b2b">자문 의견</strong>: '솥솥공방'의 "솥솥"은 소비자들이 솔솥을 잘못 쓰는 오기로 실증된 문자열(PART A 11장) — 가칭으로는 무방하나 최종 상호로는 검색 혼동·상표 유사 리스크가 커 확정 전 재고 또는 정밀 검증을 권함. '만선'도 확정 전 상호+KIPRIS 스크리닝 필수(PART C).</p>
+    <p class="standfirst">솥솥공방(가칭, 종합 솥밥) × 만선(가칭, 수산 솥밥) — 두 전략을 각각 실행 가능한 완결형으로 병행 설계. <strong>방향은 아직 미결정, 최종 선택은 D-120 게이트(E-7 판단표)에서 확정한다.</strong></p>
+    <p class="method">구성 — <strong>A</strong> 벤치마킹(솔솥 해체 · 부산역 전수 데이터) · <strong>B</strong> 경쟁 3사 해체(담솥·동양솥밥·가가솥밥) · <strong>C</strong> 전략 1 솥솥공방(가칭) · <strong>D</strong> 전략 2 만선(가칭) · <strong>E</strong> 공통 설계와 결정 프레임. 각 전략은 브랜드 정의 · 메뉴 설계 전량(BOM 원가) · 운영 · 마케팅 · 손익 · 리스크 · 파이프라인을 따로 갖춘다. 표기: <strong>[확인]</strong> 출처 있음 · <strong>[추정]</strong> 정황·계산 · <strong style="color:#d12b2b">[미확인]</strong> 못 찾음.</p>
     <div class="stats">
-      <div class="stat"><b>만선(가칭)</b><span>권고 — 수산 솥밥 + 육류 브릿지 2종</span></div>
-      <div class="stat"><b>126.2억</b><span>솔솥 2025년 매출(+36.4%) · 79개점 — 검증된 벤치마크</span></div>
-      <div class="stat"><b>1~2년</b><span>부산 선점 시한 — 담솥 마산·동양솥밥 대구 남하</span></div>
-      <div class="stat"><b>3.5~4.5억</b><span>40평 총투자 · BEP 일 125~135명 · 기본 월 이익 2,680만</span></div>
+      <div class="stat"><b>2개 전략</b><span>솥솥공방(가칭) × 만선(가칭) — 병행 설계 · 미결정</span></div>
+      <div class="stat"><b>126.2억</b><span>솔솥 2025년 매출(+36.4%) · 79개점 — 시장 검증</span></div>
+      <div class="stat"><b>1~2년</b><span>부산 선점 시한 — 담솥 마산 · 동양솥밥 대구 남하</span></div>
+      <div class="stat"><b>3.5~4.5억</b><span>40평 총투자 · BEP 일 125~135명</span></div>
     </div>
     <nav class="toc" aria-label="목차">
       <a href="#part-a">PART A 벤치마킹</a>
       <a href="#part-b">PART B 경쟁 3사</a>
-      <a href="#part-c">PART C 브랜드 킷</a>
-      <a href="#part-d">PART D 사업 기획</a>
+      <a href="#part-c">PART C 솥솥공방(가칭)</a>
+      <a href="#part-d">PART D 만선(가칭)</a>
+      <a href="#part-e">PART E 공통·결정</a>
     </nav>
     <hr class="hairline">
   </div>
@@ -124,7 +100,7 @@
 <section id="part-a" style="padding:56px 0 6px; background:#ffffff;">
   <div class="inner">
     <hr class="hairline">
-    <p class="eyebrow" style="margin:20px 0 8px;">PART A — BENCHMARK (구 1부)</p>
+    <p class="eyebrow" style="margin:20px 0 8px;">PART A — BENCHMARK</p>
     <h2 style="margin-bottom:4px;">솔솥 해체 &amp; 부산역</h2>
   </div>
 </section>
@@ -140,7 +116,7 @@
       <li><strong>성공 방정식</strong> — 17,000원 앵커의 프리미엄 1인 한상 × 20평 소형·주방 최소화 × 본사 전처리 원팩(센트럴키친, 법인 업종이 '도매업') × 누룽지·숭늉 의식 × 오피스·핫플 이원 입지 × 웨이팅 브랜딩.</li>
       <li><strong>전 지점 식별 45개</strong>는 A 프라임 오피스 13 / B 핫플·관광 15 / C 신도시·가족 10 / D 특수 7. 부산 3개점(서면·해운대·광안)은 전부 B형 — <strong>부산의 역세권·오피스형은 공백.</strong> 서울역점(2025-07)으로 역전 모델 검증 중이라 선점 속도가 곧 전략.</li>
       <li><strong>부산역 수요</strong> — 철도 일 4.9만(전국 4위, KTX 누적 서울역 다음 2위) + 외국인 2025년 364만 역대 최대(2026 상반기 +43.9%, 대만&gt;중국&gt;일본) + 도보권 호텔 약 1,000실 + 북항 20조 개발. 한계 — 상권 총량 월 251억(서면의 1/7), 통과형 유동, 국밥 8천~1만 원 가격 기준선.</li>
-      <li><strong>리뷰 역설계 5과제</strong> — 웨이팅 · 가격 대비 양(가격 평점 3.1) · 좁은 좌석 · 지점 편차 · 심플한 반찬. 신규 브랜드가 파고들 여백이며 2·3부 설계의 근거.</li>
+      <li><strong>리뷰 역설계 5과제</strong> — 웨이팅 · 가격 대비 양(가격 평점 3.1) · 좁은 좌석 · 지점 편차 · 심플한 반찬. 신규 브랜드가 파고들 여백이며 전략 설계(PART C·D·E)의 근거.</li>
     </ol>
   </div>
 </section>
@@ -174,7 +150,7 @@
         <tr><td>볼륨존</td><td>꼬막솥밥(남도 직송·자가제 소스) · 치즈닭갈비솥밥</td><td class="num">14,000</td><td>2024-04 확인</td></tr>
         <tr><td>앵커</td><td><strong>스테이크솥밥(시그니처, 버터향 와규)</strong> · 전복 · 도미관자 · 연어 · 갈치순살</td><td class="num"><strong>17,000</strong> · 명동 17,900~19,900 · 종로타워 17,800</td><td>2년 동결 + 상권 차등</td></tr>
         <tr><td>변형</td><td>파채 우삼겹(파기름·갈릭데리야끼) · 쭈꾸미 한상 · 와규(익선) · 계절 신메뉴</td><td class="num">일부 미확인</td><td></td></tr>
-        <tr><td>프리미엄</td><td>금태솥밥 / <strong>민물장어솥밥(최고가)</strong></td><td class="num">23,000 / <strong>25,000</strong></td><td>장어가 위신 메뉴 — 2부 A안의 출발점</td></tr>
+        <tr><td>프리미엄</td><td>금태솥밥 / <strong>민물장어솥밥(최고가)</strong></td><td class="num">23,000 / <strong>25,000</strong></td><td>장어가 위신 메뉴 — PART C·D 시그니처 설계의 출발점</td></tr>
         <tr><td>사이드·세트</td><td>유린기 8,500 · 새우튀김 7,900 · 2인 세트 42,400~57,900 · 필라이즈 "스테이크솥밥(밥 제외) 250g" 등록(포장 흔적)</td><td class="num">—</td><td>객단가 +30~50% 장치</td></tr>
       </tbody>
     </table></div>
@@ -203,7 +179,7 @@
         <tr><td>프로모션 / 로열티</td><td class="num">"도·시·군 1호점 가맹비 면제" / 로열티 미공표</td><td><span class="tag">확인 / 미확인</span></td></tr>
         <tr><td>가맹점 평균 연매출</td><td class="num"><strong>6억 9,000만(2022 정보공개서)</strong> = 월 5,750만 · 평당 연 3,450만</td><td><span class="tag">확인</span></td></tr>
         <tr><td>본사 주장</td><td class="num">"20평 월매출 1억" · "순이익 최대 42%" · "회수 5~8개월" — 최상위 사례 일반화</td><td><span class="tag mid">주장</span></td></tr>
-        <tr><td>본사 수익 구조</td><td class="num">개설 수익 + 식자재 유통 마진 — 가맹 70개+ × 월 약 250만 = 연 약 21억 추정(4부 산식), 본사 매출 126억의 상당분 설명</td><td><span class="tag mid">추정</span></td></tr>
+        <tr><td>본사 수익 구조</td><td class="num">개설 수익 + 식자재 유통 마진 — 가맹 70개+ × 월 약 250만 = 연 약 21억 추정(PART B 산식), 본사 매출 126억의 상당분 설명</td><td><span class="tag mid">추정</span></td></tr>
       </tbody>
     </table></div>
 
@@ -290,13 +266,13 @@
     </table></div>
     <p><strong>해석</strong> — ① 3개점 전부 핫플형: 부산의 역세권·오피스형 공백, 부산역 출점 시 최근접 서면점과 4km 비중복 ② 서울역점으로 역전 모델 검증 중 — 성과 확인 시 부산역점 가능성, 선점이 곧 전략 ③ 해리단길에서 한다솥과 병존 — 한 상권 복수 생존 관측점.</p>
 
-    <h3>11 경쟁 지형 <span class="sub">심층은 4부</span></h3>
+    <h3>11 경쟁 지형 <span class="sub">심층은 PART B</span></h3>
     <div class="tbl"><table>
       <thead><tr><th>브랜드</th><th>규모·조건</th><th>포지셔닝</th><th>부산</th></tr></thead>
       <tbody>
-        <tr><td>담솥</td><td class="num">49개+LA·호치민·태국MF (4부 확정)</td><td>솥밥+덮밥 · 가지 시그니처</td><td>마산까지</td></tr>
+        <tr><td>담솥</td><td class="num">49개+LA·호치민·태국MF (PART B 확정)</td><td>솥밥+덮밥 · 가지 시그니처</td><td>마산까지</td></tr>
         <tr><td>온기정 (제외 결정)</td><td class="num">직영 2+가맹 23(2024) · 평균 7.15억 · <strong>본사 2024 매출 196억/영업익 5.9억</strong> · 창업 총 6,000~8,000만</td><td>텐동·우동 중심(솥밥은 서브)</td><td>미확인</td></tr>
-        <tr><td>동양솥밥 / 가가솥밥</td><td class="num">21+대만 4 / 4개점 (4부 확정)</td><td>저가 덮솥밥 / 산지 프리미엄</td><td>대구 / 진영휴게소</td></tr>
+        <tr><td>동양솥밥 / 가가솥밥</td><td class="num">21+대만 4 / 4개점 (PART B 확정)</td><td>저가 덮솥밥 / 산지 프리미엄</td><td>대구 / 진영휴게소</td></tr>
         <tr><td>한다솥 · 솥이랑 (부산 토착)</td><td class="num">광안리 본점 등 6+ · 서면 삼정타워(맛 4.6/가 3.7/친 4.8)</td><td>솥밥+생선구이 올데이 / 로컬 맛집형</td><td>토착</td></tr>
         <tr><td>배달형</td><td class="num">호호솥밥("국내 최초 배달 솥밥")·온가·하루솥밥</td><td>소자본 배달</td><td>—</td></tr>
       </tbody>
@@ -320,7 +296,7 @@
       <tbody>
         <tr><td>웨이팅</td><td>"가는 곳마다 웨이팅" · 익선 토요일 1시간 · 해운대 주말 30분+ · 등록 임박 시 메뉴 변경 불가</td><td>QR 열차 연동 사전주문 + 54석</td></tr>
         <tr><td>가격 대비 양</td><td>"양이 너무 적어요" · "가격이 눈앞에 어른거려 제 돈 주곤 안 갈 듯"(센터원)</td><td>공기밥·누룽지 무료 + 장어 가격파괴</td></tr>
-        <tr><td>좁은 좌석</td><td>"좁디좁음"(센터원) · 익선 협소·천장 노후 · 명동 합석</td><td>40평 좌석 간격(3부)</td></tr>
+        <tr><td>좁은 좌석</td><td>"좁디좁음"(센터원) · 익선 협소·천장 노후 · 명동 합석</td><td>40평 좌석 간격(PART E)</td></tr>
         <tr><td>맛 편차</td><td>"다소 달다"(서울역) · "연어 비린내가 솥에 배었다"(야탑) · "가성비 제로"(센터원)</td><td>단일점 직영 품질</td></tr>
         <tr><td>반찬 심플 / 응대</td><td>"구성이 심플"(센터원) · "'간이 된 누룽지 물'이라더니 맹물"(익선)</td><td>부산 찬 3종 + '가마숭늉' 실육수</td></tr>
       </tbody>
@@ -367,7 +343,7 @@
         <tr><td>⑤ 경쟁 공백</td><td class="win">◎ 최적</td><td>프리미엄 솥밥 부재 + 솔솥 3점 비중복</td></tr>
       </tbody>
     </table></div>
-    <p><strong>판정: 조건부 적합.</strong> 서울역점 공식은 "역전 오피스 점심 주력 + 여행 보조" — 부산역은 오피스가 얇아(중앙동은 도보로 분리) <strong>"여행자·외국인·호텔 주력 + 로컬 보조"로 공식 반전이 필수.</strong> 이 반전이 2부(콘셉트)와 3부(운영 설계)의 출발점.</p>
+    <p><strong>판정: 조건부 적합.</strong> 서울역점 공식은 "역전 오피스 점심 주력 + 여행 보조" — 부산역은 오피스가 얇아(중앙동은 도보로 분리) <strong>"여행자·외국인·호텔 주력 + 로컬 보조"로 공식 반전이 필수.</strong> 이 반전이 두 전략(PART C·D)과 공통 설계(PART E)의 출발점.</p>
   </div>
 </section>
 
@@ -378,11 +354,11 @@
     <div class="tbl"><table>
       <thead><tr><th>리스크</th><th>내용</th><th>보완</th></tr></thead>
       <tbody>
-        <tr><td>상권 총량</td><td>서면의 1/7(월 251억)</td><td>목표 매출 상권 정합(3부) + 도시락·조식 시간대 확장</td></tr>
+        <tr><td>상권 총량</td><td>서면의 1/7(월 251억)</td><td>목표 매출 상권 정합(PART E) + 도시락·조식 시간대 확장</td></tr>
         <tr><td>통과형 전환율</td><td>유동≠매출</td><td>역 도보 1~3분 + 열차 연동 사전주문 + 착석 7분</td></tr>
         <tr><td>저녁 공동화</td><td>저녁 관광은 남포·서면·해운대로 이동</td><td>호텔 1,000실 저녁 타깃 + 주류 페어링</td></tr>
         <tr><td>국밥 기준선</td><td>8천~1만 원 심리 앵커</td><td>"여행의 특별한 한 끼" 프레이밍 — 정면 대결 회피</td></tr>
-        <tr><td>원조·경쟁 후발 진입</td><td>솔솥 부산역점 가능성 + 담솥 마산·동양 대구 남하</td><td>선점(D-120) + 독자 정체성 + 상표 선출원 — <strong>시한 1~2년(4부)</strong></td></tr>
+        <tr><td>원조·경쟁 후발 진입</td><td>솔솥 부산역점 가능성 + 담솥 마산·동양 대구 남하</td><td>선점(D-120) + 독자 정체성 + 상표 선출원 — <strong>시한 1~2년(PART B)</strong></td></tr>
       </tbody>
     </table></div>
     <div class="tbl"><table>
@@ -406,12 +382,11 @@
   </div>
 </section>
 
-
 <section id="part-b" style="padding:56px 0 6px; background:#ffffff;">
   <div class="inner">
     <hr class="hairline">
-    <p class="eyebrow" style="margin:20px 0 8px;">PART B — RIVALS (구 4부)</p>
-    <h2 style="margin-bottom:4px;">경쟁 3사 해체</h2>
+    <p class="eyebrow" style="margin:20px 0 8px;">PART B — RIVALS TEARDOWN</p>
+    <h2 style="margin-bottom:4px;">경쟁 3사 해체 — 담솥 · 동양솥밥 · 가가솥밥</h2>
   </div>
 </section>
 
@@ -809,7 +784,7 @@
 <section id="b-ch7" class="band">
   <div class="inner">
     <p class="ch-eyebrow">Chapter 07 — Actions</p>
-    <h2>3부 기획서에 반영할 8가지</h2>
+    <h2>전략 설계에 반영할 8가지</h2>
     <div class="plate">
       <ul>
         <li><strong>선점 시한 1~2년 명기</strong> — 진입 확률: 동양솥밥 高(2027 중) &gt; 담솥 中(12~24개월, 몰 입지·비충돌) &gt; 가가 低. D-120 준수가 곧 전략.</li>
@@ -825,473 +800,394 @@
   </div>
 </section>
 
-
 <section id="part-c" style="padding:56px 0 6px; background:#ffffff;">
   <div class="inner">
     <hr class="hairline">
-    <p class="eyebrow" style="margin:20px 0 8px;">PART C — BRAND KIT (구 2부)</p>
-    <h2 style="margin-bottom:4px;">네이밍 트랙 · 메뉴 · 원가</h2>
+    <p class="eyebrow" style="margin:20px 0 8px;">PART C — STRATEGY 1</p>
+    <h2 style="margin-bottom:4px;">전략 1 · 솥솥공방(가칭) — 종합 솥밥</h2>
   </div>
 </section>
 
-
-<section id="c-summary">
+<section id="c-1">
   <div class="inner">
-    <p class="ch-eyebrow">Summary</p>
-    <h2>요약</h2>
-    <ol class="summary">
-      <li><strong>네이밍은 3라운드를 거쳐 만선 계열로 수렴 중.</strong> 라운드 1(부산 어원 — 가마뫼 추천, 반려) → 라운드 2(밥·기차·바다·사투리 19안) → 라운드 3(만선 조합 20안). 스크리닝에서 실충돌 2건(가마산=광안리 식당, 뜸=기장 솥밥집)을 걸러낸 실증 — 만선 계열도 확정 전 동일 검증 필수.</li>
-      <li><strong>메뉴 골격 "앵커 아래 로컬, 앵커 위 장어."</strong> 로컬 원물 12,500~17,500원 + 장어 3식 19,500원(곱빼기 +6,000 · 국내산 업그레이드 +7,500 듀얼 티어) + 조식 9,500~10,500 + 기차 도시락 12,500~15,000.</li>
-      <li><strong>원가 해자의 근거는 자사 데이터.</strong> 조제장어 CIF $10.75~11.23/kg(2026.5~7) vs 국내산 도매 20,200~25,253원/kg(필렛 환산 3.4만~4.6만) → 장어 토핑 1인분 약 2,600원, <strong>19,500원에 팔아도 원가율 29.7%.</strong></li>
-      <li>전 메뉴 원가율 27~35%(블렌디드 31.5%), 목표 객단가 19,000원. 손익 확정판은 3부(40평) — 본 문서의 20평 모델은 가맹 표준점 참조용.</li>
-      <li>원산지는 정면 돌파("중국산·자사 직수입 3중 검품") + 국내산 옵션 병행. 메뉴판은 A3 양면·4개 국어·№ 주문·QR 사전주문 — 목업 시안 포함.</li>
-    </ol>
+    <p class="ch-eyebrow">C-1 — Brand Definition</p>
+    <h2>브랜드 정의</h2>
+    <p class="defline">한 줄 콘셉트 — <strong>"고기도 생선도, 한 솥에서 — 부산역의 프리미엄 종합 솥밥 공방."</strong></p>
+    <div class="stats" style="margin:0 0 36px;">
+      <div class="stat"><b>18,000원</b><span>객단가 (사이드·음료 부착 포함) [추정]</span></div>
+      <div class="stat"><b>31.0%</b><span>본상 블렌디드 원가율</span></div>
+      <div class="stat"><b>약 2,580만</b><span>기본 시나리오(일 220명) 월 영업이익</span></div>
+    </div>
+    <div class="tbl"><table>
+      <tr><td>'공방'의 해석</td><td>오픈 주방을 <strong>공방(工房)으로 연출</strong> — 솥이 줄지어 걸린 크래프트 주방, 취반 장면 자체가 볼거리. "매일 79번 솥을 짓는 공방" 류의 장인 서사</td></tr>
+      <tr><td>BI 방향</td><td>우드 × 세라믹 × 크래프트(도예 공방 무드) · 로고 모티프 '겹쳐 놓인 두 솥' · 그릇은 투박한 도기</td></tr>
+      <tr><td>타깃</td><td>① 가족·단체(아이 동반 — 돼지·치즈닭갈비가 흡수) ② 혼밥 여행자·출장객 ③ 외국인 — <strong>수요 폭이 가장 넓은 안</strong></td></tr>
+      <tr><td>포지셔닝</td><td>솔솥·담솥과 같은 사분면(종합 프리미엄)의 후발. 차별 4축: 양·좌석(40평) / 장어 가격 역전(19,500) / <strong>돼지 라인(솔솥 부재)</strong> / 공방 서사</td></tr>
+      <tr><td>상호 유의</td><td>"솥솥"은 소비자들이 솔솥을 잘못 쓰는 오기로 실증된 문자열(PART A 11장) — <strong>확정 전 상표·상호 검증 필수</strong> <span class="tag mid">자문 1줄</span></td></tr>
+    </table></div>
   </div>
 </section>
 
-<section id="c-ch1" class="band">
+<section id="c-2" class="band">
   <div class="inner">
-    <p class="ch-eyebrow">Chapter 01 — Naming Track</p>
-    <h2>네이밍 — 3라운드 전체 이력</h2>
-    <p class="defline">평가 6축: ①충돌 ②솔솥과의 거리("솥솥"이 솔솥 오기로 판명된 실증) ③외국어 전달(대만·일본 관광객) ④서사 ⑤검색 선점 ⑥등록·확장성(지명+보통명사는 등록 난항).</p>
+    <p class="ch-eyebrow">C-2 — Full Menu Architecture</p>
+    <h2>메뉴 설계 전량</h2>
+    <p class="defline">본상 9 · 조식 2 · 곁들임 4 · 음료 · 포장 2 · 세트 1. 전 솥밥 찬 3종+샐러드+김+숭늉, 공기밥·누룽지 무료 · <strong>베이스 원가 2,600원</strong>(쌀·찬·숭늉·연료·소모품).</p>
 
-    <h3>라운드 1 <span class="sub">부산 어원·지역 계열 — 결과: 반려</span></h3>
+    <h3>본상 9종 <span class="sub">11:00~21:00</span></h3>
     <div class="tbl"><table>
-      <thead><tr><th>후보</th><th>결과</th><th>사유</th></tr></thead>
-      <tbody>
-        <tr><td>가마산</td><td class="lose">❌ 실충돌</td><td><strong>광안리 동명 식당(회·고기, 광안해변로 263) 실존</strong> — 같은 도시 F&amp;B 충돌</td></tr>
-        <tr><td>뜸</td><td class="lose">❌ 실충돌</td><td>기장 프리미엄 솥밥집 '뜸(오시리아본점)' 실존</td></tr>
-        <tr><td>역전솥밥·부산솥밥 / 물때솥</td><td class="lose">❌</td><td>보통명사+지명 식별력 부족 / '물때 낀' 부정 동음</td></tr>
-        <tr><td>미항(味港) / 첫차밥상</td><td class="num">△ 보류 / 전환</td><td>항구 관용어라 선점력 약함 / 조식 서브명 '첫솥'으로 전환(충돌 없음)</td></tr>
-        <tr><td>가마항(釜港) / 초량반상</td><td class="num">○</td><td>충돌 미검출 — 단 '가마솥' 상호 55곳+ 군집 / 지리명이라 등록 다툼·확장 제약</td></tr>
-        <tr><td>가마뫼</td><td class="num">◎ → <strong>반려</strong></td><td>충돌 0건 · 부산(釜山)의 순우리말 어원("가마솥을 엎어놓은 산", 1481 동국여지승람 — 부산시 공식) · 日 カモメ(부산갈매기) 음운 보너스. <strong>의뢰인 선호 불일치로 반려</strong> — 어원 스토리는 브랜드 스토리텔링 소재로 잔존</td></tr>
-      </tbody>
+      <tr><th>구간</th><th>메뉴</th><th>가격</th><th>토핑 산식 [추정]</th><th>총원가</th><th>원가율</th></tr>
+      <tr><td>볼륨</td><td>대패삼겹숙주솥밥</td><td class="num">13,900</td><td>대패 120g×9,000원/kg=1,080 + 숙주·소스 420</td><td class="num">4,100</td><td class="num">29.5%</td></tr>
+      <tr><td>볼륨</td><td>치즈닭갈비솥밥</td><td class="num">14,900</td><td>닭 120g 1,300 + 치즈 700</td><td class="num">4,600</td><td class="num">30.9%</td></tr>
+      <tr><td>볼륨</td><td>버섯불고기솥밥</td><td class="num">14,900</td><td>불고기 100g 1,500 + 버섯 400</td><td class="num">4,500</td><td class="num">30.2%</td></tr>
+      <tr><td>앵커</td><td>직화목살솥밥(제주식 양념)</td><td class="num">15,900</td><td>목살 110g×11,000=1,210 + 양념 500</td><td class="num">4,310</td><td class="num">27.1%</td></tr>
+      <tr><td>앵커</td><td>연어스테이크솥밥</td><td class="num">17,500</td><td>연어 130g×24,000=3,120 + 400</td><td class="num">6,120</td><td class="num">35.0%</td></tr>
+      <tr><td>앵커</td><td>전복버터솥밥</td><td class="num">17,500</td><td>전복 2미 2,800 + 300</td><td class="num">5,700</td><td class="num">32.6%</td></tr>
+      <tr><td>앵커</td><td>스테이크솥밥(부챗살·버터갈릭)</td><td class="num">17,900</td><td>부챗살 130g×21,000=2,730 + 500</td><td class="num">5,830</td><td class="num">32.6%</td></tr>
+      <tr><td><strong>시그니처</strong></td><td class="win"><strong>민물장어솥밥</strong>(자사 직수입)</td><td class="num"><strong>19,500</strong></td><td>필렛 130g 2,600 + 타레·고명 600</td><td class="num">5,800</td><td class="num"><strong>29.7%</strong></td></tr>
+      <tr><td>한정</td><td>계절 솥밥(월 교체 — 여름 냉국물 페어링)</td><td class="num">21,000</td><td>상한 4,800</td><td class="num">7,400</td><td class="num">35.2%</td></tr>
     </table></div>
 
-    <h3>라운드 2 <span class="sub">4계열 19안</span></h3>
+    <h3>조식 <span class="sub">07:30~10:30 · 배치 취반 5분 · 찬 2종 축소 반상 · 베이스 2,200원</span></h3>
     <div class="tbl"><table>
-      <thead><tr><th>계열</th><th>후보 전량</th></tr></thead>
-      <tbody>
-        <tr><td>밥 그 자체 (공용)</td><td>고슬 · 뜨물 · 백미(白米·百味·白眉) · 이팝(쌀밥꽃) · 안치다 · 김오름 · 미곡상회 · 소반(역전소반·바다소반 조합형)</td></tr>
-        <tr><td>부산역·기차</td><td>도착한상(사전주문 운영이 이름 안에) · 기적(汽笛+기적) · 밥이온다 · 정시</td></tr>
-        <tr><td>바다·항구 (2안 전용)</td><td>물마루(수평선) · <strong>만선(滿船)</strong> · 밀물 · 해무 · 물비늘</td></tr>
-        <tr><td>사투리 (캐주얼)</td><td>밥무라 · 마이무라("많이 먹어라" — 양 인심 선언)</td></tr>
-        <tr><td>제외</td><td class="muted">윤슬(과소비) · 고봉(고봉민김밥 연상) · 온정(온기정 유사) · 성씨 시작 조합(사람 이름 오독)</td></tr>
-      </tbody>
+      <tr><th>메뉴</th><th>가격</th><th>원가</th><th>원가율</th></tr>
+      <tr><td>버터간장계란솥밥상</td><td class="num">8,900</td><td class="num">2,900 (계란·버터·간장 700)</td><td class="num">32.6%</td></tr>
+      <tr><td>명란버터솥밥상</td><td class="num">10,500</td><td class="num">3,400 (명란·버터 1,200)</td><td class="num">32.4%</td></tr>
     </table></div>
 
-    <h3>라운드 3 <span class="sub">'만선' 조합 20안 — 현재 선호 계열</span></h3>
+    <h3>곁들임 · 음료 · 포장 · 세트</h3>
     <div class="tbl"><table>
-      <thead><tr><th>형식</th><th>후보 전량 (굵게 = 개인 톱)</th></tr></thead>
-      <tbody>
-        <tr><td>만선+α</td><td>만선호(선명 문법 — 가게가 배) · <strong>만선기(滿船旗 — 깃발 로고·"입고=게양" 의식 내장)</strong> · 만선옥 · 오늘만선 · 만선반상 · 만선한상 · 만선부두 · 만선솥밥(검색 실용) · 만선정(온기정 어미 주의) · 만선식당(동명 확률 주의)</td></tr>
-        <tr><td>X만선</td><td><strong>갓만선('갓 잡은·갓 지은' 부사 공유)</strong> · 첫만선 · 늘만선 · <strong>또만선("또 만선!"+"또 만나선" 중의)</strong> · 온만선 · 참만선 · 복만선 · 철만선(제철+鐵) · 꽉만선 · 왕만선</td></tr>
-        <tr><td>제외</td><td class="muted">대만선(대만+선 오독) · 반만선("반만 참") · 금만선(禁 오독) · 성씨 음절</td></tr>
-      </tbody>
+      <tr><th>구분</th><th>메뉴</th><th>가격</th><th>원가</th><th>원가율</th></tr>
+      <tr><td>곁들임</td><td>통새우튀김</td><td class="num">7,900</td><td class="num">2,600</td><td class="num">32.9%</td></tr>
+      <tr><td>곁들임</td><td>옛날 계란찜 / 부산어묵탕 / 콘치즈</td><td class="num">4,000 / 5,500 / 5,000</td><td class="num">900 / 1,600 / 1,300</td><td class="num">22.5% / 29.1% / 26.0%</td></tr>
+      <tr><td>음료</td><td>하이볼 7,500 · 생탁 5,000 · 금정산성막걸리 12,000 · 소주/맥주 5,000/6,000 · 제로 3,000</td><td class="num"></td><td class="num"></td><td class="num">19~50%</td></tr>
+      <tr><td>포장</td><td>스테이크 도시락 / 장어 도시락 (용기 700 포함)</td><td class="num">13,500 / 15,000</td><td class="num">4,700 / 4,900</td><td class="num">34.8% / 32.7%</td></tr>
+      <tr><td>세트</td><td><strong>2인 공방상</strong> — 스테이크+장어+새우튀김+어묵탕 (개별 합 50,800)</td><td class="num"><strong>47,900</strong></td><td class="num">15,830</td><td class="num">33.0%</td></tr>
     </table></div>
-    <div class="plate">
-      <span class="pt">현재 상태 · 다음 단계</span>
-      <ul>
-        <li><strong>미확정</strong> — 유력 후보(만선기·갓만선·또만선·만선호)의 상호 검색+KIPRIS 43·30·35류 조회 미수행. 라운드 1에서 유력 2개가 실충돌 탈락한 전례상 필수.</li>
-        <li>'만선'은 수산 정체성이 강해 <strong>3부 만선(가칭, 수산 솥밥) 권고와 정합</strong> — 솥솥공방(가칭, 종합) 선택 시 육류 메뉴와의 어긋남은 3부 비교에 반영됨.</li>
-        <li>확정 즉시: KIPRIS → 문자+로고 결합 출원(사용 개시 전) → 채널 선점 → 서브명 사용('첫솥'은 '한솥'과 1글자 차 — 서브 라벨 한정).</li>
-      </ul>
+
+    <div class="plate"><span class="pt">Menu Engineering</span>
+      <p>예상 믹스 장어 22 · 스테이크 18 · 목살 14 · 치즈닭갈비 12 · 대패 12 · 전복 10 · 연어 8 · 계절 4% → 본상 평균 단가 17,184원 · 평균 원가 5,328원 = <strong>블렌디드 약 31.0%</strong>. 사이드·음료 부착 시 객단가 약 18,000원 <span class="tag mid">추정</span>. 연어(35.0%)가 원가율 상단 — 믹스 8% 초과 시 재검토.</p>
+    </div>
+    <div class="plate"><span class="pt">카피 리스크 규정 (필수)</span>
+      <p>라인업 5/9가 솔솥과 겹침 → ① 돼지·버섯 라인 전면 배치 ② 장어 가격 역전 ③ 사이드·그릇·문구·BI 완전 독자화(유린기 미사용, 도기 그릇) ④ <strong>'주의 등급 표현 2개 이상 중복 금지'</strong>(PART A 15장)를 설계 규정으로.</p>
     </div>
   </div>
 </section>
 
-<section id="c-ch2">
+<section id="c-3">
   <div class="inner">
-    <p class="ch-eyebrow">Chapter 02 — Menu &amp; BOM</p>
-    <h2>메뉴 설계 · 원가표 전량</h2>
-    <p class="defline">설계 원칙 = 1부 리뷰 역설계: 가격 대비 양(3.1) → 시그니처 −22% + 공기밥·누룽지 무료 / 웨이팅 → 조식 배치 취반 5분 + QR 사전주문 착석 7분 / 반찬·숭늉 불만 → 부산 찬 3종 + 실육수 규정 / 편차 → 단일점 직영 당일 원물.</p>
+    <p class="ch-eyebrow">C-3 · C-4 · C-5 — Ops · Marketing · P&amp;L</p>
+    <h2>운영·마케팅 변주와 손익 보정</h2>
+    <p class="defline">공통 설계(40평 존닝·시간대·인력·QR)는 PART E — 여기는 이 브랜드만의 변주.</p>
 
-    <h3>전체 메뉴판 (가격 확정안)</h3>
-    <div class="tbl"><table>
-      <thead><tr><th>구간</th><th>메뉴</th><th>가격</th><th>비고</th></tr></thead>
-      <tbody>
-        <tr><td>로컬 볼륨</td><td>기장미역들깨(비건 대응) · 멸치쌈(대변항)</td><td class="num">12,500 · 13,500</td><td>부산 원물 스토리</td></tr>
-        <tr><td>육류 브릿지</td><td>직화목살 · 불맛부챗살(파채·갈릭간장)</td><td class="num">15,900 · 16,500</td><td>수산 비선호 방어(3부 반영)</td></tr>
-        <tr><td>앵커</td><td>제주갈치 · 완도전복미역(활전복 2미·버터)</td><td class="num">17,000 · 17,500</td><td></td></tr>
-        <tr><td>시그니처</td><td class="win">장어솥밥 3식 — ①그대로 ②양념장·고명 ③숭늉</td><td class="num"><strong>19,500</strong> · 곱빼기 +6,000 · 국내산 +7,500</td><td>솔솥 25,000 대비 −5,500</td></tr>
-        <tr><td>한정</td><td>계절 한 솥(대하→방어·굴→도다리쑥, 여름 물회 페어링 — 4부 반영)</td><td class="num">21,000</td><td>재방문·SNS 장치</td></tr>
-        <tr><td>조식 '첫솥(가칭)'</td><td>미역솥밥상 · 명란버터솥밥상 · +드립커피</td><td class="num">9,500 · 10,500 · +2,000</td><td>07:30~10:30 배치 취반 5분</td></tr>
-        <tr><td>곁들임</td><td>장어 한 꼬치 · 전복 버터구이 · 부산어묵탕 · 계란찜</td><td class="num">6,500 · 7,500 · 5,500 · 4,000</td><td></td></tr>
-        <tr><td>음료·주류</td><td>유자 하이볼 · 생탁 · 금정산성막걸리 · 소주/맥주 · 제로 음료</td><td class="num">7,500 · 5,000 · 12,000 · 5,000/6,000 · 3,000</td><td></td></tr>
-        <tr><td>포장·세트</td><td>기차솥 도시락(장어/부챗살, 누룽지칩 별첨) · 2인 세트(장어 3식+전복+꼬치+어묵탕)</td><td class="num">15,000/12,500 · <strong>48,000</strong></td><td>15분 전 QR 주문 · 개별가 51,000</td></tr>
-      </tbody>
-    </table></div>
+    <h3>C-3 운영 변주</h3>
+    <ul>
+      <li>오픈 주방 '공방' 연출 — 취반 라인을 홀에서 보이게. <strong>카운터 바 8석이 공방 관람석</strong></li>
+      <li>가족 동선 — 4~6인석 예약 유도 · 유아 의자 · 아이 취향 메뉴(치즈닭갈비·계란찜)</li>
+      <li>저녁 — 별도 주류 모드 없이 <strong>가족 저녁 외식 수요 중심</strong>(주류는 상시 판매)</li>
+    </ul>
 
-    <h3>BOM 전량 <span class="sub">공통 베이스 2,600원: 쌀 220g 950(4,300원/kg급) + 찬·샐러드·김 1,100 + 숭늉 실육수 250 + 가스·소모품 300 [추정]</span></h3>
-    <div class="tbl"><table>
-      <thead><tr><th>메뉴</th><th>판매가</th><th>토핑 산식</th><th>총원가</th><th>원가율</th></tr></thead>
-      <tbody>
-        <tr><td>기장미역들깨 / 멸치쌈</td><td class="num">12,500 / 13,500</td><td class="num">900 / 1,300</td><td class="num">3,500 / 3,900</td><td class="num">28.0% / 28.9%</td></tr>
-        <tr><td>직화목살</td><td class="num">15,900</td><td class="num">목살 110g×11,000=1,210 + 양념 500</td><td class="num">4,310</td><td class="win">27.1%</td></tr>
-        <tr><td>불맛부챗살</td><td class="num">16,500</td><td class="num">부챗살 110g×21,000=2,310 + 파채·소스 400</td><td class="num">5,310</td><td class="num">32.2%</td></tr>
-        <tr><td>제주갈치</td><td class="num">17,000</td><td class="num">갈치 순살 130g×20,000=2,600 + 300</td><td class="num">5,500</td><td class="num">32.4%</td></tr>
-        <tr><td>완도전복미역</td><td class="num">17,500</td><td class="num">전복 2미×1,400=2,800 + 300 <span class="muted">(산지 소매 22,500원/kg 역산)</span></td><td class="num">5,700</td><td class="num">32.6%</td></tr>
-        <tr><td class="win">장어 3식</td><td class="num"><strong>19,500</strong></td><td class="num"><strong>자사 필렛 130g×20,000원/kg=2,600</strong> + 타레·고명 600</td><td class="num">5,800</td><td class="num"><strong>29.7%</strong></td></tr>
-        <tr><td>계절 한 솥</td><td class="num">21,000</td><td class="num">원물 상한 4,800</td><td class="num">7,400</td><td class="num">35.2%</td></tr>
-        <tr><td>첫솥 미역/명란버터</td><td class="num">9,500 / 10,500</td><td class="num">축소 베이스 2,200 + 700 / 1,200</td><td class="num">2,900 / 3,400</td><td class="num">30.5% / 32.4%</td></tr>
-        <tr><td>장어 꼬치 / 전복구이 / 어묵탕 / 계란찜</td><td class="num">6,500 / 7,500 / 5,500 / 4,000</td><td class="num">1,500 / 2,800 / 1,600 / 900</td><td class="num">—</td><td class="num"><strong>23.1%</strong> / 37.3% / 29.1% / 22.5%</td></tr>
-        <tr><td>하이볼 / 생탁 / 금정산성</td><td class="num">7,500 / 5,000 / 12,000</td><td class="num">1,400 / 1,400 / 6,000</td><td class="num">—</td><td class="num">18.7% / 28% / 50%(명물 미끼)</td></tr>
-        <tr><td>기차솥 장어/부챗살 · 2인 세트</td><td class="num">15,000/12,500 · 48,000</td><td class="num">용기 700 포함 / 구성합</td><td class="num">4,900/4,300 · 15,900</td><td class="num">32.7%/34.4% · 33.1%</td></tr>
-      </tbody>
-    </table></div>
+    <h3>C-4 마케팅 변주</h3>
+    <ul>
+      <li>콘텐츠 기둥 3 — ① 공방 서사(솥 굽는 장면·장인 인터뷰) ② "온 가족 취향이 다 있는 솥밥집" ③ 스테이크·장어가 이 가격(가성비 프리미엄)</li>
+      <li>채널 — 가족 커뮤니티·맘카페 + 관광 채널 병행 (90일 골격은 PART E-2)</li>
+    </ul>
+
+    <h3>C-5 손익 보정</h3>
+    <p>객단가 18,000 · 원가율 31.0~31.8% → 기본(일 220명) 월 영업이익 <strong>약 2,580만</strong> <span class="tag mid">추정</span> — 산식·3시나리오는 PART E-5.</p>
   </div>
 </section>
 
-<section id="c-ch3" class="band">
+<section id="c-6" class="band">
   <div class="inner">
-    <p class="ch-eyebrow">Chapter 03 — Eel Cost Moat, Full Data</p>
-    <h2>장어 원가 우위 — 자사 트래커 데이터 전량</h2>
+    <p class="ch-eyebrow">C-6 · C-7 — Risks · Pipeline</p>
+    <h2>고유 리스크와 확장 파이프라인</h2>
 
-    <h3>수입 단가 월별 <span class="sub">관세청 통관·KATI — tracker/import_history.csv [확인]</span></h3>
-    <div class="tbl"><table>
-      <thead><tr><th>월</th><th>조제장어(1604.17) CIF $/kg</th><th>수입량 kg</th><th>월</th><th>CIF $/kg</th><th>수입량 kg</th></tr></thead>
-      <tbody>
-        <tr><td>2025-08</td><td class="num">11.58</td><td class="num">258,915</td><td>2026-02</td><td class="num">11.56</td><td class="num">150,381</td></tr>
-        <tr><td>2025-09</td><td class="num">11.67</td><td class="num">251,287</td><td>2026-03</td><td class="num">10.89</td><td class="num">141,052</td></tr>
-        <tr><td>2025-10</td><td class="num">12.34</td><td class="num">114,535</td><td>2026-04</td><td class="num">11.25</td><td class="num">256,250</td></tr>
-        <tr><td>2025-11</td><td class="num">12.33</td><td class="num">185,177</td><td>2026-05</td><td class="win">11.23</td><td class="num">272,640</td></tr>
-        <tr><td>2025-12</td><td class="num">12.14</td><td class="num">186,012</td><td>2026-06</td><td class="win">10.75</td><td class="num">260,729</td></tr>
-        <tr><td>2026-01</td><td class="num">11.71</td><td class="num">218,823</td><td>2026-07</td><td class="win">10.77</td><td class="num">275,918</td></tr>
-      </tbody>
-    </table></div>
-    <p>2026년 들어 <strong>$10.75~11.25/kg로 하향 안정</strong>(2025년 대비 약 −8%) · 환율 1,350원 가정 시 CIF 약 14,500~15,200원/kg · 월 141~276톤이 들어오는 성숙 시장. 보조 품목: 활 뱀장어(0301.92) 2026년 $8.40~11.09(7월 $8.40 최저) · 필렛(0304.69) $10.50~15.18 · 냉동 필렛(0304.93) $9.84~12.36.</p>
+    <h3>C-6 고유 리스크</h3>
+    <ul>
+      <li><strong>카피 논란 — 구조적 최대 리스크.</strong> 같은 도시에 원조 3개점, "솔솥 따라 한 집" 서사 리스크. 상호 "솥솥" 문자열이 이 리스크를 증폭</li>
+      <li>가맹 모집 시 <strong>"왜 솔솥 말고 여기?"</strong>에 대한 답 부족 — 차별 4축이 답이 되어야 함</li>
+      <li>연어·소 수입 시세 변동 — 앵커 2종(연어 35.0%·스테이크 32.6%)의 원가율 상단 노출</li>
+    </ul>
 
-    <h3>국내산 도매 vs 소매 벤치마크</h3>
-    <div class="tbl"><table>
-      <thead><tr><th>시점</th><th>안산 경매 뱀장어(자연산 상) 원/kg</th><th>비고</th></tr></thead>
-      <tbody>
-        <tr><td>2022-11</td><td class="num">39,500</td><td>고점</td></tr>
-        <tr><td>2023-12 / 2024-09</td><td class="num">28,280 / 27,145</td><td>하락 추세</td></tr>
-        <tr><td>2025-07~10</td><td class="num">23,230 → 22,725</td><td></td></tr>
-        <tr><td>2026-05~07</td><td class="win">20,200 ~ 25,253</td><td>저점권(5/27 20,200 · 6/23 20,958 · 7/7 20,848)</td></tr>
-        <tr><td>소매(푸드엔 양념구이 8미 1kg)</td><td class="num">26,700~29,600 (2026-08 일별)</td><td>가공 완제품 소매가</td></tr>
-      </tbody>
-    </table></div>
-    <div class="plate">
-      <span class="pt">해자의 산식</span>
-      <ul>
-        <li>자사 수입(착지 20,000원/kg 가정 — <strong>실적치로 교체 필수</strong>): 130g 토핑 <strong>2,600원</strong> vs 국내산(활 도매→손질 수율 55~60%→필렛 환산 3.4만~4.6만원/kg): 130g <strong>4,400~6,000원</strong> → 1인분 격차 1,800~3,400원</li>
-        <li>솔솥이 25,000원을 받아야 하는 메뉴를 우리는 <strong>19,500원에 원가율 29.7%</strong>로 판다. 곱빼기(+6,000, 원가 +2,600)·장어 꼬치(23.1%)로 업셀할수록 이익 증가 — 4부 반영: 시그니처 주변 마진 보강 동선을 메뉴판에 설계</li>
-      </ul>
+    <h3>C-7 확장 파이프라인</h3>
+    <p>소스 3종 리테일(스테이크 버터간장·직화양념·장어 타레) → 냉동 RMR 키트(스테이크·치즈닭갈비·장어) → 편의점 도시락 콜라보 → B2B 단체도시락 → 키즈 밀키트 → 홈 솥밥 스타터 키트.</p>
+    <div class="plate"><span class="pt">판단</span>
+      <p><strong>상온·냉동이라 전국 이커머스 확장성이 크지만, CJ 햇반솥반·비비고와 정면</strong>이라 브랜드 인지도가 생긴 후에야 작동 — 초기엔 소스·도시락만, 밀키트·콜라보는 다점포 이후.</p>
     </div>
   </div>
 </section>
-
-<section id="c-ch4">
-  <div class="inner">
-    <p class="ch-eyebrow">Chapters 04–05 — Engineering &amp; Origin</p>
-    <h2>메뉴 엔지니어링 · 원산지 전략</h2>
-    <div class="tbl"><table>
-      <thead><tr><th>항목</th><th>값</th></tr></thead>
-      <tbody>
-        <tr><td>본상 예상 믹스</td><td class="num">장어 28 · 전복 18 · 부챗살/목살 16 · 미역/멸치 14 · 갈치 12 · 계절 12%</td></tr>
-        <tr><td>본상 평균 단가/원가</td><td class="num">17,630 / 5,564원 (31.6%)</td></tr>
-        <tr><td>사이드 35%·음료 25% 부착</td><td class="num">+3,700원/인 → <strong>목표 객단가 약 19,000원 · 블렌디드 31.5%</strong></td></tr>
-        <tr><td>손익</td><td class="num"><strong>40평 확정판은 3부 8장</strong> — 본 문서의 20평 모델(일 150명 시 월 영업이익 약 2,020만)은 가맹 표준점(3부 11장) 참조용</td></tr>
-        <tr><td>분류</td><td>⭐장어 3식·장어꼬치 / 🐴전복·부챗살 / ❓계절 한 솥 / 🐶멸치쌈(부진 시 조식 전환) — 분기 리뷰</td></tr>
-      </tbody>
-    </table></div>
-    <div class="plate">
-      <span class="pt">원산지 — 정면 돌파 + 듀얼 티어</span>
-      <ul>
-        <li>원산지표시법상 <strong>"장어(중국산)" 의무 표기.</strong> 메뉴판 한 줄: "장어 수입을 업으로 하는 우리 회사가 산지 계약 양만장에서 직수입해 통관·자사·조리 3중 검품합니다. 그래서 이 가격입니다." — 가격 파괴의 이유를 설명하면 원산지는 신뢰 장치가 된다.</li>
-        <li><strong>국내산 활장어 업그레이드 +7,500(=27,000원)</strong> 병행 — 비교 대상(솔솥 25,000)을 스스로 품는 구조. 일본·대만 관광객은 중국산 우나기에 저항 낮음("imported &amp; triple-inspected by our own trading house").</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section id="c-ch6" class="band">
-  <div class="inner">
-    <p class="ch-eyebrow">Chapter 06 — Menu Board Mockup</p>
-    <h2>메뉴판 목업 · 제작 사양</h2>
-    <p class="defline">A3 세로 하드보드(1인 1판) 앞면 시안 — <strong>BI 시안 A(먹색×놋쇠×쌀백), 브랜드명 확정 전이라 명칭 슬롯은 비워 둠.</strong> 뒷면: 3식 픽토그램 + 스토리 3줄 + 원산지·알레르기 고지.</p>
-    <div class="board-wrap">
-      <div class="board" role="img" aria-label="메뉴판 시안 (브랜드명 미정)">
-        <p class="b-hanja">釜 山 · 滿 船</p>
-        <p class="b-name">〔상호 확정 전〕</p>
-        <p class="b-sub">BUSAN POT RICE HOUSE · 釜飯專門店 — 만선 계열 네이밍 확정 시 치환</p>
-        <hr class="b-rule">
-        <p class="b-story">가득 잡아 돌아온 배(滿船)의 원물로, 부산역 앞에서 갓 지은 한 상을 냅니다.<br>공기밥과 누룽지는 언제나 무료입니다.</p>
-        <p class="b-sec">시그니처 SIGNATURE</p>
-        <div class="b-sig">
-          <span class="b-sig-badge">부산역에서만</span>
-          <div class="b-item" style="margin-bottom:2px;">
-            <span class="b-no">№1</span>
-            <span class="b-nm">장어솥밥 3식<span class="b-en">Grilled Eel Pot Rice, Three Ways · うなぎ釜飯 三食 · 鰻魚釜飯三吃</span></span>
-            <span class="b-dots"></span>
-            <span class="b-pr">19.5</span>
-          </div>
-          <div class="b-steps">
-            <div class="b-step"><b>①</b>먼저 그대로 — 갓 지은 밥과 장어로</div>
-            <div class="b-step"><b>②</b>특제 양념장과 고명을 올려</div>
-            <div class="b-step"><b>③</b>숭늉을 부어 누룽지탕으로</div>
-          </div>
-          <p class="b-opt">＋ 장어 곱빼기 6.0 · 국내산 활장어 업그레이드 7.5</p>
-        </div>
-        <p class="b-sec">본상 POT RICE</p>
-        <div class="b-item"><span class="b-no">№2</span><span class="b-nm">완도전복미역솥밥<span class="b-en">Abalone &amp; Miyeok · あわび釜飯 · 鮑魚釜飯</span></span><span class="b-dots"></span><span class="b-pr">17.5</span></div>
-        <div class="b-item"><span class="b-no">№3</span><span class="b-nm">제주갈치솥밥<span class="b-en">Jeju Hairtail · 太刀魚釜飯 · 白帶魚釜飯</span></span><span class="b-dots"></span><span class="b-pr">17.0</span></div>
-        <div class="b-item"><span class="b-no">№4</span><span class="b-nm">불맛부챗살솥밥<span class="b-en">Seared Beef &amp; Scallion · 牛肉釜飯 · 火烤牛肉釜飯</span></span><span class="b-dots"></span><span class="b-pr">16.5</span></div>
-        <div class="b-item"><span class="b-no">№5</span><span class="b-nm">직화목살솥밥<span class="b-en">Char-grilled Pork · 豚焼き釜飯 · 炙燒豬頸肉釜飯</span></span><span class="b-dots"></span><span class="b-pr">15.9</span></div>
-        <div class="b-item"><span class="b-no">№6</span><span class="b-nm">멸치쌈솥밥<span class="b-en">Daebyeon Anchovy Ssam · いりこ釜飯 · 鯷魚包飯</span></span><span class="b-dots"></span><span class="b-pr">13.5</span></div>
-        <div class="b-item"><span class="b-no">№7</span><span class="b-nm">기장미역들깨솥밥 <span style="font-size:11px;color:#8E8672;">Ⓥ</span><span class="b-en">Gijang Miyeok &amp; Perilla (Vegan) · わかめ釜飯 · 海帶芝麻釜飯</span></span><span class="b-dots"></span><span class="b-pr">12.5</span></div>
-        <div class="b-item"><span class="b-no">№8</span><span class="b-nm">계절 한 솥 <span style="font-size:11px;color:#8E8672;">이달의 원물</span><span class="b-en">Seasonal Catch · 季節の釜飯 · 當季釜飯</span></span><span class="b-dots"></span><span class="b-pr">21.0</span></div>
-        <div class="b-cols">
-          <div>
-            <p class="b-sec">곁들임 SIDES</p>
-            <div class="b-item"><span class="b-nm" style="font-size:14.5px;">장어 한 꼬치</span><span class="b-dots"></span><span class="b-pr" style="font-size:14.5px;">6.5</span></div>
-            <div class="b-item"><span class="b-nm" style="font-size:14.5px;">전복 버터구이</span><span class="b-dots"></span><span class="b-pr" style="font-size:14.5px;">7.5</span></div>
-            <div class="b-item"><span class="b-nm" style="font-size:14.5px;">부산어묵탕</span><span class="b-dots"></span><span class="b-pr" style="font-size:14.5px;">5.5</span></div>
-            <div class="b-item"><span class="b-nm" style="font-size:14.5px;">옛날 계란찜</span><span class="b-dots"></span><span class="b-pr" style="font-size:14.5px;">4.0</span></div>
-          </div>
-          <div>
-            <p class="b-sec">음료 DRINKS</p>
-            <div class="b-item"><span class="b-nm" style="font-size:14.5px;">유자 하이볼</span><span class="b-dots"></span><span class="b-pr" style="font-size:14.5px;">7.5</span></div>
-            <div class="b-item"><span class="b-nm" style="font-size:14.5px;">금정산성막걸리</span><span class="b-dots"></span><span class="b-pr" style="font-size:14.5px;">12.0</span></div>
-            <div class="b-item"><span class="b-nm" style="font-size:14.5px;">부산 생탁</span><span class="b-dots"></span><span class="b-pr" style="font-size:14.5px;">5.0</span></div>
-            <div class="b-item"><span class="b-nm" style="font-size:14.5px;">제로콜라 · 사이다</span><span class="b-dots"></span><span class="b-pr" style="font-size:14.5px;">3.0</span></div>
-          </div>
-        </div>
-        <div class="b-foot">
-          <b>조식(07:30~10:30)</b> 미역솥밥상 9.5 · 명란버터솥밥상 10.5 — 5분 제공 &nbsp;|&nbsp; <b>기차 도시락</b> 장어 15.0 · 부챗살 12.5<br>
-          KTX 출발까지 40분? QR로 먼저 밥을 안치세요 — 착석 7분 내 첫 상 · Pre-order by QR<br>
-          가격 단위: 천원 · 장어(중국산·자사 직수입 3중 검품, 국내산 옵션) · 전복(완도) · 갈치(제주 또는 원양) · 쌀(국내산) · 알레르기 정보는 뒷면
-        </div>
-      </div>
-    </div>
-    <div class="plate">
-      <span class="pt">제작 사양 요점</span>
-      <ul>
-        <li>골든존(우상단) 시그니처 박스 — 사진 1컷+3식 아이콘+"부산역에서만" 배지(Z패턴 첫 착지) · 좌상단 브랜드 스토리(대기 체감 완화)</li>
-        <li>가격 천원 축약(19.5)·₩ 생략 · 사진은 시그니처·전복·계절 3컷만(과다 사진은 저가 인상) · 전 메뉴 № 포인팅 주문 · 한글 大+EN/日/中(번체) 小 · 알레르기·비건 표시</li>
-        <li>스탠드 보드(조식·포장)와 QR 텐트카드 별도 · 인쇄 전 원산지 표기 법무 확인 · 브랜드명 확정 시 로고·모티프 재작업</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section id="c-ch7">
-  <div class="inner">
-    <p class="ch-eyebrow">Chapter 07 — Checklist</p>
-    <h2>실행 체크리스트</h2>
-    <div class="plate">
-      <ul>
-        <li><strong>① 네이밍 확정</strong> — 만선 계열 유력 3~4개(만선기·갓만선·또만선·만선호) 상호 검색+KIPRIS 43·30·35류 → 무충돌 1안 → 문자+로고 출원 → 인스타·플레이스·도메인 선점</li>
-        <li><strong>② 원가 검증</strong> — 장어 착지원가 실적치 대입(트래커 CIF + 관세·통관·물류 실비) → 전복·갈치·부챗살·목살 3사 견적 → 시식회 3회 BOM 실측</li>
-        <li><strong>③ 가격 수용성</strong> — 블라인드(19,500 vs 국내산 27,000 선택률) · 호텔 컨시어지·역무 관계자 포함</li>
-        <li><strong>④ 메뉴판 제작</strong> — 6장 사양 → 4개 국어 감수 → 원산지 법무 확인 → 인쇄</li>
-        <li><strong>⑤ 취반 장비 3사 견적</strong>(4부 반영) — 동양솥밥형 98만 기계 · 담솥형 자동 취반기 · 업소용 기성품 — "착석 7분"의 실현 수단</li>
-        <li>⑥ 오퍼레이션(배치 취반·QR 플로우·표준 동선)은 3부 로드맵과 병합</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
 
 <section id="part-d" style="padding:56px 0 6px; background:#ffffff;">
   <div class="inner">
     <hr class="hairline">
-    <p class="eyebrow" style="margin:20px 0 8px;">PART D — MASTER PLAN (구 3부)</p>
-    <h2 style="margin-bottom:4px;">솥솥공방(가칭) vs 만선(가칭) · 40평 · 가맹</h2>
+    <p class="eyebrow" style="margin:20px 0 8px;">PART D — STRATEGY 2</p>
+    <h2 style="margin-bottom:4px;">전략 2 · 만선(가칭) — 수산 솥밥</h2>
   </div>
 </section>
 
-
-<section id="d-summary">
+<section id="d-1">
   <div class="inner">
-    <p class="ch-eyebrow">Summary</p>
-    <h2>요약</h2>
-    <ol class="summary">
-      <li><strong>권고: 만선(가칭, 수산 솥밥) + 육류 브릿지 2종.</strong> 11개 기준 스코어 46(브릿지 47) vs 36. 근거 — 카피 안전(원조 솔솥 3개점 회피) · 부산역 여행자에게 "부산에서만" · 장어·수산 직수입 해자 최대 가동 · 가맹 스토리 "부산발 수산 솥밥"은 전국 공백 · 확장 파이프라인이 1호점부터 가동. 솥솥공방(가칭) 재검토 조건(대중 상권 이동·가족 타깃·가맹 속도전·수산 설비 축소 중 2개+)도 명시.</li>
-      <li><strong>40평 = 역설계 무기이자 부담.</strong> 54석으로 솔솥 최대 불만(좁은 좌석·웨이팅)을 정면 타격 + 저녁 반주 모드. 대신 투자 3.5~4.5억 · BEP 일 125~135명(부산역 유동의 0.26%) — 전환율 장치(사전주문·조식·포장)가 생명.</li>
-      <li><strong>손익(기본, 일 220명·객단가 18,500)</strong>: 월매출 1억 2,210만(VAT 포함) → 감가 포함 영업이익 약 2,680만(순매출의 24.1%). 보수 880만 / 낙관 4,660만. 민감도 — 객단가 −1,000원=월 −600만 · 일 −30명=−550만 · 원가율 +2%p=−244만.</li>
-      <li><strong>가맹(4부 반영)</strong>: 1+1 요건으로 개시 M12~15. 본사 수익 본체는 원팩 물류 마진(4사 표준 확인 — 로열티의 3~6배). 표준점 창업비 1.3~1.5억은 경쟁 상단 → <strong>점주 순이익 비교표로 증명하는 손익 공개 영업</strong>이 조건. 로열티 정액 50만 + 지역 1호점 6개월 면제.</li>
-      <li><strong>선점 시한 1~2년.</strong> 동양솥밥 2026-08 대구(진입 확률 최고) · 담솥 마산(중간) · 솔솥 서울역점 검증 중. D-120 로드맵 준수가 곧 전략.</li>
-    </ol>
-  </div>
-</section>
-
-<section id="d-ch1" class="band">
-  <div class="inner">
-    <p class="ch-eyebrow">Chapters 01–02 — Market &amp; Portfolio</p>
-    <h2>시장 요약 · 포트폴리오 전략</h2>
-    <ul>
-      <li><strong>시장(1·2·4부 승계)</strong> — 솔솥 79개점+5개국·본사 2025년 매출 126.2억(+36.4%)·부산 3개점 전부 핫플형(역세권 공백)·서울역점 역전 모델 검증 중 / 부산역 일 4.9만·외국인 364만(+43.9%, 대만&gt;중국&gt;일본)·호텔 1,000실·북항 20조 / 한계: 상권 월 251억(서면의 1/7)·통과형·국밥 기준선 / 경쟁 국면: 담솥 49(정지·마산)·동양 21+4(재가속·대구)·가가 4(정지) / 원가 해자: 장어 토핑 1인분 2,600원(CIF $10.75~11.23/kg).</li>
-      <li><strong>포지셔닝 맵</strong> — 솥솥공방(가칭): 넓은 메뉴 폭×중가 프리미엄(솔솥·담솥 사분면, 후발 정면전) / 만선(가칭): 수산 전문×중가 프리미엄(<strong>전국 프랜차이즈 공백 사분면</strong>).</li>
-      <li><strong>공유 자산</strong> — 장어 수입 인프라 · 장어 조리 노하우(히츠마부시 SOP) · 시세 트래커(가맹 공급가 산정 도구로 확장) · 여행자 오퍼레이션 · 부산역 입지 분석.</li>
-    </ul>
-    <h3>확장 파이프라인 비교 <span class="sub">매장 이후의 부가 사업 — 선택 판단 보조 축</span></h3>
+    <p class="ch-eyebrow">D-1 — Brand Definition</p>
+    <h2>브랜드 정의</h2>
+    <p class="defline">한 줄 콘셉트 — <strong>"가득 잡아 돌아온 배(滿船)의 원물로 — 부산에서만 먹는 수산 솥밥 한 상."</strong></p>
+    <div class="stats" style="margin:0 0 36px;">
+      <div class="stat"><b>19,000원</b><span>객단가 (부착 반영) [추정] + 저녁 주류 상방</span></div>
+      <div class="stat"><b>31.5%</b><span>블렌디드 원가율 (부착 반영)</span></div>
+      <div class="stat"><b>약 2,700만</b><span>기본 시나리오(일 220명) 월 영업이익</span></div>
+    </div>
     <div class="tbl"><table>
-      <thead><tr><th>축</th><th>솥솥공방(가칭) (종합)</th><th>만선(가칭) (수산)</th></tr></thead>
-      <tbody>
-        <tr><td>성격</td><td>메뉴·소스 IP 기반 <strong>상온·냉동 가공</strong></td><td>원물 신뢰 기반 <strong>신선·반찬 가공</strong></td></tr>
-        <tr><td>품목</td><td>소스 3종 리테일 · 냉동 RMR 키트(스테이크·치즈닭갈비·장어) · 편의점 도시락 콜라보 · B2B 단체도시락 · 키즈 밀키트 · 홈 솥밥 키트</td><td>기장미역무침·파김치·젓갈 반찬 · 전복솥밥 밀키트 · <strong>장어 타레구이 팩·명절 선물세트(공통 1순위)</strong> · 매장 즉석 판매</td></tr>
-        <tr><td>유통·경쟁</td><td>전국 이커머스 확장성 高 — 단 CJ 햇반솥반·비비고와 정면(인지도 후행)</td><td>콜드체인 부담·마진 얇음 — 단 대기업 미진입 영역, <strong>1호점 '재구매' 문법으로 즉시 가동</strong></td></tr>
-        <tr><td>결론</td><td>늦게 터지지만 천장이 높다</td><td class="win">일찍 시작해 꾸준히 번다</td></tr>
-      </tbody>
+      <tr><td>'만선'의 해석</td><td>만선한 배가 깃발(滿船旗)을 달고 돌아오는 항구 서사 — <strong>"오늘 원물 입고 = 깃발 게양"을 매장 의식으로</strong> 내장 가능</td></tr>
+      <tr><td>BI 방향</td><td>먹색 × 놋쇠 × 쌀백 · 로고 모티프 '만선기(깃발)' · 놋그릇·유기 톤</td></tr>
+      <tr><td>타깃</td><td>① 여행자·외국인(대만·일본 — 장어·해산물 친화) ② 혼밥 출장객 ③ 로컬 미식·저녁 반주 — <strong>부산역 정합이 가장 높은 안</strong></td></tr>
+      <tr><td>포지셔닝</td><td><strong>전국 프랜차이즈 공백 사분면(수산 전문 × 중가 프리미엄) 선점</strong> — 경쟁은 로컬(한다솥·솥이랑)뿐</td></tr>
+      <tr><td>상호 유의</td><td>'만선' 역시 확정 전 상호 검색 + KIPRIS 43·30·35류 검증 필수 <span class="tag mid">자문 1줄</span></td></tr>
     </table></div>
   </div>
 </section>
 
-<section id="d-ch3">
+<section id="d-2" class="band">
   <div class="inner">
-    <p class="ch-eyebrow">Chapters 03–04 — Brand A vs Brand B</p>
-    <h2>솥솥공방(가칭) · 만선(가칭) 각론</h2>
+    <p class="ch-eyebrow">D-2 — Full Menu Architecture</p>
+    <h2>메뉴 설계 전량</h2>
+    <p class="defline">본상 8 · 조식 2 · 곁들임 4 · 음료 · 포장 2 · 세트 1 · 저녁 모드 3. 베이스 2,600원 — <strong>찬 3종은 부산 찬: 대변멸치볶음·기장미역무침·계절찬.</strong></p>
 
-    <h3>솥솥공방(가칭) 종합 솥밥 — 메뉴·BOM 전량 <span class="sub">베이스 2,600원/상</span></h3>
+    <h3>본상 8종 + 옵션</h3>
     <div class="tbl"><table>
-      <thead><tr><th>메뉴</th><th>가격</th><th>토핑 산식</th><th>총원가</th><th>원가율</th></tr></thead>
-      <tbody>
-        <tr><td>대패삼겹숙주</td><td class="num">13,900</td><td class="num">대패 120g×9,000=1,080 + 숙주·소스 420</td><td class="num">4,100</td><td class="num">29.5%</td></tr>
-        <tr><td>치즈닭갈비</td><td class="num">14,900</td><td class="num">닭 1,300 + 치즈 700</td><td class="num">4,600</td><td class="num">30.9%</td></tr>
-        <tr><td>직화목살</td><td class="num">15,900</td><td class="num">목살 110g×11,000=1,210 + 양념 500</td><td class="win">4,310 · 27.1%</td><td class="num"></td></tr>
-        <tr><td>연어스테이크</td><td class="num">17,500</td><td class="num">연어 130g×24,000=3,120 + 400</td><td class="num">6,120</td><td class="lose">35.0%</td></tr>
-        <tr><td>전복버터 / 스테이크(부챗살)</td><td class="num">17,500 / 17,900</td><td class="num">2,800+300 / 부챗살 130g 2,730+500</td><td class="num">5,700 / 5,830</td><td class="num">32.6% / 32.6%</td></tr>
-        <tr><td class="win">민물장어(시그니처)</td><td class="num"><strong>19,500</strong></td><td class="num">자사 필렛 130g 2,600 + 타레 600</td><td class="num">5,800</td><td class="num"><strong>29.7%</strong></td></tr>
-        <tr><td>계절 · 사이드</td><td class="num">21,000 · 4,000~7,900</td><td colspan="3">블렌디드 약 31.8% · 객단가 약 18,000원</td></tr>
-      </tbody>
+      <tr><th>구간</th><th>메뉴</th><th>가격</th><th>토핑 산식 [추정]</th><th>총원가</th><th>원가율</th></tr>
+      <tr><td>로컬 볼륨</td><td>기장미역들깨솥밥 (비건 대응)</td><td class="num">12,500</td><td>미역·들깨·유부 900</td><td class="num">3,500</td><td class="num">28.0%</td></tr>
+      <tr><td>로컬 볼륨</td><td>멸치쌈솥밥(대변항 멸치조림·쌈채)</td><td class="num">13,500</td><td>1,300</td><td class="num">3,900</td><td class="num">28.9%</td></tr>
+      <tr><td>육류 브릿지</td><td>직화목살솥밥</td><td class="num">15,900</td><td>목살 110g 1,210 + 양념 500</td><td class="num">4,310</td><td class="num">27.1%</td></tr>
+      <tr><td>육류 브릿지</td><td>불맛부챗살솥밥(파채·갈릭간장)</td><td class="num">16,500</td><td>부챗살 110g 2,310 + 400</td><td class="num">5,310</td><td class="num">32.2%</td></tr>
+      <tr><td>앵커</td><td>제주갈치솥밥</td><td class="num">17,000</td><td>갈치 순살 130g 2,600 + 300</td><td class="num">5,500</td><td class="num">32.4%</td></tr>
+      <tr><td>앵커</td><td>완도전복미역솥밥(활전복 2미·버터)</td><td class="num">17,500</td><td>전복 2,800 + 300</td><td class="num">5,700</td><td class="num">32.6%</td></tr>
+      <tr><td><strong>시그니처</strong></td><td class="win"><strong>장어솥밥 3식</strong> — ①그대로 ②특제 양념장·고명 ③숭늉 마무리</td><td class="num"><strong>19,500</strong></td><td>자사 필렛 130g 2,600 + 타레·고명·산초 600</td><td class="num">5,800</td><td class="num"><strong>29.7%</strong></td></tr>
+      <tr><td>└ 옵션</td><td>장어 곱빼기 +6,000(원가 +2,600) · 국내산 활장어 업그레이드 +7,500</td><td class="num"></td><td>듀얼 티어</td><td class="num"></td><td class="num"></td></tr>
+      <tr><td>한정</td><td>계절 한 솥 — 가을 대하 → 겨울 방어·굴 → 봄 도다리쑥 → 여름 물회 페어링·냉국물 반상</td><td class="num">21,000</td><td>상한 4,800</td><td class="num">7,400</td><td class="num">35.2%</td></tr>
     </table></div>
-    <p><strong>돼지 카테고리(13,900~15,900)가 솔솥에 없는 라인</strong> — 국밥 상권과 심리 격차 축소 + 최저 원가율 볼륨존. <strong>카피 규정 필수</strong>: 라인업 5/8 중복 → 돼지 전면 배치 · 장어 가격 역전 · 사이드/그릇/문구/BI 독자화(유린기 미사용) · 주의 등급 표현 2개 이상 중복 금지. 고유 리스크 — <span class="tag bad">카피 논란(구조적)</span> · "왜 솔솥 말고?" 답 부족 · 연어 원가율 35% 상단.</p>
 
-    <h3>만선(가칭) 수산 솥밥 — 구성 <span class="sub">BOM 전량은 2부</span></h3>
+    <h3>조식 <span class="sub">07:30~10:30 · 배치 취반 5분 · 베이스 2,200원</span></h3>
     <div class="tbl"><table>
-      <thead><tr><th>구간</th><th>메뉴</th><th>가격</th></tr></thead>
-      <tbody>
-        <tr><td>로컬 볼륨</td><td>기장미역들깨 · 멸치쌈(대변항)</td><td class="num">12,500 · 13,500</td></tr>
-        <tr><td>육류 브릿지</td><td>직화목살 · 불맛부챗살 — 수산 비선호 동행자 방어</td><td class="num">15,900 · 16,500</td></tr>
-        <tr><td>앵커</td><td>제주갈치 · 완도전복미역</td><td class="num">17,000 · 17,500</td></tr>
-        <tr><td class="win">시그니처</td><td>장어솥밥 3식 (곱빼기 +6,000 · 국내산 +7,500)</td><td class="num"><strong>19,500</strong></td></tr>
-        <tr><td>한정</td><td>계절 한 솥 — 가을 대하→겨울 방어·굴→봄 도다리쑥→<strong>여름 물회 페어링·냉국물 반상(4부 반영)</strong></td><td class="num">21,000</td></tr>
-        <tr><td>저녁 모드(40평 신규)</td><td>장어구이 한 판 19,000 · 전복버터구이 · 생선구이 반상 16,500 · 하이볼/금정산성/사케 — 호텔·북항 수요</td><td class="num">—</td></tr>
-        <tr><td>조식·포장</td><td>첫솥 반상 · 기차 도시락(누룽지칩 별첨)</td><td class="num">9,500~10,500 · 12,500~15,000</td></tr>
-      </tbody>
+      <tr><th>메뉴</th><th>가격</th><th>원가</th><th>원가율</th></tr>
+      <tr><td>미역솥밥상</td><td class="num">9,500</td><td class="num">2,900</td><td class="num">30.5%</td></tr>
+      <tr><td>명란버터솥밥상</td><td class="num">10,500</td><td class="num">3,400</td><td class="num">32.4%</td></tr>
+      <tr><td>+드립커피</td><td class="num">2,000</td><td class="num"></td><td class="num"></td></tr>
     </table></div>
-    <p>블렌디드 31.5% · 객단가 19,000원(저녁 주류 상방). 리스크 — 수산 시세·계절(트래커+교체권, 장어가 마진 앵커) · 비선호 이탈(브릿지) · 가맹 신선 물류(원팩 전처리).</p>
-  </div>
-</section>
 
-<section id="d-ch5" class="band">
-  <div class="inner">
-    <p class="ch-eyebrow">Chapters 05–07 — Space · Marketing · Site</p>
-    <h2>40평 설계 · 90일 마케팅 · 입지 기준</h2>
+    <h3>곁들임 · 음료 · 포장 · 세트</h3>
     <div class="tbl"><table>
-      <thead><tr><th>존</th><th>면적</th><th>내용</th></tr></thead>
-      <tbody>
-        <tr><td>주방</td><td class="num">9평</td><td>취반 라인(<strong>자동 취반기/솥밥기계 — 상용 98만 원~, 3사 비교 견적 D-90</strong>) 인덕션 12구 + 구이 존 + 전처리·세척, 일방향 동선</td></tr>
-        <tr><td>홀</td><td class="num">27평</td><td><strong>1인 바 8석(창가·캐리어 선반)</strong> + 2인 8T + 4인 6T + 6인 2T = 약 54석</td></tr>
-        <tr><td>웨이팅·픽업 / 창고</td><td class="num">3평 / 1평</td><td>줄서기 현황판 + 도시락 픽업 + 캐리어 보관</td></tr>
-      </tbody>
+      <tr><th>구분</th><th>메뉴</th><th>가격</th><th>원가</th><th>원가율</th></tr>
+      <tr><td>곁들임</td><td><strong>장어 한 꼬치</strong> (업셀 스타)</td><td class="num">6,500</td><td class="num">1,500</td><td class="num"><strong>23.1%</strong></td></tr>
+      <tr><td>곁들임</td><td>전복 버터구이(2미) / 부산어묵탕 / 옛날 계란찜</td><td class="num">7,500 / 5,500 / 4,000</td><td class="num">2,800 / 1,600 / 900</td><td class="num">37.3% / 29.1% / 22.5%</td></tr>
+      <tr><td>음료</td><td>유자 하이볼 7,500 · 부산 생탁 5,000 · 금정산성막걸리 12,000 · 사케 · 소주/맥주 · 제로 3,000</td><td class="num"></td><td class="num"></td><td class="num">19~50%</td></tr>
+      <tr><td>포장</td><td>기차 도시락 — 장어 / 부챗살 (누룽지칩 별첨 · 15분 전 QR 주문)</td><td class="num">15,000 / 12,500</td><td class="num">4,900 / 4,300</td><td class="num">32.7% / 34.4%</td></tr>
+      <tr><td>세트</td><td><strong>2인 만선상</strong> — 장어 3식+전복미역+장어꼬치+어묵탕 (개별 합 51,000)</td><td class="num"><strong>48,000</strong></td><td class="num">15,900</td><td class="num">33.1%</td></tr>
     </table></div>
-    <ul>
-      <li><strong>운영</strong> — 07:30 조식(배치 취반 5분) → 점심 피크 → 15~17시 <strong>브레이크 없음</strong>(솔솥·담솥·동양 다수가 닫는 시간대를 우리가 먹는다 — 4부 리뷰 불만 반영) → 저녁 반주 모드(만선(가칭)). 인력 주방 4+홀 4+점주(월 2,200~2,800만). QR 열차 연동 사전주문 · 테이블 오더 · POS-트래커 원가 대시보드.</li>
-      <li><strong>마케팅 90일</strong> — D-30 채널 등록+호텔 컨시어지·역무 프리오픈 2일(리허설 4.5+) → D+30 릴스 3기둥(취반 장면/3식 먹는 법/"KTX 40분 전" 데모)+리뷰 시딩(일 120명) → D+60 외국인 채널+호텔 조식 제휴(외국인 15%) → D+90 계절 교체·데이터 보정(일 180명·외국인 20%·평점 4.5·재방문 15%·'카피' 언급 0건).</li>
-      <li><strong>입지</strong> — 후보 ①광장 정면 vs ④호텔 축(1부 15장). 40평 1층 희소로 <strong>물건 가용성이 우선 변수</strong>(1층 30평+2층 허용, 취반 주방 1층 필수). 기준: 15~20시 실측 유동 · 전면 폭 4m+ · 배기·가스 용량 · 월세 400~700만 [추정]. 역사 구내 배제(삼진어묵 월 2억 사례).</li>
-    </ul>
-  </div>
-</section>
 
-<section id="d-ch8">
-  <div class="inner">
-    <p class="ch-eyebrow">Chapters 08–09 — P&amp;L &amp; Risks</p>
-    <h2>손익 모델 · 리스크</h2>
-    <div class="tbl"><table>
-      <thead><tr><th>구분</th><th>보수 (일 150명)</th><th>기본 (일 220명)</th><th>낙관 (일 300명)</th></tr></thead>
-      <tbody>
-        <tr><td>월 매출(객단가 18,500, VAT 포함) → 순매출</td><td class="num">8,325만 → 7,568만</td><td class="num"><strong>1억 2,210만 → 1억 1,100만</strong></td><td class="num">1억 6,650만 → 1억 5,136만</td></tr>
-        <tr><td>재료비(32%) / 인건비</td><td class="num">−2,664 / −2,200</td><td class="num">−3,907 / −2,400</td><td class="num">−5,328 / −2,700</td></tr>
-        <tr><td>임차·관리 / 기타(7.5%) / 감가(3.9억·5년)</td><td class="num">−550 / −624 / −650</td><td class="num">−550 / −916 / −650</td><td class="num">−550 / −1,249 / −650</td></tr>
-        <tr><td><strong>영업이익(감가 포함)</strong></td><td class="num">약 880만 (11.6%)</td><td class="win">약 2,680만 (24.1%)</td><td class="num">약 4,660만 (30.8%)</td></tr>
-      </tbody>
-    </table></div>
-    <ul>
-      <li>브랜드 보정 — 솥솥공방(가칭, 18,000·31.8%) 기본 약 2,580만 / 만선(가칭, 19,000·31.5%) 기본 약 2,700만 + 저녁 주류 상방. <strong>BEP 일 125~135명</strong>(유동의 0.26%) · 회수(현금) 기본 12~15개월, 보수 30개월+.</li>
-      <li>민감도 — 객단가 −1,000원 = 월 −600만 · 일 −30명 = −550만 · 원가율 +2%p = −244만 → <strong>가격 인하 대신 전환율·장어 실적 원가 관리에 투자.</strong> 참고(4부 역산): 담솥 점주 월 1,290만(20평) · 동양 실질 895만(15평) — 우리 기본 2,680만은 규모 효과 포함.</li>
-      <li>리스크 대응 — 집객 부진 3개월: 조식·포장 강화→저녁 확대→좌석 재설계(운전자금 5,000만) / 후발 진입: 선점 1~2년+독자 정체성+상표 / 카피: 3등급 규정 + <strong>'특허받은' 표기는 등록 전 금지·출원은 진행</strong>(3식 제공 방식·타레 배합·사전주문 연동 취반) / 원물 시세: 트래커+교체권 / 인력: 장비+SOP.</li>
-    </ul>
-  </div>
-</section>
+    <h3>저녁 반주 모드 <span class="sub">18:00~21:30 · 40평·주방 9평이라 가능한 이원 운영</span></h3>
+    <p>장어구이 한 판 19,000 · 전복버터구이 · 생선구이 반상 16,500 — <strong>호텔 투숙(도보권 약 1,000실)·북항 수요 흡수.</strong></p>
 
-<section id="d-ch10" class="band">
-  <div class="inner">
-    <p class="ch-eyebrow">Chapter 10 — Matrix &amp; Verdict</p>
-    <h2>비교 매트릭스 (11개 기준) &amp; 권고</h2>
-    <div class="tbl"><table>
-      <thead><tr><th>기준 (5점)</th><th>솥솥공방(가칭) 종합</th><th>만선(가칭) 수산</th></tr></thead>
-      <tbody>
-        <tr><td>시장 검증도</td><td class="win">5</td><td class="num">3</td></tr>
-        <tr><td>차별화·독자성 / 카피·평판 안전</td><td class="num">2 / 2</td><td class="win">5 / 5</td></tr>
-        <tr><td>부산역 정합(여행자·외국인)</td><td class="num">3</td><td class="win">5</td></tr>
-        <tr><td>대중 폭(비수산)</td><td class="win">5</td><td class="num">3→4 (브릿지)</td></tr>
-        <tr><td>원가 해자 활용 / 가맹 스토리</td><td class="num">3 / 2</td><td class="win">5 / 5</td></tr>
-        <tr><td>가맹 표준화 / 운영 난도</td><td class="win">4 / 4</td><td class="num">3 / 3</td></tr>
-        <tr><td>확장 상방 / 파이프라인(2장)</td><td class="num">3 / 3</td><td class="win">4 / 4</td></tr>
-        <tr><td><strong>합계</strong></td><td class="num"><strong>36</strong></td><td class="win"><strong>46 (브릿지 반영 47)</strong></td></tr>
-      </tbody>
-    </table></div>
-    <div class="duo">
-      <div class="card">
-        <h4>권고 — 만선(가칭) + 육류 브릿지</h4>
-        <ul><li>카피 안전 · "부산에서만"의 방문 이유 · 소싱 해자 최대 가동 · "부산발 수산 솥밥" 전국 공백 · 파이프라인 1호점부터 가동</li></ul>
-      </div>
-      <div class="card">
-        <h4>솥솥공방(가칭) 재검토 조건 <span class="tag mid">2개 이상 해당 시</span></h4>
-        <ul><li>① 입지를 서면·신도시 대중 상권으로 변경 ② 가족·회식 주 타깃 ③ 24개월 내 가맹 20개점+ 속도전 ④ 수산 전처리 인력·설비 투자 축소</li></ul>
-      </div>
+    <div class="plate"><span class="pt">Menu Engineering</span>
+      <p>예상 믹스 장어 28 · 전복 18 · 부챗살/목살 16 · 미역/멸치 14 · 갈치 12 · 계절 12% → 본상 평균 17,630원 · 원가 5,564원 = <strong>블렌디드 31.6%</strong>, 부착 반영 시 객단가 약 19,000원 · 블렌디드 31.5% <span class="tag mid">추정</span>. 시그니처(29.7%)의 주변 마진을 장어 꼬치(23.1%)·곱빼기로 보강하는 동선.</p>
+    </div>
+    <div class="plate"><span class="pt">원산지 전략</span>
+      <p><strong>"장어(중국산·자사 직수입 3중 검품)" 정면 표기</strong> + 국내산 옵션(27,000원) 듀얼 티어 — 가격 파괴의 이유를 설명하면 원산지는 신뢰 장치가 된다.</p>
     </div>
   </div>
 </section>
 
-<section id="d-ch11">
+<section id="d-3">
   <div class="inner">
-    <p class="ch-eyebrow">Chapters 11–12 — Franchise &amp; Roadmap</p>
-    <h2>가맹사업 설계 · D-120 로드맵</h2>
+    <p class="ch-eyebrow">D-3 · D-4 · D-5 — Ops · Marketing · P&amp;L</p>
+    <h2>운영·마케팅 변주와 손익 보정</h2>
+    <p class="defline">공통 설계는 PART E — 여기는 이 브랜드만의 변주.</p>
 
-    <h3>본사 수익 모델 <span class="sub">4부 시장 표준 검증 반영</span></h3>
+    <h3>D-3 운영 변주</h3>
+    <ul>
+      <li><strong>1인 바(8석)·2인석 고회전이 본체</strong> → 저녁엔 4인석이 반주 테이블로 전환</li>
+      <li>원물 입고 <strong>'깃발 게양' 의식</strong> — 운영 루틴이자 콘텐츠 겸용</li>
+    </ul>
+
+    <h3>D-4 마케팅 변주</h3>
+    <ul>
+      <li>콘텐츠 기둥 3 — ① "부산에서만"(로컬 원물 캘린더·깃발) ② 장어 3식 의식 ③ "KTX 40분 전" 사전주문 데모</li>
+      <li>채널 — 캐치테이블 글로벌·트립닷컴·구글맵 + 일어·중국어(번체) 콘텐츠 — <strong>대만·일본 관광객 직공</strong></li>
+    </ul>
+
+    <h3>D-5 손익 보정</h3>
+    <p>객단가 19,000 · 원가율 31.5% → 기본(일 220명) 월 영업이익 <strong>약 2,700만</strong> + 저녁 주류 상방 <span class="tag mid">추정</span> — 산식·3시나리오는 PART E-5.</p>
+  </div>
+</section>
+
+<section id="d-6" class="band">
+  <div class="inner">
+    <p class="ch-eyebrow">D-6 · D-7 — Risks · Pipeline</p>
+    <h2>고유 리스크와 확장 파이프라인</h2>
+
+    <h3>D-6 고유 리스크</h3>
+    <ul>
+      <li>수산 시세·계절 변동 — 트래커 모니터링 + 계절 교체권, <strong>장어(자사)가 마진 앵커</strong></li>
+      <li>수산 비선호 이탈 — <strong>육류 브릿지 2종</strong>(직화목살·불맛부챗살)으로 방어</li>
+      <li>가맹 확장 시 신선 물류 난도 — 원팩 전처리(PART E-6)로 완화</li>
+    </ul>
+
+    <h3>D-7 확장 파이프라인</h3>
+    <p>기장미역무침·파김치·젓갈 반찬 라인 → 전복솥밥 밀키트 → <strong>장어 타레구이 진공팩·명절 선물세트(공통 1순위)</strong> → 매장 내 즉석 판매.</p>
+    <div class="plate"><span class="pt">판단</span>
+      <p>콜드체인 부담·마진은 얇지만 <strong>대기업 미진입 영역이라 1호점 방문객 '재구매' 문법으로 오픈 직후부터 가동</strong> 가능.</p>
+    </div>
+  </div>
+</section>
+
+<section id="part-e" style="padding:56px 0 6px; background:#ffffff;">
+  <div class="inner">
+    <hr class="hairline">
+    <p class="eyebrow" style="margin:20px 0 8px;">PART E — SHARED DESIGN &amp; DECISION</p>
+    <h2 style="margin-bottom:4px;">공통 설계 &amp; 결정 프레임</h2>
+  </div>
+</section>
+
+<section id="e-1">
+  <div class="inner">
+    <p class="ch-eyebrow">E-1 — Space &amp; Operations</p>
+    <h2>40평 공간·운영 (양안 동일)</h2>
     <div class="tbl"><table>
-      <thead><tr><th>수익원</th><th>설계</th><th>시장 대조(4부)</th></tr></thead>
-      <tbody>
-        <tr><td>가맹비 / 교육비</td><td class="num">1,000만(지역 1호 면제) / 500만</td><td class="num">경쟁 700~1,419만 / 300~550만</td></tr>
-        <tr><td>로열티</td><td class="num">정액 50만(≈1%) + <strong>지역 1호점 6개월 면제</strong></td><td class="num">시장 표준 1~2%</td></tr>
-        <tr><td class="win">식자재 공급(본체)</td><td>장어·수산 원팩 + 소스·쌀, 마진 15~25%</td><td>4사 공통: 물류 마진 = 로열티의 3~6배. <strong>직수입 원가라 마진 우위 or 점주 원가 인하, 두 선택지 보유</strong></td></tr>
-        <tr><td>표준점</td><td class="num">20~22평·26석·창업비 1.3~1.5억(점포비 별도)</td><td class="num">경쟁 5,858만~1.05억 — 상단이므로 <strong>점주 월 순이익 비교표(손익 공개 영업)</strong>가 모집 조건</td></tr>
-        <tr><td>법적 전제</td><td colspan="2">정보공개서 등록 전 모집 불가 + <strong>직영 1개점 1년(1+1)</strong> → 가맹 개시 M12~15 · 상표 등록이 전제 · 신설 법인 재무는 모기업(수입·유통 실적) 연결 신용 보강 [가맹거래사 자문 전제]</td></tr>
-      </tbody>
+      <tr><th>존</th><th>면적</th><th>내용</th></tr>
+      <tr><td>주방</td><td class="num">9평</td><td>취반 라인(자동 취반기/솥밥기계 — 상용 98만 원~, 3사 비교 견적 D-90) 인덕션 12구 + 구이 존 + 전처리·세척, 일방향 동선</td></tr>
+      <tr><td>홀</td><td class="num">27평</td><td><strong>1인 바 8석(창가·캐리어 선반)</strong> + 2인 8T + 4인 6T + 6인 2T = 약 54석</td></tr>
+      <tr><td>웨이팅·픽업 / 창고</td><td class="num">3평 / 1평</td><td>줄서기 현황판 + 도시락 픽업 + 캐리어 보관</td></tr>
     </table></div>
+    <p><strong>운영 골격</strong> — 07:30 조식(배치 취반 5분) → 점심 피크 → 15~17시 <strong>브레이크 없음</strong>(솔솥·담솥·동양 다수가 닫는 시간대 흡수) → 저녁(브랜드별 변주: C는 가족 외식, D는 반주 모드). 인력 주방 4 + 홀 4 + 점주(인건비 월 2,200~2,800만). QR 열차 연동 사전주문(착석 7분 첫 상) · 테이블 오더 · POS-트래커 원가 대시보드.</p>
+  </div>
+</section>
+
+<section id="e-2" class="band">
+  <div class="inner">
+    <p class="ch-eyebrow">E-2 · E-3 — Marketing 90d · Site</p>
+    <h2>마케팅 90일 골격과 입지 확정 기준</h2>
+
+    <h3>E-2 마케팅 90일 공통 골격</h3>
     <div class="tbl"><table>
-      <thead><tr><th>단계</th><th>시기</th><th>내용</th></tr></thead>
-      <tbody>
-        <tr><td>P1 플래그십</td><td class="num">M0~12</td><td>부산역 40평 직영 — SOP·원팩 검증·데이터 축적 + <strong>장어 가공품 매장 판매 개시(파이프라인 1순위)</strong></td></tr>
-        <tr><td>P2 표준화</td><td class="num">M10~15</td><td>소형 표준점 매뉴얼(주방 6평) · 원팩 생산 체계 · 취반 장비 표준 확정</td></tr>
-        <tr><td>P3 등록 / P4 개시</td><td class="num">M12~15 / M15~24</td><td>정보공개서·가맹계약서·물류 계약 / 부산·경남 1~5호(1호 가맹비+로열티 면제) · <strong>SV 10개점당 1명 원칙(담솥 8명/49개점 반면교사)</strong></td></tr>
-        <tr><td>P5 확장</td><td class="num">M24~36</td><td>영남 10개점 + 수도권 안테나 · 해외(대만·일본 — 장어 문화 정합) MF 타진</td></tr>
-      </tbody>
+      <tr><th>구간</th><th>실행</th><th>게이트 지표</th></tr>
+      <tr><td>D-30</td><td>채널 등록 + 호텔 컨시어지·역무 대상 프리오픈 2일</td><td>리허설 평점 4.5+</td></tr>
+      <tr><td>D+30</td><td>릴스 3기둥(브랜드별 C-4/D-4) + 리뷰 시딩</td><td>일 120명</td></tr>
+      <tr><td>D+60</td><td>외국인 채널 + 호텔 조식 제휴</td><td>외국인 15%</td></tr>
+      <tr><td>D+90</td><td>계절 교체 · 데이터 보정</td><td>일 180명 · 외국인 20% · 평점 4.5 · 재방문 15% · '카피' 언급 0건</td></tr>
     </table></div>
 
-    <h3>D-120 로드맵</h3>
+    <h3>E-3 입지 확정 기준</h3>
+    <p>후보 <strong>① 광장 건너 중앙대로변 vs ④ 호텔 축·역 서측</strong>(PART A 15장) — 40평 1층 희소로 <strong>물건 가용성이 우선 변수</strong>(1층 30평+2층 허용, 취반 주방 1층 필수). 기준: 15~20시 실측 유동 · 전면 폭 4m+ · 배기·가스 용량 · 월세 400~700만 <span class="tag mid">추정</span>. 역사 구내 배제(삼진어묵 월 2억 사례 — 수수료·입찰 구조).</p>
+  </div>
+</section>
+
+<section id="e-4">
+  <div class="inner">
+    <p class="ch-eyebrow">E-4 — Eel Cost Data (자사 트래커 전량)</p>
+    <h2>장어 원가 데이터 — 양안 공통 시그니처의 기반</h2>
     <div class="tbl"><table>
-      <thead><tr><th>시기</th><th>마일스톤</th><th>게이트</th></tr></thead>
-      <tbody>
-        <tr><td>D-120</td><td><strong>브랜드 선택(10장) + 네이밍 확정(2부 만선 계열 스크리닝)·상표 출원</strong> + 정보공개서 캘린더</td><td>상표 선행조사 무충돌</td></tr>
-        <tr><td>D-100</td><td>임장 2회(평일/주말×4시간대) · 40평 물건 3건 비교 → 가계약</td><td>15~20시 유동·전면 폭·배기</td></tr>
-        <tr><td>D-90</td><td>시식 1차 BOM 실측(장어 착지원가 실적 대입) · <strong>취반 장비 3사 견적</strong></td><td>원가율 27~35% 밴드</td></tr>
-        <tr><td>D-75 / D-45</td><td>설계 착공·QR 발주 / 시식 2차 블라인드(19,500 vs 27,000 선택률) → 가격 확정·메뉴판 제작</td><td>시그니처 선택률 25%+</td></tr>
-        <tr><td>D-30 / D-7</td><td>채용·SOP 교육(장어 노하우 이관)·채널 등록 / 프리오픈 2일</td><td>착석 7분 리허설 · 평점 4.5+</td></tr>
-        <tr><td>D-DAY / D+90</td><td>그랜드 오픈 / 데이터 보정 → 가맹 준비(P2) 판단</td><td>일 180명 · 외국인 20%</td></tr>
-      </tbody>
+      <tr><th>월</th><th>조제장어(1604.17) CIF $/kg</th><th>수입량 kg</th><th>월</th><th>CIF $/kg</th><th>수입량 kg</th></tr>
+      <tr><td>2025-08</td><td class="num">11.58</td><td class="num">258,915</td><td>2026-02</td><td class="num">11.56</td><td class="num">150,381</td></tr>
+      <tr><td>2025-09</td><td class="num">11.67</td><td class="num">251,287</td><td>2026-03</td><td class="num">10.89</td><td class="num">141,052</td></tr>
+      <tr><td>2025-10</td><td class="num">12.34</td><td class="num">114,535</td><td>2026-04</td><td class="num">11.25</td><td class="num">256,250</td></tr>
+      <tr><td>2025-11</td><td class="num">12.33</td><td class="num">185,177</td><td>2026-05</td><td class="num"><strong>11.23</strong></td><td class="num">272,640</td></tr>
+      <tr><td>2025-12</td><td class="num">12.14</td><td class="num">186,012</td><td>2026-06</td><td class="num"><strong>10.75</strong></td><td class="num">260,729</td></tr>
+      <tr><td>2026-01</td><td class="num">11.71</td><td class="num">218,823</td><td>2026-07</td><td class="num"><strong>10.77</strong></td><td class="num">275,918</td></tr>
+    </table></div>
+    <ul>
+      <li>2026년 <strong>$10.75~11.25/kg 하향 안정</strong>(환율 1,350원 시 CIF 약 14,500~15,200원/kg) · 보조 품목: 활 뱀장어 $8.40~11.09 · 필렛 $10.50~15.18</li>
+      <li>국내산 도매(안산 경매, 자연산 상): 2022-11 39,500 → 2024-09 27,145 → <strong>2026-05~07 20,200~25,253원/kg</strong> → 필렛 환산 3.4만~4.6만원/kg · 소매 벤치마크(양념구이 8미 1kg) 26,700~29,600원(2026-08)</li>
+    </ul>
+    <div class="plate"><span class="pt">산식</span>
+      <p>착지 20,000원/kg 가정(실적치 교체 필수) 시 <strong>130g 토핑 2,600원</strong> vs 국내산 4,400~6,000원 — <strong>1인분 격차 1,800~3,400원 = 두 전략 공통의 해자.</strong></p>
+    </div>
+  </div>
+</section>
+
+<section id="e-5" class="band">
+  <div class="inner">
+    <p class="ch-eyebrow">E-5 — P&amp;L Model</p>
+    <h2>손익 공통 산식 — 3시나리오 (VAT 분리 · 감가 포함)</h2>
+    <div class="tbl"><table>
+      <tr><th>구분</th><th>보수 (일 150명)</th><th>기본 (일 220명)</th><th>낙관 (일 300명)</th></tr>
+      <tr><td>월 매출(객단가 18,500, VAT 포함) → 순매출</td><td class="num">8,325만 → 7,568만</td><td class="num"><strong>1억 2,210만 → 1억 1,100만</strong></td><td class="num">1억 6,650만 → 1억 5,136만</td></tr>
+      <tr><td>재료비(32%) / 인건비</td><td class="num">−2,664 / −2,200</td><td class="num">−3,907 / −2,400</td><td class="num">−5,328 / −2,700</td></tr>
+      <tr><td>임차·관리 / 기타(7.5%) / 감가(3.9억·5년)</td><td class="num">−550 / −624 / −650</td><td class="num">−550 / −916 / −650</td><td class="num">−550 / −1,249 / −650</td></tr>
+      <tr><td><strong>영업이익</strong></td><td class="num"><strong>약 880만 (11.6%)</strong></td><td class="win"><strong>약 2,680만 (24.1%)</strong></td><td class="num"><strong>약 4,660만 (30.8%)</strong></td></tr>
+    </table></div>
+    <ul>
+      <li><strong>브랜드 보정</strong> — 솥솥공방(가칭) 객단가 18,000·원가 31.0~31.8% → 기본 약 2,580만 / 만선(가칭) 19,000·31.5% → 기본 약 2,700만 + 저녁 주류 상방</li>
+      <li><strong>BEP 일 125~135명</strong>(부산역 유동의 0.26%) · 회수(현금) 기본 12~15개월, 보수 30개월+</li>
+      <li>민감도 — 객단가 −1,000원 = 월 −600만 · 일 −30명 = −550만 · 원가율 +2%p = −244만</li>
+      <li>총투자 <span class="tag mid">추정</span> — 보증금 5,000~8,000만 + 권리금 0~7,000만 + 인테리어·주방 2.0~2.6억 + 운전자금 5,000만 = <strong>3.5~4.5억</strong></li>
+    </ul>
+  </div>
+</section>
+
+<section id="e-6">
+  <div class="inner">
+    <p class="ch-eyebrow">E-6 — Franchise Design</p>
+    <h2>가맹사업 설계 (선택 브랜드에 적용)</h2>
+    <div class="tbl"><table>
+      <tr><td>법적 전제</td><td>정보공개서 등록 전 모집 불가 + <strong>직영 1개점 1년(1+1)</strong> → 가맹 개시 M12~15 · 상표 등록이 전제 <span class="tag mid">가맹거래사 자문 전제</span></td></tr>
+      <tr><td>본사 수익</td><td>가맹비 1,000만(지역 1호 면제) · 교육 500만 · <strong>로열티 정액 50만(≈1%) + 지역 1호점 6개월 면제</strong> · <strong>본체는 원팩 물류 마진 15~25%</strong>(4사 표준: 물류 마진 = 로열티의 3~6배 — PART B 4장 산식. 직수입 원가라 마진 우위 or 점주 원가 인하 선택지 둘 다)</td></tr>
+      <tr><td>표준점</td><td>20~22평 · 26석 · 창업비 1.3~1.5억(점포비 별도) — 경쟁(5,858만~1.05억) 상단이므로 <strong>점주 월 순이익 비교표(손익 공개 영업)</strong>가 모집 조건 · SV 10개점당 1명 원칙</td></tr>
+      <tr><td>로드맵</td><td>P1 플래그십(M0~12, <strong>장어 가공품 매장 판매 개시</strong>) → P2 표준화(M10~15) → P3 등록(M12~15) → P4 부산·경남 1~5호(M15~24) → P5 영남 10개점 + 수도권 안테나·해외 MF 타진(M24~36)</td></tr>
     </table></div>
   </div>
 </section>
 
+<section id="e-7" class="band">
+  <div class="inner">
+    <p class="ch-eyebrow">E-7 — Decision Frame</p>
+    <h2>결정 프레임 — 아직 미결정, 이 판단표로 확정한다</h2>
+    <p class="defline"><strong>두 전략 모두 실행 가능한 완결형으로 설계했다.</strong> 최종 선택은 D-120 게이트에서 아래 판단표 + 결정 전 공통 준비 4건의 결과로 확정한다.</p>
+    <div class="tbl"><table>
+      <tr><th>기준 (각 5점)</th><th>솥솥공방(가칭)</th><th>만선(가칭)</th></tr>
+      <tr><td>시장 검증도</td><td class="win"><strong>5</strong></td><td class="num">3</td></tr>
+      <tr><td>차별화·독자성 / 카피·평판 안전</td><td class="num">2 / 2</td><td class="win"><strong>5 / 5</strong></td></tr>
+      <tr><td>부산역 정합(여행자·외국인)</td><td class="num">3</td><td class="win"><strong>5</strong></td></tr>
+      <tr><td>대중 폭(비수산·가족)</td><td class="win"><strong>5</strong></td><td class="num">3→4 (육류 브릿지)</td></tr>
+      <tr><td>원가 해자 활용 / 가맹 스토리</td><td class="num">3 / 2</td><td class="win"><strong>5 / 5</strong></td></tr>
+      <tr><td>가맹 표준화 / 운영 난도</td><td class="win"><strong>4 / 4</strong></td><td class="num">3 / 3</td></tr>
+      <tr><td>확장 상방 / 파이프라인</td><td class="num">3 / 3</td><td class="win"><strong>4 / 4</strong></td></tr>
+      <tr><td><strong>합계 (55점 만점)</strong></td><td class="num"><strong>36</strong></td><td class="win"><strong>46 (브릿지 반영 47)</strong></td></tr>
+    </table></div>
+    <div class="plate"><span class="pt">판단 보조선</span>
+      <p>분석상 만선(가칭) 우위 — 단 다음 중 하나라도 해당하면 <strong>솥솥공방(가칭)이 우위로 뒤집힌다</strong>: ① 입지를 대중 상권(서면·신도시)으로 변경 ② 가족·회식을 주 타깃으로 설정 ③ 24개월 내 가맹 20개점+ 속도전 ④ 수산 설비 투자 축소.</p>
+    </div>
+    <p><strong>결정 전 공통 준비(어느 안이든 필요)</strong> — 입지 임장 · 장어 착지원가 실측 · 취반 장비 견적 · 두 상호의 상표·상호 검증.</p>
+  </div>
+</section>
 
+<section id="e-8">
+  <div class="inner">
+    <p class="ch-eyebrow">E-8 · E-9 — Risk · Roadmap</p>
+    <h2>리스크 매트릭스와 실행 로드맵</h2>
+
+    <h3>E-8 리스크 매트릭스 (공통)</h3>
+    <div class="tbl"><table>
+      <tr><th>리스크</th><th>가능성</th><th>영향</th><th>대응</th></tr>
+      <tr><td>40평 고정비 대비 집객 부진</td><td>중</td><td>대</td><td>BEP 미달 3개월: 조식·포장 강화 → 저녁 확대 → 좌석 재설계(운전자금 5,000만)</td></tr>
+      <tr><td>경쟁 후발 진입</td><td>중</td><td>중</td><td><strong>선점 시한 1~2년</strong>: 동양솥밥 高(2027) &gt; 담솥 中 &gt; 솔솥 부산역점 가능성 — 선점 + 독자 정체성 + 상표</td></tr>
+      <tr><td>카피 논란</td><td>솥솥공방(가칭) 高 / 만선(가칭) 低</td><td>대</td><td>3등급 규정(PART A 15장) · '특허받은' 표기는 등록 전 금지, 출원은 진행</td></tr>
+      <tr><td>원물 시세 급등 / 인력 수급</td><td>중 / 중</td><td>중 / 중</td><td>트래커 + 계절 교체권 · 장어 마진 앵커 / 장비 + SOP · 기존 운영 인력 풀</td></tr>
+    </table></div>
+
+    <h3>E-9 실행 로드맵 <span class="sub">D-120 → 오픈</span></h3>
+    <div class="tbl"><table>
+      <tr><th>시기</th><th>마일스톤</th><th>게이트</th></tr>
+      <tr><td><strong>D-120</strong></td><td><strong>브랜드 결정(E-7 판단표) + 결정 상호의 상표·상호 검증·출원</strong> + 정보공개서 캘린더</td><td>상표 선행조사 무충돌</td></tr>
+      <tr><td>D-100</td><td>임장 2회(평일/주말 × 4시간대) · 40평 물건 3건 비교 → 가계약</td><td>15~20시 유동 · 전면 폭 · 배기</td></tr>
+      <tr><td>D-90</td><td>시식 1차 BOM 실측(장어 착지원가 실적 대입) · 취반 장비 3사 견적</td><td>원가율 27~35% 밴드</td></tr>
+      <tr><td>D-75 / D-45</td><td>설계 착공·QR 발주 / 시식 2차 블라인드(시그니처 선택률) → 가격 확정·메뉴판 제작</td><td>시그니처 선택률 25%+</td></tr>
+      <tr><td>D-30 / D-7</td><td>채용·SOP 교육(장어 노하우 이관)·채널 등록 / 프리오픈 2일</td><td>착석 7분 리허설 · 평점 4.5+</td></tr>
+      <tr><td>D-DAY / D+90</td><td>그랜드 오픈 / 데이터 보정 → 가맹 준비(P2) 판단</td><td>일 180명 · 외국인 20%</td></tr>
+    </table></div>
+  </div>
+</section>
 <footer>
   <div class="inner">
-    <p><strong>통합본</strong> — 1~4부 전체 합본(원문·출처·산식 전량 유지). 개별 부 문서와 마크다운 원본(출처 URL 전량)은 저장소 reports/ 참조: solsot-busan-benchmark · sotbap-rivals-teardown · busan-sotbap-brand-kit · busan-sotbap-master-plan · busan-sotbap-grand-plan.md.</p>
-    <p>수치는 공개 정보·자사 트래커 기반 추정 포함 — 각 게이트의 실측으로 갱신하는 살아있는 문서로 운용. 통합본 2026-09-01.</p>
+    <p><strong>부산역 솥밥 통합 기획서 (Two-Track Edition)</strong> — A 벤치마킹 · B 경쟁 3사 · C 전략 1 솥솥공방(가칭) · D 전략 2 만선(가칭) · E 공통 설계·결정. 두 전략 모두 실행 가능한 완결형이며 최종 선택은 D-120 게이트(E-7 판단표). 개정 2026-09-01.</p>
+    <p>표기 — [확인] 출처 있음 · [추정] 정황·계산 · [미확인] 못 찾음. 조사 환경상 한국 사이트 다수 직접 열람 차단 → 검색 스니펫 교차 수집. 실행 전 정보공개서 원문 · 임장 · 상표 검증으로 재검증 전제. 원문·출처 전량은 저장소 reports/ (벤치마킹 solsot-busan-benchmark.md · 경쟁 3사 sotbap-rivals-teardown.md · 통합 busan-sotbap-grand-plan.md).</p>
   </div>
 </footer>
