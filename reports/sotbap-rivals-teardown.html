@@ -36,7 +36,7 @@
     margin: 0; font-size: 16px; line-height: 1.75;
     -webkit-font-smoothing: antialiased; letter-spacing: -0.01em;
   }
-  .wrap { max-width: 820px; margin: 0 auto; padding: 56px 20px 100px; }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 56px 20px 100px; }
   .chip { display: inline-flex; align-items: center; background: var(--blue-tint); color: var(--blue-deep); font-size: 13px; font-weight: 700; padding: 5px 12px; border-radius: 999px; margin-bottom: 18px; }
   h1 { font-size: clamp(30px, 5.4vw, 44px); line-height: 1.22; margin: 0 0 12px; font-weight: 800; letter-spacing: -0.028em; text-wrap: balance; }
   .subtitle { color: var(--text-3); font-size: 17px; margin: 0 0 32px; font-weight: 500; }
@@ -54,19 +54,19 @@
   nav.toc a { display: inline-flex; align-items: center; gap: 7px; background: var(--fill-2); color: var(--text-2); text-decoration: none; font-size: 14px; font-weight: 600; padding: 9px 16px; border-radius: 999px; transition: background .15s ease, color .15s ease; }
   nav.toc a:hover, nav.toc a:focus-visible { background: var(--blue-tint); color: var(--blue-deep); }
   nav.toc .n { color: var(--blue); font-weight: 800; font-variant-numeric: tabular-nums; }
-  section { margin-bottom: 72px; }
+  section { margin-bottom: 76px; }
   .chapter { display: inline-flex; background: var(--blue-tint); color: var(--blue-deep); font-size: 12.5px; font-weight: 800; padding: 4px 11px; border-radius: 999px; margin-bottom: 12px; letter-spacing: .01em; }
   h2 { font-size: 27px; margin: 0 0 22px; font-weight: 800; letter-spacing: -0.024em; line-height: 1.3; text-wrap: balance; }
-  h3 { font-size: 18.5px; margin: 38px 0 14px; font-weight: 700; letter-spacing: -0.015em; }
-  p { margin: 0 0 14px; max-width: 46em; }
+  h3 { font-size: 18px; margin: 36px 0 12px; font-weight: 700; letter-spacing: -0.015em; }
+  p { margin: 0 0 14px; max-width: 48em; }
   ul, ol { margin: 0 0 16px; padding-left: 22px; }
-  li { margin-bottom: 8px; }
+  li { margin-bottom: 7px; }
   li::marker { color: var(--text-4); }
   strong { font-weight: 700; }
   .muted { color: var(--text-4); font-size: 13.5px; }
   a { color: var(--blue); text-decoration: none; font-weight: 600; }
   a:hover, a:focus-visible { text-decoration: underline; text-underline-offset: 3px; }
-  .tag { display: inline-block; font-size: 12px; font-weight: 800; padding: 1px 8px; border-radius: 999px; vertical-align: 1px; white-space: nowrap; }
+  .tag { display: inline-block; font-size: 11.5px; font-weight: 800; padding: 1px 8px; border-radius: 999px; vertical-align: 1px; white-space: nowrap; }
   .tag.ok { background: var(--ok-tint); color: var(--ok); }
   .tag.mid { background: var(--warn-tint); color: var(--warn); }
   .tag.bad { background: var(--danger-tint); color: var(--danger); }
@@ -74,12 +74,13 @@
   .summary { counter-reset: sm; list-style: none; padding: 0; display: grid; gap: 10px; }
   .summary li { counter-increment: sm; background: var(--fill); border-radius: 16px; padding: 16px 20px 16px 58px; position: relative; margin: 0; }
   .summary li::before { content: counter(sm); position: absolute; left: 18px; top: 17px; width: 26px; height: 26px; border-radius: 50%; background: var(--blue); color: var(--on-accent); font-size: 13.5px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
-  .tbl { overflow-x: auto; background: var(--fill); border-radius: 16px; margin-bottom: 20px; }
-  table { border-collapse: collapse; width: 100%; font-size: 14.5px; min-width: 560px; }
-  th { text-align: left; font-size: 13px; color: var(--text-4); font-weight: 700; padding: 13px 18px 9px; white-space: nowrap; }
-  td { padding: 11px 18px; border-top: 1px solid var(--line); vertical-align: top; font-variant-numeric: tabular-nums; }
+  .tbl { overflow-x: auto; background: var(--fill); border-radius: 16px; margin-bottom: 18px; }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; min-width: 600px; }
+  th { text-align: left; font-size: 12.5px; color: var(--text-4); font-weight: 700; padding: 12px 16px 8px; white-space: nowrap; }
+  td { padding: 10px 16px; border-top: 1px solid var(--line); vertical-align: top; font-variant-numeric: tabular-nums; }
   td:first-child { font-weight: 700; white-space: nowrap; }
   td.win { color: var(--ok); font-weight: 800; }
+  td.lose { color: var(--danger); font-weight: 700; }
   .check-group { background: var(--fill); border-radius: 16px; padding: 20px 22px; margin-bottom: 12px; }
   .check-group h4 { margin: 0 0 12px; font-size: 15.5px; font-weight: 800; color: var(--blue-deep); }
   .check { list-style: none; padding: 0; margin: 0; }
@@ -96,20 +97,20 @@
 
 <div class="wrap">
   <header>
-    <div class="chip">경쟁 분석 · 4부 · 2026. 09. 01</div>
+    <div class="chip">경쟁 분석 · 4부 상세판 · 2026. 09. 01</div>
     <h1>솥밥 경쟁 3사 해체</h1>
-    <p class="subtitle">담솥 · 동양솥밥 · 가가솥밥 — 확장 기록(날짜) · 원가와 순수익 역산 · 부산 침투 현황</p>
+    <p class="subtitle">담솥 · 동양솥밥 · 가가솥밥 — 날짜 단위 확장 기록 · 산식 포함 원가/순수익 역산 · 지점 전수 · 부산 침투 시나리오</p>
 
     <div class="notice">
       <span class="nt">읽는 법</span>
-      브랜드별 전담 조사 3트랙, 검색 100여 회로 만들었습니다. <strong>[확인]</strong>은 출처가 있는 사실, <strong>[추정]</strong>은 정황으로 계산한 값입니다. 원가·순수익은 전부 역산 추정치입니다. 실행 판단 전에는 공정위 정보공개서 원문과 대조하세요.
+      브랜드별 전담 리서치 3트랙, 검색 105회 + 인허가·법인·보도·리뷰 교차. <strong>[확인]</strong>=출처 있음 / <strong>[추정]</strong>=정황·계산 / <strong>[미확인]</strong>=못 찾음. 원가·순수익 역산은 <strong>산식을 전부 표기</strong>했으니 단가를 바꿔 재계산할 수 있습니다. 정보공개서 원문 대조 번호: 담솥 20220875 · 동양솥밥 20231512 · 가가솥밥 20215091(각 추정).
     </div>
 
     <div class="stats">
-      <div class="stat"><b>49개</b><span>담솥 국내 매장 (가맹 47+직영 2, 2026.7)</span></div>
-      <div class="stat"><b>21+4개</b><span>동양솥밥 국내+대만 (2026.8)</span></div>
-      <div class="stat"><b>4개</b><span>가가솥밥 — 5년간 확장 정지</span></div>
-      <div class="stat"><b>1~2년</b><span>부산 상권이 비어 있을 예상 시한</span></div>
+      <div class="stat"><b>49개</b><span>담솥 국내(가맹47+직영2) — 순증 정지 국면</span></div>
+      <div class="stat"><b>21+4개</b><span>동양솥밥 국내+대만 — 월 2개 재가속</span></div>
+      <div class="stat"><b>4개</b><span>가가솥밥 — 5년간 월 0.07개</span></div>
+      <div class="stat"><b>158~306만</b><span>매장당 본사 월 물류마진 추정(4장 산식)</span></div>
     </div>
 
     <nav class="toc" aria-label="목차">
@@ -117,182 +118,375 @@
       <a href="#ch1"><span class="n">1</span>담솥</a>
       <a href="#ch2"><span class="n">2</span>동양솥밥</a>
       <a href="#ch3"><span class="n">3</span>가가솥밥</a>
-      <a href="#ch4"><span class="n">4·5</span>공통 구조</a>
-      <a href="#ch6"><span class="n">6</span>5자 비교</a>
-      <a href="#ch7"><span class="n">7</span>기획 반영</a>
+      <a href="#ch4"><span class="n">4</span>본사 수익 산식</a>
+      <a href="#ch5"><span class="n">5</span>가격 이력</a>
+      <a href="#ch6"><span class="n">6</span>5자 비교 18항목</a>
+      <a href="#ch7"><span class="n">7</span>기획 반영 8건</a>
     </nav>
   </header>
 
   <section id="summary">
     <h2>요약</h2>
     <ol class="summary">
-      <li><strong>담솥이 가장 위협적입니다.</strong> 2022년 설립, 2년 만에 40호점, 지금 국내 49개 + LA·호치민 + 태국 계약. 무기는 가지솥밥 — 싼 재료로 시그니처를 만들어 <strong>원가율 약 24%(역산)</strong>. 다만 2026년 들어 "개설 60여 개 vs 운영 49개" 격차와 업종전환 유치 프로모션 등 <strong>성장 정체 신호</strong>가 보입니다. 경남 마산까지 왔습니다.</li>
-      <li><strong>동양솥밥은 확장 속도의 교과서.</strong> 2023년 6월 안산 1호점 → 3년 2개월 만에 국내 21호 + 대만 4호. 비결은 낮은 진입 장벽: 창업비 5,858만(가맹비 면제 시)·솥밥기계 98만 원·로열티 1%·손익계산서 공개 영업. 가격은 주력 9,900~12,900원 저가형. 2026년 8월 대구로 영남 첫 진입.</li>
-      <li><strong>가가솥밥은 확장 답을 못 찾은 5년차.</strong> 101번지남산돈까스 그룹의 세컨드 브랜드. 강남 로드샵 1곳 + 아울렛·휴게소 위성점 4개가 전부. 김해점의 실체는 <strong>남해고속도로 진영휴게소(부산방향) 푸드코트</strong>입니다.</li>
-      <li><strong>공통 구조</strong>: 4사(솔솥 포함) 모두 로열티가 0~2%로 낮습니다. 본사가 돈을 버는 곳은 <strong>식자재 물류 마진</strong>입니다. 우리 가맹 설계(3부)의 방향이 시장 표준과 일치함을 확인했습니다.</li>
-      <li><strong>우리에게 주는 결론</strong>: 부산은 아직 비어 있지만 담솥(마산)·동양(대구)이 영남에 들어왔습니다. <strong>선점 시한은 길어야 1~2년.</strong> 그리고 시그니처 원가 전략에서 담솥은 "싼 재료를 비싸게", 우리는 "비싼 재료(장어)를 싸게 조달" — 우리 쪽이 모방이 더 어렵습니다.</li>
+      <li><strong>담솥 = 최대 위협, 그러나 국내 순증 정지.</strong> 2022-05-27 법인 설립 → 2024 하반기 40호점(월 2.4개 페이스) → 2025-01-15 LA → 2025-05 호치민 → 2026-02-12 태국 계약. 그런데 "개설 60여 개(2026-04)" vs "운영 49개(2026-07)" 격차 약 10개 + 업종전환 유치·장비 무상 프로모션 = 국내 성장이 꺾였고 폐점이 신규를 상쇄하는 국면. 시그니처 가지솥밥은 역산 원가율 <strong>24.4%</strong>(산식: 가지 150g 450원+소스 400원+상차림 2,200원). 경남 마산까지 진출, 본사 직원은 8명뿐.</li>
+      <li><strong>동양솥밥 = 날짜가 가장 촘촘한 확장 기계.</strong> 2023-06 안산(자기 덮밥집 리뉴얼) → 2024-04-15 검단 인허가 → 2024-07-25 청라 8호 → 2024말 12호 → 2025-09-17 대만 → 2026-07-06/07-14/07말/08-03 4연속(18~21호, 대구 첫 영남). 엔진: 창업비 5,858만·솥밥기계 98만·로열티 1%·손익 공개 영업. 단 본사 제시 "순이익 27%"는 부가세 포함 기준 — 분리 시 <strong>19.7%, 직원 고용 시 11%</strong>까지 하락(산식 2-6).</li>
+      <li><strong>가가솥밥 = 5년째 4개점.</strong> 돈까스 그룹(300억대)의 세컨드 브랜드. 강남 로드샵 1 + 아울렛·휴게소 위성 3. 김해점 실체는 부산방향 진영휴게소 푸드코트(2025-04-10 추정). 원가율은 27~29%로 좋은데 가격 평점 3.0 — <strong>마진이 아니라 체감 가치가 프리미엄을 결정한다는 반면교사.</strong></li>
+      <li><strong>본사 수익의 산식 확인</strong>: 4사 로열티 0~2%. 월 5,000만 매장 기준 로열티 50만 vs <strong>물류 마진 158~306만(3~6배)</strong> — 낮은 로열티로 점주를 모으고 식자재로 버는 공식. 우리는 장어·수산 직수입 원가라 같은 공급가에서도 마진이 더 남는다.</li>
+      <li><strong>부산 선점 시한</strong>: 동양솥밥 진입 확률 최고(2027년 중 가능), 담솥 중간(12~24개월, 몰 입지라 부산역과 비충돌), 가가 낮음. <strong>길어야 1~2년.</strong></li>
     </ol>
   </section>
 
   <section id="ch1">
     <div class="chapter">1장 · 심층</div>
     <h2>담솥</h2>
-    <div class="oneline"><span class="ol">한 줄 정의</span><strong>저원가 시그니처(가지)와 홀 전용 단순 운영으로, 솔솥보다 싸게·빠르게 큰 2위 사업자.</strong> 운영: 이청년에프앤비㈜ (대표 이대희, 직원 8명, 인천 송도)</div>
+    <div class="oneline"><span class="ol">한 줄 정의</span><strong>저원가 시그니처(가지)와 홀 전용 단순 운영으로, 솔솥보다 싸게·빠르게 큰 2위. 지금은 국내 정체·해외 전환 국면.</strong></div>
 
-    <h3>확장 타임라인</h3>
+    <h3>회사 기본</h3>
+    <div class="tbl"><table>
+      <tr><td>법인</td><td>이청년에프앤비㈜ · <strong>2022-05-27 설립</strong> · 대표 이대희 · 사업자 702-88-02475 <span class="tag info">확인</span></td></tr>
+      <tr><td>본사</td><td>인천 연수구 송도과학로16번길 13-18, 8층 816호 (+남동구 호구포로 194 별도 사업장 — 물류·사무 추정) · 1533-0857</td></tr>
+      <tr><td>조직</td><td><strong>직원 8명</strong> · 국민연금 6명 · 평균연봉 3,288만 — 49개점+해외를 8명이 관리 → SV 밀도 매우 낮음 <span class="tag mid">추정</span></td></tr>
+      <tr><td>재무</td><td>비공시(외부감사 아님) <span class="tag info">확인-부재</span></td></tr>
+      <tr><td>정보공개서</td><td>2022년 등록 추정 (마이프차 번호 20220875)</td></tr>
+    </table></div>
+
+    <h3>확장 타임라인 (전체)</h3>
     <div class="tbl"><table>
       <thead><tr><th>시점</th><th>사건</th><th>판정</th></tr></thead>
       <tbody>
         <tr><td>2022-05-27</td><td>법인 설립</td><td><span class="tag info">확인</span></td></tr>
-        <tr><td>2022 하반기</td><td>1호점 송도 본점(트리플스트리트) — "코로나 중 런칭"</td><td><span class="tag mid">추정</span></td></tr>
-        <tr><td>2023년</td><td>첫 가맹점 (정보공개서 2022 등록 → 이듬해 모집 역산)</td><td><span class="tag mid">추정</span></td></tr>
-        <tr><td><strong>2024 하반기</strong></td><td><strong>가맹 40호점 — "개시 1년 5개월 만"</strong></td><td><span class="tag info">확인</span></td></tr>
-        <tr><td><strong>2025-01-15</strong></td><td>미국 LA점 — 2달 만에 웨이팅 90분+, 홀 매출만 일 $7,200</td><td><span class="tag info">확인</span></td></tr>
-        <tr><td><strong>2025-05</strong></td><td>베트남 호치민점(빈컴메가몰) — 첫 해외 직영</td><td><span class="tag info">확인</span></td></tr>
-        <tr><td><strong>2026-02-12</strong></td><td>태국 마스터프랜차이즈 계약</td><td><span class="tag info">확인</span></td></tr>
-        <tr><td>2026-07</td><td>"국내 49개 운영" + 업종전환 지원·'솥밥 머신' 무상 프로모션</td><td><span class="tag info">확인</span></td></tr>
+        <tr><td>2022 하반기</td><td>1호점 송도 본점 — 송도과학로16번길 33-2 트리플스트리트 B동 ("코로나 중 런칭")</td><td><span class="tag mid">추정</span></td></tr>
+        <tr><td>2023년</td><td>첫 가맹점 (등록 이듬해 모집 관행 + "1년 5개월 만 40호" 역산)</td><td><span class="tag mid">추정</span></td></tr>
+        <tr><td><strong>2024 하반기</strong></td><td><strong>가맹 40호점</strong> — "개시 1년 5개월 만" + 2024 소비자 우수기업 브랜드대상 수상</td><td><span class="tag info">확인</span></td></tr>
+        <tr><td><strong>2025-01-15</strong></td><td>미국 LA점 — 한인타운 윌셔 3377, 브라운더비 플라자(옛 '와코' 자리)</td><td><span class="tag info">확인</span></td></tr>
+        <tr><td>2025-03경</td><td>LA 2달 성과: 웨이팅 90분+, <strong>홀 매출만 일 $7,200</strong>(약 970만 원)</td><td><span class="tag info">확인</span></td></tr>
+        <tr><td>2025 상반기</td><td>"월 1~2개 신규 오픈 지속"</td><td><span class="tag info">확인</span></td></tr>
+        <tr><td><strong>2025-05</strong></td><td>호치민점(빈컴메가몰 타오디엔 5층) — "첫 해외 직영". 가격 −25~30%(15만~25만 동), 순두부찌개 한상 등 현지화</td><td><span class="tag info">확인</span></td></tr>
+        <tr><td><strong>2026-02-12</strong></td><td>태국 마스터프랜차이즈 계약(RUAY MAI YOOD) — 연내 방콕 1호 목표</td><td><span class="tag info">확인</span></td></tr>
+        <tr><td>2026-04-02</td><td>"창업 4년 만에 국내 60여 개 개설"(누적) + 샌디에이고·버지니아 계획</td><td><span class="tag info">확인</span></td></tr>
+        <tr><td>2026-07경</td><td><strong>"국내 49개(가맹47+직영2)"</strong> + 덮밥·규동 매장 업종전환 지원 + '솥밥 머신' 선착순 10호점 무상</td><td><span class="tag info">확인</span></td></tr>
       </tbody>
     </table></div>
-    <p><strong>해석</strong> — 2023~24 급가속 → 2025 해외 전환 → 2026 국내 정체. "개설 60여 개(2026-04)"와 "운영 49개(2026-07)"의 격차 약 10개는 폐점 가능성, 업종전환·장비 무상 프로모션은 신규 창업 수요 둔화의 대응으로 읽힙니다 [추정].</p>
-
-    <h3>원가·순수익 역산 <span class="muted">[전부 추정]</span></h3>
     <div class="tbl"><table>
-      <thead><tr><th>메뉴</th><th>판매가</th><th>총원가(역산)</th><th>원가율</th></tr></thead>
+      <thead><tr><th>구간 속도</th><th>기간</th><th>순증</th><th>월평균</th></tr></thead>
       <tbody>
-        <tr><td><strong>가지솥밥 (시그니처)</strong></td><td class="num">12,500</td><td class="num">약 3,050 (가지 450 + 소스 400 + 상차림 2,200)</td><td class="win">약 24%</td></tr>
-        <tr><td>전복솥밥</td><td class="num">15,500</td><td class="num">약 5,000</td><td class="num">약 32%</td></tr>
-        <tr><td>스테이크솥밥</td><td class="num">18,000</td><td class="num">약 5,200</td><td class="num">약 29%</td></tr>
+        <tr><td>가맹 개시→40호</td><td>~17개월 (2023~2024하)</td><td class="num">+40</td><td class="win">월 2.4개</td></tr>
+        <tr><td>40호→50개+</td><td>~4개월 (→2025-01)</td><td class="num">+10</td><td class="num">월 2.5개</td></tr>
+        <tr><td>50개+→49개</td><td>~18개월 (→2026-07)</td><td class="lose">−1 이하</td><td class="lose">순증 정지·순감</td></tr>
+      </tbody>
+    </table></div>
+    <p class="muted">상충 2건: ① 일부 사이트의 "2019-08-01 가맹 개시"는 법인 설립일(2022-05)과 모순 — 오기로 판단 ② "개설 60여" vs "운영 49" — 폐점 약 10개 존재 또는 과장. 어느 쪽이든 국내 순증 정지는 일치 [추정].</p>
+
+    <h3>확인 지점 17개 / 49개</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>지역</th><th>지점 (주소·비고)</th></tr></thead>
+      <tbody>
+        <tr><td>인천 (3)</td><td><strong>본점 송도</strong>(트리플스트리트 B동, 직영·1호) · 구월점 · +해외 총괄 본사</td></tr>
+        <tr><td>서울 (8)</td><td><strong>익선직영점</strong>(수표로28길 21-3) · 성수(연무장7가길 2, 맛 4.9) · 안국 · 시청 · 상암(사보이시티DMC 1층) · 압구정(선릉로155길 13) · 타임스퀘어(3층 푸드스트리트) · 홈플러스상봉</td></tr>
+        <tr><td>경기 (4)</td><td>서판교(운중로 121) · 용인보정(카페거리) · 수원역 · 동탄</td></tr>
+        <tr><td>충청 (2)</td><td>아산탕정 · 대전둔산</td></tr>
+        <tr><td>경남 (1)</td><td><strong>마산합포점 — 영남 유일 거점</strong> <span class="tag info">확인</span></td></tr>
+        <tr><td>해외 (2)</td><td>LA(윌셔 3377) · 호치민(빈컴메가몰)</td></tr>
+        <tr><td>미확보</td><td class="lose">약 32개 지점명 — damsot.com 매장 안내 직접 조회 필요</td></tr>
+      </tbody>
+    </table></div>
+    <p class="muted">입지 유형(확인분): 몰·복합 5 / 핫플 로드샵 4 / 오피스 1 / 신도시·주거 5 — 솔솥과 유사하되 몰 비중이 더 높음.</p>
+
+    <h3>가맹 조건 전체</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>항목</th><th>금액</th><th>판정</th></tr></thead>
+      <tbody>
+        <tr><td>가맹비 / 교육비 / 보증금</td><td class="num">1,100만 / 550만 / 100만</td><td><span class="tag info">확인-스니펫</span></td></tr>
+        <tr><td>인테리어</td><td class="num">평당 220만 → 20평 4,400만</td><td><span class="tag info">확인-스니펫</span></td></tr>
+        <tr><td><strong>표준 합계</strong></td><td class="num"><strong>약 7,800만</strong> (점포비·일부 설비 별도) · 점포 포함 1.5억~2억 예상</td><td><span class="tag info">확인</span></td></tr>
+        <tr><td>로열티</td><td class="num">매출 1%</td><td><span class="tag mid">단일 소스</span></td></tr>
+        <tr><td>가맹점 평균 연매출</td><td class="num">약 6억 2,550만 (월 5,212만)</td><td><span class="tag mid">단일 소스 — 원문 검증 필요</span></td></tr>
+        <tr><td>연도별 신규·해지·폐점</td><td>—</td><td><span class="tag bad">미확인</span></td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>메뉴·가격 전수 (솥밥 13종)</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>메뉴</th><th>확인 가격 (지점 차등)</th><th>메뉴</th><th>확인 가격</th></tr></thead>
+      <tbody>
+        <tr><td>가지솥밥 ⭐</td><td class="num">구월·성수 12,000 / 압구정·본점 13,000</td><td>전복솥밥</td><td class="num">구월 15,000 / 압구정 16,000</td></tr>
+        <tr><td>매운가지 / 매운가지치즈</td><td class="num">12,000~13,000 / +치즈</td><td>스테이크솥밥</td><td class="num">구월 17,000 / 압구정 18,000 / 본점 19,000</td></tr>
+        <tr><td>우삼겹 / 고등어</td><td class="num">13,000~14,000 / 13,000</td><td>소고기숙주·연어·장어·마늘쫑·꽈리고추두부·닭튀김</td><td class="num">가격 미확보</td></tr>
+        <tr><td>사이드</td><td colspan="3">가지새우튀김 · 통새우튀김 · 연어사시미 · 치즈카츠 · 우삼겹 스키야키 — 1인 예산 12,000~20,000원</td></tr>
       </tbody>
     </table></div>
     <ul>
-      <li>시그니처가 최저 원가율 → <strong>팔릴수록 마진이 좋아지는 믹스</strong>. 블렌디드 27~29% 추정, 4사 중 최고 마진 구조.</li>
-      <li><strong>점주 손익(역산)</strong>: 평균 연매출 6.26억(단일 소스) = 월 5,212만 → 부가세·재료비(29%)·인건비·임차·로열티 1% 차감 후 <strong>월 약 1,230만(순매출의 26%)</strong>. 상위 사례는 18평 홀 전용으로 월 1.3억 [확인].</li>
-      <li>창업비 약 7,800만(20평, 점포비 별도) — 솔솥의 절반.</li>
+      <li>도정 <strong>15일 이내</strong> 쌀 · <strong>1인용 압력솥 개별 취반</strong> · 솥밥+장국+밑반찬 · 숭늉 마무리 안내 · <strong>포장·배달 없음(홀 전용)</strong> · 브레이크 15:30~17:00</li>
+      <li>예약 채널이 지점마다 제각각: 자체 사이트 + 테이블링(압구정) + 오토리저브(익선·상봉) — 표준화 안 됨</li>
     </ul>
 
-    <h3>주목할 점 3가지</h3>
-    <div class="check-group">
-      <ul class="check">
-        <li><strong>"특허받은 가지솥밥"은 등록번호가 없다</strong> — 출원 보도만 있고 Google Patents 무결과. 마케팅 표현일 가능성 [추정]. 교훈: 우리는 등록 완료 후에만 '특허' 표기, 대신 출원 자체는 모집에 먹힌다는 것도 사실.</li>
-        <li><strong>부산은 없지만 경남 마산합포점 운영 중</strong> — 영남 거점 확보 상태. 몰 입지 선호라 부산 진입 시 서면·센텀 몰이 유력, 부산역 로드샵과 직접 충돌 가능성은 낮음 [추정].</li>
-        <li><strong>약점</strong>: 웨이팅(LA 90분+), 브레이크타임, 포장·배달 없음, 가격 체감(맛 4.9 vs 가격 4.0) → 우리의 사전주문·무휴식·기차솥 도시락·장어 가격파괴가 정확히 이 빈틈을 칩니다.</li>
-      </ul>
-    </div>
+    <h3>원가 역산 <span class="muted">[추정 — 베이스 2,200원: 쌀 220g 950 + 간소 반찬·장국 800 + 숭늉 150 + 가스·소모품 300]</span></h3>
+    <div class="tbl"><table>
+      <thead><tr><th>메뉴</th><th>판매가</th><th>토핑 산식</th><th>총원가</th><th>원가율</th></tr></thead>
+      <tbody>
+        <tr><td><strong>가지솥밥</strong></td><td class="num">12,500</td><td class="num">가지 150g×3,000원/kg=450 + 소스·파기름 250 + 고명 150</td><td class="num">3,050</td><td class="win">24.4%</td></tr>
+        <tr><td>매운가지치즈</td><td class="num">13,500</td><td class="num">850 + 치즈 60g 600</td><td class="num">3,650</td><td class="num">27.0%</td></tr>
+        <tr><td>소고기숙주</td><td class="num">14,000</td><td class="num">우삼겹 90g×18,000=1,620 + 숙주·소스 400</td><td class="num">4,220</td><td class="num">30.1%</td></tr>
+        <tr><td>전복</td><td class="num">15,500</td><td class="num">전복 2미 2,800 + 버터 200</td><td class="num">5,200</td><td class="num">33.5%</td></tr>
+        <tr><td>스테이크</td><td class="num">18,000</td><td class="num">부챗살 110g×21,000=2,310 + 소스 500</td><td class="num">5,010</td><td class="num">27.8%</td></tr>
+        <tr><td>연어(가격 가정 16,000)</td><td class="num">16,000</td><td class="num">연어 110g×24,000=2,640 + 400</td><td class="num">5,240</td><td class="num">32.8%</td></tr>
+      </tbody>
+    </table></div>
+    <p><strong>구조</strong>: 시그니처가 최저 원가율 → 시그니처로 몰릴수록 마진 상승. 믹스(가지 40%·육류 25%·수산 25%·기타 10%) 가중 시 블렌디드 <strong>27~28%</strong> — 4사 중 최고 마진. 담솥은 "싼 재료를 브랜딩으로 비싸게", 우리는 "비싼 재료(장어)를 조달력으로 싸게" — 담솥 방식은 아이디어라 모방이 쉽고(동양솥밥이 실제로 '동양가지솥밥' 카피 판매 중), 우리 방식은 수입 인프라가 필요해 모방이 어렵다.</p>
+
+    <h3>점주 손익 역산 <span class="muted">[추정 — 평균 매장]</span></h3>
+    <div class="tbl"><table>
+      <thead><tr><th>항목</th><th>월 금액</th><th>산식·가정</th></tr></thead>
+      <tbody>
+        <tr><td>매출(VAT 포함) → 순매출</td><td class="num">5,212만 → 4,738만</td><td class="num">연 6.255억÷12 → ÷1.1</td></tr>
+        <tr><td>재료비</td><td class="num">−1,459만</td><td class="num">매출×28%</td></tr>
+        <tr><td>인건비</td><td class="num">−1,200만</td><td>직원 4명, 점주 무급 가정</td></tr>
+        <tr><td>임차·관리 / 로열티 / 기타</td><td class="num">−350만 / −52만 / −391만</td><td class="num">준핫플 18~20평 / 1% / 7.5%</td></tr>
+        <tr><td><strong>점주 영업이익</strong></td><td class="win">약 1,290만 (순매출의 27%)</td><td>점주 인건비 반영 시 약 940만</td></tr>
+        <tr><td>상위 사례</td><td class="num">매출 월 1.3억(18평 홀 전용) → 같은 산식 약 3,900만</td><td><span class="tag info">매출은 확인</span></td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>"특허받은 가지솥밥" 실체 + 마케팅·리뷰</h3>
+    <ul>
+      <li><strong>특허</strong>: "특허출원" 보도 제목만 존재. Google Patents에서 등록특허 0건, 번호 공개 소스 없음 → <strong>출원 단계 마케팅 표현 가능성</strong> [미확정 — KIPRIS 필요]. 교훈: 등록 전 "특허받은" 표기는 표시광고법 리스크(우리는 등록 후만 사용), 단 문구의 모집 효과 자체는 실증됨.</li>
+      <li><strong>마케팅</strong>: "광고·박람회 없이 경험 고객의 가맹 문의" 전략 · 지점별 인스타(@damsot_la 4,982팔로워·190게시물 / @songdo_damsot 230·19) — 국내 SNS는 약체, 입지·입소문 의존 · 언론은 보도자료성 기사 월 1회 안팎 · Yelp LA 375리뷰·TimeOut LA 소개</li>
+      <li><strong>리뷰 칭찬</strong>: ①가지의 의외성("가지가 맛있다니 가지가지하네") ②갓 도정 쌀+개별 압력솥 밥 품질 ③전복내장소스·장국 간 ④숭늉 마무리 ⑤성수점 맛 4.9</li>
+      <li><strong>리뷰 불만</strong>: ①오픈 직후부터 웨이팅(LA 90분+) ②브레이크타임 ③가격 체감(성수 가격 4.0) ④포장·배달 없음</li>
+      <li><strong>부산 시나리오</strong>: 마산 거점 확보 → 부산 진입 확률 중간(12~24개월). 몰 선호라 서면·센텀 유력, 부산역 로드샵과 직접 충돌 낮음. 단 국내 순증 정지 국면이라 진입 주체는 본사가 아닌 가맹 희망자 발생 여부 [추정].</li>
+    </ul>
   </section>
 
   <section id="ch2">
     <div class="chapter">2장</div>
     <h2>동양솥밥</h2>
-    <div class="oneline"><span class="ol">한 줄 정의</span><strong>장비와 매뉴얼로 진입 장벽을 최저로 낮춰, 저가 솥밥을 빠르게 복제하는 확장 기계.</strong> 운영: ㈜엠앤에스→㈜우리이길 (대표 이민규 — 마라홀릭 59개점도 보유)</div>
+    <div class="oneline"><span class="ol">한 줄 정의</span><strong>장비(98만 원 솥밥기계)와 매뉴얼로 진입 장벽을 최저로 낮춰, 저가 솥밥을 빠르게 복제하는 확장 기계.</strong> 대표 이민규 — 마라홀릭(59개점) 보유 멀티브랜드 운영자.</div>
 
-    <h3>확장 타임라인 <span class="muted">(날짜 확보율 최고)</span></h3>
+    <h3>확장 타임라인 (날짜 전량)</h3>
     <div class="tbl"><table>
-      <thead><tr><th>시점</th><th>사건</th></tr></thead>
+      <thead><tr><th>시점</th><th>사건</th><th>판정</th></tr></thead>
       <tbody>
-        <tr><td><strong>2023-06</strong></td><td>1호점 안산본점 — 자기 덮밥집(홍대개미)을 리뉴얼 <span class="tag info">확인</span></td></tr>
-        <tr><td>2024-04~07</td><td>3호 목동 → 4호 검단완정(4/15 인허가) → 6호 산본 → 8호 청라(7/25) <span class="tag info">확인</span></td></tr>
-        <tr><td>2024년 말</td><td>12호점 — 1년 만에 1→12개 급팽창 <span class="tag info">확인</span></td></tr>
-        <tr><td>2025-08~09</td><td>15호 경기광주 · <strong>2025-09-17 대만 가오슝 1호</strong>(이후 대만 4호까지) <span class="tag info">확인</span></td></tr>
-        <tr><td>2026-07~08</td><td>두 달에 4개: 18호 인덕원(7/6) → 19호 문정역(7/14) → 20호 계양 → <strong>21호 대구 이시아폴리스(8/3, 첫 영남)</strong> <span class="tag info">확인</span></td></tr>
+        <tr><td><strong>2023-06경</strong></td><td>1호점 안산본점(예술대학로 11) — 자기 덮밥집 '홍대개미' 리뉴얼. 1주년(2024-06)·3주년(2026-06~07) 이벤트로 역산</td><td><span class="tag info">확인</span></td></tr>
+        <tr><td>2023 / 2024</td><td>정보공개서 등록(2023-1512) / 가맹사업 개시</td><td><span class="tag info">확인</span></td></tr>
+        <tr><td>2024-04</td><td>3호점 목동 보도 · <strong>04-15 검단완정 인허가</strong>(면허 3560000-101-2024-00197)</td><td><span class="tag info">확인</span></td></tr>
+        <tr><td>2024-05~06</td><td>6호점 산본 · <strong>06-04 선유도 인허가</strong>(22.7㎡)</td><td><span class="tag info">확인</span></td></tr>
+        <tr><td><strong>2024-07-25</strong></td><td>8호점 인천서구청라</td><td><span class="tag info">확인</span></td></tr>
+        <tr><td><strong>2024-09-26</strong></td><td>보라매병원역점 인허가(60.31㎡=18.3평)</td><td><span class="tag info">확인</span></td></tr>
+        <tr><td>2024 말</td><td>11호 한양대에리카(직영) · 12호 일산화정 — "총 12개"</td><td><span class="tag info">확인</span></td></tr>
+        <tr><td>2025 상반기</td><td>13호 수원역 · 평택역 · 광교엘포트</td><td><span class="tag info">확인/추정</span></td></tr>
+        <tr><td>2025-08~09</td><td>15호 경기광주</td><td><span class="tag info">확인</span></td></tr>
+        <tr><td><strong>2025-09-17</strong></td><td><strong>대만 가오슝 한신백화점 1호</strong> → 가오슝 카르푸 2호 → 타이난 카르푸 3호 연속</td><td><span class="tag info">확인</span></td></tr>
+        <tr><td>2025말~2026초</td><td>16호 동탄호수공원(라크몽 지하 푸드코트)</td><td><span class="tag info">확인/추정</span></td></tr>
+        <tr><td>2026 1분기</td><td>17호 여의도 + 신메뉴 3종 — "국내외 21개(국내 17+대만 4)"</td><td><span class="tag info">확인</span></td></tr>
+        <tr><td><strong>2026-07-06 / 07-14 / 07말 / 08-03</strong></td><td>18호 안양인덕원 → 19호 문정역 → 20호 인천계양 → <strong>21호 대구 이시아폴리스(첫 영남)</strong></td><td><span class="tag info">확인</span></td></tr>
+      </tbody>
+    </table></div>
+    <div class="tbl"><table>
+      <thead><tr><th>연도</th><th>매장 수</th><th>속도</th></tr></thead>
+      <tbody>
+        <tr><td>2022 → 2023말</td><td class="num">0 → 1~2</td><td>—</td></tr>
+        <tr><td>2024</td><td class="num">2 → 12</td><td class="win">+10~11 (월 0.9)</td></tr>
+        <tr><td>2025</td><td class="num">12 → 15+대만 1</td><td class="num">둔화 (월 0.3)</td></tr>
+        <tr><td>2026 (~9월)</td><td class="num">→ 21+대만 4 ≈ 25</td><td class="win">7~8월 두 달 +4 (월 2.0) 재가속</td></tr>
+      </tbody>
+    </table></div>
+    <p class="muted"><strong>지점 전수(상호 23개)</strong>: 안산본점(직영)·과천(직영)·목동·검단완정·마곡발산·산본·선유도·청라·보라매병원역·한양대에리카(직영)·일산화정·수원역·평택역·광교엘포트·경기광주·서산·군산·동탄호수공원·여의도·안양인덕원·문정역·인천계양·대구이시아폴리스. 확인 23 &gt; 공칭 21호 — 1~2곳 이탈 또는 최신 미보도 [추정]. 폐업 기록 미발견.</p>
+
+    <h3>가맹 조건 전체 (15평, 마이프차 본사 제시가)</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>항목</th><th>금액</th><th>항목</th><th>금액</th></tr></thead>
+      <tbody>
+        <tr><td>가맹비</td><td class="num">1,000만 — "도·시·군 1호점 무료"</td><td>간판·사인물</td><td class="num">450만</td></tr>
+        <tr><td>교육비</td><td class="num">300만</td><td>주방설비/보조/기물</td><td class="num">930만/160만/350만</td></tr>
+        <tr><td>인테리어(평당 190만)</td><td class="num">2,850만</td><td><strong>솥밥기계</strong></td><td class="num"><strong>98만 (6개월 할부)</strong></td></tr>
+        <tr><td>디자인비(평당 30만)</td><td class="num">450만</td><td>테이블·의탁자</td><td class="num">270만</td></tr>
+        <tr><td><strong>가맹비 면제 시 합계</strong></td><td class="win">약 5,858만 (점포비 별도)</td><td>로열티</td><td class="num">월 매출 1%</td></tr>
       </tbody>
     </table></div>
 
-    <h3>확장 엔진 — 진입 장벽 최소화</h3>
-    <ul>
-      <li>창업비 <strong>5,858만 원</strong>(15평, 가맹비 면제 시 — "도·시·군 1호점 무료") · <strong>솥밥기계 98만 원</strong>(할부 가능) · 로열티 <strong>매출 1%</strong></li>
-      <li><strong>손익계산서 공개 영업</strong>: 월 매출 5,000만 기준 식자재 35%·인건 22%·임대 7% → 순이익 1,350만(27%)을 본사가 먼저 보여줌. 직영 실적 증빙(안산본점 월 9,400만~1억, 과천 17평 최고 7,639만 — 본사 발표치).</li>
-      <li>가격 밴드 <strong>7,900~22,900원(주력 9,900~12,900)</strong> — 4사 중 유일한 저가형. 규동솥밥 9,900원의 역산 원가율 약 37% — 본사 공개치(식자재 35%)와 부합해 자료 신뢰도가 역으로 확인됨.</li>
-      <li>점주 실질 순이익: 본사 27%는 부가세 포함 기준으로 보이며, 분리 시 <strong>20~22% 수준, 직원 고용 시 15% 안팎</strong> [추정].</li>
-    </ul>
+    <h3>본사 공개 손익 모델 vs 우리 검증</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>항목</th><th>본사 제시 (월 매출 5,000만)</th><th>우리 검증 (VAT 분리)</th></tr></thead>
+      <tbody>
+        <tr><td>식자재 35% / 인건 22% / 임대 7%</td><td class="num">1,750 / 1,100 / 350</td><td class="num">동일 차감</td></tr>
+        <tr><td>관리 6% / 잡비 2% / 로열티 1%</td><td class="num">300 / 100 / 50</td><td class="num">동일 차감</td></tr>
+        <tr><td>기준 매출</td><td class="num">5,000만 (VAT 포함)</td><td class="num">순매출 4,545만</td></tr>
+        <tr><td><strong>순이익</strong></td><td class="num">1,350만 — "27%"</td><td class="lose"><strong>895만 = 순매출의 19.7%</strong> · 직원 2명 고용 시 약 495만(11%)</td></tr>
+        <tr><td>직영 실적(본사 발표)</td><td colspan="2">안산본점(30평) 월 9,400만~1억 724만 · 과천(17평) 최고 7,639만 — 30평 실적을 "부부 2인 모델" 근거로 쓰는 건 비약, 주의</td></tr>
+      </tbody>
+    </table></div>
 
-    <h3>주목할 점</h3>
-    <div class="check-group">
-      <ul class="check">
-        <li><strong>부산 도달 예상 2027년</strong> — 수도권→충청·호남→대구(2026-08) 순서로 남하 중, 월 1~2개 페이스 [추정]. 단 저가형이라 부산에선 국밥과 정면 경쟁 — 우리(프리미엄 여행자)와는 부분만 겹침.</li>
-        <li><strong>약점</strong>: "누룽지 퍼포먼스 부족", "프리미엄 대비 평범" — 저가라서 경험이 얕음. 원물·의식·공간의 프리미엄으로 정면충돌 회피 가능.</li>
-        <li>폐점 기록 미발견. 단 확인 상호 23개 vs 공칭 21호점 불일치 — 1~2곳 이탈 가능성 [추정].</li>
-      </ul>
-    </div>
+    <h3>메뉴·가격 전수 + 원가 역산 <span class="muted">[베이스 2,100원: 수향미 220g 850 + 셀프바 반찬 700 + 국·누룽지 250 + 가스 300]</span></h3>
+    <div class="tbl"><table>
+      <thead><tr><th>메뉴</th><th>판매가</th><th>토핑 산식</th><th>총원가</th><th>원가율</th></tr></thead>
+      <tbody>
+        <tr><td>규동솥밥</td><td class="num">9,900 (8,900~10,900 변동)</td><td class="num">우삼겹 80g×18,000=1,440 + 양파·소스·계란 400</td><td class="num">3,940</td><td class="lose">39.8%</td></tr>
+        <tr><td>계절나물솥밥</td><td class="num">9,900</td><td class="num">나물 3종 500</td><td class="num">2,600</td><td class="win">26.3%</td></tr>
+        <tr><td>목살 / 매운목살</td><td class="num">9,900 / 10,900</td><td class="num">목살 100g×11,000=1,100 + 소스 300</td><td class="num">3,500</td><td class="num">35.4%</td></tr>
+        <tr><td>묵은지삼겹 / 동양가지</td><td class="num">11,900</td><td class="num">— (가지는 담솥 시그니처의 사실상 카피)</td><td class="num">~3,600</td><td class="num">~30%</td></tr>
+        <tr><td>동파육 / 미나리항정</td><td class="num">12,900</td><td class="num">조림 삼겹 120g 1,700 + 소스·야채 400</td><td class="num">4,200</td><td class="num">32.6%</td></tr>
+        <tr><td>전복</td><td class="num">16,900</td><td class="num">전복 2미 2,800 + 300</td><td class="num">5,200</td><td class="num">30.8%</td></tr>
+        <tr><td>장어 (1일 10개 한정)</td><td class="num">22,900</td><td class="num">수입 필렛 130g 2,600~3,500 + 타레 300 (원산지 불명)</td><td class="num">5,000~7,200</td><td class="num">22~31%</td></tr>
+        <tr><td>사이드</td><td colspan="4">돈카츠·멘보샤·꿔바로우·목화솜탕수육 3,000~5,900 · 누룽지 무료 · 2026 신메뉴: 지카비대창·목살·매운목살·부대전골</td></tr>
+      </tbody>
+    </table></div>
+    <p>저가 육류 메뉴 원가율 35~40% — 본사 공개치 "식자재 35%"와 부합(자료 신뢰도 역확인). <strong>마진이 얇아 로열티도 1%로 낮춰야 점주가 남는 구조.</strong></p>
+
+    <h3>운영·리뷰·부산 시나리오</h3>
+    <ul>
+      <li>운영: 10:00~22:00(LO 21:00~21:30) · 다수 지점 브레이크 15:00~16:30/17:00 · 셀프바(반찬 리필) · 테이블오더 · <strong>배달·포장 병행</strong>(담솥과 반대) · 실평수 15~18평(선유도 22.7㎡)과 17~30평 혼재</li>
+      <li>리뷰 칭찬: ①"재료가 알차고 가성비"(게우 소스 서비스) ②"솥밥 좋아하는 60대와 덮밥 좋아하는 20~30대 모두"(세대 포용) ③깔끔·위생 '매우우수'(산본 2024-11-13)·평택역 4.8</li>
+      <li>리뷰 불만: ①"누룽지를 직접 만드는 게 아니라 퍼포먼스가 아쉽다" ②"정갈함이 아쉽고 반찬이 무난"(프리미엄 대비 평범) ③평일 웨이팅+브레이크</li>
+      <li><strong>부산 시나리오</strong>: 수도권→서산→군산→대구(2026-08) 남하 중. "도·시·군 1호점 가맹비 무료" 정책상 <strong>부산 1호점은 2027년 중 가맹 문의 발생 시 즉시 가능 — 3사 중 진입 확률 최고.</strong> 단 가격대(9,900~12,900)가 돼지국밥과 정면 경쟁 — 우리(프리미엄 여행자)와 겹침은 부분적.</li>
+    </ul>
   </section>
 
   <section id="ch3">
     <div class="chapter">3장</div>
     <h2>가가솥밥</h2>
-    <div class="oneline"><span class="ol">한 줄 정의</span><strong>중견 돈까스 그룹(101번지남산돈까스, 매출 300억대)의 세컨드 브랜드. 프리미엄은 지켰지만 확장 답을 못 찾은 5년차.</strong></div>
+    <div class="oneline"><span class="ol">한 줄 정의</span><strong>돈까스 그룹(101번지남산돈까스, 300억대)의 세컨드 브랜드. 프리미엄은 지켰지만 5년째 4개점 — 월 0.07개.</strong></div>
 
-    <h3>타임라인·구조</h3>
+    <h3>회사·타임라인</h3>
     <div class="tbl"><table>
-      <thead><tr><th>시점</th><th>사건</th></tr></thead>
+      <thead><tr><th>시점</th><th>사건</th><th>판정</th></tr></thead>
       <tbody>
-        <tr><td>2021년</td><td>론칭 + 강남점(로드샵·플래그십) + 정보공개서 등록 추정 <span class="tag info">확인/추정</span></td></tr>
-        <tr><td>~2023-12</td><td>대전점 — 현대프리미엄아울렛 3층 <span class="tag info">확인</span></td></tr>
-        <tr><td>2025-04-10 추정</td><td><strong>김해 진영복합휴게소(부산방향)점</strong> — 푸드코트 입점 <span class="tag mid">추정(연도)</span></td></tr>
-        <tr><td>2026-09 현재</td><td>4개점(강남·용인·대전·김해) — 5년간 4개, 폐점 없음 <span class="tag info">확인</span></td></tr>
+        <tr><td>그룹 연혁</td><td>1997 남산 101번지 본점 → 2013 HMR → 2015 FC법인(무한도전·런닝맨 노출) → 2021 가가솥밥 론칭·그룹 200억 → 2022 그룹 300억 → 2023 조리로봇 '로보다이닝 101' 뉴욕(6월)·상하이(8월)</td><td><span class="tag info">확인</span></td></tr>
+        <tr><td>2021</td><td>론칭 + <strong>강남점(1호)</strong> — 역삼로5길 19, 1층(강남역 11번 출구 5분). 늦어도 2022-02 이전 영업(2022-03-26 리뷰 존재) + 정보공개서 등록 추정(마이프차 20215091) — <strong>가맹 모집 중</strong></td><td><span class="tag info">확인/추정</span></td></tr>
+        <tr><td>시기 미상</td><td>용인점 — 주소·후기 검색 실패</td><td><span class="tag bad">미확인</span></td></tr>
+        <tr><td>~2023-12</td><td>대전점 — 현대프리미엄아울렛 3층 3207호(테크노중앙로 123)</td><td><span class="tag info">확인</span></td></tr>
+        <tr><td>2025-04-10 추정</td><td><strong>김해 진영복합휴게소(부산방향)점</strong> — 진영읍 하계로96번길 94-4, 푸드코트</td><td><span class="tag mid">확인(4/10)·추정(연도)</span></td></tr>
+        <tr><td>2026-09</td><td>4개점 · 폐점 보도 없음 · 대표 조윤희(인터뷰) vs 마이프차 대표 김준용(사업자 584-87-01610) 불일치 — 별도 가맹법인 가능성</td><td><span class="tag info">확인+추정</span></td></tr>
       </tbody>
     </table></div>
+
+    <h3>전략 구조 · 가맹 조건</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>유형</th><th>지점</th><th>경험</th></tr></thead>
+      <tbody>
+        <tr><td>플래그십 로드샵</td><td>강남 (11:00~21:00, 브레이크 15~17시)</td><td>풀서비스 · "호텔 레스토랑 같은" 인테리어 · 1인석</td></tr>
+        <tr><td>아울렛 위성</td><td>대전 (10:30~21:00, LO 20:30)</td><td>아울렛 영업시간 종속</td></tr>
+        <tr><td>휴게소 위성</td><td>김해 진영(부산방향 단방향)</td><td class="lose">주문·운반·반납 셀프 — 본점 프리미엄과 경험 격차</td></tr>
+      </tbody>
+    </table></div>
+    <div class="tbl"><table>
+      <thead><tr><th>가맹 조건 (85.9㎡=26평, VAT 별도)</th><th>금액</th></tr></thead>
+      <tbody>
+        <tr><td>가맹비 / 교육비 / 마케팅·비품</td><td class="num">700만 / 300만 / 400만</td></tr>
+        <tr><td>주방기기·집기 / 인테리어(평당 190만) / 간판</td><td class="num">3,380만 / 약 4,940만 / 800만</td></tr>
+        <tr><td><strong>합계</strong> (마이프차 표기는 8,175만 — 기준 차이)</td><td class="num"><strong>약 1억 500만</strong> (점포비 별도)</td></tr>
+        <tr><td>로열티 / 평균매출 / 객단가</td><td class="num">순매출 2% / 미공표 / "평균 45,000원"(2인 단가 해석이 합리적)</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>메뉴 전수 + 원가 역산 <span class="muted">[베이스 2,600원: 쌀 950 + 정갈 반찬 1,100 + 숭늉 150 + 가스 300]</span></h3>
+    <div class="tbl"><table>
+      <thead><tr><th>메뉴</th><th>판매가</th><th>토핑 산식</th><th>총원가</th><th>원가율</th></tr></thead>
+      <tbody>
+        <tr><td>붉은대게솥밥 ⭐</td><td class="num">19,000 / 특 22,000</td><td class="num">자숙 홍게살 80g×27,000=2,160 + 게우·고명 400</td><td class="num">5,160</td><td class="num">27.2%</td></tr>
+        <tr><td>명란버터솥밥</td><td class="num">15,000</td><td class="num">명란 60g 1,100 + 버터 200</td><td class="num">3,900</td><td class="win">26.0%</td></tr>
+        <tr><td>고등어땡초솥밥</td><td class="num">16,000→17,000 (인상 흔적)</td><td class="num">고등어 필렛 120g 1,300 + 300</td><td class="num">4,200</td><td class="win">24.7%</td></tr>
+        <tr><td>스테이크솥밥</td><td class="num">18,000 / 특 22,000</td><td class="num">부챗살 110g 2,310 + 400</td><td class="num">5,310</td><td class="num">29.5%</td></tr>
+        <tr><td>참도미솥밥</td><td class="num">22,000</td><td class="num">도미 필렛 130g 3,300 + 300</td><td class="num">6,200</td><td class="num">28.2%</td></tr>
+        <tr><td>특대장어솥밥</td><td class="num">25,000</td><td class="num">국산급 130g 4,800 + 타레 400</td><td class="num">7,800</td><td class="num">31.2%</td></tr>
+        <tr><td>기타</td><td colspan="4">완도전복·영양버섯·곤드레·숙성갈비·간장돼지조림·얼큰김치칼국수·<strong>묵사발솥밥(여름 한정 — 최소 2023년부터 반복 시즌제)</strong> · 전체 10,900~25,000원 · "10분 8인분" 조리 시스템 소구</td></tr>
+      </tbody>
+    </table></div>
+    <p>블렌디드 27~29% — 담솥급 고마진 설계인데 <strong>가격 평점 3.0</strong>. 마진이 아니라 "가격만큼의 경험(양·간·서비스)"이 프리미엄을 결정한다는 반면교사.</p>
+
+    <h3>점주 손익 시나리오 <span class="muted">[평균매출 미공표 → 가정 계산]</span> · 리뷰 · 부산 함의</h3>
     <ul>
-      <li><strong>"1 로드샵 + 특수상권 위성" 모델</strong>: 강남에서 프리미엄 이미지를 만들고, 아울렛·휴게소처럼 집객이 보장된 곳에 위성점. 임차 리스크는 낮지만 위성점은 셀프서비스라 프리미엄 경험이 깨짐(리뷰 불만과 일치).</li>
-      <li>가맹 조건: 26평 약 1억 500만(가맹비 700만), 로열티 순매출 2% — 모집 중이지만 사실상 정지 상태.</li>
-      <li>원가 역산: 붉은대게솥밥 19,000원 = 원가 약 5,200(자숙 홍게살 80g 2,200 포함) → <strong>원가율 약 27%</strong>. 주력가는 2022~2026 동결, 여름 한정 묵사발솥밥으로 방어 — 우리 '계절 한 솥'의 선례.</li>
-      <li><strong>부산 함의</strong>: 김해점은 부산 시내가 아니라 "부산 가는 길목" 트래픽용. 확장력을 볼 때 부산 직접 진입 가능성 낮음 [추정].</li>
-      <li>약점: 간이 심심하다는 호불호, 가격 평점 3.0, 위성점 경험 격차 — <strong>프리미엄을 표방하며 가격 체감 가치를 못 채운 반면교사</strong>.</li>
+      <li><strong>손익 가정</strong>(26평 로드샵 · 일 120명 × 19,000원 = 월 6,840만): 순매출 6,218 − 재료 28% 1,915 − 인건 1,600 − 임차 500 − 로열티 124 − 기타 513 = <strong>약 1,560만(25%)</strong>. 일 120명 미달 시 급감 — 확장이 멈춘 이유와 연결.</li>
+      <li>리뷰 칭찬: 재료의 질("버섯의 질", 발려 나오는 대게살) · 정갈한 1인 한상+숭늉 · 친절("부모님 모시고 오면 좋겠다")</li>
+      <li>리뷰 불만: <strong>간이 심심</strong>("간장조차 연하다" — 본사도 '슴슴함' 인정, 호불호 구조화) · <strong>가격 부담</strong>(맛 4.2/가격 3.0/응대 3.2) · 조리 대기 + 위성점 셀프·"반찬 허술"</li>
+      <li><strong>부산 함의</strong>: 김해점은 부산 진입 직전 30~40km의 부산방향 전용 휴게소 매장 — 시내 진출이 아님. 확장력상 부산 직접 진입 가능성 낮음. 오히려 "프리미엄 솥밥 25,000원"의 심리 상한을 만들어 줘 <strong>우리 장어 3식 19,500원을 돋보이게 하는 비교 대상</strong>.</li>
     </ul>
   </section>
 
   <section id="ch4">
-    <div class="chapter">4·5장</div>
-    <h2>4사 공통 구조 — 본사는 어디서 벌고, 가격은 어떻게 움직였나</h2>
+    <div class="chapter">4장</div>
+    <h2>4사 공통 구조 — 본사 수익의 산식</h2>
     <div class="tbl"><table>
-      <thead><tr><th>브랜드</th><th>로열티</th><th>창업비(점포비 별도)</th><th>가격 움직임(2022~26)</th></tr></thead>
+      <thead><tr><th>브랜드</th><th>로열티</th><th>창업비(점포비 별도)</th><th>평당 인테리어</th></tr></thead>
       <tbody>
-        <tr><td>솔솥</td><td class="num">미공표</td><td class="num">1.48억 (20평)</td><td>앵커 17,000 동결 + 특수상권 차등</td></tr>
-        <tr><td>담솥</td><td class="num">1% <span class="muted">단일 소스</span></td><td class="num">7,800만 (20평)</td><td>지점별 차등(12,000~13,000)</td></tr>
-        <tr><td>동양솥밥</td><td class="num">1%</td><td class="num">5,858만~ (15평)</td><td>저가 메뉴만 소폭 인상 흔적</td></tr>
-        <tr><td>가가솥밥</td><td class="num">2%</td><td class="num">8,175만~1.05억 (26평)</td><td>주력 동결 + 시즌 한정으로 방어</td></tr>
+        <tr><td>솔솥</td><td class="num">미공표</td><td class="num">1억 4,800만 / 20평</td><td class="num">374만</td></tr>
+        <tr><td>담솥</td><td class="num">매출 1% (단일 소스)</td><td class="num">7,800만 / 20평</td><td class="num">220만</td></tr>
+        <tr><td>동양솥밥</td><td class="num">매출 1%</td><td class="num">5,858만(면제 시) / 15평</td><td class="num">190만+30만</td></tr>
+        <tr><td>가가솥밥</td><td class="num">순매출 2%</td><td class="num">8,175만~1억 500만 / 26평</td><td class="num">190만</td></tr>
       </tbody>
     </table></div>
-    <ul>
-      <li><strong>수익 공식의 수렴</strong>: 낮은 로열티로 점주를 모으고, 식자재 원팩 공급 마진으로 번다. 우리 3부 가맹 설계(원팩 마진 중심)가 시장 표준과 같은 방향임을 확인. 장어·수산 직수입 원가 우위 덕에 <strong>같은 공급가에서도 본사 마진이 더 남는 구조</strong>가 가능 — 가맹 단계의 진짜 해자.</li>
-      <li><strong>가격 전략의 수렴</strong>: 일괄 인상 대신 차등·신메뉴·한정 메뉴. 우리도 "본점가 고정 + 계절 한 솥으로 수익성 조절"이 맞음.</li>
-      <li><strong>장비의 상용화</strong>: 담솥 '솥밥 머신' 무상 프로모션, 동양솥밥 기계 98만 원 — 자동 취반 장비가 이미 시장에 있음. "착석 7분 첫 상"의 실현 수단으로 장비 조달 조사를 추가할 것.</li>
-    </ul>
+    <div class="check-group">
+      <h4>"로열티 1%로 어떻게 버나" — 물류 마진 산식 [추정]</h4>
+      <ul class="check">
+        <li>월 매출 5,000만 매장: 식자재비 30~35% = 1,500만~1,750만 → 본사 공급 비중 70% 가정 = 1,050만~1,225만 → 공급 마진 15~25% 가정 = <strong>본사 이익 158만~306만/월/점 = 로열티(50만)의 3~6배</strong></li>
+        <li>규모 환산: 담솥 가맹 47개 × 약 200만 = <strong>월 약 0.9억(연 11억)</strong> · 솔솥 가맹 70개+ × 약 250만 = <strong>월 약 1.8억(연 21억)</strong> — 솔솥 본사 매출 92.5억(2024)의 상당분이 이 구조로 설명됨</li>
+        <li><strong>우리 함의</strong>: 장어·수산 직수입 원가 공급이 가능한 본사는 4사 중 없음 — 마진을 크게 갖거나, 마진을 줄여 점주 원가를 낮춰주거나(모집 경쟁력), 두 선택지를 모두 가짐</li>
+        <li><strong>장비 상용화 확인</strong>: 동양솥밥 기계 98만 원 · 담솥 '솥밥 머신' 무상 프로모션 — "숙련 조리사 없는 갓 지은 밥"은 장비로 해결되는 단계. D-90 체크리스트에 장비 3사 비교 견적 추가</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="ch5">
+    <div class="chapter">5장</div>
+    <h2>가격 인상 이력 종합</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>브랜드</th><th>확인된 움직임 (2022~2026)</th><th>전략</th></tr></thead>
+      <tbody>
+        <tr><td>솔솥</td><td class="num">앵커 17,000 동결 · 특수상권 +900~2,900 (명동 17,900~19,900)</td><td>상권별 차등</td></tr>
+        <tr><td>담솥</td><td class="num">과거가 미확보 · 현재 지점 차등 ±1,000~2,000 (가지 12,000~13,000 · 스테이크 17,000~19,000)</td><td>지점 차등</td></tr>
+        <tr><td>동양솥밥</td><td class="num">규동 8,900→9,900→10,900 계단식 · "7,900원부터" 표기는 사수</td><td>저가 메뉴만 인상</td></tr>
+        <tr><td>가가솥밥</td><td class="num">붉은대게 19,000 4년 동결 · 고등어만 16,000→17,000</td><td>동결 + 여름 한정으로 방어</td></tr>
+      </tbody>
+    </table></div>
+    <p><strong>결론</strong>: 4사 모두 전 메뉴 일괄 인상을 피한다. 수단은 ①상권·지점 차등 ②저가 메뉴만 소폭 인상 ③시즌 한정으로 객단가 조절. 우리 원칙: <strong>본점가 고정 + 계절 한 솥(21,000)으로 조절 + 불가피하면 사이드·옵션부터.</strong></p>
   </section>
 
   <section id="ch6">
     <div class="chapter">6장</div>
-    <h2>5자 비교 매트릭스</h2>
+    <h2>5자 비교 매트릭스 — 18개 항목</h2>
     <div class="tbl"><table>
-      <thead><tr><th>기준</th><th>솔솥</th><th>담솥</th><th>동양솥밥</th><th>가가솥밥</th><th>가칭2 (우리)</th></tr></thead>
+      <thead><tr><th>항목</th><th>솔솥</th><th>담솥</th><th>동양솥밥</th><th>가가솥밥</th><th>가칭2 (우리)</th></tr></thead>
       <tbody>
-        <tr><td>시작</td><td class="num">2021</td><td class="num">2022</td><td class="num">2023-06</td><td class="num">2021</td><td class="num">2027 목표</td></tr>
-        <tr><td>매장</td><td class="num">79+해외 5개국</td><td class="num">49+LA·호치민·태국MF</td><td class="num">21+대만 4</td><td class="num">4</td><td class="num">1 (플래그십)</td></tr>
-        <tr><td>가격 밴드</td><td class="num">1.4만~2.5만</td><td class="num">1.2만~1.9만</td><td class="num">0.79만~2.29만</td><td class="num">1.5만~2.5만</td><td class="num">1.25만~2.1만</td></tr>
-        <tr><td>시그니처</td><td>스테이크 17,000</td><td>가지 12,500 <span class="muted">(원가율 24%)</span></td><td>규동 9,900</td><td>붉은대게 19,000</td><td class="win">장어 3식 19,500</td></tr>
+        <tr><td>운영사·설립</td><td>㈜솔솥 2021-07</td><td>이청년에프앤비 2022-05-27</td><td>엠앤에스→우리이길</td><td>에스엠제이컴퍼니</td><td>(신설 예정)</td></tr>
+        <tr><td>대표 배경</td><td>김건·하경재</td><td>이대희</td><td>이민규(마라홀릭 59개)</td><td>돈까스 그룹 300억대</td><td class="win">장어 수입+외식 운영</td></tr>
+        <tr><td>1호점</td><td>익선 추정 2021</td><td>송도 2022하 추정</td><td>안산 2023-06</td><td>강남 2021</td><td>부산역 2027 목표</td></tr>
+        <tr><td>매장</td><td class="num">79+5개국</td><td class="num">49+LA·호치민+태국MF</td><td class="num">21+대만 4</td><td class="num">4</td><td class="num">1</td></tr>
+        <tr><td>최고 속도</td><td class="num">월 1~2</td><td class="num">월 2.4~2.5</td><td class="num">월 0.9~2.0</td><td class="num">월 0.07</td><td>—</td></tr>
+        <tr><td>현재 국면</td><td>확장 지속</td><td class="lose">국내 순증 정지</td><td class="win">재가속</td><td class="lose">정체</td><td>—</td></tr>
+        <tr><td>가격 밴드</td><td class="num">1.4만~2.5만</td><td class="num">1.2만~1.9만</td><td class="num">0.79만~2.29만</td><td class="num">1.09만~2.5만</td><td class="num">1.25만~2.1만</td></tr>
+        <tr><td>시그니처</td><td>스테이크 17,000</td><td>가지 12,500 (24.4%)</td><td>규동 9,900 (39.8%)</td><td>붉은대게 19,000 (27.2%)</td><td class="win">장어 3식 19,500 (29.7%)</td></tr>
         <tr><td>원가 전략</td><td>표준 원팩</td><td>싼 재료를 비싸게</td><td>박리다매</td><td>산지 프리미엄</td><td class="win">비싼 재료를 싸게 조달</td></tr>
-        <tr><td>부산</td><td class="num">3개점(핫플)</td><td class="num">없음 — 마산까지</td><td class="num">없음 — 대구까지</td><td class="num">진영휴게소만</td><td class="win">부산역 선점 목표</td></tr>
-        <tr><td>최대 약점</td><td>가격 대비 양(3.1)</td><td>성장 정체·특허 미등록</td><td>경험의 얕음</td><td>확장 정지·가격 체감</td><td>신규 브랜드 리스크</td></tr>
+        <tr><td>블렌디드 원가율(역산)</td><td class="num">~33%</td><td class="win">27~28%</td><td class="num">34~36%</td><td class="num">27~29%</td><td class="num">31.5%</td></tr>
+        <tr><td>창업비/평수</td><td class="num">1.48억/20평</td><td class="num">7,800만/20평</td><td class="num">5,858만~/15평</td><td class="num">1.05억/26평</td><td class="num">1.3~1.5억 → 재검토</td></tr>
+        <tr><td>로열티</td><td class="num">미공표</td><td class="num">1%</td><td class="num">1%</td><td class="num">순매출 2%</td><td class="num">정액 50만(≈1%)</td></tr>
+        <tr><td>포장·배달</td><td>일부</td><td class="lose">없음(홀 전용)</td><td>병행</td><td>휴게소 셀프만</td><td class="win">기차솥 도시락</td></tr>
+        <tr><td>취반</td><td>주물솥 생쌀</td><td>1인 압력솥·15일 쌀</td><td>기계(98만)+수향미</td><td>"10분 8인분"</td><td>사전주문 취반</td></tr>
+        <tr><td>예약·웨이팅</td><td>테이블링+캐치 이원</td><td>혼재(자체+2앱)</td><td>테이블오더</td><td>현장만</td><td class="win">QR 열차 연동</td></tr>
+        <tr><td>해외</td><td>5개국</td><td>3개국 3방식</td><td>대만 4</td><td>없음</td><td>(장기)</td></tr>
+        <tr><td>부산·영남</td><td class="num">부산 3(핫플)</td><td class="num">마산 1</td><td class="num">대구 1</td><td class="num">진영휴게소 1</td><td class="win">부산역 선점 목표</td></tr>
+        <tr><td>최대 약점</td><td>가격 대비 양(3.1)</td><td>정체·특허 미등록·SV 8명</td><td>경험 얕음·마진 박함</td><td>확장 정지·가격 체감 3.0</td><td>신규 리스크</td></tr>
       </tbody>
     </table></div>
   </section>
 
   <section id="ch7">
     <div class="chapter">7장</div>
-    <h2>우리 기획서(3부)에 반영할 7가지</h2>
+    <h2>3부 기획서에 반영할 8가지 (수치 포함)</h2>
     <div class="check-group">
       <ul class="check">
-        <li><strong>선점 시한 1~2년</strong> — 담솥은 마산, 동양은 대구까지 왔다. 3부 로드맵의 D-120을 지키는 것 자체가 전략.</li>
-        <li><strong>가맹 표준점 창업비 재검토</strong> — 우리 1.3~1.5억은 경쟁사(5,858만~1.05억) 대비 상단. "장어 원가 우위 → 점주 순이익률 우위"를 수치로 증명하는 모집 자료가 필수(손익 공개 영업이 시장 표준이 됨).</li>
-        <li><strong>로열티</strong> — 시장 표준 1~2%. 우리 정액 50만은 매출 5,000만 기준 1%와 동일 — 유지하되 "1호점 로열티 면제" 프로모션 채택.</li>
-        <li><strong>취반 장비 조달 조사</strong> — 상용 솥밥기계(98만 원~)·자동 취반기 성능 비교를 D-90 체크리스트에 추가.</li>
-        <li><strong>'특허' 표기 규율</strong> — 등록 전 "특허받은" 표기 금지(담솥 반면교사). 조리법·장비 출원은 진행, 등록 후에만 마케팅 사용.</li>
-        <li><strong>여름 비수기 대응</strong> — 가가솥밥의 묵사발솥밥처럼, '계절 한 솥' 캘린더에 여름 메뉴(냉국물 페어링 등) 반영.</li>
-        <li><strong>포장·배달의 고유 가치</strong> — 담솥(홀 전용)·가가(휴게소 셀프)의 공백. '기차솥 도시락'은 4사 누구도 안 하는 영역 — 부산역 입지와 결합하면 고유 무기.</li>
+        <li><strong>선점 시한 1~2년 명기</strong> — 진입 확률: 동양솥밥 高(2027 중, "1호점 가맹비 무료" 정책) &gt; 담솥 中(12~24개월, 몰 입지·비충돌) &gt; 가가 低. D-120 준수가 곧 전략.</li>
+        <li><strong>가맹 표준점 창업비 재검토</strong> — 우리 1.3~1.5억은 담솥(7,800만)의 1.7배, 동양(5,858만)의 2.6배. 모집 자료에 <strong>점주 월 영업이익 비교표</strong>(담솥 역산 1,290만 vs 우리 목표치) 필수 — 손익 공개 영업이 시장 표준.</li>
+        <li><strong>로열티 확정</strong> — 정액 50만(≈1%) 유지 + "지역 1호점 로열티 6개월 면제" 프로모션 추가(4사 공통 '1호점 가맹비 면제' 문법과 결합).</li>
+        <li><strong>취반 장비 3사 비교 견적 (D-90 추가)</strong> — 동양형 기계(98만)·담솥형 자동 취반기·업소용 기성품. "착석 7분"의 실현 수단.</li>
+        <li><strong>'특허' 표기 규율 + 출원 실행</strong> — 등록 전 표기 금지(담솥 반면교사). 장어 3식 제공 방식·타레 배합·사전주문 연동 취반 프로세스 출원 검토.</li>
+        <li><strong>여름 비수기 메뉴 명기</strong> — 가가 묵사발솥밥 선례 → 우리는 7~8월 물회 페어링·냉국물 반상.</li>
+        <li><strong>포장·배달 = 고유 무기 확정</strong> — 프리미엄 밴드에서 도시락을 하는 브랜드 없음. 부산역 입지와 결합 시 독점 영역.</li>
+        <li><strong>믹스 보강</strong> — 담솥처럼 "시그니처=최저 원가율"이 이상적이나 우리 장어는 29.7%(중간). <strong>장어 꼬치(23.1%)·곱빼기 업셀로 시그니처 주변 마진 보강</strong>을 메뉴판 동선에 반영.</li>
       </ul>
     </div>
   </section>
 
   <footer>
-    <p><strong>시리즈</strong> — 1부 솔솥 벤치마킹 → 2부 브랜드 킷 → 3부 총괄 기획서 → 4부(본 문서). 전체 출처 URL은 저장소 <strong>reports/sotbap-rivals-teardown.md</strong> 부록 참조 (이넷뉴스·일간스포츠·FETV·겟뉴스·bizno·마이프차·인허가 기록·다이닝코드 등).</p>
-    <p>원가·순수익은 전부 역산 추정치 — 정보공개서 원문(담솥 20220875 · 동양솥밥 20231512 · 가가솥밥 2021 등록분) 대조 전제. · 2026-09-01 작성</p>
+    <p><strong>시리즈</strong> — 1부 솔솥 벤치마킹 → 2부 브랜드 킷 → 3부 총괄 기획서 → 4부(본 문서). 출처 전체 목록(뉴스 30여 건·인허가 기록·법인 정보·리뷰 플랫폼)은 저장소 <strong>reports/sotbap-rivals-teardown.md</strong> 부록 참조.</p>
+    <p>원가·순수익은 전부 역산 추정치 — 산식을 본문에 표기. 정보공개서 원문(담솥 20220875 · 동양솥밥 20231512 · 가가솥밥 20215091) 대조 전제. · 2026-09-01 작성</p>
   </footer>
 </div>
